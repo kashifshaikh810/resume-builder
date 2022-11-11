@@ -1,10 +1,15 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/Screens/Dashboard/Dashboard";
 
 const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        {/* <Route path="*" element={<NotFound/>}/> */}
+      </Routes>
+    </Router>
   );
 };
 
