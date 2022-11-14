@@ -1,0 +1,26 @@
+.button:hover {
+  background-color: rgb(59 130 246 / 0.1);
+}
+
+@media screen and (max-width: 1300px) {
+  .icon {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .mainContainer {
+    display: none;
+  }
+  .icon-style {
+    display: flex !important;
+    background-color: #b3b3b3;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .icon-style:hover {
+    cursor: pointer;
+    background-color: #f3f3f3;
+  }
+}
