@@ -7,6 +7,8 @@ import "./styles.css";
 const FirstNameLastName = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
 
+  const navigate = props.navigate();
+
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
@@ -58,7 +60,7 @@ const FirstNameLastName = (props) => {
           title="Continue"
           className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
           textStyle="text-white font-bold continue-button"
-          onPress={() => {}}
+          onPress={() => navigate("/create-resume/contact-info")}
           loading={false}
         />
       </div>
