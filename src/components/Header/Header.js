@@ -3,11 +3,12 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 import MyButton from "../MyButton/MyButton";
+import { AiFillCloseCircle } from "react-icons/ai";
 import "./styles.css";
 
 const Header = (props) => {
   return (
-    <div className="flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden z-0">
+    <div className="flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden">
       <div className="flex flex-row items-center mainContainer">
         <div className="bg-gray-400 p-2 rounded-full">
           <FaRegAddressCard size={25} color="#f3f3f3" />
@@ -35,7 +36,19 @@ const Header = (props) => {
       </div>
 
       <div>
-        <AiOutlineMenu size={40} className="icon icon-style" />
+        {props?.toggleDrawer ? (
+          <AiFillCloseCircle
+            size={40}
+            className="icon icon-style"
+            onClick={props?.openDrawer}
+          />
+        ) : (
+          <AiOutlineMenu
+            size={40}
+            className="icon icon-style"
+            onClick={props?.openDrawer}
+          />
+        )}
       </div>
     </div>
   );

@@ -3,14 +3,13 @@ import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import CVImage from "../../images/cvImage.png";
 import SideDrawer from "../../SideDrawer/SideDrawer";
-import BackDrop from "../../BackDrop/BackDrop";
 
 const DashboardMarkup = (props) => {
   return (
     <div className="flex flex-1 flex-col bg-blue-50 pb-8">
       <Header {...props} />
-      <SideDrawer {...props} />
-      <BackDrop {...props} />
+
+      {props?.toggleDrawer ? <SideDrawer {...props} /> : <></>}
       <div className="flex flex-1 flex-col items-center justify-center">
         <p className="text-xs font-bold pt-6">ONLINE RESUME BUILDER</p>
         <p className="text-3xl font-bold pt-2 w-5/12 text-center">
