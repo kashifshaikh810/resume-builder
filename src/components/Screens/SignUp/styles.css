@@ -1,0 +1,26 @@
+.back-button:hover {
+  border-color: lightblue;
+  color: lightblue;
+}
+
+.continue-button:hover {
+  background-color: rgba(28, 10, 217, 0.9);
+}
+
+@media screen and (max-width: 770px) {
+  .two-headings {
+    display: block;
+    margin-left: 20px;
+  }
+  .input {
+    width: 90%;
+  }
+  .input-heading {
+    width: 90%;
+  }
+  .buttons-container {
+    width: 85%;
+    justify-content: space-between;
+    margin-left: 20px;
+  }
+}
