@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
@@ -7,13 +7,47 @@ import "./styles.css";
 const FirstNameLastName = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const [firstName, setFirstName] = useState("");
+  const [firstNameErr, setFirstNameErr] = useState("");
   const [lastName, setLastName] = useState("");
+  const [lastNameErr, setLastNameErr] = useState("");
 
   const navigate = props.navigate();
+  const param = props.params();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
+
+  const firstNameOnChangeHandler = (e) => {
+    setFirstName(e.target.value);
+    setFirstNameErr("");
+  };
+
+  const lastNameOnChangeHandler = (e) => {
+    setLastName(e.target.value);
+    setLastNameErr("");
+  };
+
+  const continuePressHandler = (e) => {
+    if (!firstName) {
+      setFirstNameErr("This field is required");
+    }
+
+    if (!lastName) {
+      setLastNameErr("This field is required");
+    }
+
+    if (firstName && lastName) {
+      navigate(`/create-resume/contact-info/${firstName}/${lastName}`);
+    }
+  };
+
+  useEffect(() => {
+    if (param) {
+      setFirstName(param.firstName);
+      setLastName(param.lastName);
+    }
+  }, [param]);
 
   return (
     <div>
@@ -35,25 +69,39 @@ const FirstNameLastName = (props) => {
         </p>
       </div>
       <div className="flex flex-1 justify-center flex-col items-center pt-5">
-        <p className="w-6/12 pb-1 text-gray-500 text-sm input-heading">
+        <p
+          className={`w-6/12 pb-1 text-sm input-heading ${
+            firstNameErr ? `text-red-600` : `text-gray-500`
+          }`}
+        >
           First Name
         </p>
         <input
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input"
+          onChange={(e) => firstNameOnChangeHandler(e)}
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+            firstNameErr && `border-2 border-red-500`
+          }`}
         />
+        {firstNameErr && <p className="email-error">{firstNameErr}</p>}
       </div>
 
       <div className="flex flex-1 justify-center flex-col items-center pt-5">
-        <p className="w-6/12 pb-1 text-gray-500 text-sm input-heading">
+        <p
+          className={`w-6/12 pb-1 text-sm input-heading ${
+            lastNameErr ? `text-red-600` : `text-gray-500`
+          }`}
+        >
           Last Name
         </p>
         <input
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input"
+          onChange={(e) => lastNameOnChangeHandler(e)}
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+            lastNameErr && `border-2 border-red-500`
+          }`}
         />
+        {lastNameErr && <p className="email-error">{lastNameErr}</p>}
       </div>
 
       <div className="flex flex-row w-full justify-evenly items-center mt-4 pt-4 buttons-container">
@@ -71,12 +119,7 @@ const FirstNameLastName = (props) => {
           title="Continue"
           className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
           textStyle="text-white font-bold"
-          onPress={() =>
-            navigate("/create-resume/contact-info", {
-              firstName: firstName,
-              lastName: lastName,
-            })
-          }
+          onPress={() => continuePressHandler()}
           loading={false}
         />
       </div>
