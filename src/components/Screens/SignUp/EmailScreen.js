@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
@@ -11,8 +10,7 @@ const EmailScreen = (props) => {
   const [showEmailErr, setShowEmailErr] = useState("");
 
   const navigate = props.navigate();
-  let { firstName, lastName } = useParams();
-  // const param = props.params().firstName;
+  const param = props.params();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -28,7 +26,7 @@ const EmailScreen = (props) => {
     if (!email) {
       setShowEmailErr("This field is required");
     } else {
-      console.log(firstName, lastName);
+      console.log(param.firstName, param.lastName);
     }
   };
 
