@@ -19,7 +19,7 @@ const App = () => {
           element={<Dashboard navigate={useNavigate} params={useParams} />}
         />
         <Route
-          path="/create-resume/introduction"
+          path="/create-resume/introduction/:firstName/:lastName"
           element={
             <FirstNameLastName navigate={useNavigate} params={useParams} />
           }
