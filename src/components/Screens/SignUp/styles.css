@@ -7,20 +7,27 @@
   background-color: rgba(28, 10, 217, 0.9);
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 900px) {
   .two-headings {
     display: block;
     margin-left: 20px;
   }
   .input {
-    width: 90%;
+    width: 80%;
+    align-self: flex-start;
+    margin-left: 21px;
   }
   .input-heading {
-    width: 90%;
+    width: 95%;
   }
   .buttons-container {
-    width: 85%;
+    width: 80%;
     justify-content: space-between;
     margin-left: 20px;
+  }
+  .sub-title {
+    display: block;
+    width: 100%;
+    text-align: start;
   }
 }
