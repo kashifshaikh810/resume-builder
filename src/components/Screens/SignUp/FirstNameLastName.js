@@ -6,12 +6,15 @@ import "./styles.css";
 
 const FirstNameLastName = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const navigate = props.navigate();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
+
   return (
     <div>
       <Header {...props} openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
@@ -35,14 +38,22 @@ const FirstNameLastName = (props) => {
         <p className="w-6/12 pb-1 text-gray-500 text-sm input-heading">
           First Name
         </p>
-        <input className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input" />
+        <input
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input"
+        />
       </div>
 
       <div className="flex flex-1 justify-center flex-col items-center pt-5">
         <p className="w-6/12 pb-1 text-gray-500 text-sm input-heading">
           Last Name
         </p>
-        <input className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input" />
+        <input
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input"
+        />
       </div>
 
       <div className="flex flex-row w-full justify-evenly items-center mt-4 pt-4 buttons-container">
@@ -59,8 +70,13 @@ const FirstNameLastName = (props) => {
           {...props}
           title="Continue"
           className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
-          textStyle="text-white font-bold continue-button"
-          onPress={() => navigate("/create-resume/contact-info")}
+          textStyle="text-white font-bold"
+          onPress={() =>
+            navigate("/create-resume/contact-info", {
+              firstName: firstName,
+              lastName: lastName,
+            })
+          }
           loading={false}
         />
       </div>
