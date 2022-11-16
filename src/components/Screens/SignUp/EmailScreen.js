@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
@@ -7,11 +8,28 @@ import "./styles.css";
 const EmailScreen = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const [email, setEmail] = useState("");
+  const [showEmailErr, setShowEmailErr] = useState("");
 
   const navigate = props.navigate();
+  let { firstName, lastName } = useParams();
+  // const param = props.params().firstName;
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
+  };
+
+  const emailOnChangeHandler = (e) => {
+    setEmail(e.target.value);
+    setShowEmailErr("");
+  };
+
+  const continuePressHandler = (e) => {
+    e.preventDefault();
+    if (!email) {
+      setShowEmailErr("This field is required");
+    } else {
+      console.log(firstName, lastName);
+    }
   };
 
   return (
@@ -38,12 +56,21 @@ const EmailScreen = (props) => {
       </div>
 
       <div className="flex flex-1 justify-center flex-col items-center pt-5">
-        <p className="w-6/12 pb-1 text-gray-500 text-sm input-heading">Email</p>
+        <p
+          className={`w-6/12 pb-1 text-sm input-heading ${
+            showEmailErr ? `text-red-600` : `text-gray-500`
+          }`}
+        >
+          Email
+        </p>
         <input
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="bg-gray-100 w-6/12 h-10 pl-3 pr-3 input"
+          onChange={(e) => emailOnChangeHandler(e)}
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+            showEmailErr && `border-2 border-red-500`
+          }`}
         />
+        {showEmailErr && <p className="email-error">{showEmailErr}</p>}
       </div>
 
       <div className="flex flex-row flex-1 justify-evenly mt-4 pt-4 buttons-container">
@@ -61,7 +88,7 @@ const EmailScreen = (props) => {
           title="Continue"
           className="bg-blue-500 mt-4 ml-12 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
           textStyle="text-white font-bold"
-          onPress={() => {}}
+          onPress={(e) => continuePressHandler(e)}
           loading={false}
         />
       </div>

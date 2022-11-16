@@ -7,6 +7,13 @@
   background-color: rgba(28, 10, 217, 0.9);
 }
 
+.email-error {
+  text-align: start;
+  width: 50%;
+  margin-top: 2px;
+  color: red;
+}
+
 @media screen and (max-width: 900px) {
   .two-headings {
     display: block;
