@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
@@ -12,7 +12,6 @@ const FirstNameLastName = (props) => {
   const [lastNameErr, setLastNameErr] = useState("");
 
   const navigate = props.navigate();
-  const param = props.params();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -38,16 +37,9 @@ const FirstNameLastName = (props) => {
     }
 
     if (firstName && lastName) {
-      navigate(`/create-resume/contact-info/${firstName}/${lastName}`);
+      navigate("/create-resume/contact-info");
     }
   };
-
-  useEffect(() => {
-    if (param) {
-      setFirstName(param.firstName);
-      setLastName(param.lastName);
-    }
-  }, [param]);
 
   return (
     <div>
@@ -110,7 +102,7 @@ const FirstNameLastName = (props) => {
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
           textStyle="text-black font-bold back-button"
-          onPress={() => {}}
+          onPress={() => navigate("/app/auth/sign-in")}
           loading={false}
         />
 
