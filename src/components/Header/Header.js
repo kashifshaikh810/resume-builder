@@ -7,6 +7,8 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import "./styles.css";
 
 const Header = (props) => {
+  const navigate = props?.navigate();
+
   return (
     <div className="flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden">
       <div className="flex flex-row items-center mainContainer">
@@ -30,7 +32,7 @@ const Header = (props) => {
           title="My Account"
           className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
           textStyle="text-blue-400 font-bold"
-          onPress={() => {}}
+          onPress={() => navigate("/app/auth/sign-in")}
           loading={false}
         />
       </div>
