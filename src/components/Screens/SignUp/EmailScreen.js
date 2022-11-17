@@ -10,7 +10,6 @@ const EmailScreen = (props) => {
   const [showEmailErr, setShowEmailErr] = useState("");
 
   const navigate = props.navigate();
-  const param = props.params();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -26,7 +25,6 @@ const EmailScreen = (props) => {
     if (!email) {
       setShowEmailErr("This field is required");
     } else {
-      console.log(param.firstName, param.lastName);
     }
   };
 
@@ -77,11 +75,7 @@ const EmailScreen = (props) => {
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
           textStyle="text-black font-bold back-button"
-          onPress={() =>
-            navigate(
-              `/create-resume/introduction/${param.firstName}/${param.lastName}`
-            )
-          }
+          onPress={() => {}}
           loading={false}
         />
 
