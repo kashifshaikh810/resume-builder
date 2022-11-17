@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 import Header from "../Header/Header";
 import { BiChevronRight } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const resumeData = [
   { title: "Resume Templates" },
@@ -26,6 +27,7 @@ const otherData = [
 ];
 
 const SideDrawer = (props) => {
+  const navigate = useNavigate();
   return (
     <div className="main-container">
       <Header {...props} />
@@ -52,8 +54,13 @@ const SideDrawer = (props) => {
             ))}
           </div>
 
-          <div className="pt-5 flex flex-row items-center cursor-pointer">
-            <p className="text-base text-blue-500 font-bold">My Account</p>
+          <div className="pt-5 flex flex-row items-center">
+            <p
+              className="text-base text-blue-500 font-bold cursor-pointer"
+              onClick={() => navigate("/app/auth/sign-in")}
+            >
+              My Account
+            </p>
             <BiChevronRight size={23} className="text-blue-500" />
           </div>
         </div>
