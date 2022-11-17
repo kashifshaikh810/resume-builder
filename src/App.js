@@ -9,6 +9,7 @@ import {
 import Dashboard from "./components/Screens/Dashboard/Dashboard";
 import Login from "./components/Screens/Login/Login";
 import LoginDashboard from "./components/Screens/Login/LoginDashboard";
+import ResumesCoverLetters from "./components/Screens/ResumesCoverLetters/ResumesCoverLetters";
 import EmailScreen from "./components/Screens/SignUp/EmailScreen";
 import FirstNameLastName from "./components/Screens/SignUp/FirstNameLastName";
 
@@ -37,6 +38,12 @@ const App = () => {
         <Route
           path="/app/auth/log-in"
           element={<Login navigate={useNavigate} params={useParams} />}
+        />
+        <Route
+          path="/app"
+          element={
+            <ResumesCoverLetters navigate={useNavigate} params={useParams} />
+          }
         />
         {/* <Route path="*" element={<NotFound/>}/> */}
       </Routes>
