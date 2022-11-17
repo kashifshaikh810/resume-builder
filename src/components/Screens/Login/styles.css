@@ -1,0 +1,83 @@
+.email-button:hover {
+  cursor: pointer;
+  border-color: lightblue;
+  color: lightblue;
+}
+
+.sign-up-text:hover {
+  cursor: pointer;
+  color: blue;
+}
+
+@media screen and (max-width: 900px) {
+  .heading {
+    display: block;
+    width: 100%;
+    align-self: flex-start;
+    padding-left: 20px;
+  }
+
+  .my-buttons-container {
+    display: flex;
+    width: 94%;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 100px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .input-heading {
+    width: 90%;
+  }
+
+  .email-error {
+    display: block;
+    width: 90%;
+  }
+
+  .my-buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 25px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .input-heading {
+    width: 85%;
+  }
+
+  .email-error {
+    display: block;
+    width: 85%;
+  }
+
+  .my-buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .heading {
+    display: block;
+    width: 100%;
+    align-self: flex-start;
+    padding-left: 20px;
+  }
+
+  .my-buttons-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .input {
+    display: block;
+    width: 100%;
+  }
+}
