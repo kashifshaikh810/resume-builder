@@ -2,6 +2,11 @@
   background-color: rgb(59 130 246 / 0.1);
 }
 
+.user-icon:hover {
+  border: 1.5px solid #9ba1fb;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1300px) {
   .icon {
     display: none !important;
