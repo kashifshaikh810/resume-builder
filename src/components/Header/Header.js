@@ -23,6 +23,7 @@ const Header = (props) => {
             <div className="bg-gray-400 p-2 rounded-full">
               <FaRegAddressCard size={25} color="#f3f3f3" />
             </div>
+            <p className="pl-2 text-base font-bold">resume</p>
           </div>
           <div className="flex flex-1 justify-end p-2">
             <div
@@ -39,6 +40,7 @@ const Header = (props) => {
             <div className="bg-gray-400 p-2 rounded-full">
               <FaRegAddressCard size={25} color="#f3f3f3" />
             </div>
+            <p className="pl-2 text-base font-bold">resume</p>
           </div>
           <div className="flex flex-1 flex-row justify-end items-center mainContainer">
             <p className="text-base">Resume</p>
