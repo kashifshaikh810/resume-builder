@@ -18,12 +18,19 @@ const Header = (props) => {
       }`}
     >
       {props.name === "app" ? (
-        <div className="flex flex-1 justify-end p-2">
-          <div
-            className="flex justify-center items-center w-8 h-8 bg-gray-100 rounded-full user-icon"
-            onClick={() => props.setIsMenuShown(!props?.isMenuShown)}
-          >
-            <TfiUser size={15} className="text-gray-400" />
+        <div className="flex flex-1">
+          <div className="flex flex-row items-center mainContainer">
+            <div className="bg-gray-400 p-2 rounded-full">
+              <FaRegAddressCard size={25} color="#f3f3f3" />
+            </div>
+          </div>
+          <div className="flex flex-1 justify-end p-2">
+            <div
+              className="flex justify-center items-center w-10 h-10 bg-gray-100 rounded-full user-icon"
+              onClick={() => props.setIsMenuShown(!props?.isMenuShown)}
+            >
+              <TfiUser size={20} className="text-gray-400" />
+            </div>
           </div>
         </div>
       ) : (
