@@ -3,6 +3,7 @@ import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 
 const ResumesCoverLetters = (props) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
+  const [isShowLine, setIsShowLine] = useState("resumes");
   const navigate = props.navigate();
 
   return (
@@ -11,6 +12,8 @@ const ResumesCoverLetters = (props) => {
       navigate={navigate}
       isMenuShown={isMenuShown}
       setIsMenuShown={setIsMenuShown}
+      isShowLine={isShowLine}
+      setIsShowLine={setIsShowLine}
     />
   );
 };
