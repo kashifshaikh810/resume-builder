@@ -19,7 +19,7 @@ const Header = (props) => {
     >
       {props.name === "app" ? (
         <div className="flex flex-1">
-          <div className="flex flex-row items-center mainContainer">
+          <div className="flex flex-row items-center">
             <div className="bg-gray-400 p-2 rounded-full">
               <FaRegAddressCard size={25} color="#f3f3f3" />
             </div>
