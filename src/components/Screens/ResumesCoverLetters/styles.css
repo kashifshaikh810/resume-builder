@@ -7,6 +7,10 @@
   display: none;
 }
 
+.new-button {
+  display: none;
+}
+
 .untitled-container:hover .pencil-icon {
   cursor: pointer;
   display: flex;
@@ -93,10 +97,6 @@
   .search-text {
     font-size: 15px;
     width: 55%;
-  }
-
-  .new-button {
-    display: none;
   }
 }
 
