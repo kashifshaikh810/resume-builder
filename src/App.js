@@ -6,6 +6,7 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
+import AccountSettings from "./components/Screens/AccountSettings/AccountSettings";
 import Dashboard from "./components/Screens/Dashboard/Dashboard";
 import Login from "./components/Screens/Login/Login";
 import LoginDashboard from "./components/Screens/Login/LoginDashboard";
@@ -43,6 +44,13 @@ const App = () => {
           path="/app"
           element={
             <ResumesCoverLetters navigate={useNavigate} params={useParams} />
+          }
+        />
+
+        <Route
+          path="/app/account"
+          element={
+            <AccountSettings navigate={useNavigate} params={useParams} />
           }
         />
         {/* <Route path="*" element={<NotFound/>}/> */}
