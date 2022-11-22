@@ -27,6 +27,21 @@
   color: rgb(26, 145, 240);
 }
 
+.new-button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 255, 0.573);
+}
+
+.order-button:hover {
+  background-color: rgba(0, 0, 255, 0.573);
+  cursor: pointer;
+}
+
+.started-button:hover {
+  background-color: rgba(0, 0, 255, 0.573);
+  cursor: pointer;
+}
+
 .icon:hover {
   cursor: pointer;
 }
@@ -34,4 +49,115 @@
 .plus-main:hover .plus-icon {
   background-color: rgba(0, 0, 255, 0.573);
   color: #fff;
+}
+
+@media screen and (max-width: 1023px) {
+  .cv-box {
+    width: 25%;
+  }
+
+  .new-resume {
+    display: none;
+  }
+
+  .boost-career-box {
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .top-resume-box {
+    width: 100%;
+  }
+
+  .professionally-text {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  .an-expertly-text {
+    font-size: 15px;
+    width: 55%;
+  }
+
+  .resume-rabbit-box {
+    width: 100%;
+  }
+
+  .post-text {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  .search-text {
+    font-size: 15px;
+    width: 55%;
+  }
+
+  .new-button {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .create-button {
+    display: none;
+  }
+
+  .cv-box {
+    width: 25%;
+    height: 200px;
+  }
+
+  .new-button {
+    display: flex;
+  }
+
+  .professionally-text {
+    font-size: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  .an-expertly-text {
+    font-size: 12px;
+    width: 65%;
+  }
+
+  .post-text {
+    font-size: 15px;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  .search-text {
+    font-size: 12px;
+    width: 65%;
+  }
+
+  .order-button {
+    width: 60%;
+  }
+
+  .started-button {
+    width: 60%;
+  }
+
+  .top-resume-box {
+    width: 100%;
+  }
+
+  .resume-rabbit-box {
+    width: 100%;
+  }
+
+  .tabs-container {
+    justify-content: space-evenly;
+  }
+
+  .resume-heading {
+    width: 50%;
+    text-align: center;
+  }
 }

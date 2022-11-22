@@ -17,7 +17,7 @@ const ResumesCoverLettersMarkup = (props) => {
       return (
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
-            <div className="border-2 border-gray-100 w-5/12 h-72 rounded-lg cursor-pointer">
+            <div className="border-2 border-gray-100 w-5/12 h-72 rounded-lg cursor-pointer cv-box">
               <p>kashif</p>
             </div>
 
@@ -49,7 +49,7 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
             </div>
 
-            <div className="border-2 border-gray-100 w-5/12 h-72 rounded-lg cursor-pointer">
+            <div className="border-2 border-gray-100 w-5/12 h-72 rounded-lg cursor-pointer new-resume">
               <div className="flex w-full justify-center items-center h-full plus-main">
                 <AiOutlinePlus
                   size={25}
@@ -58,7 +58,7 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
             </div>
 
-            <div className="pl-10">
+            <div className="pl-10 new-resume">
               <div className="pb-5">
                 <div className="flex flex-row items-center untitled-container">
                   <p className="pb-0.5 text-xl text-gray-400">New Resume</p>
@@ -73,20 +73,18 @@ const ResumesCoverLettersMarkup = (props) => {
           </div>
 
           <p className="pt-14 text-3xl font-bold">Boost Your Career</p>
-          <div className="flex flex-row justify-between mr-5">
-            <div className="border-2 border-gray-100 w-5/12 h-96 rounded-lg cursor-pointer mt-4 mb-5 flex justify-center">
+          <div className="flex flex-row justify-between mr-5 boost-career-box">
+            <div className="border-2 border-gray-100 w-5/12 h-auto pt-5 pb-5 rounded-lg cursor-pointer mt-4 mb-5 flex justify-center top-resume-box">
               <div className="w-8/12 flex flex-col self-center items-center">
                 <p className="text-center text-base text-blue-200 mt-2 mb-2">
                   Top Resume
                 </p>
-                <div>
-                  <img src={Cv} alt="resume" className="w-full h-40" />
-                </div>
-                <p className="text-xs mt-2 text-center">
+                <img src={Cv} alt="resume" className="w-6/12" />
+                <p className="text-xs mt-2 text-center professionally-text">
                   Get a professionally written resume
                 </p>
 
-                <p className="text-sm text-center mt-2 w-full">
+                <p className="text-sm text-center mt-2 w-full an-expertly-text">
                   An expertly written and keyword-optimized resume that sets you
                   apart.
                 </p>
@@ -94,7 +92,7 @@ const ResumesCoverLettersMarkup = (props) => {
                 <MyButton
                   {...props}
                   title="Order Now"
-                  className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 continue-button"
+                  className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 order-button"
                   textStyle="text-white font-bold text-center"
                   onPress={(e) => {}}
                   loading={false}
@@ -102,17 +100,17 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
             </div>
 
-            <div className="border-2 border-gray-100 w-5/12 h-96 rounded-lg cursor-pointer mt-4 mb-5 flex justify-center">
+            <div className="border-2 border-gray-100 w-5/12 h-auto pb-5 pt-5 rounded-lg cursor-pointer mt-4 mb-5 flex justify-center resume-rabbit-box">
               <div className="w-8/12 flex flex-col self-center items-center">
                 <p className="text-center text-base text-blue-200 mt-2 mb-2">
                   Resume Rabbit
                 </p>
-                <img src={Switch} alt="resume" className="w-full h-40" />
-                <p className="text-xs mt-2 text-center">
+                <img src={Switch} alt="resume" className="w-6/12" />
+                <p className="text-xs mt-2 text-center post-text">
                   Post to 50 job sites in minutes
                 </p>
 
-                <p className="text-sm text-center mt-2 w-full">
+                <p className="text-sm text-center mt-2 w-full search-text">
                   Search smarter, not harder. Save time job hunting, and get
                   more out of it.
                 </p>
@@ -120,7 +118,7 @@ const ResumesCoverLettersMarkup = (props) => {
                 <MyButton
                   {...props}
                   title="Get Started"
-                  className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 continue-button"
+                  className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 started-button"
                   textStyle="text-white font-bold text-center"
                   onPress={(e) => {}}
                   loading={false}
@@ -155,13 +153,13 @@ const ResumesCoverLettersMarkup = (props) => {
           <MyButton
             {...props}
             title="Create New"
-            className="bg-blue-500 mt-4 p-2 justify-center items-center h-10 pl-5 pr-5 rounded-md cursor-pointer pt-2 continue-button"
+            className="bg-blue-500 mt-4 p-2 justify-center items-center h-10 pl-5 pr-5 rounded-md cursor-pointer pt-2 create-button"
             textStyle="text-white font-bold"
             onPress={(e) => {}}
             loading={false}
           />
         </div>
-        <div className="flex flex-row pt-2 border-b-2 border-gray-100 w-11/12 pb-0">
+        <div className="flex flex-row pt-2 border-b-2 border-gray-100 flex-1 mr-5 pb-0 tabs-container">
           <p
             className={`mr-3 pb-2 resume-heading ${
               props?.isShowLine === "resumes"
@@ -182,6 +180,17 @@ const ResumesCoverLettersMarkup = (props) => {
           >
             Cover Letters
           </p>
+        </div>
+
+        <div className="flex flex-1 mr-5">
+          <MyButton
+            {...props}
+            title="New Resume"
+            className="bg-blue-500 mt-4 w-full p-2 justify-center items-center h-12 pl-5 pr-5 rounded-md cursor-pointer pt-2 new-button"
+            textStyle="text-white font-bold"
+            onPress={(e) => {}}
+            loading={false}
+          />
         </div>
 
         {resumeSection()}
