@@ -256,7 +256,7 @@ const ResumesCoverLettersMarkup = (props) => {
   return (
     <div>
       <Header {...props} name="app" />
-      <DropDownMenu {...props} />
+      <DropDownMenu {...props} name="ResumeAndCoverLetters" />
 
       <div className="pt-10 pl-5">
         <p className="text-3xl font-bold">Resumes & Cover Letters</p>
