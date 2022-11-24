@@ -8,6 +8,18 @@
   cursor: pointer;
 }
 
+.main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 32px 80px;
+}
+
+.temp {
+  max-width: 736px;
+  margin: 0px auto;
+}
+
+/* 
 @media screen and (max-width: 767px) {
   .account-settings {
     display: block;
@@ -104,4 +116,73 @@
     margin-left: 8px;
     padding-left: 8px;
   }
-}
+
+  .social-container {
+    display: block;
+    padding-left: 10px;
+  }
+
+  .social-icons-container {
+    width: 100%;
+    display: block;
+  }
+
+  .social-icons-main-container {
+    width: 97%;
+    padding-left: 2px;
+    padding-right: 0px;
+  }
+
+  .divider {
+    width: 97%;
+  }
+
+  .email-heading-container {
+    display: block;
+    padding-left: 30px;
+  }
+
+  .updates-container {
+    width: 100%;
+    display: block;
+  }
+
+  .updates-container-main {
+    display: block;
+    width: 97%;
+    padding-left: 2px;
+    padding-right: 0px;
+  }
+
+  .dangerZone-heading {
+    display: block;
+    padding-left: 15px;
+  }
+
+  .once-container {
+    display: block;
+    width: 100%;
+  }
+
+  .once-container-main {
+    width: 97%;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .once-heading-text {
+    padding-left: 30px;
+  }
+
+  .needHelp-text {
+    width: 100%;
+  }
+
+  .delete-button {
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+} */
