@@ -36,7 +36,7 @@ const DashboardMarkup = (props) => {
         </div>
       </div>
       <div className="flex flex-1 justify-center pt-4">
-        <img className="w-6/12 h-96 rounded-md" src={CVImage} alt="cv" />
+        <img className="w-6/12 h-auto rounded-md" src={CVImage} alt="cv" />
       </div>
     </div>
   );
