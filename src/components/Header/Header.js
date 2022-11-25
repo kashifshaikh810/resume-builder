@@ -19,7 +19,10 @@ const Header = (props) => {
     >
       {props.name === "app" ? (
         <div className="flex flex-1">
-          <div className="flex flex-row items-center">
+          <div
+            className="flex flex-row items-center cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <div className="bg-gray-400 p-2 rounded-full">
               <FaRegAddressCard size={25} color="#f3f3f3" />
             </div>
@@ -36,7 +39,10 @@ const Header = (props) => {
         </div>
       ) : (
         <>
-          <div className="flex flex-row items-center mainContainer">
+          <div
+            className="flex flex-row items-center mainContainer cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <div className="bg-gray-400 p-2 rounded-full">
               <FaRegAddressCard size={25} color="#f3f3f3" />
             </div>
@@ -57,7 +63,7 @@ const Header = (props) => {
               title="My Account"
               className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
               textStyle="text-blue-400 font-bold"
-              onPress={() => navigate("/app/auth/sign-in")}
+              onPress={() => navigate("/app")}
               loading={false}
             />
           </div>
