@@ -26,7 +26,7 @@ const DashboardMarkup = (props) => {
           title="Create My Resume"
           className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
           textStyle="text-white font-bold"
-          onPress={() => {}}
+          onPress={() => props.navigate("/resumes-templates")}
           loading={false}
         />
 
