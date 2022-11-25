@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 32px 80px;
+}
+
+.container-main {
+  max-width: 800px;
+  margin: 0px auto;
+  align-items: center;
+}
+
+.tab-container:hover,
+.tab-text {
+  color: black;
+  cursor: pointer;
+}
