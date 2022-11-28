@@ -10,8 +10,12 @@
   align-items: center;
 }
 
-.tab-container:hover,
-.tab-text {
+.tab-container:hover .tab-text {
   color: black;
+  cursor: pointer;
+}
+
+.tab-container:hover .tab-icon {
+  color: #1da1f2;
   cursor: pointer;
 }
