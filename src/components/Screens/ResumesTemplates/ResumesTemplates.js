@@ -202,6 +202,11 @@ const ResumesTemplates = (props) => {
       openDrawer={openDrawer}
       navigate={navigate}
       toggleDrawer={toggleDrawer}
+      creativeData={creativeData}
+      modernData={modernData}
+      professionalData={professionalData}
+      allTempData={allTempData}
+      simpleData={simpleData}
     />
   );
 };

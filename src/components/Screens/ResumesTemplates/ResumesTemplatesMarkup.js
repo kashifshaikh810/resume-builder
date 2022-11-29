@@ -22,6 +22,114 @@ const ResumesTemplatesMarkup = (props) => {
     { id: 4, tabName: "Modern", tabIcon: () => <TbHandRock size={25} /> },
   ];
 
+  const allTempSection = () => {
+    if (props?.showSelectedTab.tabName === "All templates") {
+      return (
+        <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
+          {props?.allTempData.map((item, index) => (
+            <div className="flex flex-col w-6/12 h-auto pt-5 p-4 max-[767px]:w-full">
+              <div
+                className={`p-8 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:pl-28 max-[767px]:pr-28`}
+              >
+                <div className="flex w-full justify-center relative top-52 max-[767px]:top-96 bottom-0 right-0 left-0">
+                  <MyButton
+                    {...props}
+                    title="Use This Template"
+                    className="pb-4 pt-4 w-8/12 rounded-md bg-blue-500 absolute"
+                    textStyle="text-white font-bold text-center"
+                    onPress={() => {}}
+                    loading={false}
+                  />
+                </div>
+                <img
+                  src={item.cvImage}
+                  className="w-full h-auto rounded-md"
+                  alt="temp"
+                />
+              </div>
+              <p className="text-xl font-bold text-black pt-3">{item.name}</p>
+              <p className="text-sm text-gray-400 w-10/12 pt-1">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
+
+  const creativeSection = () => {
+    if (props?.showSelectedTab.tabName === "Creative") {
+      return (
+        <div className="flex flex-wrap flex-row">
+          {props?.creativeData.map((item, index) => (
+            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
+              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
+                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
+
+  const simpleSection = () => {
+    if (props?.showSelectedTab.tabName === "Simple") {
+      return (
+        <div className="flex flex-wrap flex-row">
+          {props?.simpleData.map((item, index) => (
+            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
+              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
+                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
+
+  const professionalSection = () => {
+    if (props?.showSelectedTab.tabName === "Professional") {
+      return (
+        <div className="flex flex-wrap flex-row">
+          {props?.professionalData.map((item, index) => (
+            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
+              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
+                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
+
+  const modernSection = () => {
+    if (props?.showSelectedTab.tabName === "Modern") {
+      return (
+        <div className="flex flex-wrap flex-row">
+          {props?.modernData.map((item, index) => (
+            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
+              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
+                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  };
+
   return (
     <div>
       <Header {...props} />
@@ -117,7 +225,8 @@ const ResumesTemplatesMarkup = (props) => {
                         props?.showSelectedTab.id === index)
                         ? `text-black`
                         : ``
-                    }`}
+                    }
+                    `}
                   >
                     {item.tabName}
                   </p>
@@ -125,11 +234,21 @@ const ResumesTemplatesMarkup = (props) => {
               </div>
             ))}
           </div>
-          {/* {dummyData.map((item, i) => (
-            <div>
-              <img src={item.cvImage} className="w-5/12 h-auto" />
-            </div>
-          ))} */}
+
+          {/* all templates tab */}
+          {allTempSection()}
+
+          {/* creative tab */}
+          {creativeSection()}
+
+          {/* simple tab */}
+          {simpleSection()}
+
+          {/* professional tab */}
+          {professionalSection()}
+
+          {/* modern tab */}
+          {modernSection()}
         </div>
       </div>
     </div>
