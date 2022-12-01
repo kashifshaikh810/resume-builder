@@ -12,6 +12,7 @@ import LoginDashboard from "./components/Screens/Login/LoginDashboard";
 import ResumesCoverLetters from "./components/Screens/ResumesCoverLetters/ResumesCoverLetters";
 import ResumesTemplates from "./components/Screens/ResumesTemplates/ResumesTemplates";
 import EmailScreen from "./components/Screens/SignUp/EmailScreen";
+import AccountSettings from "./components/Screens/AccountSettings/AccountSettings";
 import FirstNameLastName from "./components/Screens/SignUp/FirstNameLastName";
 
 const App = () => {
@@ -44,6 +45,12 @@ const App = () => {
           path="/app"
           element={
             <ResumesCoverLetters navigate={useNavigate} params={useParams} />
+          }
+        />
+        <Route
+          path="/app/account"
+          element={
+            <AccountSettings navigate={useNavigate} params={useParams} />
           }
         />
         <Route
