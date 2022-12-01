@@ -11,6 +11,7 @@ const ResumesTemplatesMarkup = (props) => {
         <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
           {props?.allTempData.map((item, index) => (
             <div
+              key={index}
               className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
               onMouseEnter={() => {
                 props.setIsHovered({ num: index, show: true });
@@ -20,16 +21,30 @@ const ResumesTemplatesMarkup = (props) => {
               }
             >
               <div
-                className={`p-8 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:pl-28 max-[767px]:pr-28`}
+                className={`p-5 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:w-full`}
               >
-                {props?.isHovered?.show && props?.isHovered?.num === index && (
-                  <div className="flex w-full justify-center relative top-52 max-[767px]:top-96 bottom-0 right-0 left-0">
+                {props?.screenWidth >= 1023 ? (
+                  props?.isHovered?.show &&
+                  props?.isHovered?.num === index && (
+                    <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                      <MyButton
+                        {...props}
+                        title="Use This Template"
+                        className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                        textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                        onPress={() => props.navigate("/app")}
+                        loading={false}
+                      />
+                    </div>
+                  )
+                ) : (
+                  <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
                     <MyButton
                       {...props}
                       title="Use This Template"
-                      className="pb-4 pt-4 w-8/12 rounded-md bg-blue-500 absolute all-temp-btn"
-                      textStyle="text-white font-bold text-center"
-                      onPress={() => {}}
+                      className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                      textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                      onPress={() => props.navigate("/app")}
                       loading={false}
                     />
                   </div>
@@ -40,7 +55,15 @@ const ResumesTemplatesMarkup = (props) => {
                   alt="temp"
                 />
               </div>
-              <p className="text-xl font-bold text-black pt-3">{item.name}</p>
+              <p
+                className={`text-xl font-bold pt-3 ${
+                  props?.isHovered?.show && props?.isHovered?.num === index
+                    ? `text-blue-400`
+                    : `text-black`
+                }`}
+              >
+                {item.name}
+              </p>
               <p className="text-sm text-gray-400 w-10/12 pt-1">
                 {item.description}
               </p>
@@ -54,14 +77,65 @@ const ResumesTemplatesMarkup = (props) => {
   const creativeSection = () => {
     if (props?.showSelectedTab.tabName === "Creative") {
       return (
-        <div className="flex flex-wrap flex-row">
-          {props?.creativeData.map((item, index) => (
-            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
-              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
-                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+        <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
+          {props?.creativeData?.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
+              onMouseEnter={() => {
+                props.setIsHovered({ num: index, show: true });
+              }}
+              onMouseLeave={() =>
+                props.setIsHovered({ num: index, show: false })
+              }
+            >
+              <div
+                className={`p-5 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:w-full`}
+              >
+                {props?.screenWidth >= 1023 ? (
+                  props?.isHovered?.show &&
+                  props?.isHovered?.num === index && (
+                    <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                      <MyButton
+                        {...props}
+                        title="Use This Template"
+                        className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                        textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                        onPress={() => props.navigate("/app")}
+                        loading={false}
+                      />
+                    </div>
+                  )
+                ) : (
+                  <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                    <MyButton
+                      {...props}
+                      title="Use This Template"
+                      className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                      textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                      onPress={() => props.navigate("/app")}
+                      loading={false}
+                    />
+                  </div>
+                )}
+                <img
+                  src={item.cvImage}
+                  className="w-full h-auto rounded-md"
+                  alt="temp"
+                />
               </div>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
+              <p
+                className={`text-xl font-bold pt-3 ${
+                  props?.isHovered?.show && props?.isHovered?.num === index
+                    ? `text-blue-400`
+                    : `text-black`
+                }`}
+              >
+                {item.name}
+              </p>
+              <p className="text-sm text-gray-400 w-10/12 pt-1">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -72,14 +146,65 @@ const ResumesTemplatesMarkup = (props) => {
   const simpleSection = () => {
     if (props?.showSelectedTab.tabName === "Simple") {
       return (
-        <div className="flex flex-wrap flex-row">
+        <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
           {props?.simpleData.map((item, index) => (
-            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
-              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
-                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+            <div
+              key={index}
+              className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
+              onMouseEnter={() => {
+                props.setIsHovered({ num: index, show: true });
+              }}
+              onMouseLeave={() =>
+                props.setIsHovered({ num: index, show: false })
+              }
+            >
+              <div
+                className={`p-5 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:w-full`}
+              >
+                {props?.screenWidth >= 1023 ? (
+                  props?.isHovered?.show &&
+                  props?.isHovered?.num === index && (
+                    <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                      <MyButton
+                        {...props}
+                        title="Use This Template"
+                        className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                        textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                        onPress={() => props.navigate("/app")}
+                        loading={false}
+                      />
+                    </div>
+                  )
+                ) : (
+                  <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                    <MyButton
+                      {...props}
+                      title="Use This Template"
+                      className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                      textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                      onPress={() => props.navigate("/app")}
+                      loading={false}
+                    />
+                  </div>
+                )}
+                <img
+                  src={item.cvImage}
+                  className="w-full h-auto rounded-md"
+                  alt="temp"
+                />
               </div>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
+              <p
+                className={`text-xl font-bold pt-3 ${
+                  props?.isHovered?.show && props?.isHovered?.num === index
+                    ? `text-blue-400`
+                    : `text-black`
+                }`}
+              >
+                {item.name}
+              </p>
+              <p className="text-sm text-gray-400 w-10/12 pt-1">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -90,14 +215,65 @@ const ResumesTemplatesMarkup = (props) => {
   const professionalSection = () => {
     if (props?.showSelectedTab.tabName === "Professional") {
       return (
-        <div className="flex flex-wrap flex-row">
+        <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
           {props?.professionalData.map((item, index) => (
-            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
-              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
-                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+            <div
+              key={index}
+              className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
+              onMouseEnter={() => {
+                props.setIsHovered({ num: index, show: true });
+              }}
+              onMouseLeave={() =>
+                props.setIsHovered({ num: index, show: false })
+              }
+            >
+              <div
+                className={`p-5 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:w-full`}
+              >
+                {props?.screenWidth >= 1023 ? (
+                  props?.isHovered?.show &&
+                  props?.isHovered?.num === index && (
+                    <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                      <MyButton
+                        {...props}
+                        title="Use This Template"
+                        className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                        textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                        onPress={() => props.navigate("/app")}
+                        loading={false}
+                      />
+                    </div>
+                  )
+                ) : (
+                  <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                    <MyButton
+                      {...props}
+                      title="Use This Template"
+                      className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                      textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                      onPress={() => props.navigate("/app")}
+                      loading={false}
+                    />
+                  </div>
+                )}
+                <img
+                  src={item.cvImage}
+                  className="w-full h-auto rounded-md"
+                  alt="temp"
+                />
               </div>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
+              <p
+                className={`text-xl font-bold pt-3 ${
+                  props?.isHovered?.show && props?.isHovered?.num === index
+                    ? `text-blue-400`
+                    : `text-black`
+                }`}
+              >
+                {item.name}
+              </p>
+              <p className="text-sm text-gray-400 w-10/12 pt-1">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -108,14 +284,65 @@ const ResumesTemplatesMarkup = (props) => {
   const modernSection = () => {
     if (props?.showSelectedTab.tabName === "Modern") {
       return (
-        <div className="flex flex-wrap flex-row">
+        <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
           {props?.modernData.map((item, index) => (
-            <div className="flex flex-col w-8/12 h-auto pt-5 flex-wrap">
-              <div className="p-5 bg-gray-100 w-7/12 h-auto flex justify-center">
-                <img src={item.cvImage} className="w-11/12 h-auto" alt="temp" />
+            <div
+              key={index}
+              className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
+              onMouseEnter={() => {
+                props.setIsHovered({ num: index, show: true });
+              }}
+              onMouseLeave={() =>
+                props.setIsHovered({ num: index, show: false })
+              }
+            >
+              <div
+                className={`p-5 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:w-full`}
+              >
+                {props?.screenWidth >= 1023 ? (
+                  props?.isHovered?.show &&
+                  props?.isHovered?.num === index && (
+                    <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                      <MyButton
+                        {...props}
+                        title="Use This Template"
+                        className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                        textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                        onPress={() => props.navigate("/app")}
+                        loading={false}
+                      />
+                    </div>
+                  )
+                ) : (
+                  <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
+                    <MyButton
+                      {...props}
+                      title="Use This Template"
+                      className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
+                      textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
+                      onPress={() => props.navigate("/app")}
+                      loading={false}
+                    />
+                  </div>
+                )}
+                <img
+                  src={item.cvImage}
+                  className="w-full h-auto rounded-md"
+                  alt="temp"
+                />
               </div>
-              <p>{item.name}</p>
-              <p>{item.description}</p>
+              <p
+                className={`text-xl font-bold pt-3 ${
+                  props?.isHovered?.show && props?.isHovered?.num === index
+                    ? `text-blue-400`
+                    : `text-black`
+                }`}
+              >
+                {item.name}
+              </p>
+              <p className="text-sm text-gray-400 w-10/12 pt-1">
+                {item.description}
+              </p>
             </div>
           ))}
         </div>
@@ -218,6 +445,22 @@ const ResumesTemplatesMarkup = (props) => {
                         props?.showSelectedTab.id === index)
                         ? `text-black`
                         : `text-gray-400`
+                    }
+
+                    ${
+                      (props?.screenWidth <= 1023 &&
+                        props?.showSelectedTab.tabName === "All templates" &&
+                        props?.showSelectedTab.id === index) ||
+                      (props?.showSelectedTab.tabName === "Creative" &&
+                        props?.showSelectedTab.id === index) ||
+                      (props?.showSelectedTab.tabName === "Simple" &&
+                        props?.showSelectedTab.id === index) ||
+                      (props?.showSelectedTab.tabName === "Professional" &&
+                        props?.showSelectedTab.id === index) ||
+                      (props?.showSelectedTab.tabName === "Modern" &&
+                        props?.showSelectedTab.id === index)
+                        ? `text-blue-400`
+                        : `text-black`
                     }
                     `}
                   >
