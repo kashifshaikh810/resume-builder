@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import ResumesTemplatesMarkup from "./ResumesTemplatesMarkup";
+import { VscFiles } from "react-icons/vsc";
+import { FaRegCopyright } from "react-icons/fa";
+import { BsStars } from "react-icons/bs";
+import { TbBriefcase } from "react-icons/tb";
+import { TbHandRock } from "react-icons/tb";
 
 const ResumesTemplates = (props) => {
   const [showSelectedTab, setShowSelectedTab] = useState({
@@ -9,9 +14,23 @@ const ResumesTemplates = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const navigate = props.navigate();
 
+  const [isHovered, setIsHovered] = useState({});
+
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
+
+  const tabsData = [
+    { id: 0, tabName: "All templates", tabIcon: () => <VscFiles size={25} /> },
+    { id: 1, tabName: "Creative", tabIcon: () => <FaRegCopyright size={25} /> },
+    { id: 2, tabName: "Simple", tabIcon: () => <BsStars size={25} /> },
+    {
+      id: 3,
+      tabName: "Professional",
+      tabIcon: () => <TbBriefcase size={25} />,
+    },
+    { id: 4, tabName: "Modern", tabIcon: () => <TbHandRock size={25} /> },
+  ];
 
   const creativeData = [
     {
@@ -207,6 +226,9 @@ const ResumesTemplates = (props) => {
       professionalData={professionalData}
       allTempData={allTempData}
       simpleData={simpleData}
+      tabsData={tabsData}
+      isHovered={isHovered}
+      setIsHovered={setIsHovered}
     />
   );
 };

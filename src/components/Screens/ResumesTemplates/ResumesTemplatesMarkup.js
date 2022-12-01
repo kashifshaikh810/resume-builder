@@ -1,46 +1,39 @@
 import React from "react";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
-import { VscFiles } from "react-icons/vsc";
-import { FaRegCopyright } from "react-icons/fa";
-import { BsStars } from "react-icons/bs";
-import { TbBriefcase } from "react-icons/tb";
-import { TbHandRock } from "react-icons/tb";
 import SideDrawer from "../../../components/SideDrawer/SideDrawer";
 import "./styles.css";
 
 const ResumesTemplatesMarkup = (props) => {
-  const tabsData = [
-    { id: 0, tabName: "All templates", tabIcon: () => <VscFiles size={25} /> },
-    { id: 1, tabName: "Creative", tabIcon: () => <FaRegCopyright size={25} /> },
-    { id: 2, tabName: "Simple", tabIcon: () => <BsStars size={25} /> },
-    {
-      id: 3,
-      tabName: "Professional",
-      tabIcon: () => <TbBriefcase size={25} />,
-    },
-    { id: 4, tabName: "Modern", tabIcon: () => <TbHandRock size={25} /> },
-  ];
-
   const allTempSection = () => {
     if (props?.showSelectedTab.tabName === "All templates") {
       return (
         <div className="flex flex-wrap flex-row pb-5 max-[767px]:block max-[767px]:w-full">
           {props?.allTempData.map((item, index) => (
-            <div className="flex flex-col w-6/12 h-auto pt-5 p-4 max-[767px]:w-full">
+            <div
+              className="flex flex-col w-4/12 h-auto pt-5 p-4 max-[1023px]:w-6/12 max-[767px]:w-full all-temp-container"
+              onMouseEnter={() => {
+                props.setIsHovered({ num: index, show: true });
+              }}
+              onMouseLeave={() =>
+                props.setIsHovered({ num: index, show: false })
+              }
+            >
               <div
                 className={`p-8 bg-gray-100 w-full h-auto flex flex-col justify-center max-[767px]:pl-28 max-[767px]:pr-28`}
               >
-                <div className="flex w-full justify-center relative top-52 max-[767px]:top-96 bottom-0 right-0 left-0">
-                  <MyButton
-                    {...props}
-                    title="Use This Template"
-                    className="pb-4 pt-4 w-8/12 rounded-md bg-blue-500 absolute"
-                    textStyle="text-white font-bold text-center"
-                    onPress={() => {}}
-                    loading={false}
-                  />
-                </div>
+                {props?.isHovered?.show && props?.isHovered?.num === index && (
+                  <div className="flex w-full justify-center relative top-52 max-[767px]:top-96 bottom-0 right-0 left-0">
+                    <MyButton
+                      {...props}
+                      title="Use This Template"
+                      className="pb-4 pt-4 w-8/12 rounded-md bg-blue-500 absolute all-temp-btn"
+                      textStyle="text-white font-bold text-center"
+                      onPress={() => {}}
+                      loading={false}
+                    />
+                  </div>
+                )}
                 <img
                   src={item.cvImage}
                   className="w-full h-auto rounded-md"
@@ -152,13 +145,13 @@ const ResumesTemplatesMarkup = (props) => {
               title="Create My Resume"
               className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer button max-[767px]:hidden"
               textStyle="text-white font-bold"
-              onPress={() => {}}
+              onPress={() => props.navigate("/app")}
               loading={false}
             />
           </div>
 
           <div className="flex flex-row justify-center max-[767px]:justify-start mt-5 border-b border-gray-200 overflow-auto">
-            {tabsData.map((item, index) => (
+            {props?.tabsData.map((item, index) => (
               <div
                 className={`flex flex-row items-center p-5 max-[1023px]:pl-1 pb-0 ${
                   (props?.showSelectedTab.tabName === "All templates" &&
@@ -212,7 +205,7 @@ const ResumesTemplatesMarkup = (props) => {
                     {item.tabIcon()}
                   </div>
                   <p
-                    className={`ml-2 text-sm max-[1023px]:ml-0 font-bold text-gray-400 tracking-widest max-[1023px]:text-xs max-[1023px]:uppercase tab-text max-[375px]:h-7 ${
+                    className={`ml-2 text-sm max-[1023px]:ml-0 font-bold tracking-widest max-[1023px]:text-xs max-[1023px]:uppercase tab-text max-[375px]:h-7 ${
                       (props?.showSelectedTab.tabName === "All templates" &&
                         props?.showSelectedTab.id === index) ||
                       (props?.showSelectedTab.tabName === "Creative" &&
@@ -224,7 +217,7 @@ const ResumesTemplatesMarkup = (props) => {
                       (props?.showSelectedTab.tabName === "Modern" &&
                         props?.showSelectedTab.id === index)
                         ? `text-black`
-                        : ``
+                        : `text-gray-400`
                     }
                     `}
                   >

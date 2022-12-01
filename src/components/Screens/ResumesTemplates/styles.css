@@ -5,7 +5,7 @@
 }
 
 .container-main {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0px auto;
   align-items: center;
 }
@@ -17,5 +17,14 @@
 
 .tab-container:hover .tab-icon {
   color: #1da1f2;
+  cursor: pointer;
+}
+
+.all-temp-container:hover {
+  cursor: pointer;
+}
+
+.all-temp-btn:hover {
+  background-color: blue;
   cursor: pointer;
 }
