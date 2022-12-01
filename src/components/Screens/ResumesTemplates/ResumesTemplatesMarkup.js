@@ -359,7 +359,16 @@ const ResumesTemplatesMarkup = (props) => {
         <div className="container-main">
           <div className="flex flex-col w-full justify-center items-center mt-5">
             <p className="text-3xl text-center font-bold max-[767px]:text-2xl">
-              Job-winning resume templates
+              {(props?.showSelectedTab.tabName === "All templates" &&
+                "Job-winning resume templates") ||
+                (props?.showSelectedTab.tabName === "Creative" &&
+                  "Job-winning creative resume templates") ||
+                (props?.showSelectedTab.tabName === "Simple" &&
+                  "Job-winning simple resume templates") ||
+                (props?.showSelectedTab.tabName === "Professional" &&
+                  "Job-winning professional resume templates") ||
+                (props?.showSelectedTab.tabName === "Modern" &&
+                  "Job-winning modern resume templates")}
             </p>
             <p className="w-8/12 text-center text-base mt-2 max-[767px]:w-full">
               Each resume template is expertly designed and follows the exact
@@ -432,35 +441,34 @@ const ResumesTemplatesMarkup = (props) => {
                     {item.tabIcon()}
                   </div>
                   <p
-                    className={`ml-2 text-sm max-[1023px]:ml-0 font-bold tracking-widest max-[1023px]:text-xs max-[1023px]:uppercase tab-text max-[375px]:h-7 ${
-                      (props?.showSelectedTab.tabName === "All templates" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Creative" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Simple" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Professional" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Modern" &&
-                        props?.showSelectedTab.id === index)
-                        ? `text-black`
-                        : `text-gray-400`
-                    }
+                    className={`ml-2 text-sm max-[1023px]:ml-0 font-bold tracking-widest max-[1023px]:text-xs max-[1023px]:uppercase tab-text max-[375px]:h-7
 
                     ${
-                      (props?.screenWidth <= 1023 &&
-                        props?.showSelectedTab.tabName === "All templates" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Creative" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Simple" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Professional" &&
-                        props?.showSelectedTab.id === index) ||
-                      (props?.showSelectedTab.tabName === "Modern" &&
-                        props?.showSelectedTab.id === index)
-                        ? `text-blue-400`
-                        : `text-black`
+                      props?.screenWidth <= 1023
+                        ? (props?.showSelectedTab.tabName === "All templates" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Creative" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Simple" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Professional" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Modern" &&
+                            props?.showSelectedTab.id === index)
+                          ? `text-blue-400`
+                          : `text-black`
+                        : (props?.showSelectedTab.tabName === "All templates" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Creative" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Simple" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Professional" &&
+                            props?.showSelectedTab.id === index) ||
+                          (props?.showSelectedTab.tabName === "Modern" &&
+                            props?.showSelectedTab.id === index)
+                        ? `text-black`
+                        : `text-gray-400`
                     }
                     `}
                   >
