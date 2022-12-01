@@ -33,8 +33,24 @@ const DropDownMenu = (props) => {
             >
               Account Settings
             </p>
-            <p className="text-base pl-5 pt-3 text-style">Updates</p>
-            <p className="text-base pl-5 pt-3 text-style">FAQ</p>
+            <p
+              className="text-base pl-5 pt-3 text-style"
+              onClick={() => {
+                window.parent.open("https://updates.resume.io/");
+                props.setIsMenuShown(false);
+              }}
+            >
+              Updates
+            </p>
+            <p
+              className="text-base pl-5 pt-3 text-style"
+              onClick={() => {
+                window.parent.open("https://help.resume.io/");
+                props.setIsMenuShown(false);
+              }}
+            >
+              FAQ
+            </p>
             <p className="text-base pl-5 pt-3 text-style">Log Out</p>
           </div>
         </div>

@@ -14,6 +14,7 @@ import ResumesTemplates from "./components/Screens/ResumesTemplates/ResumesTempl
 import EmailScreen from "./components/Screens/SignUp/EmailScreen";
 import AccountSettings from "./components/Screens/AccountSettings/AccountSettings";
 import FirstNameLastName from "./components/Screens/SignUp/FirstNameLastName";
+import EditResume from "./components/Screens/EditResume/EditResume";
 
 const App = () => {
   return (
@@ -58,6 +59,10 @@ const App = () => {
           element={
             <ResumesTemplates navigate={useNavigate} params={useParams} />
           }
+        />
+        <Route
+          path="/app/resumes/id/edit"
+          element={<EditResume navigate={useNavigate} params={useParams} />}
         />
         {/* <Route path="*" element={<NotFound/>}/> */}
       </Routes>

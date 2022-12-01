@@ -13,9 +13,9 @@ const Header = (props) => {
 
   return (
     <div
-      className={`flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden z-50 ${
-        props.name === "app" ? `border-b-2 border-gray-50` : `border-0`
-      }`}
+      className={`flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden  ${
+        props.isMenuShown ? `` : `z-50`
+      } ${props.name === "app" ? `border-b-2 border-gray-50` : `border-0`}`}
     >
       {props.name === "app" ? (
         <div className="flex flex-1">
