@@ -3,6 +3,8 @@ import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   function getWindowDimensions() {
     const { innerWidth: width } = window;
     return {
@@ -29,6 +31,8 @@ const EditResume = (props) => {
       isMenuShown={isMenuShown}
       setIsMenuShown={setIsMenuShown}
       screenWidth={windowDimensions?.width}
+      isHovered={isHovered}
+      setIsHovered={setIsHovered}
     />
   );
 };
