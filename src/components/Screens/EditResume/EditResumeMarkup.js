@@ -25,7 +25,10 @@ const EditResumeMarkup = (props) => {
               <RiArrowRightSLine size={22} className="text-gray-400" />
             </div>
             <div className="flex w-full justify-end pt-4">
-              <div className="flex justify-center items-center mr-4 w-8 h-8 bg-gray-100 rounded-full user-icon">
+              <div
+                className="flex justify-center items-center mr-4 w-8 h-8 bg-gray-100 rounded-full user-icon"
+                onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
+              >
                 <TfiUser size={15} className="text-gray-400" />
               </div>
             </div>
@@ -91,11 +94,11 @@ const EditResumeMarkup = (props) => {
     <div>
       {props?.screenWidth <= 1029 ? (
         <>
-          <Header {...props} name="app" />
-          <DropDownMenu {...props} />{" "}
+          <Header {...props} name="app" allowed={true} />
+          <DropDownMenu name="app" {...props} />
         </>
       ) : (
-        []
+        <DropDownMenu name="app" {...props} />
       )}
       <div className={`${props?.screenWidth >= 1029 ? `` : `m-auto main`}`}>
         <div className={`${props?.screenWidth >= 1029 ? `` : `main-child`}`}>
