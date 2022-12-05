@@ -1,10 +1,21 @@
 .main {
   width: 100%;
   min-height: 100vh;
-  padding: 60px 32px 80px;
+  padding: 0px 32px 80px;
 }
 
 .main-child {
   max-width: 900px;
+  margin: 0px auto;
+}
+
+.container {
+  width: 55%;
+  min-height: 100vh;
+  padding: 0px 32px 80px;
+}
+
+.container-child {
+  max-width: 600px;
   margin: 0px auto;
 }
