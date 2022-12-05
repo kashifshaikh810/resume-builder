@@ -8,7 +8,11 @@ const DropDownMenu = (props) => {
   return (
     <>
       {props.isMenuShown ? (
-        <div className="bg-white w-auto h-auto pb-4 fixed right-7 top-16 border-2 border-gray-100 shadow-xl rounded-lg pt-0.5">
+        <div
+          className={`bg-white w-auto h-auto pb-4 fixed right-7 top-16 border-2 border-gray-100 shadow-xl rounded-lg pt-0.5 ${
+            props?.isMenuShown ? `z-50` : ``
+          }`}
+        >
           {props?.name === "app" ? (
             <>
               <div
