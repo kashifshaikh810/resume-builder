@@ -15,19 +15,27 @@ const Header = (props) => {
     <div
       className={`flex flex-1 p-3 max-h-20 items-center bg-white sticky top-0 overflow-hidden  ${
         props.isMenuShown ? `` : `z-50`
-      } ${props.name === "app" ? `border-b-2 border-gray-50` : `border-0`}`}
+      } ${
+        props.name === "app"
+          ? props?.allowed === false
+            ? `border-b-2 border-gray-50`
+            : ``
+          : `border-0`
+      }`}
     >
       {props.name === "app" ? (
         <div className="flex flex-1">
-          <div
-            className="flex flex-row items-center cursor-pointer"
-            onClick={() => navigate("/")}
-          >
-            <div className="bg-gray-400 p-2 rounded-full">
-              <FaRegAddressCard size={25} color="#f3f3f3" />
+          {props?.allowed === false ? (
+            <div
+              className="flex flex-row items-center cursor-pointer"
+              onClick={() => navigate("/")}
+            >
+              <div className="bg-gray-400 p-2 rounded-full">
+                <FaRegAddressCard size={25} color="#f3f3f3" />
+              </div>
+              <p className="pl-2 text-base font-bold">resume</p>
             </div>
-            <p className="pl-2 text-base font-bold">resume</p>
-          </div>
+          ) : null}
           <div className="flex flex-1 justify-end p-2">
             <div
               className="flex justify-center items-center w-10 h-10 bg-gray-100 rounded-full user-icon"
