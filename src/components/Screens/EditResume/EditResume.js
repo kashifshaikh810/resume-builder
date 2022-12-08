@@ -25,6 +25,25 @@ const EditResume = (props) => {
   const [showModal, setShowModal] = useState(false);
   const hiddenFileInput = useRef(null);
   const [profileImage, setProfileImage] = useState("");
+  const [isShowPersonalInput, setIsShowPersonalInput] = useState(false);
+  const [personalDetailInput, setPersonalDetailInput] =
+    useState("Personal Details");
+
+  const [isShowSummaryIcon, setIsShowSummaryIcon] = useState(false);
+  const [isShowSummaryInput, setIsShowSummaryInput] = useState(false);
+  const [summaryInput, setSummaryInput] = useState("Professional Summary");
+
+  const [employmentInput, setEmploymentInput] = useState("Employment History");
+  const [isShowEmploymentInput, setIsShowEmploymentInput] = useState(false);
+  const [isShowEmploymentIcon, setIsShowEmploymentIcon] = useState(false);
+
+  const [educationInput, setEducationInput] = useState("Education");
+  const [isShowEducationInput, setIsShowEducationInput] = useState(false);
+  const [isShowEducationIcon, setIsShowEducationIcon] = useState(false);
+
+  const [websiteInput, setWebsiteInput] = useState("Websites & Social Links");
+  const [isShowWebsiteInput, setIsShowWebsiteInput] = useState(false);
+  const [isShowWebsiteIcon, setIsShowWebsiteIcon] = useState(false);
 
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
@@ -151,6 +170,34 @@ const EditResume = (props) => {
       handleChange={handleChange}
       profileImage={profileImage}
       setProfileImage={setProfileImage}
+      isShowPersonalInput={isShowPersonalInput}
+      setIsShowPersonalInput={setIsShowPersonalInput}
+      personalDetailInput={personalDetailInput}
+      setPersonalDetailInput={setPersonalDetailInput}
+      isShowSummaryIcon={isShowSummaryIcon}
+      setIsShowSummaryIcon={setIsShowSummaryIcon}
+      isShowSummaryInput={isShowSummaryInput}
+      setIsShowSummaryInput={setIsShowSummaryInput}
+      summaryInput={summaryInput}
+      setSummaryInput={setSummaryInput}
+      employmentInput={employmentInput}
+      setEmploymentInput={setEmploymentInput}
+      isShowEmploymentInput={isShowEmploymentInput}
+      setIsShowEmploymentInput={setIsShowEmploymentInput}
+      isShowEmploymentIcon={isShowEmploymentIcon}
+      setIsShowEmploymentIcon={setIsShowEmploymentIcon}
+      educationInput={educationInput}
+      setEducationInput={setEducationInput}
+      isShowEducationInput={isShowEducationInput}
+      setIsShowEducationInput={setIsShowEducationInput}
+      isShowEducationIcon={isShowEducationIcon}
+      setIsShowEducationIcon={setIsShowEducationIcon}
+      websiteInput={websiteInput}
+      setWebsiteInput={setWebsiteInput}
+      isShowWebsiteInput={isShowWebsiteInput}
+      setIsShowWebsiteInput={setIsShowWebsiteInput}
+      isShowWebsiteIcon={isShowWebsiteIcon}
+      setIsShowWebsiteIcon={setIsShowWebsiteIcon}
     />
   );
 };

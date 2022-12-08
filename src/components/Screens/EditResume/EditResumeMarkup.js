@@ -22,6 +22,7 @@ import MyButton from "../../MyButton/MyButton";
 import FLAG from "../../images/flag.svg";
 import { FaListUl } from "react-icons/fa";
 import FileModal from "../../FileModal/FileModal";
+import { SlReload } from "react-icons/sl";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -237,15 +238,43 @@ const EditResumeMarkup = (props) => {
               <div
                 className="flex flex-row items-center"
                 onMouseEnter={() => {
-                  props.setIsShowPersonalIcon(true);
+                  !!props?.personalDetailInput &&
+                    props.setIsShowPersonalIcon(true);
                 }}
                 onMouseLeave={() => props.setIsShowPersonalIcon(false)}
               >
-                <p className="font-bold text-lg hover:cursor-default">
-                  Personal Details
-                </p>
+                {props?.isShowPersonalInput ? (
+                  <input
+                    className="outline-none border-b-2 border-blue-400 font-bold text-lg w-36"
+                    value={props.personalDetailInput}
+                    onChange={(e) =>
+                      props.setPersonalDetailInput(e.target.value)
+                    }
+                  />
+                ) : (
+                  <p className="font-bold text-lg hover:cursor-default">
+                    {props?.personalDetailInput
+                      ? props?.personalDetailInput
+                      : "Personal Details"}
+                  </p>
+                )}
                 {props?.isShowPersonalIcon && (
-                  <TiPencil className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg" />
+                  <>
+                    <TiPencil
+                      className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                      onClick={() =>
+                        props.setIsShowPersonalInput(
+                          !props?.isShowPersonalInput
+                        )
+                      }
+                    />
+                    <SlReload
+                      className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                      onClick={() =>
+                        props?.setPersonalDetailInput("Personal Details")
+                      }
+                    />
+                  </>
                 )}
               </div>
 
@@ -408,9 +437,44 @@ const EditResumeMarkup = (props) => {
                 </div>
 
                 <div className="mt-6 pt-6">
-                  <div className="flex flex-row items-center">
-                    <p className="font-bold text-lg">Professional Summary</p>
-                    <TiPencil />
+                  <div
+                    className="flex flex-row items-center hover:cursor-pointer"
+                    onMouseEnter={() => {
+                      !!props?.summaryInput && props.setIsShowSummaryIcon(true);
+                    }}
+                    onMouseLeave={() => props.setIsShowSummaryIcon(false)}
+                  >
+                    {props?.isShowSummaryInput ? (
+                      <input
+                        className="outline-none border-b-2 border-blue-400 font-bold text-lg w-38"
+                        value={props.summaryInput}
+                        onChange={(e) => props.setSummaryInput(e.target.value)}
+                      />
+                    ) : (
+                      <p className="font-bold text-lg hover:cursor-default">
+                        {props?.summaryInput
+                          ? props?.summaryInput
+                          : "Professional Summary"}
+                      </p>
+                    )}
+                    {props?.isShowSummaryIcon && (
+                      <>
+                        <TiPencil
+                          className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                          onClick={() =>
+                            props.setIsShowSummaryInput(
+                              !props?.isShowSummaryInput
+                            )
+                          }
+                        />
+                        <SlReload
+                          className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                          onClick={() =>
+                            props?.setSummaryInput("Professional Summary")
+                          }
+                        />
+                      </>
+                    )}
                   </div>
                   <p className="text-sm pt-1 text-gray-500">
                     Write 2-4 short & energetic sentences to interest the
@@ -469,9 +533,47 @@ const EditResumeMarkup = (props) => {
                     />
                   </div>
                   <div className="mt-6 pt-6">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">Employment History</p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.employmentInput &&
+                          props.setIsShowEmploymentIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowEmploymentIcon(false)}
+                    >
+                      {props?.isShowEmploymentInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-38"
+                          value={props.employmentInput}
+                          onChange={(e) =>
+                            props.setEmploymentInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.employmentInput
+                            ? props?.employmentInput
+                            : "Employment History"}
+                        </p>
+                      )}
+                      {props?.isShowEmploymentIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowEmploymentInput(
+                                !props?.isShowEmploymentInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props?.setEmploymentInput("Employment History")
+                            }
+                          />
+                        </>
+                      )}
                     </div>
                     <p className="text-sm pt-1 text-gray-500">
                       Show your relevant experience (last 10 years). Use bullet
@@ -490,9 +592,47 @@ const EditResumeMarkup = (props) => {
                   </div>
 
                   <div className="mt-6 pt-6">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">Education</p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.educationInput &&
+                          props.setIsShowEducationIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowEducationIcon(false)}
+                    >
+                      {props?.isShowEducationInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          value={props.educationInput}
+                          onChange={(e) =>
+                            props.setEducationInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.educationInput
+                            ? props?.educationInput
+                            : "Education"}
+                        </p>
+                      )}
+                      {props?.isShowEducationIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowEducationInput(
+                                !props?.isShowEducationInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props?.setEducationInput("Education")
+                            }
+                          />
+                        </>
+                      )}
                     </div>
                     <p className="text-sm pt-1 text-gray-500">
                       A varied education on your resume sums up the value that
@@ -510,11 +650,47 @@ const EditResumeMarkup = (props) => {
                   </div>
 
                   <div className="mt-6 pt-6">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">
-                        Websites & Social Links
-                      </p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.websiteInput &&
+                          props.setIsShowWebsiteIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowWebsiteIcon(false)}
+                    >
+                      {props?.isShowWebsiteInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-52"
+                          value={props.websiteInput}
+                          onChange={(e) =>
+                            props.setWebsiteInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.websiteInput
+                            ? props?.websiteInput
+                            : "Websites & Social Links"}
+                        </p>
+                      )}
+                      {props?.isShowWebsiteIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowWebsiteInput(
+                                !props?.isShowWebsiteInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props?.setWebsiteInput("Websites & Social Links")
+                            }
+                          />
+                        </>
+                      )}
                     </div>
                     <p className="text-sm pt-1 text-gray-500">
                       You can add links to websites you want hiring managers to
