@@ -4,6 +4,7 @@ import { IoCloudDone } from "react-icons/io5";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { GrCodeSandbox, GrStrikeThrough, GrUnderline } from "react-icons/gr";
 import { BiPlus, BiQuestionMark } from "react-icons/bi";
+import { MdDeleteOutline } from "react-icons/md";
 import {
   BsArrowsAngleContract,
   BsTypeBold,
@@ -20,6 +21,7 @@ import "./styles.css";
 import MyButton from "../../MyButton/MyButton";
 import FLAG from "../../images/flag.svg";
 import { FaListUl } from "react-icons/fa";
+import FileModal from "../../FileModal/FileModal";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -175,6 +177,7 @@ const EditResumeMarkup = (props) => {
       ) : (
         <DropDownMenu name="app" {...props} />
       )}
+      {props.showModal && <FileModal {...props} />}
       <div
         className={`${
           props?.screenWidth <= 1029 ? `m-auto main` : `container`
@@ -191,12 +194,12 @@ const EditResumeMarkup = (props) => {
           {props?.screenWidth <= 1029 && (
             <div
               className={`${
-                props?.scrollValue === 1871
+                props?.scrollValue === 1871 || props?.scrollValue === 0
                   ? `p-6 pt-2.5 pb-2.5 pr-2.5`
                   : `p-2.5 justify-center items-center`
               } bg-blue-500 rounded-full flex justify-center items-center fixed bottom-0 right-0 left-auto top-auto m-5 hover:cursor-pointer hover:bg-blue-600`}
             >
-              {props?.scrollValue === 1871 ? (
+              {props?.scrollValue === 1871 || props?.scrollValue === 0 ? (
                 <p className="text-white font-bold text-base">
                   Preview & Download
                 </p>
@@ -207,7 +210,9 @@ const EditResumeMarkup = (props) => {
                 src="https://resume.io/assets/media/preview-documentde2b0b862dc6490953a4.svg"
                 alt="previewCv"
                 className={`w-10 h-10 ${
-                  props?.scrollValue === 1871 ? `ml-2` : ``
+                  props?.scrollValue === 1871 || props?.scrollValue === 0
+                    ? `ml-2`
+                    : ``
                 }`}
               />
             </div>
@@ -256,36 +261,72 @@ const EditResumeMarkup = (props) => {
 
                   <div
                     className="flex flex-row ml-5 pl-4 items-center hover:cursor-pointer"
+                    onClick={() =>
+                      props?.profileImage
+                        ? props.setProfileImage("")
+                        : props.setShowModal(true)
+                    }
                     onMouseEnter={() => {
                       props.setUploadIsHovered(true);
                     }}
                     onMouseLeave={() => props.setUploadIsHovered(false)}
                   >
-                    <div
-                      className={`${
-                        props?.uploadIsHovered ? `bg-blue-50` : `bg-gray-100`
-                      } w-14 h-14 flex justify-center items-center rounded-sm`}
-                    >
-                      <TfiUser
-                        size={25}
-                        className={
-                          props?.uploadIsHovered
-                            ? `text-blue-400`
-                            : `text-gray-500`
-                        }
+                    {props?.profileImage ? (
+                      <img
+                        src={props?.profileImage}
+                        alt="profile"
+                        className="w-14 h-14 rounded-sm"
                       />
-                    </div>
-                    <MyButton
-                      {...props}
-                      title="Upload photo"
-                      textStyle={` ${
-                        props?.uploadIsHovered
-                          ? `text-blue-800`
-                          : `text-blue-400`
-                      } text-sm ml-4`}
-                      onPress={() => {}}
-                      loading={false}
-                    />
+                    ) : (
+                      <div
+                        className={`${
+                          props?.uploadIsHovered ? `bg-blue-50` : `bg-gray-100`
+                        } w-14 h-14 flex justify-center items-center rounded-sm`}
+                      >
+                        <TfiUser
+                          size={25}
+                          className={
+                            props?.uploadIsHovered
+                              ? `text-blue-400`
+                              : `text-gray-500`
+                          }
+                        />
+                      </div>
+                    )}
+                    {props.profileImage ? (
+                      <div className="flex flex-row items-center">
+                        <MdDeleteOutline
+                          className={`ml-2 text-xl ${
+                            props?.uploadIsHovered
+                              ? `text-red-500`
+                              : `text-gray-400`
+                          }`}
+                        />
+                        <MyButton
+                          {...props}
+                          title="Delete"
+                          textStyle={` ${
+                            props?.uploadIsHovered
+                              ? `text-red-500`
+                              : `text-gray-400`
+                          } text-sm ml-1`}
+                          onPress={() => {}}
+                          loading={false}
+                        />
+                      </div>
+                    ) : (
+                      <MyButton
+                        {...props}
+                        title="Upload photo"
+                        textStyle={` ${
+                          props?.uploadIsHovered
+                            ? `text-blue-800`
+                            : `text-blue-400`
+                        } text-sm ml-4`}
+                        onPress={() => {}}
+                        loading={false}
+                      />
+                    )}
                   </div>
                 </div>
 

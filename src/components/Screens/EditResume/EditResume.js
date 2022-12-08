@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
@@ -22,6 +22,19 @@ const EditResume = (props) => {
     num: Number,
   });
   const [scrollValue, setScrollValue] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const hiddenFileInput = useRef(null);
+  const [profileImage, setProfileImage] = useState("");
+
+  const handleChange = (event) => {
+    let fileUploaded = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(fileUploaded);
+    reader.onload = (upload) => {
+      setProfileImage(upload.target.result);
+    };
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -132,6 +145,12 @@ const EditResume = (props) => {
       setSectionIsHovered={setSectionIsHovered}
       isShowPersonalIcon={isShowPersonalIcon}
       setIsShowPersonalIcon={setIsShowPersonalIcon}
+      showModal={showModal}
+      setShowModal={setShowModal}
+      hiddenFileInput={hiddenFileInput}
+      handleChange={handleChange}
+      profileImage={profileImage}
+      setProfileImage={setProfileImage}
     />
   );
 };
