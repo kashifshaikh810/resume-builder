@@ -168,6 +168,7 @@ const EditResumeMarkup = (props) => {
     }
   };
 
+  console.log(props.titleInput?.length);
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -226,9 +227,38 @@ const EditResumeMarkup = (props) => {
                 : `flex flex-1 flex-col justify-center`
             }
           >
-            <p className="text-xl font-bold text-center">
-              Untitlwdwdqwiqhuduhqowdhuqwudqwhuduhqwduhqwhud
-            </p>
+            <div className="flex flex-row justify-center items-center hover:cursor-text">
+              {props?.isShowTitleInput ? (
+                <input
+                  placeholder="Untitled"
+                  className="outline-none border-b-2 border-blue-400 text-xl pb-0"
+                  style={
+                    props?.titleInput?.length !== 0
+                      ? {
+                          width: props?.titleInput?.length * 9.5,
+                        }
+                      : { width: "12%" }
+                  }
+                  value={props.titleInput}
+                  onChange={(e) => props.setTitleInput(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      props.setIsShowTitleInput(!props?.isShowTitleInput);
+                    }
+                  }}
+                />
+              ) : (
+                <p
+                  className="text-xl text-center truncate"
+                  onClick={() => {
+                    props.setIsShowTitleInput(!props?.isShowTitleInput);
+                  }}
+                >
+                  {props?.titleInput ? props?.titleInput : "Untitled"}
+                </p>
+              )}
+            </div>
+
             <div className={`flex flex-row items-center justify-center mt-1`}>
               <img src={FLAG} className="w-5 h-5 mr-2" alt="flag" />
               <p className="text-gray-500 text-sm">English</p>
@@ -268,12 +298,15 @@ const EditResumeMarkup = (props) => {
                         )
                       }
                     />
-                    <SlReload
-                      className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                      onClick={() =>
-                        props?.setPersonalDetailInput("Personal Details")
-                      }
-                    />
+                    {props.personalDetailInput !== "Personal Details" && (
+                      <SlReload
+                        className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                        onClick={() => {
+                          props?.setPersonalDetailInput("Personal Details");
+                          props.setIsShowPersonalInput(false);
+                        }}
+                      />
+                    )}
                   </>
                 )}
               </div>
@@ -467,12 +500,15 @@ const EditResumeMarkup = (props) => {
                             )
                           }
                         />
-                        <SlReload
-                          className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                          onClick={() =>
-                            props?.setSummaryInput("Professional Summary")
-                          }
-                        />
+                        {props.summaryInput !== "Professional Summary" && (
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() => {
+                              props?.setSummaryInput("Professional Summary");
+                              props.setIsShowSummaryInput(false);
+                            }}
+                          />
+                        )}
                       </>
                     )}
                   </div>
@@ -566,12 +602,15 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() =>
-                              props?.setEmploymentInput("Employment History")
-                            }
-                          />
+                          {props.employmentInput !== "Employment History" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setEmploymentInput("Employment History");
+                                props.setIsShowEmploymentInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
@@ -625,12 +664,15 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() =>
-                              props?.setEducationInput("Education")
-                            }
-                          />
+                          {props.educationInput !== "Education" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setEducationInput("Education");
+                                props.setIsShowEducationInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
@@ -683,12 +725,17 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() =>
-                              props?.setWebsiteInput("Websites & Social Links")
-                            }
-                          />
+                          {props.websiteInput !== "Websites & Social Links" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setWebsiteInput(
+                                  "Websites & Social Links"
+                                );
+                                props.setIsShowWebsiteInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
@@ -737,10 +784,15 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() => props?.setSkillsInput("Skills")}
-                          />
+                          {props.skillsInput !== "Skills" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setSkillsInput("Skills");
+                                props.setIsShowSkillsInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
@@ -857,10 +909,15 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() => props?.setHobbiesInput("Hobbies")}
-                          />
+                          {props.hobbiesInput !== "Hobbies" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setHobbiesInput("Hobbies");
+                                props.setIsShowHobbiesInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
@@ -909,12 +966,15 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          <SlReload
-                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
-                            onClick={() =>
-                              props?.setLanguagesInput("Languages")
-                            }
-                          />
+                          {props.languagesInput !== "Languages" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setLanguagesInput("Languages");
+                                props.setIsShowLanguagesInput(false);
+                              }}
+                            />
+                          )}
                         </>
                       )}
                     </div>

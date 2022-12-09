@@ -57,6 +57,9 @@ const EditResume = (props) => {
   const [isShowLanguagesInput, setIsShowLanguagesInput] = useState(false);
   const [isShowLanguagesIcon, setIsShowLanguagesIcon] = useState(false);
 
+  const [titleInput, setTitleInput] = useState("Untitled");
+  const [isShowTitleInput, setIsShowTitleInput] = useState(false);
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -228,6 +231,10 @@ const EditResume = (props) => {
       setIsShowLanguagesInput={setIsShowLanguagesInput}
       isShowLanguagesIcon={isShowLanguagesIcon}
       setIsShowLanguagesIcon={setIsShowLanguagesIcon}
+      titleInput={titleInput}
+      setTitleInput={setTitleInput}
+      isShowTitleInput={isShowTitleInput}
+      setIsShowTitleInput={setIsShowTitleInput}
     />
   );
 };
