@@ -45,6 +45,18 @@ const EditResume = (props) => {
   const [isShowWebsiteInput, setIsShowWebsiteInput] = useState(false);
   const [isShowWebsiteIcon, setIsShowWebsiteIcon] = useState(false);
 
+  const [skillsInput, setSkillsInput] = useState("Skills");
+  const [isShowSkillsInput, setIsShowSkillsInput] = useState(false);
+  const [isShowSkillsIcon, setIsShowSkillsIcon] = useState(false);
+
+  const [hobbiesInput, setHobbiesInput] = useState("Hobbies");
+  const [isShowHobbiesInput, setIsShowHobbiesInput] = useState(false);
+  const [isShowHobbiesIcon, setIsShowHobbiesIcon] = useState(false);
+
+  const [languagesInput, setLanguagesInput] = useState("Languages");
+  const [isShowLanguagesInput, setIsShowLanguagesInput] = useState(false);
+  const [isShowLanguagesIcon, setIsShowLanguagesIcon] = useState(false);
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -198,6 +210,24 @@ const EditResume = (props) => {
       setIsShowWebsiteInput={setIsShowWebsiteInput}
       isShowWebsiteIcon={isShowWebsiteIcon}
       setIsShowWebsiteIcon={setIsShowWebsiteIcon}
+      skillsInput={skillsInput}
+      setSkillsInput={setSkillsInput}
+      isShowSkillsInput={isShowSkillsInput}
+      setIsShowSkillsInput={setIsShowSkillsInput}
+      isShowSkillsIcon={isShowSkillsIcon}
+      setIsShowSkillsIcon={setIsShowSkillsIcon}
+      hobbiesInput={hobbiesInput}
+      setHobbiesInput={setHobbiesInput}
+      isShowHobbiesInput={isShowHobbiesInput}
+      setIsShowHobbiesInput={setIsShowHobbiesInput}
+      isShowHobbiesIcon={isShowHobbiesIcon}
+      setIsShowHobbiesIcon={setIsShowHobbiesIcon}
+      languagesInput={languagesInput}
+      setLanguagesInput={setLanguagesInput}
+      isShowLanguagesInput={isShowLanguagesInput}
+      setIsShowLanguagesInput={setIsShowLanguagesInput}
+      isShowLanguagesIcon={isShowLanguagesIcon}
+      setIsShowLanguagesIcon={setIsShowLanguagesIcon}
     />
   );
 };

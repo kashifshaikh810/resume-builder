@@ -709,9 +709,40 @@ const EditResumeMarkup = (props) => {
                   </div>
 
                   <div className="mt-6 pt-6">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">Skills</p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.skillsInput && props.setIsShowSkillsIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowSkillsIcon(false)}
+                    >
+                      {props?.isShowSkillsInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-16"
+                          value={props.skillsInput}
+                          onChange={(e) => props.setSkillsInput(e.target.value)}
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.skillsInput ? props?.skillsInput : "Skills"}
+                        </p>
+                      )}
+                      {props?.isShowSkillsIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowSkillsInput(
+                                !props?.isShowSkillsInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() => props?.setSkillsInput("Skills")}
+                          />
+                        </>
+                      )}
                     </div>
                     <p className="text-sm pt-1 text-gray-500">
                       Choose 5 of the most important skills to show your
@@ -793,9 +824,45 @@ const EditResumeMarkup = (props) => {
                   </div>
 
                   <div className="mt-5 pt-6">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">Hobbies</p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.hobbiesInput &&
+                          props.setIsShowHobbiesIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowHobbiesIcon(false)}
+                    >
+                      {props?.isShowHobbiesInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-20"
+                          value={props.hobbiesInput}
+                          onChange={(e) =>
+                            props.setHobbiesInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.hobbiesInput
+                            ? props?.hobbiesInput
+                            : "Hobbies"}
+                        </p>
+                      )}
+                      {props?.isShowHobbiesIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowHobbiesInput(
+                                !props?.isShowHobbiesInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() => props?.setHobbiesInput("Hobbies")}
+                          />
+                        </>
+                      )}
                     </div>
 
                     <p className="text-gray-500 text-sm mb-2 mt-5">
@@ -809,9 +876,47 @@ const EditResumeMarkup = (props) => {
                   </div>
 
                   <div className="mt-5 pt-5">
-                    <div className="flex flex-row items-center">
-                      <p className="font-bold text-lg">Languages</p>
-                      <TiPencil />
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.languagesInput &&
+                          props.setIsShowLanguagesIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowLanguagesIcon(false)}
+                    >
+                      {props?.isShowLanguagesInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          value={props.languagesInput}
+                          onChange={(e) =>
+                            props.setLanguagesInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.languagesInput
+                            ? props?.languagesInput
+                            : "Languages"}
+                        </p>
+                      )}
+                      {props?.isShowLanguagesIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowLanguagesInput(
+                                !props?.isShowLanguagesInput
+                              )
+                            }
+                          />
+                          <SlReload
+                            className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props?.setLanguagesInput("Languages")
+                            }
+                          />
+                        </>
+                      )}
                     </div>
 
                     <MyButton
