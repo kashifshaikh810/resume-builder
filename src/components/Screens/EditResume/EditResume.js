@@ -60,6 +60,31 @@ const EditResume = (props) => {
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
 
+  const [inputList, setInputList] = useState([]);
+  const [isShowEmploymentBoxInput, setIsShowEmploymentBoxInput] = useState({
+    shown: false,
+    num: Number,
+  });
+
+  const handleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const handleRemoveClick = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setInputList(list);
+  };
+
+  // handle click event of the Add button
+  const handleAddClick = () => {
+    setInputList([...inputList, { firstName: "", lastName: "" }]);
+  };
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -235,6 +260,13 @@ const EditResume = (props) => {
       setTitleInput={setTitleInput}
       isShowTitleInput={isShowTitleInput}
       setIsShowTitleInput={setIsShowTitleInput}
+      inputList={inputList}
+      setInputList={setInputList}
+      handleInputChange={handleInputChange}
+      handleRemoveClick={handleRemoveClick}
+      handleAddClick={handleAddClick}
+      isShowEmploymentBoxInput={isShowEmploymentBoxInput}
+      setIsShowEmploymentBoxInput={setIsShowEmploymentBoxInput}
     />
   );
 };

@@ -168,6 +168,10 @@ const EditResumeMarkup = (props) => {
     }
   };
 
+  console.log(
+    props?.isShowEmploymentBoxInput.shown,
+    props?.isShowEmploymentBoxInput.num
+  );
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -619,12 +623,60 @@ const EditResumeMarkup = (props) => {
                       numbers/facts (Achieved X, measured by Y, by doing Z).
                     </p>
 
+                    {props.inputList.map((x, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="border border-gray-200 w-full h-20 mt-7 hover:cursor-pointer"
+                          onClick={() =>
+                            props.setIsShowEmploymentBoxInput({
+                              shown: !props?.isShowEmploymentBoxInput,
+                            })
+                          }
+                        >
+                          <div className="flex flex-1 h-20 justify-end items-center pr-4">
+                            {props?.isShowEmploymentBoxInput.shown ? (
+                              <BiChevronUp className={`text-2xl ml-1 mt-1`} />
+                            ) : (
+                              <BiChevronDown className={`text-2xl ml-1 mt-1`} />
+                            )}
+                          </div>
+                          {/* <input
+                            name="firstName"
+                            value={x.firstName}
+                            className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                            onChange={(e) => props.handleInputChange(e, i)}
+                          />
+                          <input
+                            name="lastName"
+                            value={x.lastName}
+                            onChange={(e) => props.handleInputChange(e, i)}
+                            className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                          /> */}
+                          <div className="btn-box">
+                            {props.inputList.length !== 1 && (
+                              <button
+                                className="mr-10"
+                                onClick={() => props.handleRemoveClick(i)}
+                              >
+                                Remove
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+
                     <MyButton
                       {...props}
-                      title="Add employment"
+                      title={
+                        props.inputList.length === 0
+                          ? "Add employment"
+                          : "Add one more employment"
+                      }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => {}}
+                      onPress={() => props.handleAddClick()}
                       loading={false}
                     />
                   </div>
