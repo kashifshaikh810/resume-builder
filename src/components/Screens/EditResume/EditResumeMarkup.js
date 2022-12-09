@@ -121,12 +121,12 @@ const EditResumeMarkup = (props) => {
           <div className="flex flex-row items-end">
             <div className="mt-6">
               <p className="text-sm text-gray-500">Address</p>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
               <p className="text-sm text-gray-500">Postal Code</p>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
           </div>
           <div className="flex flex-row items-end">
@@ -135,7 +135,7 @@ const EditResumeMarkup = (props) => {
                 <p className="text-sm text-gray-500">Driving License</p>
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
@@ -144,13 +144,13 @@ const EditResumeMarkup = (props) => {
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
 
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
           </div>
           <div className="flex flex-row items-end">
             <div className="mt-6">
               <p className="text-sm text-gray-500">Place Of Birth</p>
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
@@ -158,7 +158,7 @@ const EditResumeMarkup = (props) => {
                 <p className="text-sm text-gray-500">Date Of Birth</p>
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
             </div>
           </div>
         </>
@@ -168,7 +168,6 @@ const EditResumeMarkup = (props) => {
     }
   };
 
-  console.log(props.titleInput?.length);
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -318,7 +317,7 @@ const EditResumeMarkup = (props) => {
                       <p className="text-sm text-gray-500">Wanted Job Title</p>
                       <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
                     </div>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
 
                   <div
@@ -395,36 +394,36 @@ const EditResumeMarkup = (props) => {
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">First Name</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">Last Name</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
                 </div>
 
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">Email</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">Phone</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
                 </div>
 
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">Country</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">City</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-blue-400 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
                   </div>
                 </div>
 
@@ -554,7 +553,7 @@ const EditResumeMarkup = (props) => {
                     <textarea
                       rows={10000}
                       cols={10000}
-                      className={`w-full h-48 bg-gray-100 border-none overflow-hidden outline-none ${
+                      className={`w-full h-48 bg-gray-100 border-none text-gray-800 overflow-hidden outline-none ${
                         (props?.isChangedInputText?.name === "normal" &&
                           `font-normal`) ||
                         (props?.isChangedInputText?.name === "bold" &&
@@ -928,7 +927,7 @@ const EditResumeMarkup = (props) => {
                     <textarea
                       rows={10000}
                       cols={10000}
-                      className={`w-full h-28 p-4 pt-2 bg-gray-100 border-none overflow-hidden outline-none`}
+                      className={`w-full h-28 p-4 pt-2 bg-gray-100 text-gray-800 border-none overflow-hidden outline-none`}
                     />
                   </div>
 
