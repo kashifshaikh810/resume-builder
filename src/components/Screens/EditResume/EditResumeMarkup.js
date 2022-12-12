@@ -23,6 +23,8 @@ import FLAG from "../../images/flag.svg";
 import { FaListUl } from "react-icons/fa";
 import FileModal from "../../FileModal/FileModal";
 import { SlReload } from "react-icons/sl";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import MonthYearPicker from "react-month-year-picker";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -168,10 +170,6 @@ const EditResumeMarkup = (props) => {
     }
   };
 
-  console.log(
-    props?.isShowEmploymentBoxInput.shown,
-    props?.isShowEmploymentBoxInput.num
-  );
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -626,43 +624,114 @@ const EditResumeMarkup = (props) => {
                     {props.inputList.map((x, i) => {
                       return (
                         <div
-                          key={i}
-                          className="border border-gray-200 w-full h-20 mt-7 hover:cursor-pointer"
-                          onClick={() =>
-                            props.setIsShowEmploymentBoxInput({
-                              shown: !props?.isShowEmploymentBoxInput,
-                            })
-                          }
+                          className="flex flex-row"
+                          onMouseEnter={() => {
+                            props.setIsShowEmploymentBoxIcon({
+                              show: true,
+                              num: i,
+                            });
+                          }}
+                          onMouseLeave={() => {
+                            props.setIsShowEmploymentBoxIcon({
+                              show: false,
+                              num: i,
+                            });
+                          }}
                         >
-                          <div className="flex flex-1 h-20 justify-end items-center pr-4">
-                            {props?.isShowEmploymentBoxInput.shown ? (
-                              <BiChevronUp className={`text-2xl ml-1 mt-1`} />
-                            ) : (
-                              <BiChevronDown className={`text-2xl ml-1 mt-1`} />
-                            )}
+                          <div
+                            key={x.id}
+                            className={`border border-gray-200 w-11/12 ${
+                              props?.isShowEmploymentBoxInput.show
+                                ? `h-auto`
+                                : `h-20`
+                            } mt-7 hover:cursor-pointer`}
+                            onClick={() =>
+                              props?.isShowEmploymentBoxInput.show === false &&
+                              props.setIsShowEmploymentBoxInput({
+                                ...props.isShowEmploymentBoxInput,
+                                show: !props?.isShowEmploymentBoxInput.show,
+                                num: i,
+                              })
+                            }
+                          >
+                            <div
+                              className="flex flex-1 h-20 justify-end items-center pr-4"
+                              onClick={() =>
+                                props.setIsShowEmploymentBoxInput({
+                                  ...props.isShowEmploymentBoxInput,
+                                  show: !props?.isShowEmploymentBoxInput.show,
+                                  num: i,
+                                })
+                              }
+                            >
+                              {props?.isShowEmploymentBoxInput.show &&
+                              props?.isShowEmploymentBoxInput.num === i ? (
+                                <BiChevronUp
+                                  className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                />
+                              ) : (
+                                <BiChevronDown
+                                  className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                />
+                              )}
+                            </div>
+                            {props.isShowEmploymentBoxInput.show &&
+                              props.isShowEmploymentBoxInput.num === i && (
+                                <div className="p-4 flex flex-col justify-center items-center w-full">
+                                  <div className="flex flex-row items-end">
+                                    <div>
+                                      <p className="text-sm text-gray-500">
+                                        Job title
+                                      </p>
+                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                    </div>
+
+                                    <div className="ml-5 pl-5">
+                                      <p className="text-sm text-gray-500">
+                                        Employer
+                                      </p>
+                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                    </div>
+                                  </div>
+
+                                  <div className="flex flex-row items-end mt-4 ml-4">
+                                    <div className="w-8/12">
+                                      <p className="text-sm text-gray-500 w-auto">
+                                        Start & End Date
+                                      </p>
+                                      <input
+                                        type="month"
+                                        placeholder="MM / YYYY"
+                                        className="bg-gray-100 w-6/12 h-10 pl-3 mt-1 pr-2 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                      />
+                                    </div>
+                                    <div className="w-8/12">
+                                      <input
+                                        type="month"
+                                        placeholder="MM / YYYY"
+                                        className="bg-gray-100 w-6/12 relative -left-7 h-10 pl-3 mt-1 pr-2 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                      />
+                                    </div>
+
+                                    <div className="relative -left-5 w-full">
+                                      <p className="text-sm text-gray-500">
+                                        City
+                                      </p>
+                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
                           </div>
-                          {/* <input
-                            name="firstName"
-                            value={x.firstName}
-                            className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
-                            onChange={(e) => props.handleInputChange(e, i)}
-                          />
-                          <input
-                            name="lastName"
-                            value={x.lastName}
-                            onChange={(e) => props.handleInputChange(e, i)}
-                            className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
-                          /> */}
-                          <div className="btn-box">
-                            {props.inputList.length !== 1 && (
-                              <button
-                                className="mr-10"
-                                onClick={() => props.handleRemoveClick(i)}
-                              >
-                                Remove
-                              </button>
+                          {props.isShowEmploymentBoxIcon.show &&
+                            props.isShowEmploymentBoxIcon.num === i && (
+                              <div className="relative top-16 left-2 bottom-0 right-0">
+                                <RiDeleteBin5Line
+                                  className="text-gray-500 text-lg hover:cursor-pointer hover:text-blue-500"
+                                  onClick={() => props.handleRemoveClick(i)}
+                                />
+                              </div>
                             )}
-                          </div>
                         </div>
                       );
                     })}

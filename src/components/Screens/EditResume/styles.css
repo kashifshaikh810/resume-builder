@@ -19,3 +19,9 @@
   max-width: 630px;
   margin: 0px auto;
 }
+
+input[type="month"]::-webkit-inner-spin-button,
+input[type="month"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}

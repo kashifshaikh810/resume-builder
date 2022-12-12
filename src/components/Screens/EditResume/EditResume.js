@@ -62,7 +62,12 @@ const EditResume = (props) => {
 
   const [inputList, setInputList] = useState([]);
   const [isShowEmploymentBoxInput, setIsShowEmploymentBoxInput] = useState({
-    shown: false,
+    show: false,
+    num: Number,
+  });
+
+  const [isShowEmploymentBoxIcon, setIsShowEmploymentBoxIcon] = useState({
+    show: false,
     num: Number,
   });
 
@@ -82,7 +87,11 @@ const EditResume = (props) => {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([...inputList, { firstName: "", lastName: "" }]);
+    let arrLength = [...inputList]?.length;
+    setInputList([
+      ...inputList,
+      { id: arrLength, firstName: "", lastName: "" },
+    ]);
   };
 
   const handleChange = (event) => {
@@ -267,6 +276,8 @@ const EditResume = (props) => {
       handleAddClick={handleAddClick}
       isShowEmploymentBoxInput={isShowEmploymentBoxInput}
       setIsShowEmploymentBoxInput={setIsShowEmploymentBoxInput}
+      isShowEmploymentBoxIcon={isShowEmploymentBoxIcon}
+      setIsShowEmploymentBoxIcon={setIsShowEmploymentBoxIcon}
     />
   );
 };
