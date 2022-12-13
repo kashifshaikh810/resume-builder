@@ -20,8 +20,7 @@
   margin: 0px auto;
 }
 
-input[type="month"]::-webkit-inner-spin-button,
-input[type="month"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+input[type="month"]::-webkit-inner-spin-button:hover,
+input[type="month"]::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
 }

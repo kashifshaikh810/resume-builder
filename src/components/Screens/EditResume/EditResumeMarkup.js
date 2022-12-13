@@ -24,7 +24,7 @@ import { FaListUl } from "react-icons/fa";
 import FileModal from "../../FileModal/FileModal";
 import { SlReload } from "react-icons/sl";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import MonthYearPicker from "react-month-year-picker";
+import Res from "./Res";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -621,7 +621,9 @@ const EditResumeMarkup = (props) => {
                       numbers/facts (Achieved X, measured by Y, by doing Z).
                     </p>
 
-                    {props.inputList.map((x, i) => {
+                    <Res />
+
+                    {/* {props.inputList.map((x, i) => {
                       return (
                         <div
                           className="flex flex-row"
@@ -639,7 +641,7 @@ const EditResumeMarkup = (props) => {
                           }}
                         >
                           <div
-                            key={x.id}
+                            key={i}
                             className={`border border-gray-200 w-11/12 ${
                               props?.isShowEmploymentBoxInput.show
                                 ? `h-auto`
@@ -654,26 +656,52 @@ const EditResumeMarkup = (props) => {
                               })
                             }
                           >
-                            <div
-                              className="flex flex-1 h-20 justify-end items-center pr-4"
-                              onClick={() =>
-                                props.setIsShowEmploymentBoxInput({
-                                  ...props.isShowEmploymentBoxInput,
-                                  show: !props?.isShowEmploymentBoxInput.show,
-                                  num: i,
-                                })
-                              }
-                            >
-                              {props?.isShowEmploymentBoxInput.show &&
-                              props?.isShowEmploymentBoxInput.num === i ? (
-                                <BiChevronUp
-                                  className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
-                                />
-                              ) : (
-                                <BiChevronDown
-                                  className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
-                                />
-                              )}
+                            <div className="flex flex-row items-center">
+                              <div className="ml-5">
+                                <div className="flex flex-row items-center">
+                                  <p className="text-black">
+                                    {props.employmentHistoryTitleInput}
+                                  </p>
+                                  {props.employmentHistoryTitleInput ? (
+                                    <p className="text-black ml-1 mr-1">at</p>
+                                  ) : null}
+                                  <p className="text-black">
+                                    {props.employmentHistoryEmployerInput}
+                                  </p>
+                                </div>
+                                <div className="flex flex-row items-center">
+                                  <p className="text-gray-500">
+                                    {props.employmentHistoryStartDateInput}
+                                  </p>
+                                  {props.employmentHistoryStartDateInput ? (
+                                    <p className="text-gray-500 ml-1 mr-1">-</p>
+                                  ) : null}
+                                  <p className="text-gray-500">
+                                    {props.employmentHistoryEndDateInput}
+                                  </p>
+                                </div>
+                              </div>
+                              <div
+                                className="flex flex-1 h-20 justify-end items-center pr-4"
+                                onClick={() =>
+                                  props.setIsShowEmploymentBoxInput({
+                                    ...props.isShowEmploymentBoxInput,
+                                    show: !props?.isShowEmploymentBoxInput.show,
+                                    num: i,
+                                  })
+                                }
+                              >
+                                {props?.isShowEmploymentBoxInput.show &&
+                                props?.isShowEmploymentBoxInput.num === i ? (
+                                  <BiChevronUp
+                                    className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                  />
+                                ) : (
+                                  <BiChevronDown
+                                    className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                  />
+                                )}
+                              </div>
                             </div>
                             {props.isShowEmploymentBoxInput.show &&
                               props.isShowEmploymentBoxInput.num === i && (
@@ -683,42 +711,139 @@ const EditResumeMarkup = (props) => {
                                       <p className="text-sm text-gray-500">
                                         Job title
                                       </p>
-                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                      <input
+                                        value={x.jobTitle}
+                                        onChange={(e) =>
+                                          props.handleInputChange(e, i)
+                                        }
+                                        className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                      />
                                     </div>
 
                                     <div className="ml-5 pl-5">
                                       <p className="text-sm text-gray-500">
                                         Employer
                                       </p>
-                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                      <input
+                                        value={x.employer}
+                                        onChange={(e) =>
+                                          props.handleInputChange(e, i)
+                                        }
+                                        className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                      />
                                     </div>
                                   </div>
 
-                                  <div className="flex flex-row items-end mt-4 ml-4">
-                                    <div className="w-8/12">
+                                  <div className="flex flex-row items-end mt-4 w-11/12">
+                                    <div className="w-full">
                                       <p className="text-sm text-gray-500 w-auto">
                                         Start & End Date
                                       </p>
                                       <input
                                         type="month"
                                         placeholder="MM / YYYY"
-                                        className="bg-gray-100 w-6/12 h-10 pl-3 mt-1 pr-2 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                        value={x.startDate}
+                                        onChange={(e) =>
+                                          props.handleInputChange(e, i)
+                                        }
+                                        className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
                                     </div>
-                                    <div className="w-8/12">
+                                    <div className="ml-5 pl-5 w-full">
                                       <input
                                         type="month"
                                         placeholder="MM / YYYY"
-                                        className="bg-gray-100 w-6/12 relative -left-7 h-10 pl-3 mt-1 pr-2 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                        value={x.endDate}
+                                        onChange={(e) =>
+                                          props.handleInputChange(e, i)
+                                        }
+                                        className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
                                     </div>
-
-                                    <div className="relative -left-5 w-full">
-                                      <p className="text-sm text-gray-500">
-                                        City
-                                      </p>
-                                      <input className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                                  </div>
+                                  <div className="w-11/12 mt-2 pt-2 pl-1 ml-1">
+                                    <p className="text-sm text-gray-500">
+                                      City
+                                    </p>
+                                    <input
+                                      value={x.city}
+                                      onChange={(e) =>
+                                        props.handleInputChange(e, i)
+                                      }
+                                      className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                                    />
+                                  </div>
+                                  <div className="w-11/12 mt-5 ml-1 mb-1">
+                                    <p className="text-sm text-gray-500">
+                                      Description
+                                    </p>
+                                  </div>
+                                  <div className="w-11/12 p-4 ml-2 bg-gray-100 max-[767px]:w-full">
+                                    <div className="flex flex-row items-center">
+                                      {descIcons.map((item, index) => (
+                                        <div
+                                          key={index}
+                                          className={`m-2 mt-0 ml-0 hover:cursor-pointer hover:text-blue-400  ${
+                                            (props?.isChangedDescInputText
+                                              ?.num === index &&
+                                              props?.isChangedDescInputText
+                                                ?.name === "bold") ||
+                                            (props?.isChangedDescInputText
+                                              ?.num === index &&
+                                              props?.isChangedDescInputText
+                                                ?.name === "italic") ||
+                                            (props?.isChangedDescInputText
+                                              ?.num === index &&
+                                              props?.isChangedDescInputText
+                                                ?.name === "underline") ||
+                                            (props?.isChangedDescInputText
+                                              ?.num === index &&
+                                              props?.isChangedDescInputText
+                                                ?.name === "line-through")
+                                              ? `text-blue-400`
+                                              : `text-gray-500`
+                                          }`}
+                                          onClick={() =>
+                                            props.setIsChangedDescInputText({
+                                              name: item.name,
+                                              num: index,
+                                            })
+                                          }
+                                          onDoubleClick={() =>
+                                            props?.setIsChangedDescInputText({
+                                              name: "normal",
+                                            })
+                                          }
+                                        >
+                                          {item.icon()}
+                                        </div>
+                                      ))}
                                     </div>
+                                    <textarea
+                                      value={x.description}
+                                      onChange={(e) =>
+                                        props.handleInputChange(e, i)
+                                      }
+                                      rows={10000}
+                                      cols={10000}
+                                      className={`w-full h-48 bg-gray-100 border-none text-gray-800 overflow-hidden outline-none ${
+                                        (props?.isChangedDescInputText?.name ===
+                                          "normal" &&
+                                          `font-normal`) ||
+                                        (props?.isChangedDescInputText?.name ===
+                                          "bold" &&
+                                          `font-bold`) ||
+                                        (props?.isChangedDescInputText?.name ===
+                                          "italic" &&
+                                          `italic`) ||
+                                        (props?.isChangedDescInputText?.name ===
+                                          "underline" &&
+                                          `underline`) ||
+                                        (props?.isChangedDescInputText?.name ===
+                                          "line-through" &&
+                                          `line-through`)
+                                      }`}
+                                    />
                                   </div>
                                 </div>
                               )}
@@ -734,7 +859,7 @@ const EditResumeMarkup = (props) => {
                             )}
                         </div>
                       );
-                    })}
+                    })} */}
 
                     <MyButton
                       {...props}

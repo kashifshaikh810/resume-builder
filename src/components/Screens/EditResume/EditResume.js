@@ -71,6 +71,25 @@ const EditResume = (props) => {
     num: Number,
   });
 
+  const [isChangedDescInputText, setIsChangedDescInputText] = useState({
+    name: "normal",
+    num: Number,
+  });
+
+  // Employment history inputs states
+  const [employmentHistoryTitleInput, setEmploymentHistoryTitleInput] =
+    useState("");
+  const [employmentHistoryEmployerInput, setEmploymentHistoryEmployerInput] =
+    useState("");
+  const [employmentHistoryStartDateInput, setEmploymentHistoryStartDateInput] =
+    useState("");
+  const [employmentHistoryEndDateInput, setEmploymentHistoryEndDateInput] =
+    useState("");
+  const [employmentHistoryCityInput, setEmploymentHistoryCityInput] =
+    useState("");
+  const [employmentHistoryDescInput, setEmploymentHistoryDescInput] =
+    useState("");
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
@@ -87,10 +106,16 @@ const EditResume = (props) => {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    let arrLength = [...inputList]?.length;
     setInputList([
       ...inputList,
-      { id: arrLength, firstName: "", lastName: "" },
+      {
+        jobTitle: "",
+        employer: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        description: "",
+      },
     ]);
   };
 
@@ -113,6 +138,8 @@ const EditResume = (props) => {
 
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollValue]);
+
+  console.log(inputList);
 
   const skillsData = [
     { id: 0, name: "Microsoft Office" },
@@ -278,6 +305,20 @@ const EditResume = (props) => {
       setIsShowEmploymentBoxInput={setIsShowEmploymentBoxInput}
       isShowEmploymentBoxIcon={isShowEmploymentBoxIcon}
       setIsShowEmploymentBoxIcon={setIsShowEmploymentBoxIcon}
+      isChangedDescInputText={isChangedDescInputText}
+      setIsChangedDescInputText={setIsChangedDescInputText}
+      employmentHistoryTitleInput={employmentHistoryTitleInput}
+      setEmploymentHistoryTitleInput={setEmploymentHistoryTitleInput}
+      employmentHistoryEmployerInput={employmentHistoryEmployerInput}
+      setEmploymentHistoryEmployerInput={setEmploymentHistoryEmployerInput}
+      employmentHistoryStartDateInput={employmentHistoryStartDateInput}
+      setEmploymentHistoryStartDateInput={setEmploymentHistoryStartDateInput}
+      employmentHistoryEndDateInput={employmentHistoryEndDateInput}
+      setEmploymentHistoryEndDateInput={setEmploymentHistoryEndDateInput}
+      employmentHistoryCityInput={employmentHistoryCityInput}
+      setEmploymentHistoryCityInput={setEmploymentHistoryCityInput}
+      employmentHistoryDescInput={employmentHistoryDescInput}
+      setEmploymentHistoryDescInput={setEmploymentHistoryDescInput}
     />
   );
 };
