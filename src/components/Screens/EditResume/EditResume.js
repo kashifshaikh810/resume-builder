@@ -60,7 +60,6 @@ const EditResume = (props) => {
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
 
-  const [inputList, setInputList] = useState([]);
   const [isShowEmploymentBoxInput, setIsShowEmploymentBoxInput] = useState({
     show: false,
     num: Number,
@@ -77,37 +76,26 @@ const EditResume = (props) => {
   });
 
   // Employment history inputs states
-  const [employmentHistoryTitleInput, setEmploymentHistoryTitleInput] =
-    useState("");
-  const [employmentHistoryEmployerInput, setEmploymentHistoryEmployerInput] =
-    useState("");
-  const [employmentHistoryStartDateInput, setEmploymentHistoryStartDateInput] =
-    useState("");
-  const [employmentHistoryEndDateInput, setEmploymentHistoryEndDateInput] =
-    useState("");
-  const [employmentHistoryCityInput, setEmploymentHistoryCityInput] =
-    useState("");
-  const [employmentHistoryDescInput, setEmploymentHistoryDescInput] =
-    useState("");
+  const [employmentInputList, setEmploymentInputList] = useState([]);
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...inputList];
+    const list = [...employmentInputList];
     list[index][name] = value;
-    setInputList(list);
+    setEmploymentInputList(list);
   };
 
   // handle click event of the Remove button
   const handleRemoveClick = (index) => {
-    const list = [...inputList];
+    const list = [...employmentInputList];
     list.splice(index, 1);
-    setInputList(list);
+    setEmploymentInputList(list);
   };
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList([
-      ...inputList,
+    setEmploymentInputList([
+      ...employmentInputList,
       {
         jobTitle: "",
         employer: "",
@@ -294,8 +282,8 @@ const EditResume = (props) => {
       setTitleInput={setTitleInput}
       isShowTitleInput={isShowTitleInput}
       setIsShowTitleInput={setIsShowTitleInput}
-      inputList={inputList}
-      setInputList={setInputList}
+      employmentInputList={employmentInputList}
+      setEmploymentInputList={setEmploymentInputList}
       handleInputChange={handleInputChange}
       handleRemoveClick={handleRemoveClick}
       handleAddClick={handleAddClick}
@@ -305,18 +293,6 @@ const EditResume = (props) => {
       setIsShowEmploymentBoxIcon={setIsShowEmploymentBoxIcon}
       isChangedDescInputText={isChangedDescInputText}
       setIsChangedDescInputText={setIsChangedDescInputText}
-      employmentHistoryTitleInput={employmentHistoryTitleInput}
-      setEmploymentHistoryTitleInput={setEmploymentHistoryTitleInput}
-      employmentHistoryEmployerInput={employmentHistoryEmployerInput}
-      setEmploymentHistoryEmployerInput={setEmploymentHistoryEmployerInput}
-      employmentHistoryStartDateInput={employmentHistoryStartDateInput}
-      setEmploymentHistoryStartDateInput={setEmploymentHistoryStartDateInput}
-      employmentHistoryEndDateInput={employmentHistoryEndDateInput}
-      setEmploymentHistoryEndDateInput={setEmploymentHistoryEndDateInput}
-      employmentHistoryCityInput={employmentHistoryCityInput}
-      setEmploymentHistoryCityInput={setEmploymentHistoryCityInput}
-      employmentHistoryDescInput={employmentHistoryDescInput}
-      setEmploymentHistoryDescInput={setEmploymentHistoryDescInput}
     />
   );
 };

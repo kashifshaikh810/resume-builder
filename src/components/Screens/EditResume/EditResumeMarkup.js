@@ -620,7 +620,7 @@ const EditResumeMarkup = (props) => {
                       numbers/facts (Achieved X, measured by Y, by doing Z).
                     </p>
 
-                    {props.inputList.map((x, i) => {
+                    {props.employmentInputList.map((x, i) => {
                       let monthNames = [
                         "Jan",
                         "Feb",
@@ -651,6 +651,7 @@ const EditResumeMarkup = (props) => {
 
                       return (
                         <div
+                          key={i}
                           className="flex flex-row"
                           onMouseEnter={() => {
                             props.setIsShowEmploymentBoxIcon({
@@ -723,11 +724,21 @@ const EditResumeMarkup = (props) => {
                                 {props?.isShowEmploymentBoxInput.show &&
                                 props?.isShowEmploymentBoxInput.num === i ? (
                                   <BiChevronUp
-                                    className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                    className={`text-2xl ml-1 mt-1  ${
+                                      props.isShowEmploymentBoxIcon.show &&
+                                      props.isShowEmploymentBoxIcon.num
+                                        ? `text-blue-500`
+                                        : `text-gray-500`
+                                    }`}
                                   />
                                 ) : (
                                   <BiChevronDown
-                                    className={`text-2xl ml-1 mt-1 text-gray-500 hover:text-blue-500`}
+                                    className={`text-2xl ml-1 mt-1 text-gray-500 ${
+                                      props.isShowEmploymentBoxIcon.show &&
+                                      props.isShowEmploymentBoxIcon.num === i
+                                        ? `text-blue-500`
+                                        : `text-gray-500`
+                                    }`}
                                   />
                                 )}
                               </div>
@@ -899,7 +910,7 @@ const EditResumeMarkup = (props) => {
                     <MyButton
                       {...props}
                       title={
-                        props.inputList.length === 0
+                        props.employmentInputList.length === 0
                           ? "Add employment"
                           : "Add one more employment"
                       }
