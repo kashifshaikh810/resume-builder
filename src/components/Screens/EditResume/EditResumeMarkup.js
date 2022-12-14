@@ -24,7 +24,6 @@ import { FaListUl } from "react-icons/fa";
 import FileModal from "../../FileModal/FileModal";
 import { SlReload } from "react-icons/sl";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import Res from "./Res";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -621,9 +620,35 @@ const EditResumeMarkup = (props) => {
                       numbers/facts (Achieved X, measured by Y, by doing Z).
                     </p>
 
-                    <Res />
+                    {props.inputList.map((x, i) => {
+                      let monthNames = [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec",
+                      ];
+                      let startDate = new Date(x.startDate);
+                      let month = startDate.getMonth();
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
 
-                    {/* {props.inputList.map((x, i) => {
+                      let endDate = new Date(x.endDate);
+                      let myMonth = endDate.getMonth();
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
                       return (
                         <div
                           className="flex flex-row"
@@ -657,27 +682,31 @@ const EditResumeMarkup = (props) => {
                             }
                           >
                             <div className="flex flex-row items-center">
-                              <div className="ml-5">
+                              <div className="ml-10 w-10/12">
                                 <div className="flex flex-row items-center">
-                                  <p className="text-black">
-                                    {props.employmentHistoryTitleInput}
+                                  <p className="text-black text-sm font-bold truncate">
+                                    {x.jobTitle}
                                   </p>
-                                  {props.employmentHistoryTitleInput ? (
-                                    <p className="text-black ml-1 mr-1">at</p>
+                                  {x.jobTitle && x.employer ? (
+                                    <p className="text-black ml-1 mr-1 font-bold">
+                                      at
+                                    </p>
                                   ) : null}
-                                  <p className="text-black">
-                                    {props.employmentHistoryEmployerInput}
+                                  <p className="text-black text-sm font-bold truncate">
+                                    {x.employer}
                                   </p>
                                 </div>
                                 <div className="flex flex-row items-center">
-                                  <p className="text-gray-500">
-                                    {props.employmentHistoryStartDateInput}
+                                  <p className="text-gray-500 text-sm">
+                                    {x.startDate && startDateMonth}{" "}
+                                    {x.startDate && startDateYear}
                                   </p>
-                                  {props.employmentHistoryStartDateInput ? (
+                                  {x.startDate && x.endDate ? (
                                     <p className="text-gray-500 ml-1 mr-1">-</p>
                                   ) : null}
-                                  <p className="text-gray-500">
-                                    {props.employmentHistoryEndDateInput}
+                                  <p className="text-gray-500 text-sm">
+                                    {x.endDate && endDateMonth}{" "}
+                                    {x.endDate && endDateYear}
                                   </p>
                                 </div>
                               </div>
@@ -712,6 +741,7 @@ const EditResumeMarkup = (props) => {
                                         Job title
                                       </p>
                                       <input
+                                        name="jobTitle"
                                         value={x.jobTitle}
                                         onChange={(e) =>
                                           props.handleInputChange(e, i)
@@ -725,6 +755,7 @@ const EditResumeMarkup = (props) => {
                                         Employer
                                       </p>
                                       <input
+                                        name="employer"
                                         value={x.employer}
                                         onChange={(e) =>
                                           props.handleInputChange(e, i)
@@ -740,6 +771,7 @@ const EditResumeMarkup = (props) => {
                                         Start & End Date
                                       </p>
                                       <input
+                                        name="startDate"
                                         type="month"
                                         placeholder="MM / YYYY"
                                         value={x.startDate}
@@ -752,6 +784,7 @@ const EditResumeMarkup = (props) => {
                                     <div className="ml-5 pl-5 w-full">
                                       <input
                                         type="month"
+                                        name="endDate"
                                         placeholder="MM / YYYY"
                                         value={x.endDate}
                                         onChange={(e) =>
@@ -766,6 +799,7 @@ const EditResumeMarkup = (props) => {
                                       City
                                     </p>
                                     <input
+                                      name="city"
                                       value={x.city}
                                       onChange={(e) =>
                                         props.handleInputChange(e, i)
@@ -820,6 +854,7 @@ const EditResumeMarkup = (props) => {
                                       ))}
                                     </div>
                                     <textarea
+                                      name="description"
                                       value={x.description}
                                       onChange={(e) =>
                                         props.handleInputChange(e, i)
@@ -859,7 +894,7 @@ const EditResumeMarkup = (props) => {
                             )}
                         </div>
                       );
-                    })} */}
+                    })}
 
                     <MyButton
                       {...props}

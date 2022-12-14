@@ -139,8 +139,6 @@ const EditResume = (props) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollValue]);
 
-  console.log(inputList);
-
   const skillsData = [
     { id: 0, name: "Microsoft Office" },
     { id: 1, name: "Communication" },
