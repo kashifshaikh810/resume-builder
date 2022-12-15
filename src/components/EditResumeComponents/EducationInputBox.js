@@ -105,6 +105,17 @@ const EducationInputBox = (props) => {
                           >
                             at
                           </p>
+                        ) : !x.school && !x.degree ? (
+                          <p
+                            className={`${
+                              props.isShowEducationBoxIcon.show &&
+                              props.isShowEducationBoxIcon.num === i
+                                ? `text-blue-400`
+                                : `text-black`
+                            } font-bold text-sm`}
+                          >
+                            (Not specified)
+                          </p>
                         ) : null}
                         <p
                           className={`${
