@@ -76,7 +76,7 @@ const EditResume = (props) => {
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
 
-  const handleInputChange = (e, index) => {
+  const employmentHandleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...employmentInputList];
     list[index][name] = value;
@@ -84,14 +84,14 @@ const EditResume = (props) => {
   };
 
   // handle click event of the Remove button
-  const handleRemoveClick = (index) => {
+  const employmentHandleRemoveClick = (index) => {
     const list = [...employmentInputList];
     list.splice(index, 1);
     setEmploymentInputList(list);
   };
 
   // handle click event of the Add button
-  const handleAddClick = () => {
+  const employmentHandleAddClick = () => {
     setEmploymentInputList([
       ...employmentInputList,
       {
@@ -282,9 +282,9 @@ const EditResume = (props) => {
       setIsShowTitleInput={setIsShowTitleInput}
       employmentInputList={employmentInputList}
       setEmploymentInputList={setEmploymentInputList}
-      handleInputChange={handleInputChange}
-      handleRemoveClick={handleRemoveClick}
-      handleAddClick={handleAddClick}
+      employmentHandleInputChange={employmentHandleInputChange}
+      employmentHandleRemoveClick={employmentHandleRemoveClick}
+      employmentHandleAddClick={employmentHandleAddClick}
       isShowEmploymentBoxInput={isShowEmploymentBoxInput}
       setIsShowEmploymentBoxInput={setIsShowEmploymentBoxInput}
       isShowEmploymentBoxIcon={isShowEmploymentBoxIcon}

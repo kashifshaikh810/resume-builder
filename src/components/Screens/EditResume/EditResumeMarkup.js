@@ -776,7 +776,10 @@ const EditResumeMarkup = (props) => {
                                         name="jobTitle"
                                         value={x.jobTitle}
                                         onChange={(e) =>
-                                          props.handleInputChange(e, i)
+                                          props.employmentHandleInputChange(
+                                            e,
+                                            i
+                                          )
                                         }
                                         className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
@@ -790,7 +793,10 @@ const EditResumeMarkup = (props) => {
                                         name="employer"
                                         value={x.employer}
                                         onChange={(e) =>
-                                          props.handleInputChange(e, i)
+                                          props.employmentHandleInputChange(
+                                            e,
+                                            i
+                                          )
                                         }
                                         className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
@@ -808,7 +814,10 @@ const EditResumeMarkup = (props) => {
                                         placeholder="MM / YYYY"
                                         value={x.startDate}
                                         onChange={(e) =>
-                                          props.handleInputChange(e, i)
+                                          props.employmentHandleInputChange(
+                                            e,
+                                            i
+                                          )
                                         }
                                         className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
@@ -820,7 +829,10 @@ const EditResumeMarkup = (props) => {
                                         placeholder="MM / YYYY"
                                         value={x.endDate}
                                         onChange={(e) =>
-                                          props.handleInputChange(e, i)
+                                          props.employmentHandleInputChange(
+                                            e,
+                                            i
+                                          )
                                         }
                                         className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                       />
@@ -834,7 +846,7 @@ const EditResumeMarkup = (props) => {
                                       name="city"
                                       value={x.city}
                                       onChange={(e) =>
-                                        props.handleInputChange(e, i)
+                                        props.employmentHandleInputChange(e, i)
                                       }
                                       className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                     />
@@ -889,7 +901,7 @@ const EditResumeMarkup = (props) => {
                                       name="description"
                                       value={x.description}
                                       onChange={(e) =>
-                                        props.handleInputChange(e, i)
+                                        props.employmentHandleInputChange(e, i)
                                       }
                                       rows={10000}
                                       cols={10000}
@@ -920,7 +932,9 @@ const EditResumeMarkup = (props) => {
                               <div className="relative top-16 left-2 bottom-0 right-0">
                                 <RiDeleteBin5Line
                                   className="text-gray-500 text-lg hover:cursor-pointer hover:text-blue-500"
-                                  onClick={() => props.handleRemoveClick(i)}
+                                  onClick={() =>
+                                    props.employmentHandleRemoveClick(i)
+                                  }
                                 />
                               </div>
                             )}
@@ -937,7 +951,7 @@ const EditResumeMarkup = (props) => {
                       }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => props.handleAddClick()}
+                      onPress={() => props.employmentHandleAddClick()}
                       loading={false}
                     />
                   </div>
