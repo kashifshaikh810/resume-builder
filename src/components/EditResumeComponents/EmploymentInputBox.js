@@ -82,7 +82,7 @@ const EmploymentInputBox = (props) => {
                   }
                 >
                   <div className="flex flex-row items-center">
-                    <div className="ml-10 w-10/12">
+                    <div className="ml-5 w-10/12">
                       <div className="flex flex-row items-center">
                         <p
                           className={`${
