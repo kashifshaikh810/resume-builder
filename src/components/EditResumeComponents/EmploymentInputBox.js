@@ -105,6 +105,17 @@ const EmploymentInputBox = (props) => {
                           >
                             at
                           </p>
+                        ) : !x.jobTitle && !x.employer ? (
+                          <p
+                            className={`${
+                              props.isShowEmploymentBoxIcon.show &&
+                              props.isShowEmploymentBoxIcon.num === i
+                                ? `text-blue-400`
+                                : `text-black`
+                            } font-bold text-sm`}
+                          >
+                            (Not specified)
+                          </p>
                         ) : null}
                         <p
                           className={`${
