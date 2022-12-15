@@ -41,6 +41,22 @@ const EditResume = (props) => {
     });
   // ------ end ----- //
 
+  // Websites & Social Links - section states
+  const [websiteInputList, setWebsiteInputList] = useState([]);
+  const [websiteInput, setWebsiteInput] = useState("Websites & Social Links");
+  const [isShowWebsiteInput, setIsShowWebsiteInput] = useState(false);
+  const [isShowWebsiteIcon, setIsShowWebsiteIcon] = useState(false);
+  const [isShowWebsiteBoxInput, setIsShowWebsiteBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowWebsiteBoxIcon, setIsShowWebsiteBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -71,10 +87,6 @@ const EditResume = (props) => {
   const [isShowSummaryIcon, setIsShowSummaryIcon] = useState(false);
   const [isShowSummaryInput, setIsShowSummaryInput] = useState(false);
   const [summaryInput, setSummaryInput] = useState("Professional Summary");
-
-  const [websiteInput, setWebsiteInput] = useState("Websites & Social Links");
-  const [isShowWebsiteInput, setIsShowWebsiteInput] = useState(false);
-  const [isShowWebsiteIcon, setIsShowWebsiteIcon] = useState(false);
 
   const [skillsInput, setSkillsInput] = useState("Skills");
   const [isShowSkillsInput, setIsShowSkillsInput] = useState(false);
@@ -148,6 +160,33 @@ const EditResume = (props) => {
         endDate: "",
         city: "",
         description: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
+  // WebSites & social links section functions
+  const websiteHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...websiteInputList];
+    list[index][name] = value;
+    setWebsiteInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const websiteHandleRemoveClick = (index) => {
+    const list = [...websiteInputList];
+    list.splice(index, 1);
+    setWebsiteInputList(list);
+  };
+
+  // handle click event of the Add button
+  const websiteHandleAddClick = () => {
+    setWebsiteInputList([
+      ...websiteInputList,
+      {
+        label: "",
+        link: "",
       },
     ]);
   };
@@ -349,6 +388,14 @@ const EditResume = (props) => {
       setIsShowEducationBoxInput={setIsShowEducationBoxInput}
       isChangedEducationDescInputText={isChangedEducationDescInputText}
       setIsChangedEducationDescInputText={setIsChangedEducationDescInputText}
+      websiteHandleInputChange={websiteHandleInputChange}
+      websiteHandleRemoveClick={websiteHandleRemoveClick}
+      websiteHandleAddClick={websiteHandleAddClick}
+      websiteInputList={websiteInputList}
+      isShowWebsiteBoxInput={isShowWebsiteBoxInput}
+      setIsShowWebsiteBoxInput={setIsShowWebsiteBoxInput}
+      isShowWebsiteBoxIcon={isShowWebsiteBoxIcon}
+      setIsShowWebsiteBoxIcon={setIsShowWebsiteBoxIcon}
     />
   );
 };

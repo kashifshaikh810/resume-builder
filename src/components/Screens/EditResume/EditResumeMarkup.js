@@ -25,6 +25,7 @@ import FileModal from "../../FileModal/FileModal";
 import { SlReload } from "react-icons/sl";
 import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
 import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
+import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -758,12 +759,18 @@ const EditResumeMarkup = (props) => {
                       profile, or personal website
                     </p>
 
+                    <WebsiteAndSocialInputBox {...props} />
+
                     <MyButton
                       {...props}
-                      title="Add link"
+                      title={
+                        props.websiteInputList.length === 0
+                          ? "Add link"
+                          : "Add one more link"
+                      }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => {}}
+                      onPress={() => props.websiteHandleAddClick()}
                       loading={false}
                     />
                   </div>
