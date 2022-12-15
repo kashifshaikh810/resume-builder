@@ -11,16 +11,35 @@ const EditResume = (props) => {
     show: false,
     num: Number,
   });
-
   const [isShowEmploymentBoxIcon, setIsShowEmploymentBoxIcon] = useState({
     show: false,
     num: Number,
   });
-
   const [isChangedDescInputText, setIsChangedDescInputText] = useState({
     name: "normal",
     num: Number,
   });
+  // ------ end ----- //
+
+  // Education section states
+  const [educationInputList, setEducationInputList] = useState([]);
+  const [educationInput, setEducationInput] = useState("Education");
+  const [isShowEducationInput, setIsShowEducationInput] = useState(false);
+  const [isShowEducationIcon, setIsShowEducationIcon] = useState(false);
+  const [isShowEducationBoxInput, setIsShowEducationBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowEducationBoxIcon, setIsShowEducationBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isChangedEducationDescInputText, setIsChangedEducationDescInputText] =
+    useState({
+      name: "normal",
+      num: Number,
+    });
+  // ------ end ----- //
 
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -53,10 +72,6 @@ const EditResume = (props) => {
   const [isShowSummaryInput, setIsShowSummaryInput] = useState(false);
   const [summaryInput, setSummaryInput] = useState("Professional Summary");
 
-  const [educationInput, setEducationInput] = useState("Education");
-  const [isShowEducationInput, setIsShowEducationInput] = useState(false);
-  const [isShowEducationIcon, setIsShowEducationIcon] = useState(false);
-
   const [websiteInput, setWebsiteInput] = useState("Websites & Social Links");
   const [isShowWebsiteInput, setIsShowWebsiteInput] = useState(false);
   const [isShowWebsiteIcon, setIsShowWebsiteIcon] = useState(false);
@@ -76,6 +91,7 @@ const EditResume = (props) => {
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
 
+  // Employment history section functions
   const employmentHandleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...employmentInputList];
@@ -104,6 +120,38 @@ const EditResume = (props) => {
       },
     ]);
   };
+  // ------ end ----- //
+
+  // Education section functions
+  const educationHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...educationInputList];
+    list[index][name] = value;
+    setEducationInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const educationHandleRemoveClick = (index) => {
+    const list = [...educationInputList];
+    list.splice(index, 1);
+    setEducationInputList(list);
+  };
+
+  // handle click event of the Add button
+  const educationHandleAddClick = () => {
+    setEducationInputList([
+      ...educationInputList,
+      {
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        description: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
 
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
@@ -291,6 +339,16 @@ const EditResume = (props) => {
       setIsShowEmploymentBoxIcon={setIsShowEmploymentBoxIcon}
       isChangedDescInputText={isChangedDescInputText}
       setIsChangedDescInputText={setIsChangedDescInputText}
+      educationHandleInputChange={educationHandleInputChange}
+      educationHandleRemoveClick={educationHandleRemoveClick}
+      educationHandleAddClick={educationHandleAddClick}
+      educationInputList={educationInputList}
+      isShowEducationBoxIcon={isShowEducationBoxIcon}
+      setIsShowEducationBoxIcon={setIsShowEducationBoxIcon}
+      isShowEducationBoxInput={isShowEducationBoxInput}
+      setIsShowEducationBoxInput={setIsShowEducationBoxInput}
+      isChangedEducationDescInputText={isChangedEducationDescInputText}
+      setIsChangedEducationDescInputText={setIsChangedEducationDescInputText}
     />
   );
 };
