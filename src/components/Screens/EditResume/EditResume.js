@@ -2,6 +2,26 @@ import React, { useEffect, useRef, useState } from "react";
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
+  // Employment history section states
+  const [employmentInputList, setEmploymentInputList] = useState([]);
+  const [employmentInput, setEmploymentInput] = useState("Employment History");
+  const [isShowEmploymentInput, setIsShowEmploymentInput] = useState(false);
+  const [isShowEmploymentIcon, setIsShowEmploymentIcon] = useState(false);
+  const [isShowEmploymentBoxInput, setIsShowEmploymentBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+
+  const [isShowEmploymentBoxIcon, setIsShowEmploymentBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+
+  const [isChangedDescInputText, setIsChangedDescInputText] = useState({
+    name: "normal",
+    num: Number,
+  });
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -33,10 +53,6 @@ const EditResume = (props) => {
   const [isShowSummaryInput, setIsShowSummaryInput] = useState(false);
   const [summaryInput, setSummaryInput] = useState("Professional Summary");
 
-  const [employmentInput, setEmploymentInput] = useState("Employment History");
-  const [isShowEmploymentInput, setIsShowEmploymentInput] = useState(false);
-  const [isShowEmploymentIcon, setIsShowEmploymentIcon] = useState(false);
-
   const [educationInput, setEducationInput] = useState("Education");
   const [isShowEducationInput, setIsShowEducationInput] = useState(false);
   const [isShowEducationIcon, setIsShowEducationIcon] = useState(false);
@@ -59,24 +75,6 @@ const EditResume = (props) => {
 
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
-
-  const [isShowEmploymentBoxInput, setIsShowEmploymentBoxInput] = useState({
-    show: false,
-    num: Number,
-  });
-
-  const [isShowEmploymentBoxIcon, setIsShowEmploymentBoxIcon] = useState({
-    show: false,
-    num: Number,
-  });
-
-  const [isChangedDescInputText, setIsChangedDescInputText] = useState({
-    name: "normal",
-    num: Number,
-  });
-
-  // Employment history inputs states
-  const [employmentInputList, setEmploymentInputList] = useState([]);
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
