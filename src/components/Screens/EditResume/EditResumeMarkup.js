@@ -685,15 +685,36 @@ const EditResumeMarkup = (props) => {
                             <div className="flex flex-row items-center">
                               <div className="ml-10 w-10/12">
                                 <div className="flex flex-row items-center">
-                                  <p className="text-black text-sm font-bold truncate">
+                                  <p
+                                    className={`${
+                                      props.isShowEmploymentBoxIcon.show &&
+                                      props.isShowEmploymentBoxIcon.num === i
+                                        ? `text-blue-400`
+                                        : `text-black`
+                                    } text-sm font-bold truncate`}
+                                  >
                                     {x.jobTitle}
                                   </p>
                                   {x.jobTitle && x.employer ? (
-                                    <p className="text-black ml-1 mr-1 font-bold">
+                                    <p
+                                      className={`${
+                                        props.isShowEmploymentBoxIcon.show &&
+                                        props.isShowEmploymentBoxIcon.num === i
+                                          ? `text-blue-400`
+                                          : `text-black`
+                                      } ml-1 mr-1 font-bold`}
+                                    >
                                       at
                                     </p>
                                   ) : null}
-                                  <p className="text-black text-sm font-bold truncate">
+                                  <p
+                                    className={`${
+                                      props.isShowEmploymentBoxIcon.show &&
+                                      props.isShowEmploymentBoxIcon.num === i
+                                        ? `text-blue-400`
+                                        : `text-black`
+                                    } text-sm font-bold truncate`}
+                                  >
                                     {x.employer}
                                   </p>
                                 </div>
@@ -726,14 +747,14 @@ const EditResumeMarkup = (props) => {
                                   <BiChevronUp
                                     className={`text-2xl ml-1 mt-1  ${
                                       props.isShowEmploymentBoxIcon.show &&
-                                      props.isShowEmploymentBoxIcon.num
+                                      props.isShowEmploymentBoxIcon.num === i
                                         ? `text-blue-500`
                                         : `text-gray-500`
                                     }`}
                                   />
                                 ) : (
                                   <BiChevronDown
-                                    className={`text-2xl ml-1 mt-1 text-gray-500 ${
+                                    className={`text-2xl ml-1 mt-1 ${
                                       props.isShowEmploymentBoxIcon.show &&
                                       props.isShowEmploymentBoxIcon.num === i
                                         ? `text-blue-500`
@@ -805,7 +826,7 @@ const EditResumeMarkup = (props) => {
                                       />
                                     </div>
                                   </div>
-                                  <div className="w-11/12 mt-2 pt-2 pl-1 ml-1">
+                                  <div className="w-11/12 mt-2 pt-2">
                                     <p className="text-sm text-gray-500">
                                       City
                                     </p>
@@ -818,12 +839,12 @@ const EditResumeMarkup = (props) => {
                                       className="bg-gray-100 w-full h-10 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
                                     />
                                   </div>
-                                  <div className="w-11/12 mt-5 ml-1 mb-1">
+                                  <div className="w-11/12 mt-5 mb-1">
                                     <p className="text-sm text-gray-500">
                                       Description
                                     </p>
                                   </div>
-                                  <div className="w-11/12 p-4 ml-2 bg-gray-100 max-[767px]:w-full">
+                                  <div className="w-11/12 p-4 bg-gray-100 max-[767px]:w-full">
                                     <div className="flex flex-row items-center">
                                       {descIcons.map((item, index) => (
                                         <div
