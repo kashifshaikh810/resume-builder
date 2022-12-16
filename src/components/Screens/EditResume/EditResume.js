@@ -57,6 +57,26 @@ const EditResume = (props) => {
 
   // ------ end ----- //
 
+  // skills - section states
+  const [skillsInputList, setSkillsInputList] = useState([]);
+  const [skillsInput, setSkillsInput] = useState("Skills");
+  const [isShowSkillsInput, setIsShowSkillsInput] = useState(false);
+  const [isShowSkillsIcon, setIsShowSkillsIcon] = useState(false);
+  const [isShowSkillsBoxInput, setIsShowSkillsBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowSkillsBoxIcon, setIsShowSkillsBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+
+  const [isShowSkillsLevel, setIsShowSkillsLevel] = useState({
+    level: "Novice",
+    num: Number,
+  });
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -87,10 +107,6 @@ const EditResume = (props) => {
   const [isShowSummaryIcon, setIsShowSummaryIcon] = useState(false);
   const [isShowSummaryInput, setIsShowSummaryInput] = useState(false);
   const [summaryInput, setSummaryInput] = useState("Professional Summary");
-
-  const [skillsInput, setSkillsInput] = useState("Skills");
-  const [isShowSkillsInput, setIsShowSkillsInput] = useState(false);
-  const [isShowSkillsIcon, setIsShowSkillsIcon] = useState(false);
 
   const [hobbiesInput, setHobbiesInput] = useState("Hobbies");
   const [isShowHobbiesInput, setIsShowHobbiesInput] = useState(false);
@@ -187,6 +203,33 @@ const EditResume = (props) => {
       {
         label: "",
         link: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
+  // skills section functions
+  const skillsHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...skillsInputList];
+    list[index][name] = value;
+    setSkillsInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const skillsHandleRemoveClick = (index) => {
+    const list = [...skillsInputList];
+    list.splice(index, 1);
+    setSkillsInputList(list);
+  };
+
+  // handle click event of the Add button
+  const skillsHandleAddClick = () => {
+    setSkillsInputList([
+      ...skillsInputList,
+      {
+        skill: "",
+        level: "",
       },
     ]);
   };
@@ -396,6 +439,16 @@ const EditResume = (props) => {
       setIsShowWebsiteBoxInput={setIsShowWebsiteBoxInput}
       isShowWebsiteBoxIcon={isShowWebsiteBoxIcon}
       setIsShowWebsiteBoxIcon={setIsShowWebsiteBoxIcon}
+      skillsInputList={skillsInputList}
+      isShowSkillsBoxInput={isShowSkillsBoxInput}
+      setIsShowSkillsBoxInput={setIsShowSkillsBoxInput}
+      isShowSkillsBoxIcon={isShowSkillsBoxIcon}
+      setIsShowSkillsBoxIcon={setIsShowSkillsBoxIcon}
+      skillsHandleInputChange={skillsHandleInputChange}
+      skillsHandleRemoveClick={skillsHandleRemoveClick}
+      skillsHandleAddClick={skillsHandleAddClick}
+      isShowSkillsLevel={isShowSkillsLevel}
+      setIsShowSkillsLevel={setIsShowSkillsLevel}
     />
   );
 };

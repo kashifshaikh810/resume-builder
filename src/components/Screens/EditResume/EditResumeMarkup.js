@@ -26,6 +26,7 @@ import { SlReload } from "react-icons/sl";
 import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
 import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
 import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
+import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -885,12 +886,18 @@ const EditResumeMarkup = (props) => {
                       ))}
                     </div>
 
+                    <SkillsInputBox {...props} />
+
                     <MyButton
                       {...props}
-                      title="Add skill"
+                      title={
+                        props.skillsInputList?.length === 0
+                          ? "Add skill"
+                          : "Add one more skill"
+                      }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => {}}
+                      onPress={() => props.skillsHandleAddClick()}
                       loading={false}
                     />
                   </div>
