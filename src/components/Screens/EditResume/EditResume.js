@@ -73,7 +73,7 @@ const EditResume = (props) => {
 
   const [isShowSkillsLevel, setIsShowSkillsLevel] = useState({
     level: "Novice",
-    num: Number,
+    num: 0,
   });
   // ------ end ----- //
 
@@ -229,7 +229,7 @@ const EditResume = (props) => {
       ...skillsInputList,
       {
         skill: "",
-        level: "",
+        level: "Expert",
       },
     ]);
   };

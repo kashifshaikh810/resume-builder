@@ -11,6 +11,54 @@ const SkillsInputBox = (props) => {
     { com: "level", level: "Expert", id: 4 },
   ];
 
+  const textColorObj = {
+    Novice: "text-red-400",
+    Beginner: "text-orange-400",
+    Skillful: "text-yellow-400",
+    Experienced: "text-green-400",
+    Expert: "text-indigo-400",
+  };
+
+  const boxColorObj = {
+    "0-Novice": "bg-red-400",
+    "1-Beginner": "bg-orange-400",
+    "2-Skillful": "bg-yellow-400",
+    "3-Experienced": "bg-green-400",
+    "4-Expert": "bg-indigo-400",
+  };
+
+  const boxDisabledColorObj = {
+    "0-Novice": "bg-gray-400",
+    "1-Beginner": "bg-gray-400",
+    "2-Skillful": "bg-gray-400",
+    "3-Experienced": "bg-gray-400",
+    "4-Expert": "bg-gray-400",
+  };
+
+  const boxContainerColorObj = {
+    Novice: "bg-red-100",
+    Beginner: "bg-orange-100",
+    Skillful: "bg-yellow-100",
+    Experienced: "bg-green-100",
+    Expert: "bg-indigo-100",
+  };
+
+  const boxLineColorObj = {
+    Novice: "bg-red-300",
+    Beginner: "bg-orange-300",
+    Skillful: "bg-yellow-300",
+    Experienced: "bg-green-300",
+    Expert: "bg-indigo-300",
+  };
+
+  const boxDisabledLineColorObj = {
+    Novice: "bg-gray-300",
+    Beginner: "bg-gray-300",
+    Skillful: "bg-gray-300",
+    Experienced: "bg-gray-300",
+    Expert: "bg-gray-300",
+  };
+
   const websiteAndSocialSection = () => {
     if (props.skillsInputList) {
       return (
@@ -37,7 +85,9 @@ const SkillsInputBox = (props) => {
                   key={i}
                   className={`border border-gray-200 w-11/12 ${
                     props?.isShowSkillsBoxInput.show ? `h-auto` : `h-20`
-                  } mt-7 hover:cursor-pointer`}
+                  } mt-7 
+                       hover:cursor-pointer
+                  }`}
                   onClick={() =>
                     props?.isShowSkillsBoxInput.show === false &&
                     props.setIsShowSkillsBoxInput({
@@ -73,9 +123,11 @@ const SkillsInputBox = (props) => {
                             </p>
                           )}
                         </p>
-                        <p className="text-gray-400 text-sm truncate">
-                          {x.level}
-                        </p>
+                        {props?.isNotShowExpertLevel === false && (
+                          <p className="text-gray-400 text-sm truncate">
+                            {x.level}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div
@@ -132,108 +184,63 @@ const SkillsInputBox = (props) => {
                                 Level -
                               </p>
                               <p
-                                className={`text-sm text-gray-500 ${
-                                  (props.isShowSkillsLevel.level === "Novice" &&
-                                    props.isShowSkillsLevel.num === 0 &&
-                                    `text-red-400`) ||
-                                  (props.isShowSkillsLevel.level ===
-                                    "Beginner" &&
-                                    props.isShowSkillsLevel.num === 1 &&
-                                    `text-orange-400`) ||
-                                  (props.isShowSkillsLevel.level ===
-                                    "Skillful" &&
-                                    props.isShowSkillsLevel.num === 2 &&
-                                    `text-yellow-400`) ||
-                                  (props.isShowSkillsLevel.level ===
-                                    "Experienced" &&
-                                    props.isShowSkillsLevel.num === 3 &&
-                                    `text-green-400`) ||
-                                  (props.isShowSkillsLevel.level === "Expert" &&
-                                    props.isShowSkillsLevel.num === 4 &&
-                                    `text-indigo-400`)
+                                className={`text-sm ${
+                                  props?.isNotShowExpertLevel === false
+                                    ? textColorObj[x.level]
+                                    : null
+                                }  ${
+                                  props?.isNotShowExpertLevel === false
+                                    ? `text-gray-400`
+                                    : `text-gray-300`
                                 }`}
                               >
-                                {props.isShowSkillsLevel.level}
+                                {x.level}
                               </p>
                             </div>
                             <div
                               className={`${
-                                (props.isShowSkillsLevel.level === "Novice" &&
-                                  props.isShowSkillsLevel.num === 0 &&
-                                  `bg-red-100`) ||
-                                (props.isShowSkillsLevel.level === "Beginner" &&
-                                  props.isShowSkillsLevel.num === 1 &&
-                                  `bg-orange-100`) ||
-                                (props.isShowSkillsLevel.level === "Skillful" &&
-                                  props.isShowSkillsLevel.num === 2 &&
-                                  `bg-yellow-100`) ||
-                                (props.isShowSkillsLevel.level ===
-                                  "Experienced" &&
-                                  props.isShowSkillsLevel.num === 3 &&
-                                  `bg-green-100`) ||
-                                (props.isShowSkillsLevel.level === "Expert" &&
-                                  props.isShowSkillsLevel.num === 4 &&
-                                  `bg-indigo-100`)
+                                props?.isNotShowExpertLevel === false
+                                  ? boxContainerColorObj[x.level]
+                                  : `bg-blue-100`
                               } w-full h-10 flex flex-row items-center rounded-sm`}
                             >
                               {levelData.map((item, index) => {
                                 return (
                                   <div
                                     className="flex flex-row"
-                                    onClick={() =>
-                                      props.setIsShowSkillsLevel({
-                                        level: item.level,
-                                        num: item.id,
-                                      })
-                                    }
+                                    onClick={() => {
+                                      if (
+                                        props?.isNotShowExpertLevel === false
+                                      ) {
+                                        const e = {
+                                          target: {
+                                            name: item.com,
+                                            value: item.level,
+                                          },
+                                        };
+                                        props.skillsHandleInputChange(e, i);
+                                        props.setIsShowSkillsLevel({
+                                          level: item.level,
+                                          num: item.id,
+                                        });
+                                      }
+                                    }}
                                   >
                                     <div
                                       className={`${
-                                        (props.isShowSkillsLevel.level ===
-                                          "Novice" &&
-                                          props.isShowSkillsLevel.num ===
-                                            item.id &&
-                                          `bg-red-400`) ||
-                                        (props.isShowSkillsLevel.level ===
-                                          "Beginner" &&
-                                          props.isShowSkillsLevel.num ===
-                                            item.id &&
-                                          `bg-orange-400`) ||
-                                        (props.isShowSkillsLevel.level ===
-                                          "Skillful" &&
-                                          props.isShowSkillsLevel.num ===
-                                            item.id &&
-                                          `bg-yellow-400`) ||
-                                        (props.isShowSkillsLevel.level ===
-                                          "Experienced" &&
-                                          props.isShowSkillsLevel.num ===
-                                            item.id &&
-                                          `bg-green-400`) ||
-                                        (props.isShowSkillsLevel.level ===
-                                          "Expert" &&
-                                          props.isShowSkillsLevel.num ===
-                                            item.id &&
-                                          `bg-indigo-400`)
+                                        props?.isNotShowExpertLevel === false
+                                          ? boxColorObj[`${index}-${x.level}`]
+                                          : boxDisabledColorObj[
+                                              `${index}-${x.level}`
+                                            ]
                                       } p-5 pl-6 pr-6 rounded-sm`}
                                     />
                                     <div className="flex flex-1 items-center">
                                       <div
                                         className={`w-px h-3 ${
-                                          (props.isShowSkillsLevel.level ===
-                                            "Novice" &&
-                                            `bg-red-300`) ||
-                                          (props.isShowSkillsLevel.level ===
-                                            "Beginner" &&
-                                            `bg-orange-300`) ||
-                                          (props.isShowSkillsLevel.level ===
-                                            "Skillful" &&
-                                            `bg-yellow-300`) ||
-                                          (props.isShowSkillsLevel.level ===
-                                            "Experienced" &&
-                                            `bg-green-300`) ||
-                                          (props.isShowSkillsLevel.level ===
-                                            "Expert" &&
-                                            `bg-indigo-300`)
+                                          props?.isNotShowExpertLevel === false
+                                            ? boxLineColorObj[x.level]
+                                            : boxDisabledLineColorObj[x.level]
                                         }`}
                                       />
                                     </div>
