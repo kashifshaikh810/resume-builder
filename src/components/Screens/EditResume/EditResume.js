@@ -224,11 +224,11 @@ const EditResume = (props) => {
   };
 
   // handle click event of the Add button
-  const skillsHandleAddClick = () => {
+  const skillsHandleAddClick = (name) => {
     setSkillsInputList([
       ...skillsInputList,
       {
-        skill: "",
+        skill: name ? name : "",
         level: "Expert",
       },
     ]);

@@ -844,6 +844,9 @@ const EditResumeMarkup = (props) => {
                     <div className="flex flex-row flex-wrap">
                       {props.skillsData.map((item, index) => (
                         <div
+                          onClick={() => {
+                            props.skillsHandleAddClick(item.name);
+                          }}
                           className={`m-2 mb-0 ml-0 flex flex-row items-center p-3 pt-1.5 pb-1.5 rounded-md hover:cursor-pointer ${
                             props?.experienceLevelIsHovered.shown &&
                             props?.experienceLevelIsHovered.num === index
