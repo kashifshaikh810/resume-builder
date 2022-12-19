@@ -77,6 +77,21 @@ const EditResume = (props) => {
   });
   // ------ end ----- //
 
+  // languages - section states
+  const [languagesInputList, setLanguagesInputList] = useState([]);
+  const [languagesInput, setLanguagesInput] = useState("Languages");
+  const [isShowLanguagesInput, setIsShowLanguagesInput] = useState(false);
+  const [isShowLanguagesIcon, setIsShowLanguagesIcon] = useState(false);
+  const [isShowLanguagesBoxInput, setIsShowLanguagesBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowLanguagesBoxIcon, setIsShowLanguagesBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -111,10 +126,6 @@ const EditResume = (props) => {
   const [hobbiesInput, setHobbiesInput] = useState("Hobbies");
   const [isShowHobbiesInput, setIsShowHobbiesInput] = useState(false);
   const [isShowHobbiesIcon, setIsShowHobbiesIcon] = useState(false);
-
-  const [languagesInput, setLanguagesInput] = useState("Languages");
-  const [isShowLanguagesInput, setIsShowLanguagesInput] = useState(false);
-  const [isShowLanguagesIcon, setIsShowLanguagesIcon] = useState(false);
 
   const [titleInput, setTitleInput] = useState("Untitled");
   const [isShowTitleInput, setIsShowTitleInput] = useState(false);
@@ -230,6 +241,33 @@ const EditResume = (props) => {
       {
         skill: name ? name : "",
         level: "Expert",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
+  // Languages section functions
+  const languagesHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...languagesInputList];
+    list[index][name] = value;
+    setLanguagesInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const languagesHandleRemoveClick = (index) => {
+    const list = [...languagesInputList];
+    list.splice(index, 1);
+    setLanguagesInputList(list);
+  };
+
+  // handle click event of the Add button
+  const languagesHandleAddClick = () => {
+    setLanguagesInputList([
+      ...languagesInputList,
+      {
+        language: "",
+        level: "",
       },
     ]);
   };
@@ -449,6 +487,15 @@ const EditResume = (props) => {
       skillsHandleAddClick={skillsHandleAddClick}
       isShowSkillsLevel={isShowSkillsLevel}
       setIsShowSkillsLevel={setIsShowSkillsLevel}
+      languagesInputList={languagesInputList}
+      setLanguagesInputList={setLanguagesInputList}
+      isShowLanguagesBoxInput={isShowLanguagesBoxInput}
+      setIsShowLanguagesBoxInput={setIsShowLanguagesBoxInput}
+      isShowLanguagesBoxIcon={isShowLanguagesBoxIcon}
+      setIsShowLanguagesBoxIcon={setIsShowLanguagesBoxIcon}
+      languagesHandleInputChange={languagesHandleInputChange}
+      languagesHandleRemoveClick={languagesHandleRemoveClick}
+      languagesHandleAddClick={languagesHandleAddClick}
     />
   );
 };

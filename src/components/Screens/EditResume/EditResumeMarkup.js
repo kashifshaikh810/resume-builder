@@ -27,6 +27,7 @@ import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
 import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
 import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
 import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
+import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -1009,12 +1010,14 @@ const EditResumeMarkup = (props) => {
                       )}
                     </div>
 
+                    <LanguagesInputBox {...props} />
+
                     <MyButton
                       {...props}
                       title="Add language"
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 mt-3 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => {}}
+                      onPress={() => props.languagesHandleAddClick()}
                       loading={false}
                     />
                   </div>
