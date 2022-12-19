@@ -207,7 +207,11 @@ const SkillsInputBox = (props) => {
                               {levelData.map((item, index) => {
                                 return (
                                   <div
-                                    className="flex flex-row"
+                                    className={`flex flex-row ${
+                                      props?.isNotShowExpertLevel
+                                        ? `hover:cursor-default`
+                                        : ``
+                                    }`}
                                     onClick={() => {
                                       if (
                                         props?.isNotShowExpertLevel === false
