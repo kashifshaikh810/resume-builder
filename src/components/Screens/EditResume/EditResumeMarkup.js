@@ -28,6 +28,8 @@ import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
 import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
 import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
 import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
+import { HiUser } from "react-icons/hi";
+import { BsBagFill } from "react-icons/bs";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -70,10 +72,40 @@ const EditResumeMarkup = (props) => {
             }}
             onMouseLeave={() => props.setIsHovered(false)}
           >
-            <p>dwd</p>
+            <div className="p-5 pt-2">
+              <div className="flex flex-row">
+                {props?.profileImage && (
+                  <img
+                    src={props?.profileImage}
+                    alt="profile"
+                    className="w-8 h-8"
+                  />
+                )}
+                <div className={`${props?.profileImage ? `ml-3` : ``}`}>
+                  <p className="text-sm font-bold">first name last name</p>
+                  <p className="text-xs">Finance</p>
+                </div>
+              </div>
+
+              <div className="flex flex-row mt-3">
+                <HiUser className="text-xs mt-0.5" />
+                <div className="ml-1">
+                  <p className="text-xs font-bold">Profile</p>
+                  <p className="text-xs">epfijwejifwijefiefioew</p>
+                </div>
+              </div>
+
+              <div className="flex flex-row mt-3">
+                <BsBagFill className="text-xs mt-0.5" />
+                <div className="ml-1">
+                  <p className="text-xs font-bold">Employment History</p>
+                  <p className="text-xs">epfijwejifwijefiefioew</p>
+                </div>
+              </div>
+            </div>
 
             {props?.isHovered ? (
-              <div className="flex flex-1 justify-center items-center">
+              <div className="flex flex-1 justify-center items-center absolute top-64 left-72">
                 <div className="w-12 h-12 rounded-full bg-blue-500 flex justify-center items-center">
                   <BsArrowsAngleContract size={20} color="#fff" />
                 </div>
