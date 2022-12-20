@@ -1014,7 +1014,11 @@ const EditResumeMarkup = (props) => {
 
                     <MyButton
                       {...props}
-                      title="Add language"
+                      title={
+                        props.languagesInputList?.length === 0
+                          ? "Add language"
+                          : "Add one more language"
+                      }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 mt-3 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
                       onPress={() => props.languagesHandleAddClick()}

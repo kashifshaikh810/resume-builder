@@ -3,6 +3,13 @@ import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 const LanguagesInputBox = (props) => {
+  const dropDownData = [
+    { id: 0, name: "Select Level" },
+    { id: 1, name: "Native Speaker" },
+    { id: 2, name: "Highly Proficient" },
+    { id: 3, name: "Very good command" },
+  ];
+
   const LanguagesSection = () => {
     if (props.languagesInputList) {
       return (
@@ -69,7 +76,7 @@ const LanguagesInputBox = (props) => {
                         </p>
                         {props?.isNotShowExpertLevel === false && (
                           <p className="text-gray-400 text-sm truncate">
-                            {x.level}
+                            {x.level === "Select Level" ? "" : x.level}
                           </p>
                         )}
                       </div>
@@ -127,13 +134,18 @@ const LanguagesInputBox = (props) => {
                               <div className="w-full cursor-pointer">
                                 <p className="text-sm text-gray-500">Level</p>
                                 <select
+                                  name="level"
                                   className="bg-gray-100 w-full h-10 pl-4 mt-1 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
-                                  typeof="dropdown"
+                                  onChange={(e) =>
+                                    props.languagesHandleInputChange(e, i)
+                                  }
+                                  value={x.level}
                                 >
-                                  <option>Select Level</option>
-                                  <option>Native Speaker</option>
-                                  <option>Highly Proficient</option>
-                                  <option>Very good command</option>
+                                  {dropDownData.map((item, index) => {
+                                    return (
+                                      <option key={item.id}>{item.name}</option>
+                                    );
+                                  })}
                                 </select>
                               </div>
                             </div>
