@@ -30,6 +30,7 @@ import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
 import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
 import { HiUser } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
+import { IoMdSchool } from "react-icons/io";
 
 const EditResumeMarkup = (props) => {
   const descIcons = [
@@ -45,7 +46,7 @@ const EditResumeMarkup = (props) => {
   const previewCvSection = () => {
     if (props?.screenWidth >= 1030) {
       return (
-        <div className="bg-gray-500 flex flex-col w-6/12 min-h-screen h-96 fixed right-0">
+        <div className="bg-gray-500 flex flex-col flex-wrap w-6/12 min-h-screen h-96 fixed right-0 unselectable">
           <div className="flex flex-row items-center pl-16 ml-16">
             <IoCloudDone size={30} className="text-gray-600 ml-2 mr-1" />
             <p className="text-xs text-white">Saved</p>
@@ -66,40 +67,121 @@ const EditResumeMarkup = (props) => {
           </div>
 
           <div
-            className="bg-white w-7/12 flex flex-1 self-center rounded-md hover:cursor-pointer"
+            className="bg-white w-7/12 overflow-hidden flex flex-1 self-center rounded-md hover:cursor-pointer"
             onMouseEnter={() => {
               props.setIsHovered(true);
             }}
             onMouseLeave={() => props.setIsHovered(false)}
           >
-            <div className="p-5 pt-2">
-              <div className="flex flex-row">
-                {props?.profileImage && (
-                  <img
-                    src={props?.profileImage}
-                    alt="profile"
-                    className="w-8 h-8"
-                  />
-                )}
-                <div className={`${props?.profileImage ? `ml-3` : ``}`}>
-                  <p className="text-sm font-bold">first name last name</p>
-                  <p className="text-xs">Finance</p>
+            <div className="p-5 pt-2 grid grid-cols-2 gap-2">
+              <div>
+                <div className="flex flex-row items-center">
+                  {props?.profileImage && (
+                    <img
+                      src={props?.profileImage}
+                      alt="profile"
+                      className="w-8 h-8"
+                    />
+                  )}
+                  <div className={`${props?.profileImage ? `ml-3` : ``}`}>
+                    <p className="text-sm font-bold">first name last name</p>
+                    <p className="text-[6px] text-gray-600">Finance</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-row mt-3">
+                  <HiUser className="text-[6px] mt-0.5" />
+                  <div className="ml-1">
+                    <p className="text-[7px] font-semibold">Profile</p>
+                    <p className="text-[6px] text-gray-600">
+                      epfijwejifwijefiefioew
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-row mt-3">
+                  <BsBagFill className="text-[6px] mt-0.5" />
+                  <div className="ml-1">
+                    <p className="text-[7px] font-semibold">
+                      Employment History
+                    </p>
+                    <p className="text-[6px] text-gray-600">
+                      epfijwej at ifwije, fiefioew
+                    </p>
+                    <p className="text-[6px] text-gray-400">
+                      December 2022 - 2022
+                    </p>
+                    <p className="text-[6px] text-gray-600">reigjierjirjige</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-row mt-3">
+                  <IoMdSchool className="text-[6px] mt-0.5" />
+                  <div className="ml-1">
+                    <p className="text-[7px] font-semibold">Education</p>
+                    <p className="text-[6px] text-gray-600">
+                      epfijwej, ifwije, fiefioew
+                    </p>
+                    <p className="text-[6px] text-gray-400">
+                      July 2022 - April 2022
+                    </p>
+                    <p className="text-[6px] text-gray-600">reigjierjirjige</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex flex-row mt-3">
-                <HiUser className="text-xs mt-0.5" />
-                <div className="ml-1">
-                  <p className="text-xs font-bold">Profile</p>
-                  <p className="text-xs">epfijwejifwijefiefioew</p>
+              <div
+                className={`relative left-16 ml-6 ${
+                  props?.profileImage ? `top-14 mt-1` : `top-10`
+                }`}
+              >
+                <p className="text-[7px] font-semibold">Details</p>
+                <div>
+                  <p className="text-[6px] text-gray-600">address</p>
+                  <p className="text-[6px] text-gray-600">wwwwwwww, 2013</p>
+                  <p className="text-[6px] text-gray-600">gijtjgijtg</p>
+                  <p className="text-[6px] text-gray-600">0332244343433</p>
+                  <p className="text-[6px] text-blue-400">
+                    kashifshaikh910ssg@gmail.com
+                  </p>
                 </div>
-              </div>
 
-              <div className="flex flex-row mt-3">
-                <BsBagFill className="text-xs mt-0.5" />
-                <div className="ml-1">
-                  <p className="text-xs font-bold">Employment History</p>
-                  <p className="text-xs">epfijwejifwijefiefioew</p>
+                <div className="mt-2">
+                  <p className="text-[6px] text-gray-600">
+                    Date / Place of birth
+                  </p>
+                  <p className="text-[6px] text-black">24</p>
+                  <p className="text-[6px] text-black">323</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[6px] text-gray-600">Nationality</p>
+                  <p className="text-[6px] text-black">text</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[6px] text-gray-600">Driving License</p>
+                  <p className="text-[6px] text-black">text</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[7px] font-semibold">Links</p>
+                  <p className="text-[6px] text-blue-400">text</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[7px] font-semibold">Skills</p>
+                  <p className="text-[6px] text-black">communication</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[7px] font-semibold">Hobbies</p>
+                  <p className="text-[6px] text-black">efiwijoowijf</p>
+                </div>
+
+                <div className="mt-2">
+                  <p className="text-[7px] font-semibold">Languages</p>
+                  <p className="text-[6px] text-black">languages names</p>
                 </div>
               </div>
             </div>
