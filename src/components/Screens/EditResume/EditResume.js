@@ -161,6 +161,9 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
+  // navigation state
+  const navigate = props.navigate();
+
   // Education section functions
   const educationHandleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -496,6 +499,7 @@ const EditResume = (props) => {
       languagesHandleInputChange={languagesHandleInputChange}
       languagesHandleRemoveClick={languagesHandleRemoveClick}
       languagesHandleAddClick={languagesHandleAddClick}
+      navigate={navigate}
     />
   );
 };

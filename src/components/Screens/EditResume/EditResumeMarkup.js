@@ -196,7 +196,12 @@ const EditResumeMarkup = (props) => {
           </div>
 
           <div className="flex flex-row items-center mt-2 p-1 mb-2 ml-12 pl-12">
-            <div className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-slate-400 hover:cursor-pointer hover:rounded-full">
+            <div
+              className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-slate-400 hover:cursor-pointer hover:rounded-full"
+              onClick={() => {
+                props.navigate("/app/resumes/id/templates");
+              }}
+            >
               <GrCodeSandbox
                 size={22}
                 color="green"
