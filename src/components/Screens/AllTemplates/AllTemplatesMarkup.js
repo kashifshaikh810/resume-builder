@@ -7,37 +7,79 @@ import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import "./styles.css";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { TiTick } from "react-icons/ti";
 
 const AllTemplatesMarkup = (props) => {
+  const { isSelectedTemplate, setIsSelectedTemplate } = props;
+
   const selectTemplatesData = [
     {
       id: 0,
       name: "Toronto",
+      value: "toronto",
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/3367/persistent-resource/toronto-resume-templates.jpg",
     },
     {
       id: 1,
       name: "Stockholm",
+      value: "stockholm",
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/370/persistent-resource/stockholm-resume-templates.jpg",
     },
     {
       id: 2,
       name: "New York",
+      value: "new-york",
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/389/persistent-resource/new-york-resume-templates.jpg",
     },
     {
       id: 3,
       name: "Vienna",
+      value: "vienna",
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/406/persistent-resource/vienna-resume-templates.jpg",
     },
   ];
 
+  // const selectTempColorObj = {
+  //   "0-toronto": "border-[4px] border-blue-400",
+  //   "1-stockholm": "border-[4px] border-blue-400",
+  //   "2-new-york": "border-[4px] border-blue-400",
+  //   "3-vienna": "border-[4px] border-blue-400",
+  // };
+
+  // const selectTempColorObj = () => {
+  //   switch (isSelectedTemplate.numOfSelectedVal && isSelectedTemplate.nameOfSelectedVal) {
+  //     case isSelectedTemplate.numOfSelectedVal ==0:
+
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+  //   if (
+  //     isSelectedTemplate.numOfSelectedVal === 0 &&
+  //     isSelectedTemplate.nameOfSelectedVal === "toronto"
+  //   ) {
+  //     return "border-[4px] border-blue-400";
+  //   } else if (
+  //     isSelectedTemplate.numOfSelectedVal === 1 &&
+  //     isSelectedTemplate.nameOfSelectedVal === "stockholm"
+  //   ) {
+  //     return "border-[4px] border-blue-400";
+  //   }
+  // };
+
   return (
     <div className="flex w-full h-[1050px] flex-col bg-gray-700">
-      <div className="flex flex-row items-center w-30 justify-end bg-black p-1.5 fixed left-[50rem] top-[35rem] rounded-full">
-        <RiArrowLeftSLine size={22} className="text-gray-400" />
+      <div className="flex flex-row items-center w-30 justify-end bg-black p-1.5 fixed left-[50rem] top-[35rem] rounded-full hover:cursor-default unselectable">
+        <RiArrowLeftSLine
+          size={22}
+          className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+        />
         <p className="text-white ml-2 mr-2">1 / 1</p>
-        <RiArrowRightSLine size={22} className="text-gray-400" />
+        <RiArrowRightSLine
+          size={22}
+          className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+        />
       </div>
       <div className="bg-black w-full h-16 flex flex-row pl-6 pr-6 fixed z-50">
         <div className="flex items-center">
@@ -75,12 +117,26 @@ const AllTemplatesMarkup = (props) => {
             return (
               <div key={index} className="flex flex-col items-center w-full">
                 <p className="text-white text-lg pb-1">{item.name}</p>
-                <img src={item.uri} className="w-11/12 h-auto rounded-sm" />
+                {/* {selectTempColorObj() && (
+                  <div className="bg-blue-400 w-10 h-10 rounded-full absolute top-[14rem] flex justify-center items-center">
+                    <TiTick className="text-white text-xl" />
+                  </div>
+                )} */}
+                {/* <img
+                  src={item.uri}
+                  alt="temps"
+                  className={`w-11/12 h-auto rounded-[7px] opacity-1 hover:cursor-pointer ${selectTempColorObj()}`}
+                  onClick={() => {
+                    setIsSelectedTemplate({
+                      nameOfSelectedVal: item.value,
+                      numOfSelectedVal: item.id,
+                    });
+                  }}
+                /> */}
               </div>
             );
           })}
         </div>
-        {/* <div className="w-[2px] h-full bg-gray-300" /> */}
         <div className="flex flex-col w-full h-[930px] border-l border-gray-600 ml-5 pl-10 pb-10 unselectable">
           <div className="flex bg-white w-full overflow-hidden h-[900px] self-center rounded-md hover:default">
             <div className="p-14 grid grid-cols-2 gap-2">
