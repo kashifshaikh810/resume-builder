@@ -39,34 +39,14 @@ const AllTemplatesMarkup = (props) => {
     },
   ];
 
-  // const selectTempColorObj = {
-  //   "0-toronto": "border-[4px] border-blue-400",
-  //   "1-stockholm": "border-[4px] border-blue-400",
-  //   "2-new-york": "border-[4px] border-blue-400",
-  //   "3-vienna": "border-[4px] border-blue-400",
-  // };
-
-  // const selectTempColorObj = () => {
-  //   switch (isSelectedTemplate.numOfSelectedVal && isSelectedTemplate.nameOfSelectedVal) {
-  //     case isSelectedTemplate.numOfSelectedVal ==0:
-
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-  //   if (
-  //     isSelectedTemplate.numOfSelectedVal === 0 &&
-  //     isSelectedTemplate.nameOfSelectedVal === "toronto"
-  //   ) {
-  //     return "border-[4px] border-blue-400";
-  //   } else if (
-  //     isSelectedTemplate.numOfSelectedVal === 1 &&
-  //     isSelectedTemplate.nameOfSelectedVal === "stockholm"
-  //   ) {
-  //     return "border-[4px] border-blue-400";
-  //   }
-  // };
+  const selectTempColorObj = (item) => {
+    if (
+      isSelectedTemplate.numOfSelectedVal === item.id &&
+      isSelectedTemplate.nameOfSelectedVal === item.value
+    ) {
+      return "border-[4px] border-blue-400";
+    }
+  };
 
   return (
     <div className="flex w-full h-[1050px] flex-col bg-gray-700">
@@ -115,24 +95,30 @@ const AllTemplatesMarkup = (props) => {
         <div className="grid grid-cols-2 gap-0 overflow-auto h-screen w-11/12 ml-4">
           {selectTemplatesData.map((item, index) => {
             return (
-              <div key={index} className="flex flex-col items-center w-full">
+              <div
+                key={index}
+                className="flex flex-col items-center w-full relative"
+              >
                 <p className="text-white text-lg pb-1">{item.name}</p>
-                {/* {selectTempColorObj() && (
-                  <div className="bg-blue-400 w-10 h-10 rounded-full absolute top-[14rem] flex justify-center items-center">
+                {selectTempColorObj(item) && (
+                  <div className="bg-blue-400 w-10 h-10 rounded-full absolute top-[8rem] flex justify-center items-center">
                     <TiTick className="text-white text-xl" />
                   </div>
-                )} */}
-                {/* <img
+                )}
+                <img
                   src={item.uri}
                   alt="temps"
-                  className={`w-11/12 h-auto rounded-[7px] opacity-1 hover:cursor-pointer ${selectTempColorObj()}`}
+                  className={`w-11/12 h-auto rounded-[7px] opacity-1 hover:cursor-pointer
+                  hover:border-[4px] hover:border-blue-400 ${selectTempColorObj(
+                    item
+                  )}`}
                   onClick={() => {
                     setIsSelectedTemplate({
                       nameOfSelectedVal: item.value,
                       numOfSelectedVal: item.id,
                     });
                   }}
-                /> */}
+                />
               </div>
             );
           })}
