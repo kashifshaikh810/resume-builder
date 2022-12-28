@@ -91,8 +91,8 @@ const AllTemplatesMarkup = (props) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-[400px_minmax(800px,_1fr)_100px] mt-12 pt-12 mb-5 pb-5">
-        <div className="grid grid-cols-2 gap-0 overflow-auto h-screen w-11/12 ml-4">
+      <div className="grid grid-cols-[400px_minmax(800px,_1fr)_100px] max-[1029px]:grid-cols-[200px_minmax(800px,_1fr)_100px] max-[1006px]:grid-cols-[200px_minmax(750px,_1fr)_100px] max-[980px]:grid-cols-[200px_minmax(700px,_1fr)_100px] max-[915px]:grid-cols-[200px_minmax(650px,_1fr)_100px] mt-12 pt-12 mb-5 pb-5">
+        <div className="grid grid-cols-2 gap-0 overflow-y-auto h-screen max-[1029px]:grid-cols-1 max-[1029px]:h-[900px] w-11/12 ml-4">
           {selectTemplatesData.map((item, index) => {
             return (
               <div
@@ -109,9 +109,8 @@ const AllTemplatesMarkup = (props) => {
                   src={item.uri}
                   alt="temps"
                   className={`w-11/12 h-auto rounded-[7px] opacity-1 hover:cursor-pointer
-                  hover:border-[4px] hover:border-blue-400 ${selectTempColorObj(
-                    item
-                  )}`}
+                  hover:border-[4px] hover:border-blue-400 
+                  max-[1029px]:mb-4 ${selectTempColorObj(item)}`}
                   onClick={() => {
                     setIsSelectedTemplate({
                       nameOfSelectedVal: item.value,
@@ -123,8 +122,8 @@ const AllTemplatesMarkup = (props) => {
             );
           })}
         </div>
-        <div className="flex flex-col w-full h-[930px] border-l border-gray-600 ml-5 pl-10 pb-10 unselectable">
-          <div className="flex bg-white w-full overflow-hidden h-[900px] self-center rounded-md hover:default">
+        <div className="flex flex-col w-full h-[930px] border-l border-gray-600 ml-5 max-[1029px]:pl-1 pl-10 pb-10 unselectable">
+          <div className="flex bg-white w-full max-[1029px]:w-11/12 overflow-hidden h-[900px] self-center rounded-md hover:default">
             <div className="p-14 grid grid-cols-2 gap-2">
               <div>
                 <div className="flex flex-row items-center">
@@ -136,102 +135,155 @@ const AllTemplatesMarkup = (props) => {
                     />
                   )}
                   <div className={`${props?.profileImage ? `ml-3` : ``}`}>
-                    <p className="text-base font-bold">first name last name</p>
-                    <p className="text-base text-gray-600">Finance</p>
+                    <p className="text-base max-[1004px]:text-[14px] font-bold">
+                      first name last name
+                    </p>
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
+                      Finance
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex flex-row mt-3">
-                  <HiUser className="text-base mt-0.5" />
+                  <HiUser className="text-base max-[1004px]:text-[14px] mt-0.5" />
                   <div className="ml-1">
-                    <p className="text-base font-semibold">Profile</p>
-                    <p className="text-base text-gray-600">
+                    <p className="text-base max-[1004px]:text-[14px] font-semibold">
+                      Profile
+                    </p>
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
                       epfijwejifwijefiefioew
                     </p>
                   </div>
                 </div>
 
                 <div className="flex flex-row mt-3">
-                  <BsBagFill className="text-base mt-0.5" />
+                  <BsBagFill className="text-base max-[1004px]:text-[14px] mt-0.5" />
                   <div className="ml-1">
-                    <p className="text-base font-semibold">
+                    <p className="text-base max-[1004px]:text-[14px] font-semibold">
                       Employment History
                     </p>
-                    <p className="text-base text-gray-600">
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
                       epfijwej at ifwije, fiefioew
                     </p>
-                    <p className="text-base text-gray-400">
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-400">
                       December 2022 - 2022
                     </p>
-                    <p className="text-base text-gray-600">reigjierjirjige</p>
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
+                      reigjierjirjige
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex flex-row mt-3">
-                  <IoMdSchool className="text-base mt-1" />
+                  <IoMdSchool className="text-base max-[1004px]:text-[14px] mt-1" />
                   <div className="ml-1">
-                    <p className="text-base font-semibold">Education</p>
-                    <p className="text-base text-gray-600">
+                    <p className="text-base max-[1004px]:text-[14px] font-semibold">
+                      Education
+                    </p>
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
                       epfijwej, ifwije, fiefioew
                     </p>
-                    <p className="text-base text-gray-400">
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-400">
                       July 2022 - April 2022
                     </p>
-                    <p className="text-base text-gray-600">reigjierjirjige</p>
+                    <p className="text-base max-[1004px]:text-[14px] text-gray-600">
+                      reigjierjirjige
+                    </p>
                   </div>
                 </div>
               </div>
 
               <div
-                className={`relative left-44 ml-6 ${
+                className={`relative left-44 ml-6
+                max-[1029px]:left-40 max-[980px]:left-36 max-[915px]:left-24 ${
                   props?.profileImage ? `top-14 mt-1` : `top-16`
                 }`}
               >
-                <p className="text-sm font-semibold">Details</p>
+                <p className="text-sm max-[1004px]:text-[12px] font-semibold">
+                  Details
+                </p>
                 <div>
-                  <p className="text-sm text-gray-600">address</p>
-                  <p className="text-sm text-gray-600">wwwwwwww, 2013</p>
-                  <p className="text-sm text-gray-600">gijtjgijtg</p>
-                  <p className="text-sm text-gray-600">0332244343433</p>
-                  <p className="text-sm text-blue-400">
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    address
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    wwwwwwww, 2013
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    gijtjgijtg
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    0332244343433
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-blue-400">
                     kashifshaikh910ssg@gmail.com
                   </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm text-gray-600">Date / Place of birth</p>
-                  <p className="text-sm text-black">24</p>
-                  <p className="text-sm text-black">323</p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    Date / Place of birth
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    24
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    323
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm text-gray-600">Nationality</p>
-                  <p className="text-sm text-black">text</p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    Nationality
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    text
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm text-gray-600">Driving License</p>
-                  <p className="text-sm text-black">text</p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-gray-600">
+                    Driving License
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    text
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm font-semibold">Links</p>
-                  <p className="text-sm text-blue-400">text</p>
+                  <p className="text-sm max-[1004px]:text-[12px] font-semibold">
+                    Links
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-blue-400">
+                    text
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm font-semibold">Skills</p>
-                  <p className="text-sm text-black">communication</p>
+                  <p className="text-sm max-[1004px]:text-[12px] font-semibold">
+                    Skills
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    communication
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm font-semibold">Hobbies</p>
-                  <p className="text-sm text-black">efiwijoowijf</p>
+                  <p className="text-sm max-[1004px]:text-[12px] font-semibold">
+                    Hobbies
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    efiwijoowijf
+                  </p>
                 </div>
 
                 <div className="mt-2">
-                  <p className="text-sm font-semibold">Languages</p>
-                  <p className="text-sm text-black">languages names</p>
+                  <p className="text-sm max-[1004px]:text-[12px] font-semibold">
+                    Languages
+                  </p>
+                  <p className="text-sm max-[1004px]:text-[12px] text-black">
+                    languages names
+                  </p>
                 </div>
               </div>
             </div>
