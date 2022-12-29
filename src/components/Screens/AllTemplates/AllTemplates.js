@@ -8,12 +8,16 @@ const AllTemplates = (props) => {
     numOfSelectedVal: Number,
   });
 
+  const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
+
   return (
     <AllTemplatesMarkup
       {...props}
       navigate={navigate}
       isSelectedTemplate={isSelectedTemplate}
       setIsSelectedTemplate={setIsSelectedTemplate}
+      isShowTemplateCard={isShowTemplateCard}
+      setIsShowTemplateCard={setIsShowTemplateCard}
     />
   );
 };
