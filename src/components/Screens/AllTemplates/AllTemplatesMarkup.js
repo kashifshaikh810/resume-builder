@@ -58,14 +58,16 @@ const AllTemplatesMarkup = (props) => {
 
   return (
     <div
-      className="flex w-full h-[1050px] 
+      className={`flex w-full h-[1050px] 
       max-[704px]:h-[998px]
       max-[768px]:h-[1074px]
       max-[610px]:h-[948px]
       max-[570px]:h-[898px]
       max-[535px]:h-[848px]
       max-[500px]:h-[798px]
-    flex-col bg-gray-700"
+    flex-col bg-gray-700
+    ${isSelectedTemplate ? `overscroll-y-none` : `overscroll-y-auto`}
+    `}
     >
       <div
         className="flex flex-row items-center w-30 justify-end
@@ -105,8 +107,22 @@ const AllTemplatesMarkup = (props) => {
           </div>
         </div>
         <div
-          className="flex flex-row items-center hover:cursor-pointer"
-          onClick={() => setIsShowTemplateCard(!isShowTemplateCard)}
+          className="hidden
+      max-[768px]:flex
+      flex-row items-center hover:cursor-pointer"
+          onClick={() => {
+            // if (
+            //   isSelectedTemplate ? `overscroll-y-none` : `overscroll-y-auto` &&
+            //   typeof window != "undefined" &&
+            //   window.document
+            // ) {
+            //   document.body.style.overflow = "hidden";
+            // }
+            // if (isSelectedTemplate === false) {
+            //   document.body.style.overflow = "scroll";
+            // }
+            setIsShowTemplateCard(!isShowTemplateCard);
+          }}
         >
           <GiHamburgerMenu className="text-white text-3xl" />
         </div>
@@ -130,13 +146,17 @@ const AllTemplatesMarkup = (props) => {
           />
         </div>
 
-        <div className="flex items-center hover:cursor-pointer">
+        <div
+          className="items-center hover:cursor-pointer
+        hidden
+        max-[768px]:flex"
+        >
           <MdClose className="text-white text-3xl hover:text-blue-500" />
         </div>
       </div>
 
-      <div className="h-[1200px] fixed w-full z-10 inset-0">
-        {isShowTemplateCard && (
+      {isShowTemplateCard && (
+        <div className="fixed z-[5] inset-[0px]">
           <div
             className="hidden
       max-[768px]:flex z-50 fixed top-[30rem] bg-black w-full h-36
@@ -145,8 +165,8 @@ const AllTemplatesMarkup = (props) => {
           >
             <p className="text-white text-xl">hello world</p>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div
         className="grid grid-cols-[400px_minmax(800px,_1fr)_100px]
@@ -158,10 +178,11 @@ const AllTemplatesMarkup = (props) => {
         max-[830px]:grid-cols-[200px_minmax(550px,_1fr)_100px]
         max-[768px]:grid-cols-1
         mt-12 pt-12 mb-5 pb-5
+        overscroll-y-none
         "
       >
         <div
-          className="grid grid-cols-2 gap-0 overflow-y-auto h-screen
+          className="grid grid-cols-2 gap-0 overflow-y-auto overscroll-y-none h-screen
          max-[1029px]:grid-cols-1 max-[1029px]:h-[900px]
          max-[768px]:hidden
           w-11/12 ml-4"
@@ -437,7 +458,6 @@ const AllTemplatesMarkup = (props) => {
                 max-[570px]:left-28
                 max-[535px]:left-20
                 max-[500px]:left-20
-                max-[500px]:left-14
                 max-[473px]:left-8
                 ${props?.profileImage ? `top-14 mt-1` : `top-16`}`}
               >
@@ -687,7 +707,7 @@ const AllTemplatesMarkup = (props) => {
           </div>
         </div>
         <div
-          className="block 
+          className="hidden 
       max-[768px]:flex flex-1 justify-center
       "
         >
