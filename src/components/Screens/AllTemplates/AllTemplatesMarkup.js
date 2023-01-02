@@ -18,6 +18,7 @@ const AllTemplatesMarkup = (props) => {
     setIsSelectedTemplate,
     isShowTemplateCard,
     setIsShowTemplateCard,
+    navigate,
   } = props;
 
   const selectTemplatesData = [
@@ -47,24 +48,28 @@ const AllTemplatesMarkup = (props) => {
     },
   ];
 
-  const selectTempColorObj = (item) => {
+  const selectTempColorObj = (item, index) => {
     if (
       isSelectedTemplate.numOfSelectedVal === item.id &&
       isSelectedTemplate.nameOfSelectedVal === item.value
     ) {
-      return "border-[4px] border-blue-400";
+      if (isSelectedTemplate?.isChanged) {
+        return "text-white";
+      } else {
+        return "border-[4px] border-blue-400";
+      }
     }
   };
 
   return (
     <div
       className={`flex w-full h-[1050px] 
-      max-[704px]:h-[998px]
+      max-[704px]:h-[1050px]
       max-[768px]:h-[1074px]
-      max-[610px]:h-[948px]
-      max-[570px]:h-[898px]
-      max-[535px]:h-[848px]
-      max-[500px]:h-[798px]
+      max-[610px]:h-[970px]
+      max-[570px]:h-[920px]
+      max-[535px]:h-[870px]
+      max-[500px]:h-[820px]
     flex-col bg-gray-700
     ${isSelectedTemplate ? `overscroll-y-none` : `overscroll-y-auto`}
     `}
@@ -100,7 +105,7 @@ const AllTemplatesMarkup = (props) => {
         >
           <div
             className="flex flex-row items-center hover:cursor-pointer hover:bg-gray-700 rounded-full pl-0.5 pr-2.5"
-            onClick={() => props.navigate("/app/resumes/id/edit")}
+            onClick={() => navigate("/app/resumes/id/edit")}
           >
             <BiChevronLeft className="text-white text-3xl" />
             <p className="text-white text-base">Back to editor</p>
@@ -111,17 +116,22 @@ const AllTemplatesMarkup = (props) => {
       max-[768px]:flex
       flex-row items-center hover:cursor-pointer"
           onClick={() => {
-            // if (
-            //   isSelectedTemplate ? `overscroll-y-none` : `overscroll-y-auto` &&
-            //   typeof window != "undefined" &&
-            //   window.document
-            // ) {
-            //   document.body.style.overflow = "hidden";
-            // }
-            // if (isSelectedTemplate === false) {
-            //   document.body.style.overflow = "scroll";
-            // }
             setIsShowTemplateCard(!isShowTemplateCard);
+            if (!isShowTemplateCard) {
+              setIsSelectedTemplate({
+                nameOfSelectedVal: isSelectedTemplate.nameOfSelectedVal,
+                numOfSelectedVal: isSelectedTemplate.numOfSelectedVal,
+                isChanged: true,
+              });
+            }
+            !isShowTemplateCard
+              ? (document.body.style.overflow = "hidden")
+              : (document.body.style.overflow = "unset") &&
+                setIsSelectedTemplate({
+                  nameOfSelectedVal: isSelectedTemplate.nameOfSelectedVal,
+                  numOfSelectedVal: isSelectedTemplate.numOfSelectedVal,
+                  isChanged: false,
+                });
           }}
         >
           <GiHamburgerMenu className="text-white text-3xl" />
@@ -131,7 +141,11 @@ const AllTemplatesMarkup = (props) => {
           <MyButton
             {...props}
             title="Download PDF"
-            className="bg-blue-500 p-2 pl-6 pr-6 rounded-md hover:bg-blue-600 hover:cursor-pointer"
+            className={`bg-blue-500 p-2 pl-6 pr-6 rounded-md ${
+              isShowTemplateCard
+                ? `cursor-default`
+                : `hover:bg-blue-600 hover:cursor-pointer`
+            }`}
             textStyle="text-white font-bold text-center"
             onPress={() => {}}
             loading={false}
@@ -139,7 +153,11 @@ const AllTemplatesMarkup = (props) => {
           <MyButton
             {...props}
             title="..."
-            className="bg-blue-500 ml-2 p-2 pl-4 pr-4 rounded-md hover:bg-blue-600 hover:cursor-pointer"
+            className={`bg-blue-500 ml-2 p-2 pl-4 pr-4 rounded-md ${
+              isShowTemplateCard
+                ? `cursor-default`
+                : `hover:bg-blue-600 hover:cursor-pointer`
+            }`}
             textStyle="text-white font-bold text-center"
             onPress={() => {}}
             loading={false}
@@ -147,11 +165,20 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         <div
-          className="items-center hover:cursor-pointer
+          className={`items-center ${
+            isShowTemplateCard ? `` : `hover:cursor-pointer`
+          }
         hidden
-        max-[768px]:flex"
+        max-[768px]:flex`}
+          onClick={() =>
+            isShowTemplateCard === false && navigate("/app/resumes/id/edit")
+          }
         >
-          <MdClose className="text-white text-3xl hover:text-blue-500" />
+          <MdClose
+            className={`text-white text-3xl ${
+              isShowTemplateCard ? `` : `hover:text-blue-500`
+            }`}
+          />
         </div>
       </div>
 
@@ -160,10 +187,38 @@ const AllTemplatesMarkup = (props) => {
           <div
             className="hidden
       max-[768px]:flex z-50 fixed top-[30rem] bg-black w-full h-36
-      delay-300 duration-300
+      delay-300 duration-300 flex-col
       "
           >
-            <p className="text-white text-xl">hello world</p>
+            <div className="flex w-full justify-center items-center pt-5 flex-col">
+              <p className="text-white text-[12px] tracking-[1.8px] font-[600]">
+                TEMPLATE
+              </p>
+              <div className="flex flex-row mt-2">
+                {selectTemplatesData.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="cursor-default"
+                      onClick={() => {
+                        setIsSelectedTemplate({
+                          nameOfSelectedVal: item.value,
+                          numOfSelectedVal: item.id,
+                          isChanged: true,
+                        });
+                      }}
+                    >
+                      <p
+                        className={`text-gray-600 text-base pb-1 pl-3 ml-3
+                      ${selectTempColorObj(item, index)}`}
+                      >
+                        {item.name}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       )}

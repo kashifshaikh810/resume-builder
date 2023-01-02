@@ -6,6 +6,7 @@ const AllTemplates = (props) => {
   const [isSelectedTemplate, setIsSelectedTemplate] = useState({
     nameOfSelectedVal: "",
     numOfSelectedVal: Number,
+    isChanged: false,
   });
 
   const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
