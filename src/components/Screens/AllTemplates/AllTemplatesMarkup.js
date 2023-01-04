@@ -89,12 +89,30 @@ const AllTemplatesMarkup = (props) => {
       >
         <RiArrowLeftSLine
           size={22}
-          className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+          className={`rounded-full  ${
+            props.page > 1
+              ? `text-white hover:cursor-pointer hover:bg-gray-600`
+              : `text-gray-600`
+          }`}
+          onClick={() =>
+            props.page > 1 ? props.setPage(props.page - 1) : null
+          }
         />
-        <p className="text-white ml-2 mr-2">1 / 1</p>
+        <p className="text-white ml-2 mr-2">
+          {props.page} / {props.totalPage}
+        </p>
         <RiArrowRightSLine
           size={22}
-          className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+          className={`rounded-full ${
+            props.page !== props.totalPage
+              ? `text-white hover:cursor-pointer hover:bg-gray-600`
+              : `text-gray-600`
+          }`}
+          onClick={() =>
+            props.page !== props.totalPage
+              ? props.setPage(props.page + 1)
+              : null
+          }
         />
       </div>
       <div className="bg-black w-full h-16 flex flex-row pl-6 pr-6 fixed z-50">
@@ -296,12 +314,30 @@ const AllTemplatesMarkup = (props) => {
         >
           <RiArrowLeftSLine
             size={22}
-            className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+            className={`rounded-full  ${
+              props.page > 1
+                ? `text-white hover:cursor-pointer hover:bg-gray-600`
+                : `text-gray-600`
+            }`}
+            onClick={() =>
+              props.page > 1 ? props.setPage(props.page - 1) : null
+            }
           />
-          <p className="text-white ml-2 mr-2">1 / 1</p>
+          <p className="text-white ml-2 mr-2">
+            {props.page} / {props.totalPage}
+          </p>
           <RiArrowRightSLine
             size={22}
-            className="text-white hover:bg-gray-600 rounded-full hover:cursor-pointer"
+            className={`rounded-full ${
+              props.page !== props.totalPage
+                ? `text-white hover:cursor-pointer hover:bg-gray-600`
+                : `text-gray-600`
+            }`}
+            onClick={() =>
+              props.page !== props.totalPage
+                ? props.setPage(props.page + 1)
+                : null
+            }
           />
         </div>
       </div>
