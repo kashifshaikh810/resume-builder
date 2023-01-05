@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import "./styles.css";
+import ProfileImage from "../images/profile.png";
 
 const TorontoTemplate = (props) => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const TorontoTemplate = (props) => {
         <div className="p-5 pt-7">
           <div className="flex flex-row">
             <img
-              src="https://picsum.photos/seed/picsum/200/300"
+              src={ProfileImage}
               alt="prof"
               className="w-[6rem] h-[8.5rem]"
             />
@@ -64,37 +65,42 @@ const TorontoTemplate = (props) => {
             <div>
               <div>
                 <p className="text-2xl font-bold">Employment History</p>
-                <p className="bg-black text-white font-bold mt-2">
-                  fwefewe, at fwfef, wrfwrffewf
-                </p>
+                <div className="">
+                  <p className="bg-black max-w-max min-w-max text-white font-bold mt-2 pl-1 pr-1">
+                    fwefewe, at fwfef, wrfwrffewf
+                  </p>
+                </div>
                 <p className="text-black tracking-widest">12/2022-2022</p>
-                <p className="text-gray-400 text-sm mt-1">fffwfwefwfe</p>
+                <p className="text-gray-800 text-sm mt-1">fffwfwefwfe</p>
               </div>
 
               <div className="mt-5">
                 <p className="text-2xl font-bold">Education</p>
-                <p className="bg-black text-white font-bold mt-2">
+                <p className="bg-black max-w-max min-w-max text-white font-bold mt-2 pl-1 pr-1">
                   fwefewe, at fwfef, wrfwrffewf
                 </p>
                 <p className="text-black tracking-widest">12/2022-4/2022</p>
-                <p className="text-gray-400 text-sm mt-1">fffwfwefwfe</p>
+                <p className="text-gray-800 text-sm mt-1">fffwfwefwfe</p>
               </div>
 
               <div className="mt-5">
                 <p className="text-2xl font-bold">
                   Extra-curricular activities
                 </p>
-                <p className="bg-black text-white font-bold mt-2">
+                <p className="bg-black max-w-max min-w-max text-white font-bold mt-2 pl-1 pr-1">
                   fwefewe, at fwfef, wrfwrffewf
                 </p>
                 <p className="text-black tracking-widest">6/2022-8/2022</p>
-                <p className="text-gray-400 text-sm mt-1">fffwfwefwfe</p>
+                <p className="text-gray-800 text-sm mt-1">fffwfwefwfe</p>
               </div>
             </div>
 
             <div className="flex flex-col flex-1 items-end mr-10">
               <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 rounded-2xl">
                 <p className="text-3xl font-bold">Links</p>
+                <p className="text-sm mt-2 underline">links content</p>
+                <p className="text-sm mt-2 underline">links content</p>
+                <p className="text-sm mt-2 underline">links content</p>
                 <p className="text-sm mt-2 underline">links content</p>
               </div>
 
@@ -125,20 +131,20 @@ const TorontoTemplate = (props) => {
         <div className="grid grid-cols-[400px_minmax(333px,_1fr)_100px] p-2 pl-3">
           <div>
             <div>
-              <p className="bg-black text-white font-bold mt-2">
+              <p className="bg-black max-w-max min-w-max text-white font-bold mt-2 pl-1 pr-1">
                 fwefewe, fwfef
               </p>
               <p className="text-black tracking-widest">7/2022-8/2022</p>
-              <p className="text-gray-400 text-sm mt-1">fffwfwefwfe</p>
+              <p className="text-gray-800 text-sm mt-1">fffwfwefwfe</p>
             </div>
 
             <div className="mt-5">
               <p className="text-2xl font-bold">Internships</p>
-              <p className="bg-black text-white font-bold mt-2">
+              <p className="bg-black max-w-max min-w-max text-white font-bold mt-2 pl-1 pr-1">
                 regrg, at ewrggr, prfergg
               </p>
               <p className="text-black tracking-widest">6/2022-12/2022</p>
-              <p className="text-gray-400 text-sm mt-1">eettttt</p>
+              <p className="text-gray-800 text-sm mt-1">eettttt</p>
             </div>
           </div>
 
