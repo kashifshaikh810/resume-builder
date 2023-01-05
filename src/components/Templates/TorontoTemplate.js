@@ -19,8 +19,12 @@ const TorontoTemplate = (props) => {
               className="w-[6rem] h-[8.5rem]"
             />
             <div>
-              <p className="text-7xl font-bold ml-16 pl-16">hamza</p>
-              <p className="text-7xl font-bold ml-16 pl-16">khan</p>
+              <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
+                hamza
+              </p>
+              <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
+                khan
+              </p>
             </div>
           </div>
 
@@ -52,7 +56,7 @@ const TorontoTemplate = (props) => {
             </div>
 
             <div className="pt-2 mt-2 ml-1 w-full h-full">
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 rounded-2xl">
+              <div className="bg-[#eeeeee] w-11/12 max-[1008px]:w-9/12 max-[916px]:w-7/12 max-[880px]:w-5/12  h-auto pl-3 pt-3 pb-3 rounded-2xl">
                 <p className="text-4xl font-bold">Profile</p>
                 <p className="text-sm mt-2">profile content</p>
               </div>
@@ -61,7 +65,7 @@ const TorontoTemplate = (props) => {
 
           <div className="bg-gray-200 h-[1.5px] w-10/12 mt-5" />
 
-          <div className="grid grid-cols-[400px_minmax(300px,_1fr)_100px] mt-5">
+          <div className="grid grid-cols-[400px_minmax(300px,_1fr)_100px] max-[1008px]:grid-cols-[100px_minmax(200px,_0.9fr)_100px] max-[982px]:grid-cols-[100px_minmax(200px,_0.8fr)_100px] max-[917px]:grid-cols-[100px_minmax(200px,_0.7fr)_100px] max-[880px]: mt-5">
             <div>
               <div>
                 <p className="text-2xl font-bold">Employment History</p>
@@ -96,25 +100,33 @@ const TorontoTemplate = (props) => {
             </div>
 
             <div className="flex flex-col flex-1 items-end mr-10">
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 rounded-2xl">
-                <p className="text-3xl font-bold">Links</p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
+              <div className="bg-[#eeeeee] w-11/12 h-auto max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-5/12 pl-3 pt-3 pb-3 rounded-2xl">
+                <p className="text-3xl font-bold max-lg:text-2xl">Links</p>
+                <p className="text-sm mt-2 max-lg:text-[14px] underline">
+                  links content
+                </p>
+                <p className="text-sm mt-2 max-lg:text-[14px] underline">
+                  links content
+                </p>
+                <p className="text-sm mt-2 max-lg:text-[14px] underline">
+                  links content
+                </p>
+                <p className="text-sm mt-2 max-lg:text-[14px] underline">
+                  links content
+                </p>
               </div>
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+              <div className="bg-[#eeeeee] w-11/12 h-auto max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-5/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
                 <p className="text-3xl font-bold">Skills</p>
                 <p className="text-sm mt-2">skill content</p>
               </div>
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+              <div className="bg-[#eeeeee] w-11/12 h-auto max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-5/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
                 <p className="text-3xl font-bold">Hobbies</p>
                 <p className="text-sm mt-2">hobbies content</p>
               </div>
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+              <div className="bg-[#eeeeee] w-11/12 h-auto max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-5/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
                 <p className="text-3xl font-bold">Languages</p>
                 <p className="text-sm mt-2">language content</p>
               </div>
@@ -175,15 +187,11 @@ const TorontoTemplate = (props) => {
       unselectable
       max-[768px]:border-none
       max-[768px]:ml-0
-      max-[620px]:h-[900px]
-      max-[703px]:h-[880px]
-      max-[610px]:h-[830px]
-      max-[570px]:h-[780px]
-      max-[535px]:h-[730px]
-      max-[500px]:h-[680px]
+      max-[768px]:p-5
+      max-[1020px]:p-5
       "
     >
-      <div className="flex bg-white w-full max-[1029px]:w-11/12 overflow-hidden h-[900px] self-center rounded-md hover:default">
+      <div className="flex bg-white w-full overflow-hidden h-[900px] self-center rounded-md hover:default">
         <div>
           {/* number 1 template  */}
           {oneSectionTemplate()}

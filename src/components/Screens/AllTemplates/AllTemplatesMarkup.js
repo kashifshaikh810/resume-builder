@@ -258,7 +258,8 @@ const AllTemplatesMarkup = (props) => {
           className="grid grid-cols-2 gap-0 overflow-y-auto overscroll-y-none h-screen
          max-[1029px]:grid-cols-1 max-[1029px]:h-[900px]
          max-[768px]:hidden
-          w-11/12 ml-4"
+          w-11/12 ml-4
+        "
         >
           {selectTemplatesData.map((item, index) => {
             return (
