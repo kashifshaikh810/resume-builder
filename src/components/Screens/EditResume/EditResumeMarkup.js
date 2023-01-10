@@ -197,14 +197,14 @@ const EditResumeMarkup = (props) => {
 
           <div className="flex flex-row items-center mt-2 p-1 mb-2 ml-12 pl-12">
             <div
-              className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-slate-400 hover:cursor-pointer hover:rounded-full"
+              className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-gray-600 hover:cursor-pointer hover:rounded-full"
               onClick={() => {
                 props.navigate("/app/resumes/id/templates");
               }}
             >
               <GrCodeSandbox
                 size={22}
-                color="green"
+                color="#ffffff"
                 className="text-white mr-1"
               />
               <p className="text-white text-base">Select template</p>
@@ -323,6 +323,7 @@ const EditResumeMarkup = (props) => {
                   ? `p-6 pt-2.5 pb-2.5 pr-2.5`
                   : `p-2.5 justify-center items-center`
               } bg-blue-500 rounded-full flex justify-center items-center fixed bottom-0 right-0 left-auto top-auto m-5 hover:cursor-pointer hover:bg-blue-600`}
+              onClick={() => props.navigate("/app/resumes/id/templates")}
             >
               {props?.scrollValue === 1871 || props?.scrollValue === 0 ? (
                 <p className="text-white font-bold text-base">
