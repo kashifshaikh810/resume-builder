@@ -363,7 +363,7 @@ const NewYorkTemplate = (props) => {
   const pageTwo = () => {
     if (props.page === 2) {
       return (
-        <div className="pt-10 flex flex-col w-11/12 items-center">
+        <div className="pt-10 flex flex-col w-10/12 items-center">
           <div>
             <div className="flex flex-row items-center">
               <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
