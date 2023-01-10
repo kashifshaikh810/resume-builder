@@ -33,7 +33,22 @@ import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 
 const EditResumeMarkup = (props) => {
-  const { wantedJobTitle, setWantedJobTitle } = props;
+  const {
+    wantedJobTitle,
+    setWantedJobTitle,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    phone,
+    setPhone,
+    country,
+    setCountry,
+    city,
+    setCity,
+  } = props;
 
   const descIcons = [
     { icon: () => <BsTypeBold />, name: "bold" },
@@ -247,12 +262,24 @@ const EditResumeMarkup = (props) => {
           <div className="flex flex-row items-end">
             <div className="mt-6">
               <p className="text-sm text-gray-500">Address</p>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 full h-9 pl-4 mt-1
+               pr-4 text-gray-800 border-none
+                overflow-hidden outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
               <p className="text-sm text-gray-500">Postal Code</p>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 full h-9 
+              pl-4 mt-1 pr-4 text-gray-800 border-none
+               overflow-hidden outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
           </div>
           <div className="flex flex-row items-end">
@@ -261,7 +288,13 @@ const EditResumeMarkup = (props) => {
                 <p className="text-sm text-gray-500">Driving License</p>
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
-              <input className="bg-gray-100 full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 full h-9 pl-4
+               mt-1 pr-4 text-gray-800 border-none
+                overflow-hidden outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
@@ -270,13 +303,25 @@ const EditResumeMarkup = (props) => {
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
 
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 w-full h-9 pl-4
+               mt-1 pr-4 text-gray-800 border-none
+                overflow-hidden outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
           </div>
           <div className="flex flex-row items-end">
             <div className="mt-6">
               <p className="text-sm text-gray-500">Place Of Birth</p>
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 w-full 
+              h-9 pl-4 mt-1 pr-4 text-gray-800 border-none
+               overflow-hidden outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
 
             <div className="mt-6 ml-5 pl-5">
@@ -284,7 +329,13 @@ const EditResumeMarkup = (props) => {
                 <p className="text-sm text-gray-500">Date Of Birth</p>
                 <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
               </div>
-              <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+              <input
+                className="bg-gray-100 w-full h-9 pl-4 mt-1
+               pr-4 text-gray-800 border-none overflow-hidden
+                outline-none max-[767px]:w-full"
+                value={wantedJobTitle}
+                onChange={(e) => setWantedJobTitle(e.target.value)}
+              />
             </div>
           </div>
         </>
@@ -527,36 +578,73 @@ const EditResumeMarkup = (props) => {
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">First Name</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4
+                     mt-1 pr-4 text-gray-800 border-none
+                      overflow-hidden outline-none max-[767px]:w-full"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">Last Name</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4 mt-1
+                     pr-4 text-gray-800 border-none overflow-hidden
+                      outline-none max-[767px]:w-full"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
                   </div>
                 </div>
 
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">Email</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4 mt-1
+                     pr-4 text-gray-800 border-none overflow-hidden 
+                     outline-none max-[767px]:w-full"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">Phone</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4 mt-1
+                     pr-4 text-gray-800 border-none 
+                     overflow-hidden outline-none max-[767px]:w-full"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
                 </div>
 
                 <div className="flex flex-row items-end">
                   <div className="mt-6">
                     <p className="text-sm text-gray-500">Country</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4
+                     text-gray-800 border-none overflow-hidden 
+                     outline-none max-[767px]:w-full"
+                      value={country}
+                      onChange={(e) => setCountry(e.target.value)}
+                    />
                   </div>
 
                   <div className="mt-6 ml-5 pl-5">
                     <p className="text-sm text-gray-500">City</p>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4
+                     mt-1 pr-4 text-gray-800 border-none 
+                     overflow-hidden outline-none max-[767px]:w-full"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)}
+                    />
                   </div>
                 </div>
 

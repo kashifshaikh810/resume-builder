@@ -7,6 +7,20 @@ import EditResumeMarkup from "./EditResumeMarkup";
 const EditResume = (props) => {
   // all inputs states
   const [wantedJobTitle, setWantedJobTitle] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+
+  // additional inputs
+  const [address, setAddress] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [drivingLicense, setDrivingLicense] = useState("");
+  const [nationality, setNationality] = useState("");
+  const [placeOfBirth, setPlaceOfBirth] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
   // redux
   const dispatch = useDispatch();
@@ -380,7 +394,7 @@ const EditResume = (props) => {
 
   useEffect(() => {
     dispatch(resumeDataSave(wantedJobTitle));
-  }, [dispatch, wantedJobTitle, data]);
+  }, [dispatch, wantedJobTitle]);
 
   return (
     <EditResumeMarkup
@@ -516,6 +530,30 @@ const EditResume = (props) => {
       navigate={navigate}
       wantedJobTitle={wantedJobTitle}
       setWantedJobTitle={setWantedJobTitle}
+      firstName={firstName}
+      setFirstName={setFirstName}
+      lastName={lastName}
+      setLastName={setLastName}
+      email={email}
+      setEmail={setEmail}
+      phone={phone}
+      setPhone={setPhone}
+      country={country}
+      setCountry={setCountry}
+      city={city}
+      setCity={setCity}
+      address={address}
+      setAddress={setAddress}
+      postalCode={postalCode}
+      setPostalCode={setPostalCode}
+      drivingLicense={drivingLicense}
+      setDrivingLicense={setDrivingLicense}
+      nationality={nationality}
+      setNationality={setNationality}
+      placeOfBirth={placeOfBirth}
+      setPlaceOfBirth={setPlaceOfBirth}
+      dateOfBirth={dateOfBirth}
+      setDateOfBirth={setDateOfBirth}
     />
   );
 };
