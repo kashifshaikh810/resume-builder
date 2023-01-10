@@ -1,7 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { resumeDataSave } from "../../../redux/actions/resumeAction";
+
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
+  // all inputs states
+  const [wantedJobTitle, setWantedJobTitle] = useState("");
+
+  // redux
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.resumeData);
+
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
   const [employmentInput, setEmploymentInput] = useState("Employment History");
@@ -368,6 +378,10 @@ const EditResume = (props) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    dispatch(resumeDataSave(wantedJobTitle));
+  }, [dispatch, wantedJobTitle, data]);
+
   return (
     <EditResumeMarkup
       {...props}
@@ -500,6 +514,8 @@ const EditResume = (props) => {
       languagesHandleRemoveClick={languagesHandleRemoveClick}
       languagesHandleAddClick={languagesHandleAddClick}
       navigate={navigate}
+      wantedJobTitle={wantedJobTitle}
+      setWantedJobTitle={setWantedJobTitle}
     />
   );
 };

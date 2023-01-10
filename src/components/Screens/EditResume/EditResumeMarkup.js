@@ -33,6 +33,8 @@ import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 
 const EditResumeMarkup = (props) => {
+  const { wantedJobTitle, setWantedJobTitle } = props;
+
   const descIcons = [
     { icon: () => <BsTypeBold />, name: "bold" },
     { icon: () => <AiOutlineItalic />, name: "italic" },
@@ -442,7 +444,13 @@ const EditResumeMarkup = (props) => {
                       <p className="text-sm text-gray-500">Wanted Job Title</p>
                       <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
                     </div>
-                    <input className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                    <input
+                      className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4
+                     text-gray-800 border-none overflow-hidden
+                      outline-none max-[767px]:w-full"
+                      value={wantedJobTitle}
+                      onChange={(e) => setWantedJobTitle(e.target.value)}
+                    />
                   </div>
 
                   <div
