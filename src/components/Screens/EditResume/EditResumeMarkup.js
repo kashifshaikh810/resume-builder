@@ -62,6 +62,9 @@ const EditResumeMarkup = (props) => {
     setDateOfBirth,
     professionalSummary,
     setProfessionalSummary,
+    hobbies,
+    setHobbies,
+    resumeData,
   } = props;
 
   const descIcons = [
@@ -115,50 +118,193 @@ const EditResumeMarkup = (props) => {
                     />
                   )}
                   <div className={`${props?.profileImage ? `ml-3` : ``}`}>
-                    <p className="text-sm font-bold">first name last name</p>
-                    <p className="text-[6px] text-gray-600">Finance</p>
+                    {resumeData?.firstName || resumeData?.lastName ? (
+                      <p className="text-sm font-bold">
+                        {resumeData?.firstName && resumeData?.firstName}{" "}
+                        {resumeData?.lastName && resumeData?.lastName}
+                      </p>
+                    ) : null}
+                    {resumeData?.wantedJobTitle && (
+                      <p className="text-[6px] text-gray-600">
+                        {resumeData?.wantedJobTitle}
+                      </p>
+                    )}
                   </div>
                 </div>
 
-                <div className="flex flex-row mt-3">
-                  <HiUser className="text-[6px] mt-0.5" />
-                  <div className="ml-1">
-                    <p className="text-[7px] font-semibold">Profile</p>
-                    <p className="text-[6px] text-gray-600">
-                      epfijwejifwijefiefioew
-                    </p>
+                {resumeData?.professionalSummary && (
+                  <div className="flex flex-row mt-3">
+                    <HiUser className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">Profile</p>
+                      <p className="text-[6px] text-gray-600">
+                        {resumeData?.professionalSummary}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
 
-                <div className="flex flex-row mt-3">
-                  <BsBagFill className="text-[6px] mt-0.5" />
-                  <div className="ml-1">
-                    <p className="text-[7px] font-semibold">
-                      Employment History
-                    </p>
-                    <p className="text-[6px] text-gray-600">
-                      epfijwej at ifwije, fiefioew
-                    </p>
-                    <p className="text-[6px] text-gray-400">
-                      December 2022 - 2022
-                    </p>
-                    <p className="text-[6px] text-gray-600">reigjierjirjige</p>
-                  </div>
-                </div>
+                {resumeData?.employmentInputList?.length >= 1 ? (
+                  <div className="flex flex-row mt-3">
+                    <BsBagFill className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">
+                        Employment History
+                      </p>
+                      {resumeData?.employmentInputList &&
+                        resumeData?.employmentInputList?.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
 
-                <div className="flex flex-row mt-3">
-                  <IoMdSchool className="text-[6px] mt-0.5" />
-                  <div className="ml-1">
-                    <p className="text-[7px] font-semibold">Education</p>
-                    <p className="text-[6px] text-gray-600">
-                      epfijwej, ifwije, fiefioew
-                    </p>
-                    <p className="text-[6px] text-gray-400">
-                      July 2022 - April 2022
-                    </p>
-                    <p className="text-[6px] text-gray-600">reigjierjirjige</p>
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData.employmentInputList.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[6px] text-gray-600">
+                                {`${item?.jobTitle} ${
+                                  item?.jobTitle && item?.employer ? "at" : ""
+                                } ${item?.employer}${
+                                  item?.employer && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[6px] text-gray-400">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[6px] text-gray-600">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  ""
+                )}
+
+                {resumeData?.educationInputList?.length >= 1 ? (
+                  <div className="flex flex-row mt-3">
+                    <IoMdSchool className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">Education</p>
+                      {resumeData?.educationInputList &&
+                        resumeData?.educationInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData?.educationInputList?.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[6px] text-gray-600">
+                                {`${item?.school} ${
+                                  item?.school && item?.degree ? "," : ""
+                                } ${item?.degree}${
+                                  item?.degree && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[6px] text-gray-400">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[6px] text-gray-600">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
 
               <div
@@ -168,32 +314,54 @@ const EditResumeMarkup = (props) => {
               >
                 <p className="text-[7px] font-semibold">Details</p>
                 <div>
-                  <p className="text-[6px] text-gray-600">address</p>
-                  <p className="text-[6px] text-gray-600">wwwwwwww, 2013</p>
-                  <p className="text-[6px] text-gray-600">gijtjgijtg</p>
-                  <p className="text-[6px] text-gray-600">0332244343433</p>
-                  <p className="text-[6px] text-blue-400">
-                    kashifshaikh910ssg@gmail.com
-                  </p>
-                </div>
-
-                <div className="mt-2">
                   <p className="text-[6px] text-gray-600">
-                    Date / Place of birth
+                    {resumeData?.address}
                   </p>
-                  <p className="text-[6px] text-black">24</p>
-                  <p className="text-[6px] text-black">323</p>
+                  <p className="text-[6px] text-gray-600">
+                    {resumeData?.city}, {resumeData?.postalCode}
+                  </p>
+                  <p className="text-[6px] text-gray-600">
+                    {resumeData?.country}
+                  </p>
+                  <p className="text-[6px] text-gray-600">
+                    {resumeData?.phone}
+                  </p>
+                  <p className="text-[6px] text-blue-400">
+                    {resumeData?.email}
+                  </p>
                 </div>
 
-                <div className="mt-2">
-                  <p className="text-[6px] text-gray-600">Nationality</p>
-                  <p className="text-[6px] text-black">text</p>
-                </div>
+                {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
+                  <div className="mt-2">
+                    <p className="text-[6px] text-gray-600">
+                      Date / Place of birth
+                    </p>
+                    <p className="text-[6px] text-black">
+                      {resumeData?.dateOfBirth}
+                    </p>
+                    <p className="text-[6px] text-black">
+                      {resumeData?.placeOfBirth}
+                    </p>
+                  </div>
+                ) : null}
 
-                <div className="mt-2">
-                  <p className="text-[6px] text-gray-600">Driving License</p>
-                  <p className="text-[6px] text-black">text</p>
-                </div>
+                {resumeData?.nationality && (
+                  <div className="mt-2">
+                    <p className="text-[6px] text-gray-600">Nationality</p>
+                    <p className="text-[6px] text-black">
+                      {resumeData?.nationality}
+                    </p>
+                  </div>
+                )}
+
+                {resumeData?.drivingLicense && (
+                  <div className="mt-2">
+                    <p className="text-[6px] text-gray-600">Driving License</p>
+                    <p className="text-[6px] text-black">
+                      {resumeData?.drivingLicense}
+                    </p>
+                  </div>
+                )}
 
                 <div className="mt-2">
                   <p className="text-[7px] font-semibold">Links</p>
@@ -205,10 +373,14 @@ const EditResumeMarkup = (props) => {
                   <p className="text-[6px] text-black">communication</p>
                 </div>
 
-                <div className="mt-2">
-                  <p className="text-[7px] font-semibold">Hobbies</p>
-                  <p className="text-[6px] text-black">efiwijoowijf</p>
-                </div>
+                {resumeData?.hobbies && (
+                  <div className="mt-2">
+                    <p className="text-[7px] font-semibold">Hobbies</p>
+                    <p className="text-[6px] text-black">
+                      {resumeData?.hobbies}
+                    </p>
+                  </div>
+                )}
 
                 <div className="mt-2">
                   <p className="text-[7px] font-semibold">Languages</p>
@@ -1192,6 +1364,8 @@ const EditResumeMarkup = (props) => {
                       rows={10000}
                       cols={10000}
                       className={`w-full h-28 p-4 pt-2 bg-gray-100 text-gray-800 border-none overflow-hidden outline-none`}
+                      value={hobbies}
+                      onChange={(e) => setHobbies(e.target.value)}
                     />
                   </div>
 

@@ -25,6 +25,9 @@ const EditResume = (props) => {
   // professional summary
   const [professionalSummary, setProfessionalSummary] = useState("");
 
+  // hobbies
+  const [hobbies, setHobbies] = useState("");
+
   // redux
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.resumeData);
@@ -396,8 +399,55 @@ const EditResume = (props) => {
   }, []);
 
   useEffect(() => {
-    dispatch(resumeDataSave(wantedJobTitle));
-  }, [dispatch, wantedJobTitle]);
+    let resumeData = {
+      wantedJobTitle,
+      firstName,
+      lastName,
+      email,
+      phone,
+      country,
+      city,
+      address,
+      postalCode,
+      drivingLicense,
+      nationality,
+      placeOfBirth,
+      dateOfBirth,
+      professionalSummary,
+      employmentInputList,
+      educationInputList,
+      websiteInputList,
+      skillsInputList,
+      isNotShowExpertLevel,
+      hobbies,
+      languagesInputList,
+    };
+
+    dispatch(resumeDataSave(resumeData));
+  }, [
+    dispatch,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+  ]);
 
   return (
     <EditResumeMarkup
@@ -559,6 +609,9 @@ const EditResume = (props) => {
       setDateOfBirth={setDateOfBirth}
       professionalSummary={professionalSummary}
       setProfessionalSummary={setProfessionalSummary}
+      hobbies={hobbies}
+      setHobbies={setHobbies}
+      resumeData={data}
     />
   );
 };
