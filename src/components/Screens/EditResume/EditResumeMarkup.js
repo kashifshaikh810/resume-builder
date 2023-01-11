@@ -48,6 +48,20 @@ const EditResumeMarkup = (props) => {
     setCountry,
     city,
     setCity,
+    address,
+    setAddress,
+    postalCode,
+    setPostalCode,
+    drivingLicense,
+    setDrivingLicense,
+    nationality,
+    setNationality,
+    placeOfBirth,
+    setPlaceOfBirth,
+    dateOfBirth,
+    setDateOfBirth,
+    professionalSummary,
+    setProfessionalSummary,
   } = props;
 
   const descIcons = [
@@ -266,8 +280,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 full h-9 pl-4 mt-1
                pr-4 text-gray-800 border-none
                 overflow-hidden outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
               />
             </div>
 
@@ -277,8 +291,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 full h-9 
               pl-4 mt-1 pr-4 text-gray-800 border-none
                overflow-hidden outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={postalCode}
+                onChange={(e) => setPostalCode(e.target.value)}
               />
             </div>
           </div>
@@ -292,8 +306,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 full h-9 pl-4
                mt-1 pr-4 text-gray-800 border-none
                 overflow-hidden outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={drivingLicense}
+                onChange={(e) => setDrivingLicense(e.target.value)}
               />
             </div>
 
@@ -307,8 +321,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 w-full h-9 pl-4
                mt-1 pr-4 text-gray-800 border-none
                 overflow-hidden outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={nationality}
+                onChange={(e) => setNationality(e.target.value)}
               />
             </div>
           </div>
@@ -319,8 +333,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 w-full 
               h-9 pl-4 mt-1 pr-4 text-gray-800 border-none
                overflow-hidden outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={placeOfBirth}
+                onChange={(e) => setPlaceOfBirth(e.target.value)}
               />
             </div>
 
@@ -333,8 +347,8 @@ const EditResumeMarkup = (props) => {
                 className="bg-gray-100 w-full h-9 pl-4 mt-1
                pr-4 text-gray-800 border-none overflow-hidden
                 outline-none max-[767px]:w-full"
-                value={wantedJobTitle}
-                onChange={(e) => setWantedJobTitle(e.target.value)}
+                value={dateOfBirth}
+                onChange={(e) => setDateOfBirth(e.target.value)}
               />
             </div>
           </div>
@@ -786,6 +800,8 @@ const EditResumeMarkup = (props) => {
                         (props?.isChangedInputText?.name === "line-through" &&
                           `line-through`)
                       }`}
+                      value={professionalSummary}
+                      onChange={(e) => setProfessionalSummary(e.target.value)}
                     />
                   </div>
                   <div className="mt-6 pt-6">

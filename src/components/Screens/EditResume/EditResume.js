@@ -22,6 +22,9 @@ const EditResume = (props) => {
   const [placeOfBirth, setPlaceOfBirth] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
+  // professional summary
+  const [professionalSummary, setProfessionalSummary] = useState("");
+
   // redux
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.resumeData);
@@ -554,6 +557,8 @@ const EditResume = (props) => {
       setPlaceOfBirth={setPlaceOfBirth}
       dateOfBirth={dateOfBirth}
       setDateOfBirth={setDateOfBirth}
+      professionalSummary={professionalSummary}
+      setProfessionalSummary={setProfessionalSummary}
     />
   );
 };
