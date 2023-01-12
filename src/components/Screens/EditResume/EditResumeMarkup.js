@@ -32,6 +32,7 @@ import { HiUser } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import CoursesInputBox from "../../EditResumeComponents/CoursesInputBox";
+import { MdStars } from "react-icons/md";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -323,7 +324,7 @@ const EditResumeMarkup = (props) => {
 
                 {resumeData?.coursesInputList?.length >= 1 ? (
                   <div className="flex flex-row mt-3">
-                    <IoMdSchool className="text-[6px] mt-0.5" />
+                    <MdStars className="text-[6px] mt-0.5" />
                     <div className="ml-1">
                       <p className="text-[7px] font-semibold">Courses</p>
                       {resumeData?.coursesInputList &&
