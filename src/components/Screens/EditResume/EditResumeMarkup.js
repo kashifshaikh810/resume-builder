@@ -410,13 +410,32 @@ const EditResumeMarkup = (props) => {
                 }
                 `}
               >
-                <p className="text-[7px] font-semibold">Details</p>
+                {resumeData?.address ||
+                resumeData?.city ||
+                resumeData?.postalCode ||
+                resumeData?.country ||
+                resumeData?.phone ||
+                resumeData?.email ||
+                resumeData?.dateOfBirth ||
+                resumeData?.placeOfBirth ||
+                resumeData?.nationality ||
+                resumeData?.drivingLicense ||
+                resumeData?.websiteInputList?.length >= 1 ||
+                resumeData?.skillsInputList?.length >= 1 ||
+                resumeData?.hobbies ||
+                resumeData?.languagesInputList?.length >= 1 ? (
+                  <p className="text-[7px] font-semibold">Details</p>
+                ) : (
+                  ""
+                )}
                 <div>
                   <p className="text-[6px] text-gray-600">
                     {resumeData?.address}
                   </p>
                   <p className="text-[6px] text-gray-600">
-                    {resumeData?.city}, {resumeData?.postalCode}
+                    {`${resumeData?.city} ${
+                      resumeData?.city && resumeData?.postalCode ? `,` : ``
+                    } ${resumeData?.postalCode}`}
                   </p>
                   <p className="text-[6px] text-gray-600">
                     {resumeData?.country}
@@ -526,36 +545,40 @@ const EditResumeMarkup = (props) => {
                   </div>
                 )}
 
-                <div className="mt-2">
-                  <p className="text-[7px] font-semibold">Languages</p>
-                  {resumeData?.languagesInputList &&
-                    resumeData?.languagesInputList.map((item, index) => {
-                      return (
-                        <div key={index}>
-                          <p className="text-[6px] text-black mt-1">
-                            {item?.language}
-                          </p>
-                          {item?.language ? (
-                            <div>
-                              <div
-                                className="w-[100px] bg-gray-200"
-                                id="myProgress"
-                              >
+                {resumeData?.languagesInputList?.length >= 1 ? (
+                  <div className="mt-2">
+                    <p className="text-[7px] font-semibold">Languages</p>
+                    {resumeData?.languagesInputList &&
+                      resumeData?.languagesInputList.map((item, index) => {
+                        return (
+                          <div key={index}>
+                            <p className="text-[6px] text-black mt-1">
+                              {item?.language}
+                            </p>
+                            {item?.language ? (
+                              <div>
                                 <div
-                                  className={`${
-                                    linerProgressLanguageLine[item.level]
-                                  } h-[1.5px] bg-blue-400 mt-1`}
-                                  id="myBar"
-                                ></div>
+                                  className="w-[100px] bg-gray-200"
+                                  id="myProgress"
+                                >
+                                  <div
+                                    className={`${
+                                      linerProgressLanguageLine[item.level]
+                                    } h-[1.5px] bg-blue-400 mt-1`}
+                                    id="myBar"
+                                  ></div>
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      );
-                    })}
-                </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        );
+                      })}
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
 
