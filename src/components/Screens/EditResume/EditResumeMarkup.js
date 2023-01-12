@@ -31,6 +31,7 @@ import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
 import { HiUser } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
+import CoursesInputBox from "../../EditResumeComponents/CoursesInputBox";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -319,6 +320,83 @@ const EditResumeMarkup = (props) => {
                 ) : (
                   ""
                 )}
+
+                {resumeData?.coursesInputList?.length >= 1 ? (
+                  <div className="flex flex-row mt-3">
+                    <IoMdSchool className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">Courses</p>
+                      {resumeData?.coursesInputList &&
+                        resumeData?.coursesInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData?.coursesInputList?.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[6px] text-gray-600">
+                                {`${item?.course}${
+                                  item?.course && item?.institution ? "," : ""
+                                } ${item?.institution}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[6px] text-gray-400">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {/*  */}
               </div>
 
               <div
@@ -1520,6 +1598,69 @@ const EditResumeMarkup = (props) => {
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 mt-3 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
                       onPress={() => props.languagesHandleAddClick()}
+                      loading={false}
+                    />
+                  </div>
+
+                  <div className="mt-6 pt-6">
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.coursesInput &&
+                          props.setIsShowCoursesIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowCoursesIcon(false)}
+                    >
+                      {props?.isShowCoursesInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          value={props.coursesInput}
+                          onChange={(e) =>
+                            props.setCoursesInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.coursesInput
+                            ? props?.coursesInput
+                            : "Courses"}
+                        </p>
+                      )}
+                      {props?.isShowCoursesIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowCoursesInput(
+                                !props?.isShowCoursesInput
+                              )
+                            }
+                          />
+                          {props.coursesInput !== "Courses" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setCoursesInput("Courses");
+                                props.setIsShowCoursesInput(false);
+                              }}
+                            />
+                          )}
+                        </>
+                      )}
+                    </div>
+
+                    <CoursesInputBox {...props} />
+
+                    <MyButton
+                      {...props}
+                      title={
+                        props.coursesInputList.length === 0
+                          ? "Add courses"
+                          : "Add one more course"
+                      }
+                      className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
+                      textStyle="text-blue-500 text-sm pl-4 font-bold"
+                      onPress={() => props.coursesHandleAddClick()}
                       loading={false}
                     />
                   </div>

@@ -122,6 +122,22 @@ const EditResume = (props) => {
   });
   // ------ end ----- //
 
+  // courses - section states
+  const [coursesInputList, setCoursesInputList] = useState([]);
+  const [coursesInput, setCoursesInput] = useState("Courses");
+  const [isShowCoursesIcon, setIsShowCoursesIcon] = useState(false);
+  const [isShowCoursesInput, setIsShowCoursesInput] = useState(false);
+  const [isShowCoursesBoxInput, setIsShowCoursesBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowCoursesBoxIcon, setIsShowCoursesBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -306,6 +322,35 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
+  // Courses section functions
+  const coursesHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...coursesInputList];
+    list[index][name] = value;
+    setCoursesInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const coursesHandleRemoveClick = (index) => {
+    const list = [...coursesInputList];
+    list.splice(index, 1);
+    setCoursesInputList(list);
+  };
+
+  // handle click event of the Add button
+  const coursesHandleAddClick = () => {
+    setCoursesInputList([
+      ...coursesInputList,
+      {
+        course: "",
+        institution: "",
+        startDate: "",
+        endDate: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -421,6 +466,7 @@ const EditResume = (props) => {
       isNotShowExpertLevel,
       hobbies,
       languagesInputList,
+      coursesInputList,
     };
 
     dispatch(resumeDataSave(resumeData));
@@ -447,6 +493,7 @@ const EditResume = (props) => {
     isNotShowExpertLevel,
     hobbies,
     languagesInputList,
+    coursesInputList,
   ]);
 
   return (
@@ -612,6 +659,20 @@ const EditResume = (props) => {
       hobbies={hobbies}
       setHobbies={setHobbies}
       resumeData={data}
+      coursesInputList={coursesInputList}
+      coursesInput={coursesInput}
+      setCoursesInput={setCoursesInput}
+      isShowCoursesIcon={isShowCoursesIcon}
+      setIsShowCoursesIcon={setIsShowCoursesIcon}
+      isShowCoursesInput={isShowCoursesInput}
+      setIsShowCoursesInput={setIsShowCoursesInput}
+      coursesHandleInputChange={coursesHandleInputChange}
+      coursesHandleRemoveClick={coursesHandleRemoveClick}
+      coursesHandleAddClick={coursesHandleAddClick}
+      isShowCoursesBoxIcon={isShowCoursesBoxIcon}
+      setIsShowCoursesBoxIcon={setIsShowCoursesBoxIcon}
+      isShowCoursesBoxInput={isShowCoursesBoxInput}
+      setIsShowCoursesBoxInput={setIsShowCoursesBoxInput}
     />
   );
 };
