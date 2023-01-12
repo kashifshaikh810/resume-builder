@@ -77,6 +77,20 @@ const EditResumeMarkup = (props) => {
     { icon: () => <TiAttachmentOutline />, name: "" },
   ];
 
+  const linerProgressLine = {
+    Novice: "w-[20px]",
+    Beginner: "w-[40px]",
+    Skillful: "w-[60px]",
+    Experienced: "w-[80px]",
+    Expert: "w-[100px]",
+  };
+
+  const linerProgressLanguageLine = {
+    "Very good command": "w-[60px]",
+    "Highly Proficient": "w-[80px]",
+    "Native Speaker": "w-[100px]",
+  };
+
   const previewCvSection = () => {
     if (props?.screenWidth >= 1030) {
       return (
@@ -310,7 +324,13 @@ const EditResumeMarkup = (props) => {
               <div
                 className={`relative left-16 ml-6 ${
                   props?.profileImage ? `top-14 mt-1` : `top-10`
-                }`}
+                }
+                ${
+                  resumeData?.isNotShowExpertLevel === false
+                    ? `left-20`
+                    : `left-32`
+                }
+                `}
               >
                 <p className="text-[7px] font-semibold">Details</p>
                 <div>
@@ -363,14 +383,60 @@ const EditResumeMarkup = (props) => {
                   </div>
                 )}
 
-                <div className="mt-2">
-                  <p className="text-[7px] font-semibold">Links</p>
-                  <p className="text-[6px] text-blue-400">text</p>
-                </div>
+                {resumeData?.websiteInputList?.length >= 1 ? (
+                  <div className="mt-2">
+                    <p className="text-[7px] font-semibold">Links</p>
+                    {resumeData?.websiteInputList &&
+                      resumeData?.websiteInputList.map((item, index) => {
+                        return (
+                          <div key={index}>
+                            <p className="text-[6px] text-blue-400">
+                              {item?.label}
+                            </p>
+                          </div>
+                        );
+                      })}
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                <div className="mt-2">
-                  <p className="text-[7px] font-semibold">Skills</p>
-                  <p className="text-[6px] text-black">communication</p>
+                <div className="w-full">
+                  {resumeData?.skillsInputList?.length >= 1 ? (
+                    <div className="mt-2">
+                      <p className="text-[7px] font-semibold">Skills</p>
+                      {resumeData.skillsInputList &&
+                        resumeData.skillsInputList.map((item, index) => {
+                          return (
+                            <div key={index} className="w-full">
+                              <p className="text-[6px] text-black mt-1">
+                                {item?.skill}
+                              </p>
+                              {resumeData?.isNotShowExpertLevel === false &&
+                              item.skill ? (
+                                <div>
+                                  <div
+                                    className="w-[100px] bg-gray-200"
+                                    id="myProgress"
+                                  >
+                                    <div
+                                      className={`${
+                                        linerProgressLine[item.level]
+                                      } h-[1.5px] bg-blue-400 mt-1`}
+                                      id="myBar"
+                                    ></div>
+                                  </div>
+                                </div>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          );
+                        })}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 {resumeData?.hobbies && (
@@ -384,7 +450,33 @@ const EditResumeMarkup = (props) => {
 
                 <div className="mt-2">
                   <p className="text-[7px] font-semibold">Languages</p>
-                  <p className="text-[6px] text-black">languages names</p>
+                  {resumeData?.languagesInputList &&
+                    resumeData?.languagesInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="text-[6px] text-black mt-1">
+                            {item?.language}
+                          </p>
+                          {item?.language ? (
+                            <div>
+                              <div
+                                className="w-[100px] bg-gray-200"
+                                id="myProgress"
+                              >
+                                <div
+                                  className={`${
+                                    linerProgressLanguageLine[item.level]
+                                  } h-[1.5px] bg-blue-400 mt-1`}
+                                  id="myBar"
+                                ></div>
+                              </div>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
             </div>
