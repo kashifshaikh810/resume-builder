@@ -1994,6 +1994,7 @@ const EditResumeMarkup = (props) => {
                     />
                   </div>
 
+                  {/* this one is not completed check in monday  */}
                   <div className="mt-6 pt-6">
                     <div
                       className="flex flex-row items-center hover:cursor-pointer"
@@ -2039,6 +2040,24 @@ const EditResumeMarkup = (props) => {
                           )}
                         </>
                       )}
+                    </div>
+                    <div
+                      className="flex flex-row items-center m-3 ml-0 hover:cursor-pointer"
+                      onClick={() =>
+                        props.setIsNotShowExpertLevel(
+                          !props?.isNotShowExpertLevel
+                        )
+                      }
+                    >
+                      {props?.isNotShowExpertLevel ? (
+                        <BsToggleOn className="text-2xl text-blue-800" />
+                      ) : (
+                        <BsToggleOff className="text-2xl text-gray-400" />
+                      )}
+                      <p className="ml-2 text-sm">
+                        I'd like to hide references and make them available only
+                        upon request
+                      </p>
                     </div>
 
                     <InternshipInputBox {...props} />
