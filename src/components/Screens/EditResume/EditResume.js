@@ -138,6 +138,29 @@ const EditResume = (props) => {
 
   // ------ end ----- //
 
+  // internship - section states
+  const [internshipInputList, setInternshipInputList] = useState([]);
+  const [internshipInput, setInternshipInput] = useState("Internships");
+  const [isShowInternshipIcon, setIsShowInternshipIcon] = useState(false);
+  const [isShowInternshipInput, setIsShowInternshipInput] = useState(false);
+  const [isShowInternshipBoxInput, setIsShowInternshipBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowInternshipBoxIcon, setIsShowInternshipBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+  const [
+    isChangedInternshipDescInputText,
+    setIsChangedInternshipDescInputText,
+  ] = useState({
+    name: "normal",
+    num: Number,
+  });
+
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -351,6 +374,37 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
+  // Internship section functions
+  const internshipHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...internshipInputList];
+    list[index][name] = value;
+    setInternshipInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const internshipHandleRemoveClick = (index) => {
+    const list = [...internshipInputList];
+    list.splice(index, 1);
+    setInternshipInputList(list);
+  };
+
+  // handle click event of the Add button
+  const internshipHandleAddClick = () => {
+    setInternshipInputList([
+      ...internshipInputList,
+      {
+        jobTitle: "",
+        employer: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        description: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -467,6 +521,7 @@ const EditResume = (props) => {
       hobbies,
       languagesInputList,
       coursesInputList,
+      internshipInputList,
     };
 
     dispatch(resumeDataSave(resumeData));
@@ -494,6 +549,7 @@ const EditResume = (props) => {
     hobbies,
     languagesInputList,
     coursesInputList,
+    internshipInputList,
   ]);
 
   return (
@@ -673,6 +729,23 @@ const EditResume = (props) => {
       setIsShowCoursesBoxIcon={setIsShowCoursesBoxIcon}
       isShowCoursesBoxInput={isShowCoursesBoxInput}
       setIsShowCoursesBoxInput={setIsShowCoursesBoxInput}
+      internshipInputList={internshipInputList}
+      setInternshipInputList={setInternshipInputList}
+      internshipInput={internshipInput}
+      setInternshipInput={setInternshipInput}
+      isShowInternshipIcon={isShowInternshipIcon}
+      setIsShowInternshipIcon={setIsShowInternshipIcon}
+      isShowInternshipInput={isShowInternshipInput}
+      setIsShowInternshipInput={setIsShowInternshipInput}
+      isShowInternshipBoxInput={isShowInternshipBoxInput}
+      setIsShowInternshipBoxInput={setIsShowInternshipBoxInput}
+      isShowInternshipBoxIcon={isShowInternshipBoxIcon}
+      setIsShowInternshipBoxIcon={setIsShowInternshipBoxIcon}
+      internshipHandleInputChange={internshipHandleInputChange}
+      internshipHandleRemoveClick={internshipHandleRemoveClick}
+      internshipHandleAddClick={internshipHandleAddClick}
+      isChangedInternshipDescInputText={isChangedInternshipDescInputText}
+      setIsChangedInternshipDescInputText={setIsChangedInternshipDescInputText}
     />
   );
 };
