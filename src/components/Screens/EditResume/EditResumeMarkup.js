@@ -35,6 +35,8 @@ import CoursesInputBox from "../../EditResumeComponents/CoursesInputBox";
 import { MdStars } from "react-icons/md";
 import InternshipInputBox from "../../EditResumeComponents/InternshipInputBox";
 import { HiUsers } from "react-icons/hi";
+import ExtraCurricularInputBox from "../../EditResumeComponents/ExtraCurricularInputBox";
+import { GiCottonFlower } from "react-icons/gi";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -393,6 +395,96 @@ const EditResumeMarkup = (props) => {
                             </div>
                           );
                         })}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {resumeData?.extraCurricularInputList?.length >= 1 ? (
+                  <div className="flex flex-row mt-3">
+                    <GiCottonFlower className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">
+                        Extra-curricular Activities
+                      </p>
+                      {resumeData?.extraCurricularInputList &&
+                        resumeData?.extraCurricularInputList.map(
+                          (item, index) => {
+                            let monthNames = [
+                              "January",
+                              "February",
+                              "March",
+                              "April",
+                              "May",
+                              "June",
+                              "July",
+                              "August",
+                              "September",
+                              "October",
+                              "November",
+                              "December",
+                            ];
+                            let startDate = new Date(item?.startDate);
+                            let month = startDate ? startDate.getMonth() : "";
+                            let startDateMonth = startDate
+                              ? monthNames[month]
+                              : "";
+                            let startDateYear = startDate
+                              ? new Date(startDate).getFullYear()
+                              : "";
+
+                            let endDate = new Date(item?.endDate);
+                            let myMonth = endDate ? endDate.getMonth() : "";
+                            let endDateMonth = endDate
+                              ? monthNames[myMonth]
+                              : "";
+                            let endDateYear = endDate
+                              ? new Date(endDate).getFullYear()
+                              : "";
+
+                            return (
+                              <div
+                                key={index}
+                                className={`${
+                                  resumeData?.extraCurricularInputList
+                                    ?.length >= 2 && index >= 1
+                                    ? `mt-2`
+                                    : ``
+                                }`}
+                              >
+                                <p className="text-[6px] text-gray-600">
+                                  {`${item?.functionTitle} ${
+                                    item?.functionTitle && item?.employer
+                                      ? "at"
+                                      : ""
+                                  } ${item?.employer}${
+                                    item?.employer && item.city && `,`
+                                  } ${item.city}`}
+                                </p>
+                                {(startDateMonth && startDateYear) ||
+                                (endDateMonth && endDateYear) ? (
+                                  <p className="text-[6px] text-gray-400">
+                                    {startDateMonth && startDateYear
+                                      ? `${startDateMonth} ${startDateYear}`
+                                      : ""}{" "}
+                                    {item?.startDate && item?.endDate
+                                      ? `-`
+                                      : ""}{" "}
+                                    {endDateMonth && endDateYear
+                                      ? `${endDateMonth} ${endDateYear}`
+                                      : ""}
+                                  </p>
+                                ) : (
+                                  ""
+                                )}
+                                <p className="text-[6px] text-gray-600">
+                                  {item?.description}
+                                </p>
+                              </div>
+                            );
+                          }
+                        )}
                     </div>
                   </div>
                 ) : (
@@ -1767,6 +1859,137 @@ const EditResumeMarkup = (props) => {
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
                       onPress={() => props.coursesHandleAddClick()}
+                      loading={false}
+                    />
+                  </div>
+
+                  <div className="mt-6 pt-6">
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.extraCurricularInput &&
+                          props.setIsShowExtraCurricularIcon(true);
+                      }}
+                      onMouseLeave={() =>
+                        props.setIsShowExtraCurricularIcon(false)
+                      }
+                    >
+                      {props?.isShowExtraCurricularInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          value={props.extraCurricularInput}
+                          onChange={(e) =>
+                            props.setExtraCurricularInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.extraCurricularInput
+                            ? props?.extraCurricularInput
+                            : "Extra-curricular Activities"}
+                        </p>
+                      )}
+                      {props?.isShowExtraCurricularIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowExtraCurricularInput(
+                                !props?.isShowExtraCurricularInput
+                              )
+                            }
+                          />
+                          {props.extraCurricularInput !==
+                            "Extra-curricular Activities" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setInternshipInput(
+                                  "Extra-curricular Activities"
+                                );
+                                props.setIsShowExtraCurricularInput(false);
+                              }}
+                            />
+                          )}
+                        </>
+                      )}
+                    </div>
+
+                    <ExtraCurricularInputBox {...props} />
+
+                    <MyButton
+                      {...props}
+                      title={
+                        props.extraCurricularInputList.length === 0
+                          ? "Add activity"
+                          : "Add one more activity"
+                      }
+                      className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
+                      textStyle="text-blue-500 text-sm pl-4 font-bold"
+                      onPress={() => props.extraCurricularHandleAddClick()}
+                      loading={false}
+                    />
+                  </div>
+
+                  <div className="mt-6 pt-6">
+                    <div
+                      className="flex flex-row items-center hover:cursor-pointer"
+                      onMouseEnter={() => {
+                        !!props?.internshipInput &&
+                          props.setIsShowInternshipIcon(true);
+                      }}
+                      onMouseLeave={() => props.setIsShowInternshipIcon(false)}
+                    >
+                      {props?.isShowInternshipInput ? (
+                        <input
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          value={props.internshipInput}
+                          onChange={(e) =>
+                            props.setInternshipInput(e.target.value)
+                          }
+                        />
+                      ) : (
+                        <p className="font-bold text-lg hover:cursor-default">
+                          {props?.internshipInput
+                            ? props?.internshipInput
+                            : "Internships"}
+                        </p>
+                      )}
+                      {props?.isShowInternshipIcon && (
+                        <>
+                          <TiPencil
+                            className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                            onClick={() =>
+                              props.setIsShowInternshipInput(
+                                !props?.isShowInternshipInput
+                              )
+                            }
+                          />
+                          {props.internshipInput !== "Internships" && (
+                            <SlReload
+                              className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
+                              onClick={() => {
+                                props?.setInternshipInput("Internships");
+                                props.setIsShowInternshipInput(false);
+                              }}
+                            />
+                          )}
+                        </>
+                      )}
+                    </div>
+
+                    <InternshipInputBox {...props} />
+
+                    <MyButton
+                      {...props}
+                      title={
+                        props.internshipInputList.length === 0
+                          ? "Add internship"
+                          : "Add one more internship"
+                      }
+                      className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
+                      textStyle="text-blue-500 text-sm pl-4 font-bold"
+                      onPress={() => props.internshipHandleAddClick()}
                       loading={false}
                     />
                   </div>

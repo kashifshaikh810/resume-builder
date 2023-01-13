@@ -161,6 +161,35 @@ const EditResume = (props) => {
 
   // ------ end ----- //
 
+  // extra-curricular activities - section states
+  const [extraCurricularInputList, setExtraCurricularInputList] = useState([]);
+  const [extraCurricularInput, setExtraCurricularInput] = useState(
+    "Extra-curricular Activities"
+  );
+  const [isShowExtraCurricularIcon, setIsShowExtraCurricularIcon] =
+    useState(false);
+  const [isShowExtraCurricularInput, setIsShowExtraCurricularInput] =
+    useState(false);
+  const [isShowExtraCurricularBoxInput, setIsShowExtraCurricularBoxInput] =
+    useState({
+      show: false,
+      num: Number,
+    });
+  const [isShowExtraCurricularBoxIcon, setIsShowExtraCurricularBoxIcon] =
+    useState({
+      show: false,
+      num: Number,
+    });
+  const [
+    isChangedExtraCurricularDescInputText,
+    setIsChangedExtraCurricularDescInputText,
+  ] = useState({
+    name: "normal",
+    num: Number,
+  });
+
+  // ------ end ----- //
+
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [uploadIsHovered, setUploadIsHovered] = useState(false);
@@ -405,6 +434,37 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
+  // Extra-Curricular section functions
+  const extraCurricularHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...extraCurricularInputList];
+    list[index][name] = value;
+    setExtraCurricularInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const extraCurricularHandleRemoveClick = (index) => {
+    const list = [...extraCurricularInputList];
+    list.splice(index, 1);
+    setExtraCurricularInputList(list);
+  };
+
+  // handle click event of the Add button
+  const extraCurricularHandleAddClick = () => {
+    setExtraCurricularInputList([
+      ...extraCurricularInputList,
+      {
+        functionTitle: "",
+        employer: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        description: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
   const handleChange = (event) => {
     let fileUploaded = event.target.files[0];
     let reader = new FileReader();
@@ -522,6 +582,7 @@ const EditResume = (props) => {
       languagesInputList,
       coursesInputList,
       internshipInputList,
+      extraCurricularInputList,
     };
 
     dispatch(resumeDataSave(resumeData));
@@ -550,6 +611,7 @@ const EditResume = (props) => {
     languagesInputList,
     coursesInputList,
     internshipInputList,
+    extraCurricularInputList,
   ]);
 
   return (
@@ -746,6 +808,27 @@ const EditResume = (props) => {
       internshipHandleAddClick={internshipHandleAddClick}
       isChangedInternshipDescInputText={isChangedInternshipDescInputText}
       setIsChangedInternshipDescInputText={setIsChangedInternshipDescInputText}
+      extraCurricularHandleInputChange={extraCurricularHandleInputChange}
+      extraCurricularHandleRemoveClick={extraCurricularHandleRemoveClick}
+      extraCurricularHandleAddClick={extraCurricularHandleAddClick}
+      extraCurricularInputList={extraCurricularInputList}
+      setExtraCurricularInputList={setExtraCurricularInputList}
+      extraCurricularInput={extraCurricularInput}
+      setExtraCurricularInput={setExtraCurricularInput}
+      isShowExtraCurricularIcon={isShowExtraCurricularIcon}
+      setIsShowExtraCurricularIcon={setIsShowExtraCurricularIcon}
+      isShowExtraCurricularInput={isShowExtraCurricularInput}
+      setIsShowExtraCurricularInput={setIsShowExtraCurricularInput}
+      isShowExtraCurricularBoxInput={isShowExtraCurricularBoxInput}
+      setIsShowExtraCurricularBoxInput={setIsShowExtraCurricularBoxInput}
+      isShowExtraCurricularBoxIcon={isShowExtraCurricularBoxIcon}
+      setIsShowExtraCurricularBoxIcon={setIsShowExtraCurricularBoxIcon}
+      isChangedExtraCurricularDescInputText={
+        isChangedExtraCurricularDescInputText
+      }
+      setIsChangedExtraCurricularDescInputText={
+        setIsChangedExtraCurricularDescInputText
+      }
     />
   );
 };
