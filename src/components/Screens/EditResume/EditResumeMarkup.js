@@ -952,6 +952,12 @@ const EditResumeMarkup = (props) => {
     }
   };
 
+  const changeColor = (name, index) => {
+    let item = props.isShowColorAfterClick === props.skillsInputList;
+
+    return item;
+  };
+
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -1668,51 +1674,63 @@ const EditResumeMarkup = (props) => {
                     </div>
 
                     <div className="flex flex-row flex-wrap">
-                      {props.skillsData.map((item, index) => (
-                        <div
-                          onClick={() => {
-                            props.skillsHandleAddClick(item.name);
-                          }}
-                          className={`m-2 mb-0 ml-0 flex flex-row items-center p-3 pt-1.5 pb-1.5 rounded-md hover:cursor-pointer ${
-                            props?.experienceLevelIsHovered.shown &&
-                            props?.experienceLevelIsHovered.num === index
-                              ? `bg-blue-100`
-                              : `bg-gray-100`
-                          }`}
-                          key={index}
-                          onMouseEnter={() => {
-                            props.setExperienceLevelIsHovered({
-                              shown: true,
-                              num: item.id,
-                            });
-                          }}
-                          onMouseLeave={() =>
-                            props.setExperienceLevelIsHovered({
-                              shown: false,
-                              num: item.id,
-                            })
-                          }
-                        >
-                          <p
-                            className={`${
+                      {props.skillsData.map((item, index) => {
+                        console.log(changeColor());
+                        return (
+                          <div
+                            onClick={() => {
+                              props.skillsHandleAddClick(item.name);
+                              props.setIsShowColorAfterClick([
+                                ...props.isShowColorAfterClick,
+                                {
+                                  name: item.name,
+                                  num: item.id,
+                                },
+                              ]);
+                            }}
+                            className={`m-2 mb-0 ml-0 flex flex-row items-center p-3 pt-1.5 pb-1.5 rounded-md hover:cursor-pointer ${
                               props?.experienceLevelIsHovered.shown &&
                               props?.experienceLevelIsHovered.num === index
-                                ? `text-blue-400`
-                                : `text-gray-600`
-                            }`}
+                                ? `bg-blue-100`
+                                : `bg-gray-100`
+                            }
+                            ${changeColor(item.name)}
+                            `}
+                            key={index}
+                            onMouseEnter={() => {
+                              props.setExperienceLevelIsHovered({
+                                shown: true,
+                                num: item.id,
+                              });
+                            }}
+                            onMouseLeave={() =>
+                              props.setExperienceLevelIsHovered({
+                                shown: false,
+                                num: item.id,
+                              })
+                            }
                           >
-                            {item.name}
-                          </p>
-                          <BiPlus
-                            className={`ml-2 ${
-                              props?.experienceLevelIsHovered.shown &&
-                              props?.experienceLevelIsHovered.num === index
-                                ? `text-blue-400`
-                                : `text-gray-600`
-                            }`}
-                          />
-                        </div>
-                      ))}
+                            <p
+                              className={`${
+                                props?.experienceLevelIsHovered.shown &&
+                                props?.experienceLevelIsHovered.num === index
+                                  ? `text-blue-400`
+                                  : `text-gray-600`
+                              }`}
+                            >
+                              {item.name}
+                            </p>
+                            <BiPlus
+                              className={`ml-2 ${
+                                props?.experienceLevelIsHovered.shown &&
+                                props?.experienceLevelIsHovered.num === index
+                                  ? `text-blue-400`
+                                  : `text-gray-600`
+                              }`}
+                            />
+                          </div>
+                        );
+                      })}
                     </div>
 
                     <SkillsInputBox {...props} />

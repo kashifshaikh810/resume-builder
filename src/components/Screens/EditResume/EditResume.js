@@ -100,6 +100,7 @@ const EditResume = (props) => {
     show: false,
     num: Number,
   });
+  const [isShowColorAfterClick, setIsShowColorAfterClick] = useState([]);
 
   const [isShowSkillsLevel, setIsShowSkillsLevel] = useState({
     level: "Novice",
@@ -903,6 +904,8 @@ const EditResume = (props) => {
       setIsShowReferencesBoxInput={setIsShowReferencesBoxInput}
       isShowReferencesBoxIcon={isShowReferencesBoxIcon}
       setIsShowReferencesBoxIcon={setIsShowReferencesBoxIcon}
+      isShowColorAfterClick={isShowColorAfterClick}
+      setIsShowColorAfterClick={setIsShowColorAfterClick}
     />
   );
 };
