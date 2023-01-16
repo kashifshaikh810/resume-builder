@@ -138,29 +138,6 @@ const EditResume = (props) => {
 
   // ------ end ----- //
 
-  // internship - section states
-  const [internshipInputList, setInternshipInputList] = useState([]);
-  const [internshipInput, setInternshipInput] = useState("Internships");
-  const [isShowInternshipIcon, setIsShowInternshipIcon] = useState(false);
-  const [isShowInternshipInput, setIsShowInternshipInput] = useState(false);
-  const [isShowInternshipBoxInput, setIsShowInternshipBoxInput] = useState({
-    show: false,
-    num: Number,
-  });
-  const [isShowInternshipBoxIcon, setIsShowInternshipBoxIcon] = useState({
-    show: false,
-    num: Number,
-  });
-  const [
-    isChangedInternshipDescInputText,
-    setIsChangedInternshipDescInputText,
-  ] = useState({
-    name: "normal",
-    num: Number,
-  });
-
-  // ------ end ----- //
-
   // extra-curricular activities - section states
   const [extraCurricularInputList, setExtraCurricularInputList] = useState([]);
   const [extraCurricularInput, setExtraCurricularInput] = useState(
@@ -185,6 +162,46 @@ const EditResume = (props) => {
     setIsChangedExtraCurricularDescInputText,
   ] = useState({
     name: "normal",
+    num: Number,
+  });
+
+  // ------ end ----- //
+
+  // internship - section states
+  const [internshipInputList, setInternshipInputList] = useState([]);
+  const [internshipInput, setInternshipInput] = useState("Internships");
+  const [isShowInternshipIcon, setIsShowInternshipIcon] = useState(false);
+  const [isShowInternshipInput, setIsShowInternshipInput] = useState(false);
+  const [isShowInternshipBoxInput, setIsShowInternshipBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowInternshipBoxIcon, setIsShowInternshipBoxIcon] = useState({
+    show: false,
+    num: Number,
+  });
+  const [
+    isChangedInternshipDescInputText,
+    setIsChangedInternshipDescInputText,
+  ] = useState({
+    name: "normal",
+    num: Number,
+  });
+
+  // ------ end ----- //
+
+  // References - section states
+  const [referencesInputList, setReferencesInputList] = useState([]);
+  const [referencesInput, setReferencesInput] = useState("References");
+  const [isShowReferencesIcon, setIsShowReferencesIcon] = useState(false);
+  const [isShowReferencesInput, setIsShowReferencesInput] = useState(false);
+  const [isNotShowIdLikeToHide, setIsNotShowIdLikeToHide] = useState(false);
+  const [isShowReferencesBoxInput, setIsShowReferencesBoxInput] = useState({
+    show: false,
+    num: Number,
+  });
+  const [isShowReferencesBoxIcon, setIsShowReferencesBoxIcon] = useState({
+    show: false,
     num: Number,
   });
 
@@ -403,6 +420,37 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
+  // Extra-Curricular section functions
+  const extraCurricularHandleInputChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...extraCurricularInputList];
+    list[index][name] = value;
+    setExtraCurricularInputList(list);
+  };
+
+  // handle click event of the Remove button
+  const extraCurricularHandleRemoveClick = (index) => {
+    const list = [...extraCurricularInputList];
+    list.splice(index, 1);
+    setExtraCurricularInputList(list);
+  };
+
+  // handle click event of the Add button
+  const extraCurricularHandleAddClick = () => {
+    setExtraCurricularInputList([
+      ...extraCurricularInputList,
+      {
+        functionTitle: "",
+        employer: "",
+        startDate: "",
+        endDate: "",
+        city: "",
+        description: "",
+      },
+    ]);
+  };
+  // ------ end ----- //
+
   // Internship section functions
   const internshipHandleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -434,32 +482,30 @@ const EditResume = (props) => {
   };
   // ------ end ----- //
 
-  // Extra-Curricular section functions
-  const extraCurricularHandleInputChange = (e, index) => {
+  // Preferences section functions
+  const preferencesHandleInputChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...extraCurricularInputList];
+    const list = [...referencesInputList];
     list[index][name] = value;
-    setExtraCurricularInputList(list);
+    setReferencesInputList(list);
   };
 
   // handle click event of the Remove button
-  const extraCurricularHandleRemoveClick = (index) => {
-    const list = [...extraCurricularInputList];
+  const preferencesHandleRemoveClick = (index) => {
+    const list = [...referencesInputList];
     list.splice(index, 1);
-    setExtraCurricularInputList(list);
+    setReferencesInputList(list);
   };
 
   // handle click event of the Add button
-  const extraCurricularHandleAddClick = () => {
-    setExtraCurricularInputList([
-      ...extraCurricularInputList,
+  const preferencesHandleAddClick = () => {
+    setReferencesInputList([
+      ...referencesInputList,
       {
-        functionTitle: "",
-        employer: "",
-        startDate: "",
-        endDate: "",
-        city: "",
-        description: "",
+        referentFullName: "",
+        company: "",
+        phone: "",
+        email: "",
       },
     ]);
   };
@@ -583,6 +629,8 @@ const EditResume = (props) => {
       coursesInputList,
       internshipInputList,
       extraCurricularInputList,
+      referencesInputList,
+      disabledPreferences: isNotShowIdLikeToHide,
     };
 
     dispatch(resumeDataSave(resumeData));
@@ -612,6 +660,8 @@ const EditResume = (props) => {
     coursesInputList,
     internshipInputList,
     extraCurricularInputList,
+    referencesInputList,
+    isNotShowIdLikeToHide,
   ]);
 
   return (
@@ -829,6 +879,23 @@ const EditResume = (props) => {
       setIsChangedExtraCurricularDescInputText={
         setIsChangedExtraCurricularDescInputText
       }
+      isNotShowIdLikeToHide={isNotShowIdLikeToHide}
+      setIsNotShowIdLikeToHide={setIsNotShowIdLikeToHide}
+      preferencesHandleInputChange={preferencesHandleInputChange}
+      preferencesHandleRemoveClick={preferencesHandleRemoveClick}
+      preferencesHandleAddClick={preferencesHandleAddClick}
+      referencesInputList={referencesInputList}
+      setReferencesInputList={setReferencesInputList}
+      referencesInput={referencesInput}
+      setReferencesInput={setReferencesInput}
+      isShowReferencesIcon={isShowReferencesIcon}
+      setIsShowReferencesIcon={setIsShowReferencesIcon}
+      isShowReferencesInput={isShowReferencesInput}
+      setIsShowReferencesInput={setIsShowReferencesInput}
+      isShowReferencesBoxInput={isShowReferencesBoxInput}
+      setIsShowReferencesBoxInput={setIsShowReferencesBoxInput}
+      isShowReferencesBoxIcon={isShowReferencesBoxIcon}
+      setIsShowReferencesBoxIcon={setIsShowReferencesBoxIcon}
     />
   );
 };

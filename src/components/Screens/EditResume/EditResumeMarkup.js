@@ -15,19 +15,8 @@ import { TiAttachmentOutline, TiPencil } from "react-icons/ti";
 import { AiOutlineItalic, AiOutlineQuestionCircle } from "react-icons/ai";
 import { MdFormatListNumbered } from "react-icons/md";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-import DropDownMenu from "../../DropDownMenu/DropDownMenu";
-import Header from "../../Header/Header";
-import "./styles.css";
-import MyButton from "../../MyButton/MyButton";
-import FLAG from "../../images/flag.svg";
-import { FaListUl } from "react-icons/fa";
-import FileModal from "../../FileModal/FileModal";
 import { SlReload } from "react-icons/sl";
-import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
-import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
-import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
-import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
-import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
+import { FaListUl } from "react-icons/fa";
 import { HiUser } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
@@ -37,6 +26,20 @@ import InternshipInputBox from "../../EditResumeComponents/InternshipInputBox";
 import { HiUsers } from "react-icons/hi";
 import ExtraCurricularInputBox from "../../EditResumeComponents/ExtraCurricularInputBox";
 import { GiCottonFlower } from "react-icons/gi";
+import { HiSpeakerphone } from "react-icons/hi";
+
+import DropDownMenu from "../../DropDownMenu/DropDownMenu";
+import Header from "../../Header/Header";
+import "./styles.css";
+import MyButton from "../../MyButton/MyButton";
+import FLAG from "../../images/flag.svg";
+import FileModal from "../../FileModal/FileModal";
+import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
+import EducationInputBox from "../../EditResumeComponents/EducationInputBox";
+import WebsiteAndSocialInputBox from "../../EditResumeComponents/WebsiteAndSocialInputBox";
+import SkillsInputBox from "../../EditResumeComponents/SkillsInputBox";
+import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
+import PreferencesInputBox from "../../EditResumeComponents/PreferencesInputBox";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -561,6 +564,50 @@ const EditResumeMarkup = (props) => {
                               )}
                               <p className="text-[6px] text-gray-600">
                                 {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {resumeData?.referencesInputList?.length >= 1 ? (
+                  <div className="flex flex-row mt-3">
+                    <HiSpeakerphone className="text-[6px] mt-0.5" />
+                    <div className="ml-1">
+                      <p className="text-[7px] font-semibold">Preferences</p>
+                      {resumeData?.disabledPreferences ? (
+                        <p className="text-[6px] text-black font-bold">
+                          Preferences available upon request
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      {resumeData?.disabledPreferences === false &&
+                        resumeData?.referencesInputList &&
+                        resumeData?.referencesInputList.map((item, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData?.referencesInputList?.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[6px] text-gray-600">
+                                {`${item?.referentFullName} ${
+                                  item?.referentFullName && item?.company
+                                    ? "from"
+                                    : ""
+                                } ${item?.company}${item?.company}`}
+                              </p>
+                              <p className="text-[6px] text-gray-600">
+                                {`${item?.email} ${item?.phone}`}
                               </p>
                             </div>
                           );
@@ -1994,47 +2041,46 @@ const EditResumeMarkup = (props) => {
                     />
                   </div>
 
-                  {/* this one is not completed check in monday  */}
                   <div className="mt-6 pt-6">
                     <div
                       className="flex flex-row items-center hover:cursor-pointer"
                       onMouseEnter={() => {
-                        !!props?.internshipInput &&
-                          props.setIsShowInternshipIcon(true);
+                        !!props?.referencesInput &&
+                          props.setIsShowReferencesIcon(true);
                       }}
-                      onMouseLeave={() => props.setIsShowInternshipIcon(false)}
+                      onMouseLeave={() => props.setIsShowReferencesIcon(false)}
                     >
-                      {props?.isShowInternshipInput ? (
+                      {props?.isShowReferencesInput ? (
                         <input
                           className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
-                          value={props.internshipInput}
+                          value={props.referencesInput}
                           onChange={(e) =>
-                            props.setInternshipInput(e.target.value)
+                            props.setReferencesInput(e.target.value)
                           }
                         />
                       ) : (
                         <p className="font-bold text-lg hover:cursor-default">
-                          {props?.internshipInput
-                            ? props?.internshipInput
-                            : "Internships"}
+                          {props?.referencesInput
+                            ? props?.referencesInput
+                            : "References"}
                         </p>
                       )}
-                      {props?.isShowInternshipIcon && (
+                      {props?.isShowReferencesIcon && (
                         <>
                           <TiPencil
                             className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
                             onClick={() =>
-                              props.setIsShowInternshipInput(
-                                !props?.isShowInternshipInput
+                              props.setIsShowReferencesInput(
+                                !props?.isShowReferencesInput
                               )
                             }
                           />
-                          {props.internshipInput !== "Internships" && (
+                          {props.referencesInput !== "References" && (
                             <SlReload
                               className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
                               onClick={() => {
-                                props?.setInternshipInput("Internships");
-                                props.setIsShowInternshipInput(false);
+                                props?.setReferencesInput("References");
+                                props.setIsShowReferencesInput(false);
                               }}
                             />
                           )}
@@ -2044,12 +2090,12 @@ const EditResumeMarkup = (props) => {
                     <div
                       className="flex flex-row items-center m-3 ml-0 hover:cursor-pointer"
                       onClick={() =>
-                        props.setIsNotShowExpertLevel(
-                          !props?.isNotShowExpertLevel
+                        props.setIsNotShowIdLikeToHide(
+                          !props?.isNotShowIdLikeToHide
                         )
                       }
                     >
-                      {props?.isNotShowExpertLevel ? (
+                      {props?.isNotShowIdLikeToHide ? (
                         <BsToggleOn className="text-2xl text-blue-800" />
                       ) : (
                         <BsToggleOff className="text-2xl text-gray-400" />
@@ -2060,18 +2106,18 @@ const EditResumeMarkup = (props) => {
                       </p>
                     </div>
 
-                    <InternshipInputBox {...props} />
+                    <PreferencesInputBox {...props} />
 
                     <MyButton
                       {...props}
                       title={
-                        props.internshipInputList.length === 0
-                          ? "Add internship"
-                          : "Add one more internship"
+                        props.referencesInputList.length === 0
+                          ? "Add preferences"
+                          : "Add one more preferences"
                       }
                       className="hover:bg-blue-50 p-2 pt-2.5 pb-2.5 m-4 ml-0 hover:cursor-pointer"
                       textStyle="text-blue-500 text-sm pl-4 font-bold"
-                      onPress={() => props.internshipHandleAddClick()}
+                      onPress={() => props.preferencesHandleAddClick()}
                       loading={false}
                     />
                   </div>
