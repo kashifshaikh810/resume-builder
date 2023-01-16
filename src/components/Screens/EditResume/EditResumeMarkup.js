@@ -2133,11 +2133,15 @@ const EditResumeMarkup = (props) => {
                       <p className="font-bold text-lg">Add Section</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 mt-2">
+                    <div className="grid grid-cols-2 gap-2 mt-2 unselectable">
                       {props.addSectionData.map((item, index) => (
                         <div
                           key={index}
-                          className="flex flex-row items-center w-11/12 hover:cursor-pointer"
+                          className={`flex flex-row items-center w-11/12 ${
+                            item.colorShown
+                              ? `hover:cursor-pointer`
+                              : `hover:cursor-default`
+                          }`}
                           onMouseEnter={() => {
                             props.setSectionIsHovered({
                               shown: true,
@@ -2160,10 +2164,14 @@ const EditResumeMarkup = (props) => {
                             className={`ml-2 text-base
                           ${
                             props?.sectionIsHovered.shown &&
-                            props?.sectionIsHovered.num === index
+                            props?.sectionIsHovered.num === index &&
+                            item.colorShown
                               ? `text-blue-400`
+                              : item.colorShown === false
+                              ? `text-gray-400`
                               : `text-gray-800`
-                          }`}
+                          }
+                          `}
                           >
                             {item.name}
                           </p>
