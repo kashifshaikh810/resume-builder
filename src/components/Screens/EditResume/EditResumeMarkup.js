@@ -606,9 +606,15 @@ const EditResumeMarkup = (props) => {
                                     : ""
                                 } ${item?.company}${item?.company}`}
                               </p>
-                              <p className="text-[6px] text-gray-600">
-                                {`${item?.email} ${item?.phone}`}
-                              </p>
+                              <div className="flex flex-row">
+                                <p className="text-[6px] text-blue-400 mr-0.5">
+                                  {item?.email}
+                                </p>
+                                <p className="text-[6px] text-gray-600">
+                                  {item?.email && item?.phone ? "·" : ""}{" "}
+                                  {item?.phone}
+                                </p>
+                              </div>
                             </div>
                           );
                         })}
