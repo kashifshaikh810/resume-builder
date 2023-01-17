@@ -5,6 +5,10 @@ import { resumeDataSave } from "../../../redux/actions/resumeAction";
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
+
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+
   // all inputs states
   const [wantedJobTitle, setWantedJobTitle] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -906,6 +910,10 @@ const EditResume = (props) => {
       setIsShowReferencesBoxIcon={setIsShowReferencesBoxIcon}
       isShowColorAfterClick={isShowColorAfterClick}
       setIsShowColorAfterClick={setIsShowColorAfterClick}
+      page={page}
+      setPage={setPage}
+      totalPage={totalPage}
+      setTotalPage={setTotalPage}
     />
   );
 };
