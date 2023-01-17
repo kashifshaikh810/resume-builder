@@ -952,12 +952,6 @@ const EditResumeMarkup = (props) => {
     }
   };
 
-  const changeColor = (name, index) => {
-    let item = props.isShowColorAfterClick === props.skillsInputList;
-
-    return item;
-  };
-
   return (
     <div>
       {props?.screenWidth <= 1029 ? (
@@ -1675,7 +1669,6 @@ const EditResumeMarkup = (props) => {
 
                     <div className="flex flex-row flex-wrap">
                       {props.skillsData.map((item, index) => {
-                        console.log(changeColor());
                         return (
                           <div
                             onClick={() => {
@@ -1694,7 +1687,6 @@ const EditResumeMarkup = (props) => {
                                 ? `bg-blue-100`
                                 : `bg-gray-100`
                             }
-                            ${changeColor(item.name)}
                             `}
                             key={index}
                             onMouseEnter={() => {
