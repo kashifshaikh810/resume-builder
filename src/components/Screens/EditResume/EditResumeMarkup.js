@@ -159,7 +159,9 @@ const EditResumeMarkup = (props) => {
                   <div className="flex flex-row mt-3">
                     <HiUser className="text-[6px] mt-0.5" />
                     <div className="ml-1">
-                      <p className="text-[7px] font-semibold">Profile</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.summaryInput}
+                      </p>
                       <p className="text-[6px] text-gray-600">
                         {resumeData?.professionalSummary}
                       </p>
@@ -172,7 +174,7 @@ const EditResumeMarkup = (props) => {
                     <BsBagFill className="text-[6px] mt-0.5" />
                     <div className="ml-1">
                       <p className="text-[7px] font-semibold">
-                        Employment History
+                        {props?.employmentInput}
                       </p>
                       {resumeData?.employmentInputList &&
                         resumeData?.employmentInputList?.map((item, index) => {
@@ -253,7 +255,9 @@ const EditResumeMarkup = (props) => {
                   <div className="flex flex-row mt-3">
                     <IoMdSchool className="text-[6px] mt-0.5" />
                     <div className="ml-1">
-                      <p className="text-[7px] font-semibold">Education</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.educationInput}
+                      </p>
                       {resumeData?.educationInputList &&
                         resumeData?.educationInputList.map((item, index) => {
                           let monthNames = [
@@ -333,7 +337,9 @@ const EditResumeMarkup = (props) => {
                   <div className="flex flex-row mt-3">
                     <MdStars className="text-[6px] mt-0.5" />
                     <div className="ml-1">
-                      <p className="text-[7px] font-semibold">Courses</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.coursesInput}
+                      </p>
                       {resumeData?.coursesInputList &&
                         resumeData?.coursesInputList.map((item, index) => {
                           let monthNames = [
@@ -409,7 +415,7 @@ const EditResumeMarkup = (props) => {
                     <GiCottonFlower className="text-[6px] mt-0.5" />
                     <div className="ml-1">
                       <p className="text-[7px] font-semibold">
-                        Extra-curricular Activities
+                        {props?.extraCurricularInput}
                       </p>
                       {resumeData?.extraCurricularInputList &&
                         resumeData?.extraCurricularInputList.map(
@@ -498,7 +504,9 @@ const EditResumeMarkup = (props) => {
                   <div className="flex flex-row mt-3">
                     <HiUsers className="text-[6px] mt-0.5" />
                     <div className="ml-1">
-                      <p className="text-[7px] font-semibold">Internship</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.internshipInput}
+                      </p>
                       {resumeData?.internshipInputList &&
                         resumeData?.internshipInputList.map((item, index) => {
                           let monthNames = [
@@ -578,7 +586,9 @@ const EditResumeMarkup = (props) => {
                   <div className="flex flex-row mt-3">
                     <HiSpeakerphone className="text-[6px] mt-0.5" />
                     <div className="ml-1">
-                      <p className="text-[7px] font-semibold">Preferences</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.referencesInput}
+                      </p>
                       {resumeData?.disabledPreferences ? (
                         <p className="text-[6px] text-black font-bold">
                           Preferences available upon request
@@ -652,7 +662,9 @@ const EditResumeMarkup = (props) => {
                 resumeData?.skillsInputList?.length >= 1 ||
                 resumeData?.hobbies ||
                 resumeData?.languagesInputList?.length >= 1 ? (
-                  <p className="text-[7px] font-semibold">Details</p>
+                  <p className="text-[7px] font-semibold">
+                    {props?.personalDetailInput}
+                  </p>
                 ) : (
                   ""
                 )}
@@ -710,7 +722,9 @@ const EditResumeMarkup = (props) => {
 
                 {resumeData?.websiteInputList?.length >= 1 ? (
                   <div className="mt-2">
-                    <p className="text-[7px] font-semibold">Links</p>
+                    <p className="text-[7px] font-semibold">
+                      {props?.websiteInput}
+                    </p>
                     {resumeData?.websiteInputList &&
                       resumeData?.websiteInputList.map((item, index) => {
                         return (
@@ -729,7 +743,9 @@ const EditResumeMarkup = (props) => {
                 <div className="w-full">
                   {resumeData?.skillsInputList?.length >= 1 ? (
                     <div className="mt-2">
-                      <p className="text-[7px] font-semibold">Skills</p>
+                      <p className="text-[7px] font-semibold">
+                        {props?.skillsInput}
+                      </p>
                       {resumeData.skillsInputList &&
                         resumeData.skillsInputList.map((item, index) => {
                           return (
@@ -766,7 +782,9 @@ const EditResumeMarkup = (props) => {
 
                 {resumeData?.hobbies && (
                   <div className="mt-2">
-                    <p className="text-[7px] font-semibold">Hobbies</p>
+                    <p className="text-[7px] font-semibold">
+                      {props?.hobbiesInput}
+                    </p>
                     <p className="text-[6px] text-black">
                       {resumeData?.hobbies}
                     </p>
@@ -775,7 +793,9 @@ const EditResumeMarkup = (props) => {
 
                 {resumeData?.languagesInputList?.length >= 1 ? (
                   <div className="mt-2">
-                    <p className="text-[7px] font-semibold">Languages</p>
+                    <p className="text-[7px] font-semibold">
+                      {props?.languagesInput}
+                    </p>
                     {resumeData?.languagesInputList &&
                       resumeData?.languagesInputList.map((item, index) => {
                         return (
@@ -1939,7 +1959,7 @@ const EditResumeMarkup = (props) => {
                     >
                       {props?.isShowExtraCurricularInput ? (
                         <input
-                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-24"
+                          className="outline-none border-b-2 border-blue-400 font-bold text-lg w-64"
                           value={props.extraCurricularInput}
                           onChange={(e) =>
                             props.setExtraCurricularInput(e.target.value)
@@ -1967,7 +1987,7 @@ const EditResumeMarkup = (props) => {
                             <SlReload
                               className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
                               onClick={() => {
-                                props?.setInternshipInput(
+                                props?.setExtraCurricularInput(
                                   "Extra-curricular Activities"
                                 );
                                 props.setIsShowExtraCurricularInput(false);
