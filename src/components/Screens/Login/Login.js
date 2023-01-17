@@ -24,7 +24,7 @@ const Login = (props) => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input`}
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input outline-none border-none`}
         />
 
         <div className="flex flex-row w-10/12 justify-around mt-4 pt-4 my-buttons-container">

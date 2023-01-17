@@ -71,7 +71,7 @@ const FirstNameLastName = (props) => {
         <input
           value={firstName}
           onChange={(e) => firstNameOnChangeHandler(e)}
-          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 outline-none border-none input ${
             firstNameErr && `border-2 border-red-500`
           }`}
         />
@@ -89,7 +89,7 @@ const FirstNameLastName = (props) => {
         <input
           value={lastName}
           onChange={(e) => lastNameOnChangeHandler(e)}
-          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 outline-none border-none input ${
             lastNameErr && `border-2 border-red-500`
           }`}
         />

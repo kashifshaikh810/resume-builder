@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
@@ -9,7 +10,7 @@ const EmailScreen = (props) => {
   const [email, setEmail] = useState("");
   const [showEmailErr, setShowEmailErr] = useState("");
 
-  const navigate = props.navigate();
+  // const navigate = props.navigate();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -62,7 +63,7 @@ const EmailScreen = (props) => {
         <input
           value={email}
           onChange={(e) => emailOnChangeHandler(e)}
-          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input ${
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input border-none ${
             showEmailErr && `border-2 border-red-500`
           }`}
         />
