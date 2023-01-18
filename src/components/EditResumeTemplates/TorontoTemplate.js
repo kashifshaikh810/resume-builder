@@ -8,7 +8,7 @@ const TorontoTemplate = (props) => {
   }, [props]);
 
   const oneSectionTemplate = () => {
-    if (true) {
+    if (props?.page === 1) {
       return (
         <div className="p-2">
           <div className="flex flex-row">
@@ -152,7 +152,7 @@ const TorontoTemplate = (props) => {
   };
 
   const twoSectionTemplate = () => {
-    if (false) {
+    if (props?.page === 2) {
       return (
         <div
           className="grid grid-cols-[400px_minmax(333px,_1fr)_100px]
