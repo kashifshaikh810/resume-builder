@@ -544,40 +544,28 @@ const TorontoTemplate = (props) => {
     if (props?.page === 2) {
       return (
         <div
-          className="grid grid-cols-[400px_minmax(333px,_1fr)_100px]
+          className="grid grid-cols-[150px_minmax(200px,_1fr)_100px]
           p-2 pl-3"
         >
           <div>
-            <div>
-              <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
-                fwefewe, fwfef
-              </p>
-              <p className="text-black tracking-widest text-[6px]">
-                7/2022-8/2022
-              </p>
-              <p className="text-gray-800 text-[6px] mt-0.5">fffwfwefwfe</p>
-            </div>
-
-            <div className="mt-5">
-              <p className="text-[14px] font-bold">Internships</p>
-              <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
-                regrg, at ewrggr, prfergg
-              </p>
-              <p className="text-black tracking-widest text-[6px]">
-                6/2022-12/2022
-              </p>
-              <p className="text-gray-800 text-[6px] mt-0.5">eettttt</p>
-            </div>
+            <p className="text-[14px] font-bold">Ɪnternships</p>
+            <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
+              regrg, at ewrggr, prfergg
+            </p>
+            <p className="text-black tracking-widest text-[6px]">
+              6/2022-12/2022
+            </p>
+            <p className="text-gray-800 text-[6px] mt-0.5">eettttt</p>
           </div>
 
           <div className="flex flex-col flex-1 items-end">
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+            <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
               <p className="text-[14px] font-bold">Courses</p>
-              <p className="text-[6px] font-bold mt-2">fewfwf at fewfeqw</p>
+              <p className="text-[6px] font-bold mt-0.5">fewfwf at fewfeqw</p>
               <p className="text-[6px]">2/2022-4/2022</p>
             </div>
 
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+            <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
               <p className="text-[14px] font-bold">Preferences</p>
               <p className="text-[6px] mt-0.5">fewfwfewfeqw</p>
               <p className="text-[6px]">fewfwfewfeqw</p>
