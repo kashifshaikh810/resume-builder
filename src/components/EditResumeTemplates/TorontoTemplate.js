@@ -9,6 +9,14 @@ const TorontoTemplate = (props) => {
     props.setTotalPage(2);
   }, [props]);
 
+  const levelNum = {
+    Novice: 1,
+    Beginner: 2,
+    Skillful: 3,
+    Experienced: 4,
+    Expert: 5,
+  };
+
   const oneSectionTemplate = () => {
     if (props?.page === 1) {
       return (
@@ -437,34 +445,31 @@ const TorontoTemplate = (props) => {
                 ""
               )}
 
-              {/* skills section is not completed */}
-
               {resumeData?.skillsInputList?.length >= 1 ? (
                 <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
                   <p className="text-[14px] font-bold">{props?.skillsInput}</p>
                   {resumeData.skillsInputList &&
                     resumeData.skillsInputList.map((item, index) => {
                       return (
-                        <div key={index}>
-                          <p className="text-[6px] mt-0.5">{item?.skill}</p>
-                          {/* {resumeData?.isNotShowExpertLevel === false &&
-                      item.skill ? (
-                        <div>
-                          <div
-                            className="w-[100px] bg-gray-200"
-                            id="myProgress"
+                        <div key={index} className="flex flex-row">
+                          <p
+                            className={`text-[6px] mt-0.5 mr-0.5 ${
+                              resumeData?.isNotShowExpertLevel === false
+                                ? `font-semibold`
+                                : ``
+                            }`}
                           >
-                            <div
-                              className={`${
-                                linerProgressLine[item.level]
-                              } h-[1.5px] bg-blue-400 mt-1`}
-                              id="myBar"
-                            ></div>
-                          </div>
-                        </div>
-                      ) : (
-                        ""
-                      )} */}
+                            {item?.skill}
+                          </p>
+                          {resumeData?.isNotShowExpertLevel === false ? (
+                            <div className="flex flex-1 justify-end items-center mr-4 border-b border-dotted border-gray-400 w-11/12 relative -top-[2px]">
+                              <p className="text-[6px] absolute top-[5px] -right-[12px] font-semibold">
+                                {`${levelNum[item?.level]}/5`}
+                              </p>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       );
                     })}
