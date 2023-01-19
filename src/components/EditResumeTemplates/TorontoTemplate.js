@@ -478,10 +478,14 @@ const TorontoTemplate = (props) => {
                 ""
               )}
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-                <p className="text-[14px] font-bold">Hobbies</p>
-                <p className="text-[6px] mt-0.5">hobbies content</p>
-              </div>
+              {resumeData?.hobbies && (
+                <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+                  <p className="text-[14px] font-semibold">
+                    {props?.hobbiesInput}
+                  </p>
+                  <p className="text-[6px] mt-0.5">{resumeData?.hobbies}</p>
+                </div>
+              )}
 
               <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
                 <p className="text-[14px] font-bold">Languages</p>
