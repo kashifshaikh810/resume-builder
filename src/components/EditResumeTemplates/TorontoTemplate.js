@@ -17,6 +17,12 @@ const TorontoTemplate = (props) => {
     Expert: 5,
   };
 
+  const levelWidth = {
+    "Very good command": "-right-[66px]",
+    "Highly Proficient": "-right-[55px]",
+    "Native Speaker": "-right-[50px]",
+  };
+
   const oneSectionTemplate = () => {
     if (props?.page === 1) {
       return (
@@ -487,10 +493,46 @@ const TorontoTemplate = (props) => {
                 </div>
               )}
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-                <p className="text-[14px] font-bold">Languages</p>
-                <p className="text-[6px] mt-0.5">language content</p>
-              </div>
+              {resumeData?.languagesInputList?.length >= 1 ? (
+                <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+                  <p className="text-[14px] font-semibold">
+                    {props?.languagesInput}
+                  </p>
+                  {resumeData?.languagesInputList &&
+                    resumeData?.languagesInputList.map((item, index) => {
+                      if (item?.level === "Select Level") {
+                        return null;
+                      } else {
+                        return (
+                          <div key={index} className="flex flex-row">
+                            {item?.language ? (
+                              <p className="text-[6px] mt-0.5">
+                                {item?.language}
+                              </p>
+                            ) : (
+                              ""
+                            )}
+                            {item?.language ? (
+                              <div className="flex justify-end items-center mr-2 border-b border-dotted border-gray-400 w-4/12 relative -top-[2px]">
+                                <p
+                                  className={`text-[6px] absolute top-[5px] ${
+                                    levelWidth[item?.level]
+                                  } font-semibold`}
+                                >
+                                  {item?.level}
+                                </p>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        );
+                      }
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
