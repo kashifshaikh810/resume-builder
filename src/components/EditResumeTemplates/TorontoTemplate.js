@@ -544,76 +544,8 @@ const TorontoTemplate = (props) => {
     if (props?.page === 2) {
       return (
         <div className="grid grid-cols-[150px_minmax(200px,_1fr)_100px] p-2 pl-3">
-          {resumeData?.internshipInputList?.length >= 1 ? (
-            <div>
-              <p className="text-[14px] font-bold">{props?.internshipInput}</p>
-              {resumeData?.internshipInputList &&
-                resumeData?.internshipInputList.map((item, index) => {
-                  let startDate = new Date(item?.startDate);
-                  const startDateMonth = `${startDate.getMonth() + 1}`.padStart(
-                    2,
-                    "0"
-                  );
-
-                  const startDateYear = `${startDate.getFullYear()}`.padStart(
-                    2,
-                    "0"
-                  );
-
-                  const startFullDate = [startDateMonth, startDateYear].join(
-                    "/"
-                  );
-
-                  let endDate = new Date(item?.endDate);
-                  const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
-                    2,
-                    "0"
-                  );
-
-                  const endDateYear = `${endDate.getFullYear()}`.padStart(
-                    2,
-                    "0"
-                  );
-
-                  const endFullDate = [endDateMonth, endDateYear].join("/");
-
-                  return (
-                    <div
-                      key={index}
-                      className={`${
-                        resumeData?.internshipInputList?.length >= 2 &&
-                        index >= 1
-                          ? `mt-2`
-                          : ``
-                      }`}
-                    >
-                      <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
-                        {`${item?.jobTitle} ${
-                          item?.jobTitle && item?.employer ? "at" : ""
-                        } ${item?.employer}${
-                          item?.employer && item.city && `,`
-                        } ${item.city}`}
-                      </p>
-                      {(startDateMonth && startDateYear) ||
-                      (endDateMonth && endDateYear) ? (
-                        <p className="text-black tracking-widest text-[6px]">
-                          {item?.startDate ? startFullDate : ""}
-                          {item?.startDate && item?.endDate ? `-` : ""}
-                          {item?.endDate ? endFullDate : ""}
-                        </p>
-                      ) : (
-                        ""
-                      )}
-                      <p className="text-gray-800 text-[6px] mt-0.5">
-                        {item?.description}
-                      </p>
-                    </div>
-                  );
-                })}
-            </div>
-          ) : (
-            ""
-          )}
+          {/* this div use for only 1 column */}
+          <div />
 
           <div className="flex flex-col flex-1 justify-end items-end">
             {resumeData?.coursesInputList?.length >= 1 ? (
@@ -680,18 +612,47 @@ const TorontoTemplate = (props) => {
               ""
             )}
 
-            {/* <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[14px] font-bold">Courses</p>
-              <p className="text-[6px] font-bold mt-0.5">fewfwf at fewfeqw</p>
-              <p className="text-[6px]">2/2022-4/2022</p>
-            </div> */}
-
-            <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[14px] font-bold">Preferences</p>
-              <p className="text-[6px] mt-0.5">fewfwfewfeqw</p>
-              <p className="text-[6px]">fewfwfewfeqw</p>
-              <p className="text-[6px]">fewfwfewfeqw</p>
-            </div>
+            {resumeData?.referencesInputList?.length >= 1 ? (
+              <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+                <p className="text-[14px] font-bold">
+                  {props?.referencesInput}
+                </p>
+                {resumeData?.disabledPreferences ? (
+                  <p className="text-[6px] text-black font-bold">
+                    Preferences available upon request
+                  </p>
+                ) : (
+                  ""
+                )}
+                {resumeData?.disabledPreferences === false &&
+                  resumeData?.referencesInputList &&
+                  resumeData?.referencesInputList.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`${
+                          resumeData?.referencesInputList?.length >= 2 &&
+                          index >= 1
+                            ? `mt-2`
+                            : ``
+                        }`}
+                      >
+                        <p className="text-[6px] mt-0.5">
+                          {`${item?.referentFullName} ${
+                            item?.referentFullName && item?.company
+                              ? "from"
+                              : ""
+                          } ${item?.company}${item?.company}`}
+                        </p>
+                        <p className="text-[6px]">{item?.email}</p>
+                        <p className="text-[6px]">{item?.phone}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       );
