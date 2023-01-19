@@ -543,22 +543,79 @@ const TorontoTemplate = (props) => {
   const twoSectionTemplate = () => {
     if (props?.page === 2) {
       return (
-        <div
-          className="grid grid-cols-[150px_minmax(200px,_1fr)_100px]
-          p-2 pl-3"
-        >
-          <div>
-            <p className="text-[14px] font-bold">Ɪnternships</p>
-            <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
-              regrg, at ewrggr, prfergg
-            </p>
-            <p className="text-black tracking-widest text-[6px]">
-              6/2022-12/2022
-            </p>
-            <p className="text-gray-800 text-[6px] mt-0.5">eettttt</p>
-          </div>
+        <div className="grid grid-cols-[150px_minmax(200px,_1fr)_100px] p-2 pl-3">
+          {resumeData?.internshipInputList?.length >= 1 ? (
+            <div>
+              <p className="text-[14px] font-bold">{props?.internshipInput}</p>
+              {resumeData?.internshipInputList &&
+                resumeData?.internshipInputList.map((item, index) => {
+                  let startDate = new Date(item?.startDate);
+                  const startDateMonth = `${startDate.getMonth() + 1}`.padStart(
+                    2,
+                    "0"
+                  );
 
-          <div className="flex flex-col flex-1 items-end">
+                  const startDateYear = `${startDate.getFullYear()}`.padStart(
+                    2,
+                    "0"
+                  );
+
+                  const startFullDate = [startDateMonth, startDateYear].join(
+                    "/"
+                  );
+
+                  let endDate = new Date(item?.endDate);
+                  const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
+                    2,
+                    "0"
+                  );
+
+                  const endDateYear = `${endDate.getFullYear()}`.padStart(
+                    2,
+                    "0"
+                  );
+
+                  const endFullDate = [endDateMonth, endDateYear].join("/");
+
+                  return (
+                    <div
+                      key={index}
+                      className={`${
+                        resumeData?.internshipInputList?.length >= 2 &&
+                        index >= 1
+                          ? `mt-2`
+                          : ``
+                      }`}
+                    >
+                      <p className="bg-black max-w-max min-w-max text-[8px] text-white font-bold pl-1 pr-1">
+                        {`${item?.jobTitle} ${
+                          item?.jobTitle && item?.employer ? "at" : ""
+                        } ${item?.employer}${
+                          item?.employer && item.city && `,`
+                        } ${item.city}`}
+                      </p>
+                      {(startDateMonth && startDateYear) ||
+                      (endDateMonth && endDateYear) ? (
+                        <p className="text-black tracking-widest text-[6px]">
+                          {item?.startDate ? startFullDate : ""}
+                          {item?.startDate && item?.endDate ? `-` : ""}
+                          {item?.endDate ? endFullDate : ""}
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      <p className="text-gray-800 text-[6px] mt-0.5">
+                        {item?.description}
+                      </p>
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            ""
+          )}
+
+          <div className="flex flex-col flex-1 justify-end items-end">
             <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
               <p className="text-[14px] font-bold">Courses</p>
               <p className="text-[6px] font-bold mt-0.5">fewfwf at fewfeqw</p>

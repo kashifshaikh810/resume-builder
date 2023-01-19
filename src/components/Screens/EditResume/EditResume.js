@@ -174,7 +174,7 @@ const EditResume = (props) => {
 
   // internship - section states
   const [internshipInputList, setInternshipInputList] = useState([]);
-  const [internshipInput, setInternshipInput] = useState("Internships");
+  const [internshipInput, setInternshipInput] = useState("Ɪnternships");
   const [isShowInternshipIcon, setIsShowInternshipIcon] = useState(false);
   const [isShowInternshipInput, setIsShowInternshipInput] = useState(false);
   const [isShowInternshipBoxInput, setIsShowInternshipBoxInput] = useState({

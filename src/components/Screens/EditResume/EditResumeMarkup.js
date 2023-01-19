@@ -1344,7 +1344,7 @@ const EditResumeMarkup = (props) => {
                         <p className="font-bold text-lg hover:cursor-default">
                           {props?.internshipInput
                             ? props?.internshipInput
-                            : "Internships"}
+                            : "Ɪnternships"}
                         </p>
                       )}
                       {props?.isShowInternshipIcon && (
@@ -1357,11 +1357,11 @@ const EditResumeMarkup = (props) => {
                               )
                             }
                           />
-                          {props.internshipInput !== "Internships" && (
+                          {props.internshipInput !== "Ɪnternships" && (
                             <SlReload
                               className="ml-1 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg"
                               onClick={() => {
-                                props?.setInternshipInput("Internships");
+                                props?.setInternshipInput("Ɪnternships");
                                 props.setIsShowInternshipInput(false);
                               }}
                             />
