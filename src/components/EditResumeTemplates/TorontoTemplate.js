@@ -59,24 +59,38 @@ const TorontoTemplate = (props) => {
               </div>
 
               <div className="pt-1 mt-1">
-                <div>
-                  <p className="text-[6px] font-bold">Date / Place of birth</p>
-                  <p className="text-[6px]">{`${resumeData?.dateOfBirth} ${
-                    resumeData?.dateOfBirth && resumeData?.placeOfBirth
-                      ? `/`
-                      : ``
-                  } ${resumeData?.placeOfBirth}`}</p>
-                </div>
+                {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
+                  <div>
+                    <p className="text-[6px] font-bold">
+                      Date / Place of birth
+                    </p>
+                    <p className="text-[6px]">{`${resumeData?.dateOfBirth} ${
+                      resumeData?.dateOfBirth && resumeData?.placeOfBirth
+                        ? `/`
+                        : ``
+                    } ${resumeData?.placeOfBirth}`}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                <div className="pt-1 mt-1">
-                  <p className="text-[6px] font-bold">Driving License</p>
-                  <p className="text-[6px]">{resumeData?.drivingLicense}</p>
-                </div>
+                {resumeData?.drivingLicense ? (
+                  <div className="pt-1 mt-1">
+                    <p className="text-[6px] font-bold">Driving License</p>
+                    <p className="text-[6px]">{resumeData?.drivingLicense}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
 
-                <div className="pt-1 mt-1">
-                  <p className="text-[6px] font-bold">Nationality</p>
-                  <p className="text-[6px]">{resumeData?.nationality}</p>
-                </div>
+                {resumeData?.nationality ? (
+                  <div className="pt-1 mt-1">
+                    <p className="text-[6px] font-bold">Nationality</p>
+                    <p className="text-[6px]">{resumeData?.nationality}</p>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
 
