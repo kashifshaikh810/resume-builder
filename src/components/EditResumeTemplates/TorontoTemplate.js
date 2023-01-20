@@ -135,7 +135,9 @@ const TorontoTemplate = (props) => {
             </div>
           </div>
 
-          <div className="bg-gray-200 h-[1.5px] w-10/12 mt-2 mb-2" />
+          <div>
+            <div className="bg-gray-100 h-[1px] w-[72%] mt-2 mb-2" />
+          </div>
 
           <div className="grid grid-cols-[200px_minmax(200px,_1fr)_100px]">
             <div>
