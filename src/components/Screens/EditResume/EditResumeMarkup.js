@@ -35,6 +35,7 @@ import LanguagesInputBox from "../../EditResumeComponents/LanguagesInputBox";
 import PreferencesInputBox from "../../EditResumeComponents/PreferencesInputBox";
 import StockholmTemplate from "../../EditResumeTemplates/StockholmTemplate";
 import TorontoTemplate from "../../EditResumeTemplates/TorontoTemplate";
+import NewYorkTemplate from "../../EditResumeTemplates/NewYorkTemplate";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -137,7 +138,9 @@ const EditResumeMarkup = (props) => {
           >
             {/* <StockholmTemplate {...props} /> */}
 
-            <TorontoTemplate {...props} />
+            {/* <TorontoTemplate {...props} /> */}
+
+            <NewYorkTemplate {...props} />
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">

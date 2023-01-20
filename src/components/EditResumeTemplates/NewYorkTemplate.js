@@ -6,7 +6,8 @@ import { IoMdPerson } from "react-icons/io";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { HiBadgeCheck } from "react-icons/hi";
-import { RiStarSFill } from "react-icons/ri";
+import { HiSpeakerphone } from "react-icons/hi";
+import { HiUsers } from "react-icons/hi";
 
 import "./styles.css";
 
@@ -19,35 +20,30 @@ const NewYorkTemplate = (props) => {
     if (props.page === 1) {
       return (
         <div>
-          <div className="pt-14 w-full">
-            <div className="flex w-full flex-col justify-center items-center">
+          <div className={`${props?.profileImage ? `pt-2` : `pt-4`} w-full`}>
+            <div className="flex w-11/12 flex-col justify-center items-center">
+              {props?.profileImage && (
+                <img
+                  src={props?.profileImage}
+                  className="w-[30px] h-[30px] rounded-[5px] m-4 mb-2"
+                />
+              )}
               <div>
-                <p className="text-2xl uppercase font-[500] tracking-widest font-serif max-[768px]:text-xl max-[690px]:text-lg max-[595px]:text-sm">
+                <p className="text-[12px] uppercase font-[500] tracking-[3px] font-serif">
                   Muhammad kashif
                 </p>
               </div>
-              <div className="flex flex-row items-center mt-2">
-                <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]">
-                  WEB DEVELOPER
-                </p>
-                <div className="flex flex-row items-center ml-3">
-                  <MdLocationOn className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
-                  <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    wwwwwww,{" "}
-                  </p>
-                  <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    20132,{" "}
-                  </p>
-                  <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    CYCAD{" "}
-                  </p>
+              <div className="flex flex-row items-center mt-7">
+                <p className="text-[4px] uppercase">WEB DEVELOPER</p>
+                <div className="flex flex-row items-center ml-1.5">
+                  <MdLocationOn className="text-[4px]" />
+                  <p className="text-[4px] ml-0.5 uppercase">wwwwwww, </p>
+                  <p className="text-[4px] ml-0.5 uppercase">ffreerf, </p>
+                  <p className="text-[4px] ml-0.5 uppercase">CYCAD </p>
                 </div>
-                <div className="flex flex-row items-center ml-3">
-                  <BsTelephoneFill className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
-                  <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    {" "}
-                    03235422343{" "}
-                  </p>
+                <div className="flex flex-row items-center ml-1.5">
+                  <BsTelephoneFill className="text-[4px]" />
+                  <p className="text-[4px] ml-0.5"> 03235422343 </p>
                 </div>
               </div>
             </div>
@@ -55,8 +51,7 @@ const NewYorkTemplate = (props) => {
 
           <div
             className="
-          grid grid-cols-[250px_minmax(250px,_1fr)_100px]
-          max-[883px]:ml-0
+          grid grid-cols-[110px_minmax(200px,_1fr)_100px]
           m-14
           p-12
           mr-0
@@ -65,123 +60,104 @@ const NewYorkTemplate = (props) => {
           mb-0
           pr-0
           pb-0
-          mt-5
-          pt-5
+          mt-4
+          pt-0
           "
           >
             {/* Column 1 */}
-            <div>
+            <div className="">
               <div className="flex flex-row justify-center items-center">
-                <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] mr-1.5" />
-                <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                <CgShapeCircle className="text-[4px] mr-1.5" />
+                <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                   Details
                 </p>
-                <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] ml-1.5" />
+                <CgShapeCircle className="text-[4px] ml-1.5" />
               </div>
 
-              <div className="mt-1 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  bgrjknje
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  wwweewe, 2042
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  cdwcsf
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  0313423442
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] underline">
+              <div className="mt-0.5 flex flex-col items-center">
+                <p className="text-[5px]">bgrjknje</p>
+                <p className="text-[5px]">wwweewe, 2042</p>
+                <p className="text-[5px]">cdwcsf</p>
+                <p className="text-[5px]">0313423442</p>
+                <p className="text-[5px] underline">
                   kashifshaikh910ssg@gmail.com
                 </p>
               </div>
 
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+              <div className="mt-1 flex flex-col items-center">
+                <p className="text-[5px] text-gray-500">
                   Date / Place of birth
                 </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  23
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  2421
-                </p>
+                <p className="text-[5px]">23</p>
+                <p className="text-[5px]">2421</p>
               </div>
 
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  Nationality
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  322
-                </p>
+              <div className="mt-1 flex flex-col items-center">
+                <p className="text-[5px] text-gray-500">Nationality</p>
+                <p className="text-[5px]">322</p>
               </div>
 
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  Driving license
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  423
-                </p>
+              <div className="mt-1 flex flex-col items-center">
+                <p className="text-[5px] text-gray-500">Driving license</p>
+                <p className="text-[5px]">423</p>
               </div>
 
-              <div className="flex flex-col justify-center items-center mt-7">
+              <div className="flex flex-col justify-center items-center mt-2">
                 <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <CgShapeCircle className="text-[4px] mr-1.5" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     Links
                   </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
+                  <CgShapeCircle className="text-[4px] ml-1.5" />
                 </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 underline">
-                  greijgijrr
-                </p>
+                <p className="text-[5px] mt-1.5 underline">greijgijrr</p>
               </div>
 
-              <div className="flex flex-col justify-center items-center mt-7">
+              <div className="flex flex-col justify-center items-center mt-2">
                 <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <CgShapeCircle className="text-[4px] mr-1.5" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     Skills
                   </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
-                </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
-                  Communication
-                </p>
-              </div>
-
-              <div className="flex flex-col justify-center items-center mt-6">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Hobbies
-                  </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
-                </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
-                  rgerr
-                </p>
-              </div>
-
-              <div className="flex flex-col justify-center items-center mt-5 w-full">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Languages
-                  </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
+                  <CgShapeCircle className="text-[4px] ml-1.5" />
                 </div>
                 <div>
-                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 text-center">
-                    rgerr
-                  </p>
-                  <div className="w-[10rem] bg-gray-300" id="myProgress">
+                  <p className="text-[5px] mt-1.5 text-center">Communication</p>
+                  <div className="w-[65px] bg-gray-300" id="myProgress">
                     {/* 6 || 8 || 10*/}
                     <div
-                      className="w-[6rem] h-[3.5px] bg-gray-800 mt-1"
+                      className="w-[30px] h-[1.5px] bg-gray-800 mt-1"
+                      id="myBar"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-center items-center mt-2">
+                <div className="flex flex-row justify-center items-center">
+                  <CgShapeCircle className="text-[4px] mr-1.5" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                    Hobbies
+                  </p>
+                  <CgShapeCircle className="text-[4px] ml-1.5" />
+                </div>
+                <p className="text-[5px] mt-1.5">rgerr</p>
+              </div>
+
+              <div className="flex flex-col justify-center items-center mt-2 w-full">
+                <div className="flex flex-row justify-center items-center">
+                  <CgShapeCircle className="text-[4px] mr-1.5" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                    Languages
+                  </p>
+                  <CgShapeCircle className="text-[4px] ml-1.5" />
+                </div>
+                <div>
+                  <p className="text-[5px] mt-1.5 text-center">rgerr</p>
+                  <div className="w-[65px] bg-gray-300" id="myProgress">
+                    {/* 6 || 8 || 10*/}
+                    <div
+                      className="w-[30px] h-[1.5px] bg-gray-800 mt-1"
                       id="myBar"
                     ></div>
                   </div>
@@ -192,164 +168,156 @@ const NewYorkTemplate = (props) => {
             {/* Column 2 */}
             <div>
               <div className="flex flex-row items-center">
-                <IoMdPerson className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                <IoMdPerson className="text-[6px] mr-2" />
+                <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                   profile
                 </p>
               </div>
-              <div className="flex flex-row items-center mt-1">
-                <CgShapeCircle className="text-[7px] ml-1 mr-5" />
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  ferfreregergetgrgr
-                </p>
+              <div className="flex flex-row items-center mt-0.5">
+                <CgShapeCircle className="text-[4px] ml-0.5 mr-2" />
+                <p className="text-[5px]">ferfreregergetgrgr</p>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-3">
                 <div className="flex flex-row items-center">
-                  <BsFillHandbagFill className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <BsFillHandbagFill className="text-[6px] mr-2" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     Employment History
                   </p>
                 </div>
 
-                <div className="flex flex-row mt-1">
+                <div className="flex flex-row mt-0.5">
                   <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
+                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
                   </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                  <div className="mt-0.5">
+                    <p className="text-[5px] font-[700]">
                       sdqd at dsadas, ewfewfw
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    <p className="text-[5px] text-gray-500">
                       December 2022 - 2022
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      rgeregr
-                    </p>
+                    <p className="text-[5px] mt-0.5">rgeregr</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-3">
                 <div className="flex flex-row items-center">
-                  <IoMdSchool className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <IoMdSchool className="text-[6px] mr-2" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     Education
                   </p>
                 </div>
 
-                <div className="flex flex-row mt-1">
+                <div className="flex flex-row mt-0.5">
                   <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
+                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
                   </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                  <div className="mt-0.5">
+                    <p className="text-[5px] font-[700]">
                       efvr at grwf, gteege
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    <p className="text-[5px] text-gray-500">
                       July 2022 - April 2022
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      pgreje
-                    </p>
+                    <p className="text-[5px] mt-0.5">pgreje</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-3">
                 <div className="flex flex-row items-center">
-                  <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <HiBadgeCheck className="text-[6px] mr-2" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     Courses
                   </p>
                 </div>
 
-                <div className="flex flex-row mt-1">
+                <div className="flex flex-row mt-0.5">
                   <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
+                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
                   </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      efvr, grwf
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                  <div className="mt-0.5">
+                    <p className="text-[5px] font-[700]">efvr, grwf</p>
+                    <p className="text-[5px] text-gray-500">
                       February 2022 - April 2022
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-5">
+              <div className="mt-3">
                 <div className="flex flex-row items-center">
-                  <BsFlower2 className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <BsFlower2 className="text-[6px] mr-2" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     extra-curricular activities
                   </p>
                 </div>
 
-                <div className="flex flex-row mt-1">
+                <div className="flex flex-row mt-0.5">
                   <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
+                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
                   </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                  <div className="mt-0.5">
+                    <p className="text-[5px] font-[700]">
                       sdqd at dsadas, ewfewfw
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    <p className="text-[5px] text-gray-500">
                       June 2022 - August 2022
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      rgeregr
-                    </p>
+                    <p className="text-[5px] mt-0.5">rgeregr</p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-5">
-                <RiStarSFill className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                <div className="flex flex-row relative -top-[3px]">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="relative -top-[7px]">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      sdqd at dsadas, ewfewfw
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                      June 2022 - August 2022
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      rgeregr
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5">
+              <div className="mt-3">
                 <div className="flex flex-row items-center">
-                  <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  <HiUsers className="text-[6px] mr-2" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
                     internships
                   </p>
                 </div>
 
                 <div className="flex flex-row mt-1">
                   <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
+                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
                   </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                  <div className="mt-0.5">
+                    <p className="text-[5px] font-[700]">
                       efwefefw at grwfefrf, rfwfwfew
                     </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    <p className="text-[5px] text-gray-500">
                       June 2022 - December 2022
                     </p>
+                    <p className="text-[5px] mt-0.5">rgeregr</p>
+                  </div>
+                </div>
+
+                <div className="mt-3">
+                  <div className="flex flex-row items-center">
+                    <HiSpeakerphone className="text-[6px] mr-2" />
+                    <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                      Preferences
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row mt-0.5">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
+                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-0.5">
+                      <p className="text-[5px] font-[700]">efvfewfwfewfw</p>
+                      <p className="text-[5px] text-gray-500">
+                        regogreoioi · girejgife
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -360,55 +328,22 @@ const NewYorkTemplate = (props) => {
     }
   };
 
-  const pageTwo = () => {
-    if (props.page === 2) {
-      return (
-        <div className="pt-10 flex flex-col w-10/12 items-center">
-          <div>
-            <div className="flex flex-row items-center">
-              <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-              <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                Preferences
-              </p>
-            </div>
+  // const pageTwo = () => {
+  //   if (props.page === 2) {
+  //     return (
 
-            <div className="flex flex-row mt-1">
-              <div className="flex flex-col">
-                <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
-              </div>
-              <div className="mt-1">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                  efvfewfwfewfw
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  regogreoioi · girejgife
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-  };
+  //     );
+  //   }
+  // };
 
   return (
-    <div
-      className="flex flex-col w-full h-[930px] 
-      border-l border-gray-600 ml-5
-      pl-10 pb-10 
-      unselectable
-      max-[768px]:border-none
-      max-[768px]:ml-0
-      max-[1029px]:pr-5 max-[1029px]:pl-5 
-      "
-    >
-      <div className="flex bg-white flex-col w-full overflow-hidden h-[900px] rounded-md hover:default">
+    <div>
+      <div>
         {/* page one */}
         {pageOne()}
 
         {/* page two */}
-        {pageTwo()}
+        {/* {pageTwo()} */}
       </div>
     </div>
   );
