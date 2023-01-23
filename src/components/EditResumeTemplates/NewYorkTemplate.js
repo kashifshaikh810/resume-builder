@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MdLocationOn } from "react-icons/md";
 import { BsFlower2, BsTelephoneFill } from "react-icons/bs";
 import { CgShapeCircle } from "react-icons/cg";
@@ -12,9 +12,11 @@ import { HiUsers } from "react-icons/hi";
 import "./styles.css";
 
 const NewYorkTemplate = (props) => {
-  useEffect(() => {
-    props.setTotalPage(2);
-  }, [props]);
+  const { resumeData } = props;
+
+  // useEffect(() => {
+  //   props.setTotalPage(2);
+  // }, [props]);
 
   const pageOne = () => {
     if (props.page === 1) {
@@ -26,14 +28,25 @@ const NewYorkTemplate = (props) => {
                 <img
                   src={props?.profileImage}
                   className="w-[30px] h-[30px] rounded-[5px] m-4 mb-2"
+                  alt="profile"
                 />
               )}
-              <div>
-                <p className="text-[12px] uppercase font-[500] tracking-[3px] font-serif">
-                  Muhammad kashif
-                </p>
-              </div>
-              <div className="flex flex-row items-center mt-7">
+              {resumeData?.firstName || resumeData?.lastName ? (
+                <div>
+                  <p className="text-[12px] uppercase font-[500] tracking-[3px] font-serif">
+                    {`${resumeData?.firstName} ${resumeData?.lastName}`}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              <div
+                className={`flex flex-row items-center ${
+                  !resumeData?.firstName && !resumeData?.lastName
+                    ? `mt-3`
+                    : `mt-7`
+                }`}
+              >
                 <p className="text-[4px] uppercase">WEB DEVELOPER</p>
                 <div className="flex flex-row items-center ml-1.5">
                   <MdLocationOn className="text-[4px]" />
