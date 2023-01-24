@@ -294,159 +294,584 @@ const NewYorkTemplate = (props) => {
 
             {/* Column 2 */}
             <div>
-              <div className="flex flex-row items-center">
-                <IoMdPerson className="text-[6px] mr-2" />
-                <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                  profile
-                </p>
-              </div>
-              <div className="flex flex-row items-center mt-0.5">
-                <CgShapeCircle className="text-[4px] ml-0.5 mr-2" />
-                <p className="text-[5px]">ferfreregergetgrgr</p>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex flex-row items-center">
-                  <BsFillHandbagFill className="text-[6px] mr-2" />
-                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                    Employment History
-                  </p>
-                </div>
-
-                <div className="flex flex-row mt-0.5">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-0.5">
-                    <p className="text-[5px] font-[700]">
-                      sdqd at dsadas, ewfewfw
-                    </p>
-                    <p className="text-[5px] text-gray-500">
-                      December 2022 - 2022
-                    </p>
-                    <p className="text-[5px] mt-0.5">rgeregr</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex flex-row items-center">
-                  <IoMdSchool className="text-[6px] mr-2" />
-                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                    Education
-                  </p>
-                </div>
-
-                <div className="flex flex-row mt-0.5">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-0.5">
-                    <p className="text-[5px] font-[700]">
-                      efvr at grwf, gteege
-                    </p>
-                    <p className="text-[5px] text-gray-500">
-                      July 2022 - April 2022
-                    </p>
-                    <p className="text-[5px] mt-0.5">pgreje</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex flex-row items-center">
-                  <HiBadgeCheck className="text-[6px] mr-2" />
-                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                    Courses
-                  </p>
-                </div>
-
-                <div className="flex flex-row mt-0.5">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-0.5">
-                    <p className="text-[5px] font-[700]">efvr, grwf</p>
-                    <p className="text-[5px] text-gray-500">
-                      February 2022 - April 2022
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex flex-row items-center">
-                  <BsFlower2 className="text-[6px] mr-2" />
-                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                    extra-curricular activities
-                  </p>
-                </div>
-
-                <div className="flex flex-row mt-0.5">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-0.5">
-                    <p className="text-[5px] font-[700]">
-                      sdqd at dsadas, ewfewfw
-                    </p>
-                    <p className="text-[5px] text-gray-500">
-                      June 2022 - August 2022
-                    </p>
-                    <p className="text-[5px] mt-0.5">rgeregr</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3">
-                <div className="flex flex-row items-center">
-                  <HiUsers className="text-[6px] mr-2" />
-                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                    internships
-                  </p>
-                </div>
-
-                <div className="flex flex-row mt-1">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                    <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-0.5">
-                    <p className="text-[5px] font-[700]">
-                      efwefefw at grwfefrf, rfwfwfew
-                    </p>
-                    <p className="text-[5px] text-gray-500">
-                      June 2022 - December 2022
-                    </p>
-                    <p className="text-[5px] mt-0.5">rgeregr</p>
-                  </div>
-                </div>
-
-                <div className="mt-3">
+              {resumeData?.professionalSummary ? (
+                <div>
                   <div className="flex flex-row items-center">
-                    <HiSpeakerphone className="text-[6px] mr-2" />
+                    <IoMdPerson className="text-[6px] mr-1.5" />
                     <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                      Preferences
+                      profile
                     </p>
                   </div>
 
                   <div className="flex flex-row mt-0.5">
                     <div className="flex flex-col">
-                      <CgShapeCircle className="text-[6px] mt-0.5 mr-2" />
-                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                      <CgShapeCircle
+                        className={`text-[4px] mt-0.5 mr-2 ${
+                          resumeData?.professionalSummary?.length >= 90
+                            ? `-ml-[1px] text-[8px]`
+                            : ``
+                        }`}
+                      />
+                      {resumeData?.professionalSummary?.length >= 90 && (
+                        <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[0.5px]" />
+                      )}
                     </div>
-                    <div className="mt-0.5">
-                      <p className="text-[5px] font-[700]">efvfewfwfewfw</p>
-                      <p className="text-[5px] text-gray-500">
-                        regogreoioi · girejgife
+                    <div>
+                      <p className="text-[5px]">
+                        {resumeData?.professionalSummary}
                       </p>
                     </div>
                   </div>
                 </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.employmentInputList?.length >= 1 ? (
+                <div
+                  className={resumeData?.professionalSummary ? `mt-2` : `mt-0`}
+                >
+                  <div className="flex flex-row items-center">
+                    <BsFillHandbagFill className="text-[6px] mr-2" />
+                    <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                      {props?.employmentInput}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row mt-0.5">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-0.5">
+                      {resumeData?.employmentInputList &&
+                        resumeData?.employmentInputList?.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData.employmentInputList.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[5px] font-[700]">
+                                {`${item?.jobTitle} ${
+                                  item?.jobTitle && item?.employer ? "at" : ""
+                                } ${item?.employer}${
+                                  item?.employer && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[5px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[5px] mt-0.5">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.educationInputList?.length >= 1 ? (
+                <div
+                  className={
+                    resumeData?.employmentInputList?.length >= 1 ? `mt-2` : ``
+                  }
+                >
+                  <div className="flex flex-row items-center">
+                    <IoMdSchool className="text-[6px] mr-2" />
+                    <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                      {props?.educationInput}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row mt-0.5">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-0.5">
+                      {resumeData?.educationInputList &&
+                        resumeData?.educationInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData?.educationInputList?.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[5px] font-[700]">
+                                {`${item?.school}${
+                                  item?.school && item?.degree ? "," : ""
+                                } ${item?.degree}${
+                                  item?.degree && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[5px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[5px] mt-0.5">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.coursesInputList?.length >= 1 ? (
+                <div
+                  className={
+                    resumeData?.educationInputList?.length >= 1 ? `mt-2` : ``
+                  }
+                >
+                  <div className="flex flex-row items-center">
+                    <HiBadgeCheck className="text-[6px] mr-2" />
+                    <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                      {props?.coursesInput}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row mt-0.5">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-0.5">
+                      {resumeData?.coursesInputList &&
+                        resumeData?.coursesInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                resumeData?.coursesInputList?.length >= 2 &&
+                                index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[5px] font-[700]">
+                                {`${item?.course}${
+                                  item?.course && item?.institution ? "," : ""
+                                } ${item?.institution}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[5px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.extraCurricularInputList?.length >= 1 ? (
+                <div
+                  className={
+                    resumeData?.coursesInputList?.length >= 1 ? `mt-2` : ``
+                  }
+                >
+                  <div className="flex flex-row items-center">
+                    <BsFlower2 className="text-[6px] mr-2" />
+                    <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                      {props?.extraCurricularInput}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row mt-0.5">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                      <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-0.5">
+                      {resumeData?.extraCurricularInputList &&
+                        resumeData?.extraCurricularInputList.map(
+                          (item, index) => {
+                            let monthNames = [
+                              "January",
+                              "February",
+                              "March",
+                              "April",
+                              "May",
+                              "June",
+                              "July",
+                              "August",
+                              "September",
+                              "October",
+                              "November",
+                              "December",
+                            ];
+                            let startDate = new Date(item?.startDate);
+                            let month = startDate ? startDate.getMonth() : "";
+                            let startDateMonth = startDate
+                              ? monthNames[month]
+                              : "";
+                            let startDateYear = startDate
+                              ? new Date(startDate).getFullYear()
+                              : "";
+
+                            let endDate = new Date(item?.endDate);
+                            let myMonth = endDate ? endDate.getMonth() : "";
+                            let endDateMonth = endDate
+                              ? monthNames[myMonth]
+                              : "";
+                            let endDateYear = endDate
+                              ? new Date(endDate).getFullYear()
+                              : "";
+
+                            return (
+                              <div
+                                key={index}
+                                className={`${
+                                  resumeData?.extraCurricularInputList
+                                    ?.length >= 2 && index >= 1
+                                    ? `mt-2`
+                                    : ``
+                                }`}
+                              >
+                                <p className="text-[5px] font-[700]">
+                                  {`${item?.functionTitle} ${
+                                    item?.functionTitle && item?.employer
+                                      ? "at"
+                                      : ""
+                                  } ${item?.employer}${
+                                    item?.employer && item.city && `,`
+                                  } ${item.city}`}
+                                </p>
+                                {(startDateMonth && startDateYear) ||
+                                (endDateMonth && endDateYear) ? (
+                                  <p className="text-[5px] text-gray-500">
+                                    {startDateMonth && startDateYear
+                                      ? `${startDateMonth} ${startDateYear}`
+                                      : ""}{" "}
+                                    {item?.startDate && item?.endDate
+                                      ? `-`
+                                      : ""}{" "}
+                                    {endDateMonth && endDateYear
+                                      ? `${endDateMonth} ${endDateYear}`
+                                      : ""}
+                                  </p>
+                                ) : (
+                                  ""
+                                )}
+                                <p className="text-[5px] mt-0.5">
+                                  {item?.description}
+                                </p>
+                              </div>
+                            );
+                          }
+                        )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+
+              <div
+                className={
+                  resumeData?.extraCurricularInputList?.length >= 1
+                    ? `mt-2`
+                    : ``
+                }
+              >
+                {resumeData?.internshipInputList?.length >= 1 ? (
+                  <div>
+                    <div className="flex flex-row items-center">
+                      <HiUsers className="text-[6px] mr-2" />
+                      <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                        {props?.internshipInput}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-row mt-1">
+                      <div className="flex flex-col">
+                        <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                        <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                      </div>
+                      <div className="mt-0.5">
+                        {resumeData?.internshipInputList &&
+                          resumeData?.internshipInputList.map((item, index) => {
+                            let monthNames = [
+                              "January",
+                              "February",
+                              "March",
+                              "April",
+                              "May",
+                              "June",
+                              "July",
+                              "August",
+                              "September",
+                              "October",
+                              "November",
+                              "December",
+                            ];
+                            let startDate = new Date(item?.startDate);
+                            let month = startDate ? startDate.getMonth() : "";
+                            let startDateMonth = startDate
+                              ? monthNames[month]
+                              : "";
+                            let startDateYear = startDate
+                              ? new Date(startDate).getFullYear()
+                              : "";
+
+                            let endDate = new Date(item?.endDate);
+                            let myMonth = endDate ? endDate.getMonth() : "";
+                            let endDateMonth = endDate
+                              ? monthNames[myMonth]
+                              : "";
+                            let endDateYear = endDate
+                              ? new Date(endDate).getFullYear()
+                              : "";
+
+                            return (
+                              <div
+                                key={index}
+                                className={`${
+                                  resumeData?.internshipInputList?.length >=
+                                    2 && index >= 1
+                                    ? `mt-2`
+                                    : ``
+                                }`}
+                              >
+                                <p className="text-[5px] font-[700]">
+                                  {`${item?.jobTitle} ${
+                                    item?.jobTitle && item?.employer ? "at" : ""
+                                  } ${item?.employer}${
+                                    item?.employer && item.city && `,`
+                                  } ${item.city}`}
+                                </p>
+                                {(startDateMonth && startDateYear) ||
+                                (endDateMonth && endDateYear) ? (
+                                  <p className="text-[5px] text-gray-500">
+                                    {startDateMonth && startDateYear
+                                      ? `${startDateMonth} ${startDateYear}`
+                                      : ""}{" "}
+                                    {item?.startDate && item?.endDate
+                                      ? `-`
+                                      : ""}{" "}
+                                    {endDateMonth && endDateYear
+                                      ? `${endDateMonth} ${endDateYear}`
+                                      : ""}
+                                  </p>
+                                ) : (
+                                  ""
+                                )}
+                                <p className="text-[5px] mt-0.5">
+                                  {item?.description}
+                                </p>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+
+                {resumeData?.referencesInputList?.length >= 1 ? (
+                  <div
+                    className={
+                      resumeData?.internshipInputList?.length >= 1 ? `mt-2` : ``
+                    }
+                  >
+                    <div className="flex flex-row items-center">
+                      <HiSpeakerphone className="text-[6px] mr-2" />
+                      <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                        {props?.referencesInput}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-row mt-0.5">
+                      <div className="flex flex-col">
+                        <CgShapeCircle className="text-[6px] mt-1 mr-2" />
+                        {resumeData?.disabledPreferences === false && (
+                          <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[1px]" />
+                        )}
+                      </div>
+                      <div className="mt-0.5">
+                        {resumeData?.disabledPreferences ? (
+                          <p className="text-[6px] text-black font-bold">
+                            Preferences available upon request
+                          </p>
+                        ) : (
+                          ""
+                        )}
+                        {resumeData?.disabledPreferences === false &&
+                          resumeData?.referencesInputList &&
+                          resumeData?.referencesInputList.map((item, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className={`${
+                                  resumeData?.referencesInputList?.length >=
+                                    2 && index >= 1
+                                    ? `mt-2`
+                                    : ``
+                                }`}
+                              >
+                                <p className="text-[5px] font-[700]">
+                                  {`${item?.referentFullName} ${
+                                    item?.referentFullName && item?.company
+                                      ? "from"
+                                      : ""
+                                  } ${item?.company}${item?.company}`}
+                                </p>
+                                <p className="text-[5px] text-gray-500">{`${
+                                  item?.email
+                                } ${item?.email && item?.phone ? `·` : ``} ${
+                                  item?.phone
+                                }`}</p>
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
