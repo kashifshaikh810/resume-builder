@@ -143,7 +143,7 @@ const EditResumeMarkup = (props) => {
 
             {/* <NewYorkTemplate {...props} /> */}
 
-            <ViennaTemplate />
+            <ViennaTemplate {...props} />
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">

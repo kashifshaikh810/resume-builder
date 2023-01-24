@@ -5,7 +5,6 @@ import { resumeDataSave } from "../../../redux/actions/resumeAction";
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
-
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
@@ -617,6 +616,7 @@ const EditResume = (props) => {
 
   useEffect(() => {
     let resumeData = {
+      profileImage,
       wantedJobTitle,
       firstName,
       lastName,
@@ -648,6 +648,7 @@ const EditResume = (props) => {
     dispatch(resumeDataSave(resumeData));
   }, [
     dispatch,
+    profileImage,
     wantedJobTitle,
     firstName,
     lastName,

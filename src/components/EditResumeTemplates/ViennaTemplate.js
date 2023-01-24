@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MdOutlineAttachment } from "react-icons/md";
 
 import "./styles.css";
 
 const ViennaTemplate = (props) => {
+  const { resumeData } = props;
+
   // useEffect(() => {
   //   props.setTotalPage(2);
   // }, [props]);
@@ -13,28 +15,49 @@ const ViennaTemplate = (props) => {
       return (
         <div className="p-5">
           <div className="flex flex-row">
-            <img
-              src="https://picsum.photos/seed/picsum/200/300"
-              alt="prof"
-              className="w-[90px] h-[90px]"
-            />
-            <div className="w-[235px] bg-[#4afbba] h-[90px] p-5 pt-2 pl-6">
-              <p className="text-[15px] font-bold">kashif here</p>
-              <p className="text-[9px] capitalize">Web developer</p>
+            {resumeData?.profileImage && (
+              <img
+                src={resumeData?.profileImage}
+                alt="prof"
+                className="w-[90px] h-[90px]"
+              />
+            )}
+            <div
+              className={`${
+                resumeData?.profileImage ? `w-[242px]` : `w-[335px]`
+              } bg-[#4afbba] h-[90px] p-5 pt-2 pl-6`}
+            >
+              <p className="text-[15px] font-bold">
+                {resumeData?.firstName} {resumeData?.lastName}
+              </p>
+              <p className="text-[9px] capitalize">
+                {resumeData?.wantedJobTitle}
+              </p>
 
               <div className="pt-4">
                 <div className="flex flex-row">
-                  <p className="text-[6px]">fewfew,</p>
-                  <p className="text-[6px] ml-[1px]">wwww,</p>
-                  <p className="text-[6px] ml-[1px]">2013eer,</p>
-                  <p className="text-[6px] ml-[1px]">fffederr</p>
+                  <p className="text-[6px]">
+                    {resumeData?.address}
+                    {resumeData?.address ? `,` : ``}
+                  </p>
+                  <p className="text-[6px] ml-[1px]">
+                    {resumeData?.city}
+                    {resumeData?.city ? `,` : ``}
+                  </p>
+                  <p className="text-[6px] ml-[1px]">
+                    {resumeData?.postalCode}
+                    {resumeData?.postalCode ? `,` : ``}
+                  </p>
+                  <p className="text-[6px] ml-[1px]">{resumeData?.country}</p>
                 </div>
                 <div className="flex flex-row items-center">
-                  <p className="text-[6px]">031232424324</p>
-                  <div className="bg-black w-[1px] h-[1px] rounded-full ml-1 mr-1" />
-                  <p className="text-[6px] underline">
-                    kashifshaikh910ss@gmail.com
-                  </p>
+                  <p className="text-[6px]">{resumeData?.phone}</p>
+                  {resumeData?.phone && resumeData?.email ? (
+                    <div className="bg-black w-[1px] h-[1px] rounded-full ml-1 mr-1" />
+                  ) : (
+                    ""
+                  )}
+                  <p className="text-[6px] underline">{resumeData?.email}</p>
                 </div>
               </div>
             </div>
@@ -52,30 +75,68 @@ const ViennaTemplate = (props) => {
                 <MdOutlineAttachment className="text-[9px]" />
                 <p className="ml-1 underline text-[6px]">efwfew</p>
               </div>
-              <div className="mt-3">
-                <p className="text-[6px] font-bold">Date / Place of birth</p>
-                <p className="text-[6px] mt-0.5">24, 432</p>
-              </div>
-              <div className="mt-3">
-                <p className="text-[6px] font-bold">Nationality</p>
-                <p className="text-[6px] mt-0.5">323</p>
-              </div>
-              <div className="mt-3">
-                <p className="text-[6px] font-bold">Driving License</p>
-                <p className="text-[6px] mt-0.5">323</p>
-              </div>
-
-              <div className="mt-3">
-                <p className="text-[6px] font-bold">Skills</p>
-                <p className="text-[6px] mt-0.5">Communication</p>
-                <div className="flex flex-row items-center mt-0.5">
-                  <div className="bg-black w-[15px] h-[1.5px]" />
-                  <div className="bg-black w-[15px] h-[1.5px] ml-0.5" />
-                  <div className="bg-black w-[15px] h-[1.5px] ml-0.5" />
-                  <div className="bg-gray-400 w-[15px] h-[1.5px] ml-0.5" />
-                  <div className="bg-gray-400 w-[15px] h-[1.5px] ml-0.5" />
+              {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
+                <div className="mt-3">
+                  <p className="text-[6px] font-bold">Date / Place of birth</p>
+                  <p className="text-[6px] mt-0.5">
+                    {resumeData?.dateOfBirth}
+                    {resumeData?.dateOfBirth && resumeData?.placeOfBirth
+                      ? `,`
+                      : ``}{" "}
+                    {resumeData?.placeOfBirth}
+                  </p>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.nationality ? (
+                <div className="mt-3">
+                  <p className="text-[6px] font-bold">Nationality</p>
+                  <p className="text-[6px] mt-0.5">{resumeData?.nationality}</p>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {resumeData?.drivingLicense ? (
+                <div className="mt-3">
+                  <p className="text-[6px] font-bold">Driving License</p>
+                  <p className="text-[6px] mt-0.5">
+                    {resumeData?.drivingLicense}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+
+              {/* not completed */}
+              {resumeData?.skillsInputList?.length >= 1 ? (
+                <div className="mt-3">
+                  <p className="text-[6px] font-bold">{props?.skillsInput}</p>
+                  {resumeData.skillsInputList &&
+                    resumeData.skillsInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="text-[6px] mt-0.5">{item?.skill}</p>
+                          {/* {resumeData?.isNotShowExpertLevel === false && item?.skill ? (
+                               <div className="flex flex-row items-center mt-0.5">
+                               <div className={`${item?.level === 'Novice' ? `bg-black` : `bg-gray-400`} w-[15px] h-[1.5px]`} />
+                               <div className={`${item?.level === 'Beginner' ? `bg-black` : `bg-gray-400`} w-[15px] h-[1.5px] ml-0.5`} />
+                               <div className={`${item?.level === 'Skillful' ? `bg-black` : `bg-gray-400`} w-[15px] h-[1.5px] ml-0.5`} />
+                               <div className={`${item?.level === 'Experienced' ? `bg-black` : `bg-gray-400`} w-[15px] h-[1.5px] ml-0.5`} />
+                               <div className={`${item?.level === 'Expert' ? `bg-black` : `bg-gray-400`} w-[15px] h-[1.5px] ml-0.5`} />
+                             </div>
+                            ) : (
+                              ""
+                            )} */}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-3">
                 <p className="text-[6px] font-bold">Hobbies</p>
