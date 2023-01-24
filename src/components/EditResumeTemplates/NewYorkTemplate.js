@@ -109,13 +109,30 @@ const NewYorkTemplate = (props) => {
           >
             {/* Column 1 */}
             <div className="">
-              <div className="flex flex-row justify-center items-center">
-                <CgShapeCircle className="text-[4px] mr-1.5" />
-                <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                  Details
-                </p>
-                <CgShapeCircle className="text-[4px] ml-1.5" />
-              </div>
+              {resumeData?.address ||
+              resumeData?.city ||
+              resumeData?.postalCode ||
+              resumeData?.country ||
+              resumeData?.phone ||
+              resumeData?.email ||
+              resumeData?.dateOfBirth ||
+              resumeData?.placeOfBirth ||
+              resumeData?.nationality ||
+              resumeData?.drivingLicense ||
+              resumeData?.websiteInputList?.length >= 1 ||
+              resumeData?.skillsInputList?.length >= 1 ||
+              resumeData?.hobbies ||
+              resumeData?.languagesInputList?.length >= 1 ? (
+                <div className="flex flex-row justify-center items-center">
+                  <CgShapeCircle className="text-[4px] mr-1.5" />
+                  <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
+                    Details
+                  </p>
+                  <CgShapeCircle className="text-[4px] ml-1.5" />
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-0.5 flex flex-col items-center">
                 <p className="text-[5px]">{resumeData?.address}</p>
