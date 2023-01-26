@@ -283,7 +283,8 @@ const NewYorkTemplate = (props) => {
                               ""
                             )}
                             {!item?.language ||
-                            item?.level === "Select Level" ? (
+                            item?.level === "Select Level" ||
+                            (index >= 1 && item?.level === "Select Level") ? (
                               ""
                             ) : (
                               <div
@@ -316,7 +317,9 @@ const NewYorkTemplate = (props) => {
                   <div className="flex flex-row items-center">
                     <IoMdPerson className="text-[6px] mr-1.5" />
                     <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                      profile
+                      {props?.summaryInput === "Professional Summary"
+                        ? "Profile"
+                        : props?.summaryInput}
                     </p>
                   </div>
 
