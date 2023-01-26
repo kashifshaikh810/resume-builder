@@ -51,7 +51,11 @@ const StockholmTemplate = (props) => {
           <div className="flex flex-row mt-3">
             <HiUser className="text-[6px] mt-0.5" />
             <div className="ml-1">
-              <p className="text-[7px] font-semibold">{props?.summaryInput}</p>
+              <p className="text-[7px] font-semibold">
+                {props?.summaryInput === "Professional Summary"
+                  ? "Profile"
+                  : props?.summaryInput}
+              </p>
               <p className="text-[6px] text-gray-600">
                 {resumeData?.professionalSummary}
               </p>
