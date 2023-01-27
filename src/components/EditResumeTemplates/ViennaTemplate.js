@@ -10,9 +10,28 @@ const ViennaTemplate = (props) => {
   //   props.setTotalPage(2);
   // }, [props]);
 
-  const pageOne = () => {
-    if (true) {
-      return (
+  // const pageOne = () => {
+  //   if (true) {
+  //     return (
+
+  //     );
+  //   }
+  // };
+
+  // const pageTwo = () => {
+  //   if (props.page === 2) {
+  //     return (
+  //       <div>
+  //         <p>pageTwo</p>
+  //       </div>
+  //     );
+  //   }
+  // };
+
+  return (
+    <div>
+      <div>
+        {/* pageOne */}
         <div className="p-5">
           <div className="flex flex-row">
             {resumeData?.profileImage && (
@@ -72,14 +91,15 @@ const ViennaTemplate = (props) => {
           >
             <div>
               {resumeData?.websiteInputList?.length >= 1 ? (
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center flex-wrap">
                   <MdOutlineAttachment className="text-[9px]" />
                   {resumeData?.websiteInputList &&
                     resumeData?.websiteInputList.map((item, index) => {
-                      let lastElement =
-                        resumeData?.websiteInputList[
-                          resumeData?.websiteInputList?.length - 1
-                        ];
+                      const lastIndex = resumeData?.websiteInputList.length - 1;
+                      if (index === lastIndex) {
+                        var resOfLastIndex = index || index === 0;
+                      }
+
                       return (
                         <div key={index}>
                           <p
@@ -88,7 +108,7 @@ const ViennaTemplate = (props) => {
                             } underline text-[6px]`}
                           >
                             {item?.label}
-                            {index !== lastElement ? `,` : ``}
+                            {resOfLastIndex ? `` : item?.label ? `,` : ``}
                           </p>
                         </div>
                       );
@@ -756,25 +776,6 @@ const ViennaTemplate = (props) => {
             </div>
           </div>
         </div>
-      );
-    }
-  };
-
-  // const pageTwo = () => {
-  //   if (props.page === 2) {
-  //     return (
-  //       <div>
-  //         <p>pageTwo</p>
-  //       </div>
-  //     );
-  //   }
-  // };
-
-  return (
-    <div>
-      <div>
-        {/* pageOne */}
-        {pageOne()}
 
         {/* pageTwo */}
         {/* {pageTwo()} */}
