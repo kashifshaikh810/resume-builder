@@ -137,13 +137,13 @@ const EditResumeMarkup = (props) => {
             }}
             onMouseLeave={() => props.setIsHovered(false)}
           >
-            {/* <StockholmTemplate {...props} /> */}
+            <StockholmTemplate {...props} />
 
             {/* <TorontoTemplate {...props} /> */}
 
             {/* <NewYorkTemplate {...props} /> */}
 
-            <ViennaTemplate {...props} />
+            {/* <ViennaTemplate {...props} /> */}
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">
