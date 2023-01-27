@@ -3,13 +3,15 @@ import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
 import "./styles.css";
+import Cv from "../../images/test.png";
+import Switch from "../../images/switch.jpeg";
+import StockholmTemplate from "../../ResumesAndCoverLettersTemplates/StockholmTemplate";
+
 import { TiPencil } from "react-icons/ti";
 import { FiShare } from "react-icons/fi";
 import { BiDownvote } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-import Cv from "../../images/test.png";
-import Switch from "../../images/switch.jpeg";
 
 const ResumesCoverLettersMarkup = (props) => {
   const resumeSection = () => {
@@ -17,8 +19,8 @@ const ResumesCoverLettersMarkup = (props) => {
       return (
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
-            <div className="border-2 border-gray-100 w-5/12 h-72 rounded-lg cursor-pointer cv-box">
-              <p>kashif</p>
+            <div className="border-2 border-gray-100 w-2/12 h-72 rounded-lg cursor-pointer cv-box unselectable">
+              <StockholmTemplate {...props} />
             </div>
 
             <div className="pl-10 w-10/12">

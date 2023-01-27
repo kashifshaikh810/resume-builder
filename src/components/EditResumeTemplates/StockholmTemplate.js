@@ -29,8 +29,12 @@ const StockholmTemplate = (props) => {
     <div className="p-5 pt-2 grid grid-cols-2 gap-2">
       <div>
         <div className="flex flex-row items-center">
-          {props?.profileImage && (
-            <img src={props?.profileImage} alt="profile" className="w-8 h-8" />
+          {resumeData?.profileImage && (
+            <img
+              src={resumeData?.profileImage}
+              alt="profile"
+              className="w-8 h-8"
+            />
           )}
           <div className={`${props?.profileImage ? `ml-3` : ``}`}>
             {resumeData?.firstName || resumeData?.lastName ? (
