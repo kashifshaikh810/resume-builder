@@ -137,9 +137,9 @@ const EditResumeMarkup = (props) => {
             }}
             onMouseLeave={() => props.setIsHovered(false)}
           >
-            <StockholmTemplate {...props} />
+            {/* <StockholmTemplate {...props} /> */}
 
-            {/* <TorontoTemplate {...props} /> */}
+            <TorontoTemplate {...props} />
 
             {/* <NewYorkTemplate {...props} /> */}
 
