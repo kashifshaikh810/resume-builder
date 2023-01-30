@@ -613,7 +613,7 @@ const StockholmTemplate = (props) => {
                             <div
                               className={`${
                                 linerProgressLine[item.level]
-                              } h-[1.4px] bg-blue-400 mt-1`}
+                              } h-[1.3px] bg-blue-400 mt-1`}
                               id="myBar"
                             ></div>
                           </div>
@@ -657,7 +657,7 @@ const StockholmTemplate = (props) => {
                           <div
                             className={`${
                               linerProgressLanguageLine[item.level]
-                            } h-[1.3px] bg-blue-400 mt-1`}
+                            } h-[1.5px] bg-blue-400 mt-1`}
                             id="myBar"
                           ></div>
                         </div>
