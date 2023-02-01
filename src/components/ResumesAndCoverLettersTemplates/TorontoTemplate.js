@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import "./styles.css";
 
@@ -19,7 +19,6 @@ const TorontoTemplate = (props) => {
     "Native Speaker": "-right-[50px]",
   };
 
-  console.log(resumeData);
   return (
     <div className="p-2 overflow-hidden">
       <div className="flex flex-row">
@@ -57,13 +56,18 @@ const TorontoTemplate = (props) => {
             <p className="text-[3px]">{resumeData?.email}</p>
             <p className="text-[3px]">{resumeData?.phone}</p>
             <p className="text-[3px]">
-              {`${resumeData?.address}${
-                resumeData?.address && resumeData?.city ? `,` : ""
-              } ${resumeData?.city}${
-                resumeData?.city && resumeData?.postalCode ? `,` : ""
-              } ${resumeData?.postalCode}${
-                resumeData?.country && resumeData?.postalCode ? `,` : ""
-              } ${resumeData?.country}`}
+              {resumeData.address ||
+              resumeData?.city ||
+              resumeData?.postalCode ||
+              resumeData?.country
+                ? `${resumeData?.address}${
+                    resumeData?.address && resumeData?.city ? `,` : ""
+                  } ${resumeData?.city}${
+                    resumeData?.city && resumeData?.postalCode ? `,` : ""
+                  } ${resumeData?.postalCode}${
+                    resumeData?.country && resumeData?.postalCode ? `,` : ""
+                  } ${resumeData?.country}`
+                : ""}
             </p>
           </div>
 
@@ -128,11 +132,13 @@ const TorontoTemplate = (props) => {
         <div className="bg-gray-100 h-[1px] w-[100%] mt-2 mb-2" />
       </div>
 
-      <div className="grid grid-cols-[200px_minmax(200px,_1fr)_100px]">
+      <div className="grid grid-cols-[100px_minmax(200px,_1fr)_100px]">
         <div>
           {resumeData?.employmentInputList?.length >= 1 ? (
             <div>
-              <p className="text-[5px] font-bold">{props?.employmentInput}</p>
+              <p className="text-[5px] font-bold">
+                {resumeData?.employmentInput}
+              </p>
               {resumeData?.employmentInputList &&
                 resumeData?.employmentInputList?.map((item, index) => {
                   let startDate = new Date(item?.startDate);
@@ -168,11 +174,11 @@ const TorontoTemplate = (props) => {
                       key={index}
                       className={`${
                         resumeData.employmentInputList.length >= 2 && index >= 1
-                          ? `mt-2`
+                          ? `mt-1`
                           : ``
                       }`}
                     >
-                      <p className="bg-black max-w-max min-w-max text-[5px] text-white font-bold pl-1 pr-1">
+                      <p className="bg-black max-w-max min-w-max text-[4px] text-white font-bold pl-[1px] pr-[1px]">
                         {`${item?.jobTitle} ${
                           item?.jobTitle && item?.employer ? "at" : ""
                         } ${item?.employer}${
@@ -189,7 +195,7 @@ const TorontoTemplate = (props) => {
                       ) : (
                         ""
                       )}
-                      <p className="text-gray-800 text-[4px] mt-0.5">
+                      <p className="text-gray-800 text-[3.5px] mt-[0.5px]">
                         {item?.description}
                       </p>
                     </div>
@@ -203,10 +209,12 @@ const TorontoTemplate = (props) => {
           {resumeData?.educationInputList?.length >= 1 ? (
             <div
               className={
-                resumeData?.employmentInputList?.length >= 1 ? `mt-5` : ``
+                resumeData?.employmentInputList?.length >= 1 ? `mt-1.5` : ``
               }
             >
-              <p className="text-[5px] font-bold">{props?.educationInput}</p>
+              <p className="text-[5px] font-bold">
+                {resumeData?.educationInput}
+              </p>
               {resumeData?.educationInputList &&
                 resumeData?.educationInputList.map((item, index) => {
                   let startDate = new Date(item?.startDate);
@@ -243,11 +251,11 @@ const TorontoTemplate = (props) => {
                       className={`${
                         resumeData?.educationInputList?.length >= 2 &&
                         index >= 1
-                          ? `mt-2`
+                          ? `mt-1`
                           : ``
                       }`}
                     >
-                      <p className="bg-black max-w-max min-w-max text-[5px] text-white font-bold pl-1 pr-1">
+                      <p className="bg-black max-w-max min-w-max text-[4px] text-white font-bold pl-[1px] pr-[1px]">
                         {`${item?.school}${
                           item?.school && item?.degree ? "," : ""
                         } ${item?.degree}${item?.degree && item.city && `,`} ${
@@ -264,7 +272,7 @@ const TorontoTemplate = (props) => {
                       ) : (
                         ""
                       )}
-                      <p className="text-gray-800 text-[4px] mt-0.5">
+                      <p className="text-gray-800 text-[3.5px] mt-[0.5px]">
                         {item?.description}
                       </p>
                     </div>
@@ -276,9 +284,9 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.extraCurricularInputList?.length >= 1 ? (
-            <div className="mt-5">
+            <div className="mt-1.5">
               <p className="text-[5px] font-bold">
-                {props?.extraCurricularInput}
+                {resumeData?.extraCurricularInput}
               </p>
               {resumeData?.extraCurricularInputList &&
                 resumeData?.extraCurricularInputList.map((item, index) => {
@@ -320,7 +328,7 @@ const TorontoTemplate = (props) => {
                           : ``
                       }`}
                     >
-                      <p className="bg-black max-w-max min-w-max text-[5px] text-white font-bold pl-1 pr-1">
+                      <p className="bg-black max-w-max min-w-max text-[4px] text-white font-bold pl-[1px] pr-[1px]">
                         {`${item?.functionTitle} ${
                           item?.functionTitle && item?.employer ? "at" : ""
                         } ${item?.employer}${
@@ -337,7 +345,7 @@ const TorontoTemplate = (props) => {
                       ) : (
                         ""
                       )}
-                      <p className="text-gray-800 text-[4px] mt-0.5">
+                      <p className="text-gray-800 text-[3.5px] mt-[0.5px]">
                         {item?.description}
                       </p>
                     </div>
@@ -349,8 +357,10 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.internshipInputList?.length >= 1 ? (
-            <div className="mt-5">
-              <p className="text-[5px] font-bold">{props?.internshipInput}</p>
+            <div className="mt-1.5">
+              <p className="text-[5px] font-bold">
+                {resumeData?.internshipInput}
+              </p>
               {resumeData?.internshipInputList &&
                 resumeData?.internshipInputList.map((item, index) => {
                   let startDate = new Date(item?.startDate);
@@ -391,7 +401,7 @@ const TorontoTemplate = (props) => {
                           : ``
                       }`}
                     >
-                      <p className="bg-black max-w-max min-w-max text-[5px] text-white font-bold pl-1 pr-1">
+                      <p className="bg-black max-w-max min-w-max text-[4px] text-white font-bold pl-[1px] pr-[1px]">
                         {`${item?.jobTitle} ${
                           item?.jobTitle && item?.employer ? "at" : ""
                         } ${item?.employer}${
@@ -408,7 +418,7 @@ const TorontoTemplate = (props) => {
                       ) : (
                         ""
                       )}
-                      <p className="text-gray-800 text-[4px] mt-0.5">
+                      <p className="text-gray-800 text-[3.5px] mt-[0.5px]">
                         {item?.description}
                       </p>
                     </div>
@@ -422,17 +432,17 @@ const TorontoTemplate = (props) => {
 
         <div className="flex flex-col flex-1 items-end mr-10">
           {resumeData?.websiteInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 rounded-2xl">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
               <p className="text-[5px] font-bold">
-                {props?.websiteInput === "Websites & Social Links"
+                {resumeData?.websiteInput === "Websites & Social Links"
                   ? "Links"
-                  : props?.websiteInput}
+                  : resumeData?.websiteInput}
               </p>
               {resumeData?.websiteInputList &&
                 resumeData?.websiteInputList.map((item, index) => {
                   return (
                     <div key={index}>
-                      <p className="text-[4px] mt-0.5 underline">
+                      <p className="text-[3.5px] mt-[0.5px] underline">
                         {item?.label}
                       </p>
                     </div>
@@ -444,14 +454,14 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.skillsInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[5px] font-bold">{props?.skillsInput}</p>
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md mt-[2px]">
+              <p className="text-[5px] font-bold">{resumeData?.skillsInput}</p>
               {resumeData.skillsInputList &&
                 resumeData.skillsInputList.map((item, index) => {
                   return (
                     <div key={index} className="flex flex-row">
                       <p
-                        className={`text-[4px] mt-0.5 mr-0.5 ${
+                        className={`text-[3.5px] mt-[0.5px] mr-0.5 ${
                           resumeData?.isNotShowExpertLevel === false
                             ? `font-semibold`
                             : ``
@@ -477,16 +487,18 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.hobbies && (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[5px] font-semibold">{props?.hobbiesInput}</p>
-              <p className="text-[4px] mt-0.5">{resumeData?.hobbies}</p>
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+              <p className="text-[5px] font-semibold">
+                {resumeData?.hobbiesInput}
+              </p>
+              <p className="text-[3.5px] mt-[0.5px]">{resumeData?.hobbies}</p>
             </div>
           )}
 
           {resumeData?.languagesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
               <p className="text-[5px] font-semibold">
-                {props?.languagesInput}
+                {resumeData?.languagesInput}
               </p>
               {resumeData?.languagesInputList &&
                 resumeData?.languagesInputList.map((item, index) => {
@@ -496,7 +508,9 @@ const TorontoTemplate = (props) => {
                     return (
                       <div key={index} className="flex flex-row">
                         {item?.language ? (
-                          <p className="text-[4px] mt-0.5">{item?.language}</p>
+                          <p className="text-[3.5px] mt-[0.5px]">
+                            {item?.language}
+                          </p>
                         ) : (
                           ""
                         )}
@@ -523,8 +537,8 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.coursesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[5px] font-bold">{props?.coursesInput}</p>
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+              <p className="text-[5px] font-bold">{resumeData?.coursesInput}</p>
               {resumeData?.coursesInputList &&
                 resumeData?.coursesInputList.map((item, index) => {
                   let startDate = new Date(item?.startDate);
@@ -587,8 +601,10 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.referencesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-10/12 h-auto pl-3 pt-2 pb-2 mt-2 rounded-2xl">
-              <p className="text-[5px] font-bold">{props?.referencesInput}</p>
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+              <p className="text-[5px] font-bold">
+                {resumeData?.referencesInput}
+              </p>
               {resumeData?.disabledPreferences ? (
                 <p className="text-[4px] text-black font-bold">
                   Preferences available upon request
@@ -609,7 +625,7 @@ const TorontoTemplate = (props) => {
                           : ``
                       }`}
                     >
-                      <p className="text-[4px] mt-0.5">
+                      <p className="text-[3.5px] mt-[0.5px]">
                         {`${item?.referentFullName} ${
                           item?.referentFullName && item?.company ? "from" : ""
                         } ${item?.company}${item?.company}`}
