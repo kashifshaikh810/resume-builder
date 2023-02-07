@@ -132,7 +132,7 @@ const TorontoTemplate = (props) => {
         <div className="bg-gray-100 h-[1px] w-[100%] mt-2 mb-2" />
       </div>
 
-      <div className="grid grid-cols-[100px_minmax(200px,_1fr)_100px]">
+      <div className="grid grid-cols-[100px_minmax(130px,_1fr)_100px]">
         <div>
           {resumeData?.employmentInputList?.length >= 1 ? (
             <div>
@@ -442,9 +442,7 @@ const TorontoTemplate = (props) => {
                 resumeData?.websiteInputList.map((item, index) => {
                   return (
                     <div key={index}>
-                      <p className="text-[3.5px] mt-[0.5px] underline">
-                        {item?.label}
-                      </p>
+                      <p className="text-[3.5px] underline">{item?.label}</p>
                     </div>
                   );
                 })}
