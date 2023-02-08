@@ -65,7 +65,13 @@ const NewYorkTemplate = (props) => {
                   {resumeData?.wantedJobTitle}
                 </p>
                 <div className="flex flex-row items-center ml-1.5">
-                  <MdLocationOn className="text-[4px]" />
+                  {resumeData?.city ||
+                  resumeData?.postalCode ||
+                  resumeData?.country ? (
+                    <MdLocationOn className="text-[4px]" />
+                  ) : (
+                    ""
+                  )}
                   <p className="text-[4px] ml-0.5 uppercase">
                     {resumeData?.city}
                     {resumeData?.postalCode || resumeData?.city ? `,` : ``}{" "}
@@ -85,7 +91,9 @@ const NewYorkTemplate = (props) => {
                   </p>
                 </div>
                 <div className="flex flex-row items-center ml-1.5">
-                  <BsTelephoneFill className="text-[4px]" />
+                  {resumeData?.phone && (
+                    <BsTelephoneFill className="text-[4px]" />
+                  )}
                   <p className="text-[4px] ml-0.5"> {resumeData?.phone} </p>
                 </div>
               </div>

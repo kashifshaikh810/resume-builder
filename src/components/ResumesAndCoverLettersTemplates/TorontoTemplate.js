@@ -119,7 +119,7 @@ const TorontoTemplate = (props) => {
 
           {resumeData?.professionalSummary && (
             <div className="mt-1 w-full h-full ml-3">
-              <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+              <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
                 <p className="text-[5px] font-bold">Profile</p>
                 <p className="text-[3px]">{resumeData?.professionalSummary}</p>
               </div>
@@ -432,7 +432,7 @@ const TorontoTemplate = (props) => {
 
         <div className="flex flex-col flex-1 items-end mr-10">
           {resumeData?.websiteInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-bold">
                 {resumeData?.websiteInput === "Websites & Social Links"
                   ? "Links"
@@ -452,7 +452,7 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.skillsInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md mt-[2px]">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-bold">{resumeData?.skillsInput}</p>
               {resumeData.skillsInputList &&
                 resumeData.skillsInputList.map((item, index) => {
@@ -468,8 +468,8 @@ const TorontoTemplate = (props) => {
                         {item?.skill}
                       </p>
                       {resumeData?.isNotShowExpertLevel === false ? (
-                        <div className="flex flex-1 justify-end items-center mr-4 border-b border-dotted border-gray-400 w-11/12 relative -top-[2px]">
-                          <p className="text-[4px] absolute top-45px] -right-[12px] font-semibold">
+                        <div className="flex flex-1 justify-end items-center mr-4 border-b border-dotted border-gray-400 w-11/12 relative -top-[1px]">
+                          <p className="text-[4px] absolute top-[1px] -right-[8px] font-semibold">
                             {`${levelNum[item?.level]}/5`}
                           </p>
                         </div>
@@ -485,7 +485,7 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.hobbies && (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-semibold">
                 {resumeData?.hobbiesInput}
               </p>
@@ -494,7 +494,7 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.languagesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-semibold">
                 {resumeData?.languagesInput}
               </p>
@@ -513,9 +513,9 @@ const TorontoTemplate = (props) => {
                           ""
                         )}
                         {item?.language ? (
-                          <div className="flex justify-end items-center mr-2 border-b border-dotted border-gray-400 w-4/12 relative -top-[2px]">
+                          <div className="flex justify-end items-center mr-2 border-b border-dotted border-gray-400 w-4/12 relative -top-[0.8px]">
                             <p
-                              className={`text-[4px] absolute top-45px] ${
+                              className={`text-[2.5px] absolute top-[2px] left-[27px] ${
                                 levelWidth[item?.level]
                               } font-semibold`}
                             >
@@ -535,7 +535,7 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.coursesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-bold">{resumeData?.coursesInput}</p>
               {resumeData?.coursesInputList &&
                 resumeData?.coursesInputList.map((item, index) => {
@@ -599,7 +599,7 @@ const TorontoTemplate = (props) => {
           )}
 
           {resumeData?.referencesInputList?.length >= 1 ? (
-            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md">
+            <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
               <p className="text-[5px] font-bold">
                 {resumeData?.referencesInput}
               </p>
