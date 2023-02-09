@@ -14,6 +14,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import TorontoTemplate from "../../ResumesAndCoverLettersTemplates/TorontoTemplate";
 import NewYorkTemplate from "../../ResumesAndCoverLettersTemplates/NewYorkTemplate";
+import ViennaTemplate from "../../ResumesAndCoverLettersTemplates/ViennaTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
   const resumeSection = () => {
@@ -24,7 +25,8 @@ const ResumesCoverLettersMarkup = (props) => {
             <div className="border-2 max-w-sm border-gray-100 w-2/12 h-72 rounded-lg cursor-pointer cv-box unselectable">
               {/* <StockholmTemplate {...props} /> */}
               {/* <TorontoTemplate {...props} /> */}
-              <NewYorkTemplate {...props} />
+              {/* <NewYorkTemplate {...props} /> */}
+              <ViennaTemplate {...props} />
             </div>
 
             <div className="pl-10 w-10/12">

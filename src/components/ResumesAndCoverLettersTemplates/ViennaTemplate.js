@@ -6,77 +6,54 @@ import "./styles.css";
 const ViennaTemplate = (props) => {
   const { resumeData } = props;
 
-  // useEffect(() => {
-  //   props.setTotalPage(2);
-  // }, [props]);
-
-  // const pageOne = () => {
-  //   if (true) {
-  //     return (
-
-  //     );
-  //   }
-  // };
-
-  // const pageTwo = () => {
-  //   if (props.page === 2) {
-  //     return (
-  //       <div>
-  //         <p>pageTwo</p>
-  //       </div>
-  //     );
-  //   }
-  // };
-
   return (
     <div>
       <div>
-        {/* pageOne */}
-        <div className="p-5">
+        <div className="p-2 overflow-hidden">
           <div className="flex flex-row">
             {resumeData?.profileImage && (
               <img
                 src={resumeData?.profileImage}
                 alt="prof"
-                className="w-[90px] h-[90px]"
+                className="w-[50px] h-[50px]"
               />
             )}
             <div
               className={`${
                 resumeData?.profileImage ? `w-[242px]` : `w-[335px]`
-              } bg-[#4afbba] h-[90px] p-5 pt-2 pl-6`}
+              } bg-[#4afbba] h-[50px] p-5 pt-1.5 pl-3`}
             >
-              <p className="text-[15px] font-bold">
+              <p className="text-[7px] font-bold">
                 {resumeData?.firstName} {resumeData?.lastName}
               </p>
-              <p className="text-[9px] capitalize">
+              <p className="text-[4.5px] capitalize font-bold">
                 {resumeData?.wantedJobTitle}
               </p>
 
-              <div className="pt-4">
+              <div className="pt-2">
                 <div className="flex flex-row">
-                  <p className="text-[6px]">
+                  <p className="text-[4.5px]">
                     {resumeData?.address}
                     {resumeData?.address ? `,` : ``}
                   </p>
-                  <p className="text-[6px] ml-[1px]">
+                  <p className="text-[4.5px] ml-[1px]">
                     {resumeData?.city}
                     {resumeData?.city ? `,` : ``}
                   </p>
-                  <p className="text-[6px] ml-[1px]">
+                  <p className="text-[4.5px] ml-[1px]">
                     {resumeData?.postalCode}
                     {resumeData?.postalCode ? `,` : ``}
                   </p>
-                  <p className="text-[6px] ml-[1px]">{resumeData?.country}</p>
+                  <p className="text-[4.5px] ml-[1px]">{resumeData?.country}</p>
                 </div>
                 <div className="flex flex-row items-center">
-                  <p className="text-[6px]">{resumeData?.phone}</p>
+                  <p className="text-[4.5px]">{resumeData?.phone}</p>
                   {resumeData?.phone && resumeData?.email ? (
                     <div className="bg-black w-[1px] h-[1px] rounded-full ml-1 mr-1" />
                   ) : (
                     ""
                   )}
-                  <p className="text-[6px] underline">{resumeData?.email}</p>
+                  <p className="text-[4.5px] underline">{resumeData?.email}</p>
                 </div>
               </div>
             </div>
@@ -85,14 +62,14 @@ const ViennaTemplate = (props) => {
           <div
             className="
     grid 
-    grid-cols-[112px_minmax(300px,_1fr)_100px]
-     mt-4
+    grid-cols-[60px_minmax(300px,_1fr)_100px]
+     mt-2
     "
           >
             <div>
               {resumeData?.websiteInputList?.length >= 1 ? (
                 <div className="flex flex-row items-center flex-wrap">
-                  <MdOutlineAttachment className="text-[9px]" />
+                  <MdOutlineAttachment className="text-[4.5px]" />
                   {resumeData?.websiteInputList &&
                     resumeData?.websiteInputList.map((item, index) => {
                       const lastIndex = resumeData?.websiteInputList.length - 1;
@@ -105,7 +82,7 @@ const ViennaTemplate = (props) => {
                           <p
                             className={`${
                               index >= 1 ? `ml-0.5` : `ml-1`
-                            } underline text-[6px]`}
+                            } underline text-[3px]`}
                           >
                             {item?.label}
                             {resOfLastIndex ? `` : item?.label ? `,` : ``}
@@ -119,9 +96,11 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">Date / Place of birth</p>
-                  <p className="text-[6px] mt-0.5">
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">
+                    Date / Place of birth
+                  </p>
+                  <p className="text-[3px] mt-0.5">
                     {resumeData?.dateOfBirth}
                     {resumeData?.dateOfBirth && resumeData?.placeOfBirth
                       ? `,`
@@ -134,18 +113,18 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.nationality ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">Nationality</p>
-                  <p className="text-[6px] mt-0.5">{resumeData?.nationality}</p>
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">Nationality</p>
+                  <p className="text-[3px] mt-0.5">{resumeData?.nationality}</p>
                 </div>
               ) : (
                 ""
               )}
 
               {resumeData?.drivingLicense ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">Driving License</p>
-                  <p className="text-[6px] mt-0.5">
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">Driving License</p>
+                  <p className="text-[3px] mt-0.5">
                     {resumeData?.drivingLicense}
                   </p>
                 </div>
@@ -154,13 +133,15 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.skillsInputList?.length >= 1 ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">{props?.skillsInput}</p>
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">
+                    {resumeData?.skillsInput}
+                  </p>
                   {resumeData.skillsInputList &&
                     resumeData.skillsInputList.map((item, index) => {
                       return (
                         <div key={index}>
-                          <p className="text-[6px] mt-0.5">{item?.skill}</p>
+                          <p className="text-[3px] mt-0.5">{item?.skill}</p>
                           {resumeData?.isNotShowExpertLevel === false &&
                           item?.skill ? (
                             <div className="flex flex-row items-center mt-0.5">
@@ -173,7 +154,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Expert"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px]`}
+                                } w-[6px] h-[1px]`}
                               />
                               <div
                                 className={`${
@@ -183,7 +164,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Expert"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
@@ -192,7 +173,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Expert"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
@@ -200,14 +181,14 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Expert"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
                                   item?.level === "Expert"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                             </div>
                           ) : (
@@ -222,9 +203,9 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.hobbies ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">Hobbies</p>
-                  <p className="text-[6px] mt-0.5 p-4 pt-0 pl-0 pb-0">
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">Hobbies</p>
+                  <p className="text-[3px] mt-0.5 p-4 pt-0 pl-0 pb-0">
                     {resumeData?.hobbies}
                   </p>
                 </div>
@@ -233,16 +214,16 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.languagesInputList?.length >= 1 ? (
-                <div className="mt-3">
-                  <p className="text-[6px] font-bold">
-                    {props?.languagesInput}
+                <div className="mt-1">
+                  <p className="text-[4.5px] font-bold">
+                    {resumeData?.languagesInput}
                   </p>
                   {resumeData?.languagesInputList &&
                     resumeData?.languagesInputList.map((item, index) => {
                       return (
                         <div key={index}>
                           {item?.language ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px] mt-0.5">
                               {item?.language}
                             </p>
                           ) : (
@@ -261,7 +242,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Native Speaker"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px]`}
+                                } w-[8px] h-[1px]`}
                               />
                               <div
                                 className={`${
@@ -270,7 +251,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Native Speaker"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
@@ -279,7 +260,7 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Native Speaker"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
@@ -287,14 +268,14 @@ const ViennaTemplate = (props) => {
                                   item?.level === "Native Speaker"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                               <div
                                 className={`${
                                   item?.level === "Native Speaker"
                                     ? `bg-black`
                                     : `bg-gray-400`
-                                } w-[15px] h-[1.5px] ml-0.5`}
+                                } w-[8px] h-[1px] ml-[0.5px]`}
                               />
                             </div>
                           )}
@@ -306,15 +287,15 @@ const ViennaTemplate = (props) => {
                 ""
               )}
             </div>
-            <div className="relative -top-1">
+            <div className="relative -top-0.5">
               {resumeData?.professionalSummary ? (
                 <div>
-                  <p className="font-bold text-[9px]">
-                    {props?.summaryInput === "Professional Summary"
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.summaryInput === "Professional Summary"
                       ? "Profile"
-                      : props?.summaryInput}
+                      : resumeData?.summaryInput}
                   </p>
-                  <p className="text-[6px] p-4 pb-0 pl-0 pt-0">
+                  <p className="text-[3px] p-4 pb-0 pl-0 pt-0">
                     {resumeData?.professionalSummary}
                   </p>
                 </div>
@@ -323,9 +304,11 @@ const ViennaTemplate = (props) => {
               )}
 
               {resumeData?.employmentInputList?.length >= 1 ? (
-                <div className={resumeData?.professionalSummary ? `mt-2` : ``}>
-                  <p className="font-bold text-[9px]">
-                    {props?.employmentInput}
+                <div
+                  className={resumeData?.professionalSummary ? `mt-1.5` : ``}
+                >
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.employmentInput}
                   </p>
                   {resumeData?.employmentInputList &&
                     resumeData?.employmentInputList?.map((item, index) => {
@@ -363,11 +346,11 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData.employmentInputList.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.jobTitle}${
                               item?.jobTitle && item?.employer ? "," : ""
                             } ${item?.employer}${
@@ -376,7 +359,7 @@ const ViennaTemplate = (props) => {
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px] mt-0.5">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
@@ -388,7 +371,7 @@ const ViennaTemplate = (props) => {
                           ) : (
                             ""
                           )}
-                          <p className="text-[6px] mt-1 font-[600] text-gray-600">
+                          <p className="text-[3px] mt-[1px] font-[600] text-gray-600">
                             {item?.description}
                           </p>
                         </div>
@@ -402,11 +385,11 @@ const ViennaTemplate = (props) => {
               {resumeData?.educationInputList?.length >= 1 ? (
                 <div
                   className={
-                    resumeData?.employmentInputList?.length >= 1 ? `mt-2` : ``
+                    resumeData?.employmentInputList?.length >= 1 ? `mt-1.5` : ``
                   }
                 >
-                  <p className="font-bold text-[9px]">
-                    {props?.educationInput}
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.educationInput}
                   </p>
                   {resumeData?.educationInputList &&
                     resumeData?.educationInputList.map((item, index) => {
@@ -444,11 +427,11 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData?.educationInputList?.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.school}${
                               item?.school && item?.degree ? "," : ""
                             } ${item?.degree}${
@@ -457,7 +440,7 @@ const ViennaTemplate = (props) => {
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px]">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
@@ -469,7 +452,7 @@ const ViennaTemplate = (props) => {
                           ) : (
                             ""
                           )}
-                          <p className="text-[6px] mt-1 font-[600] text-gray-600">
+                          <p className="text-[3px] mt-[1px] font-[600] text-gray-600">
                             {item?.description}
                           </p>
                         </div>
@@ -483,10 +466,12 @@ const ViennaTemplate = (props) => {
               {resumeData?.coursesInputList?.length >= 1 ? (
                 <div
                   className={
-                    resumeData?.educationInputList?.length >= 1 ? `mt-2` : ``
+                    resumeData?.educationInputList?.length >= 1 ? `mt-1.5` : ``
                   }
                 >
-                  <p className="font-bold text-[9px]">{props?.coursesInput}</p>
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.coursesInput}
+                  </p>
                   {resumeData?.coursesInputList &&
                     resumeData?.coursesInputList.map((item, index) => {
                       let monthNames = [
@@ -523,18 +508,18 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData?.coursesInputList?.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.course}${
                               item?.course && item?.institution ? "," : ""
                             } ${item?.institution}`}
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px]">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
@@ -557,11 +542,11 @@ const ViennaTemplate = (props) => {
               {resumeData?.extraCurricularInputList?.length >= 1 ? (
                 <div
                   className={
-                    resumeData?.coursesInputList?.length >= 1 ? `mt-2` : ``
+                    resumeData?.coursesInputList?.length >= 1 ? `mt-1.5` : ``
                   }
                 >
-                  <p className="font-bold text-[9px]">
-                    {props?.extraCurricularInput}
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.extraCurricularInput}
                   </p>
                   {resumeData?.extraCurricularInputList &&
                     resumeData?.extraCurricularInputList.map((item, index) => {
@@ -599,11 +584,11 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData?.extraCurricularInputList?.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.functionTitle}${
                               item?.functionTitle && item?.employer ? "," : ""
                             } ${item?.employer}${
@@ -612,7 +597,7 @@ const ViennaTemplate = (props) => {
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px]">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
@@ -624,7 +609,7 @@ const ViennaTemplate = (props) => {
                           ) : (
                             ""
                           )}
-                          <p className="text-[6px] mt-1 font-[600] text-gray-600">
+                          <p className="text-[3px] mt-[1px] font-[600] text-gray-600">
                             {item?.description}
                           </p>
                         </div>
@@ -639,12 +624,12 @@ const ViennaTemplate = (props) => {
                 <div
                   className={
                     resumeData?.extraCurricularInputList?.length >= 1
-                      ? `mt-2`
+                      ? `mt-1.5`
                       : ``
                   }
                 >
-                  <p className="font-bold text-[9px]">
-                    {props?.internshipInput}
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.internshipInput}
                   </p>
                   {resumeData?.internshipInputList &&
                     resumeData?.internshipInputList.map((item, index) => {
@@ -682,11 +667,11 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData?.internshipInputList?.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.jobTitle}${
                               item?.jobTitle && item?.employer ? "," : ""
                             } ${item?.employer}${
@@ -695,7 +680,7 @@ const ViennaTemplate = (props) => {
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[6px] mt-0.5">
+                            <p className="text-[3px] mt-0.5">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
@@ -707,7 +692,7 @@ const ViennaTemplate = (props) => {
                           ) : (
                             ""
                           )}
-                          <p className="text-[6px] mt-1 font-[600] text-gray-600">
+                          <p className="text-[3px] mt-[1px] font-[600] text-gray-600">
                             {item?.description}
                           </p>
                         </div>
@@ -721,15 +706,15 @@ const ViennaTemplate = (props) => {
               {resumeData?.referencesInputList?.length >= 1 ? (
                 <div
                   className={
-                    resumeData?.internshipInputList?.length >= 1 ? `mt-2` : ``
+                    resumeData?.internshipInputList?.length >= 1 ? `mt-1.5` : ``
                   }
                 >
-                  <p className="font-bold text-[9px]">
-                    {props?.referencesInput}
+                  <p className="font-bold text-[4.5px]">
+                    {resumeData?.referencesInput}
                   </p>
 
                   {resumeData?.disabledPreferences ? (
-                    <p className="text-[6px] text-black font-bold">
+                    <p className="text-[3px] text-black font-bold">
                       Preferences available upon request
                     </p>
                   ) : (
@@ -744,11 +729,11 @@ const ViennaTemplate = (props) => {
                           className={`${
                             resumeData?.referencesInputList?.length >= 2 &&
                             index >= 1
-                              ? `mt-2`
+                              ? `mt-1.5`
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[6px] mt-0.5">
+                          <p className="font-bold text-[3px]">
                             {`${item?.referentFullName} ${
                               item?.referentFullName && item?.company
                                 ? "from"
@@ -756,13 +741,13 @@ const ViennaTemplate = (props) => {
                             } ${item?.company}${item?.company}`}
                           </p>
                           <div className="flex flex-row items-center">
-                            <p className="text-[6px] mt-0.5">{item?.phone}</p>
+                            <p className="text-[3px] mt-0.5">{item?.phone}</p>
                             {item?.phone && item?.email ? (
-                              <div className="bg-gray-700 w-[1px] h-[1px] rounded-full ml-1 mr-1" />
+                              <div className="bg-gray-700 w-[1px] h-[1px] rounded-full ml-1 mr-1 mt-0.5" />
                             ) : (
                               ""
                             )}
-                            <p className="text-[6px] mt-0.5 underline">
+                            <p className="text-[3px] mt-0.5 underline">
                               {item?.email}
                             </p>
                           </div>
