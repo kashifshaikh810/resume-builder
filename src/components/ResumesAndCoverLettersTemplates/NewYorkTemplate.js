@@ -15,17 +15,17 @@ const NewYorkTemplate = (props) => {
   const { resumeData } = props;
 
   const levelWidth = {
-    Novice: "w-[20px]",
-    Beginner: "w-[25px]",
-    Skillful: "w-[30px]",
-    Experienced: "w-[35px]",
-    Expert: "w-[40px]",
+    Novice: "w-[10px]",
+    Beginner: "w-[15px]",
+    Skillful: "w-[20px]",
+    Experienced: "w-[25px]",
+    Expert: "w-[30px]",
   };
 
   const languageLevelWidth = {
-    "Very good command": "w-[20px]",
-    "Highly Proficient": "w-[30px]",
-    "Native Speaker": "w-[40px]",
+    "Very good command": "w-[10px]",
+    "Highly Proficient": "w-[20px]",
+    "Native Speaker": "w-[30px]",
   };
 
   return (
@@ -48,12 +48,18 @@ const NewYorkTemplate = (props) => {
           ) : (
             ""
           )}
-          <div className={`flex flex-row items-center mt-1`}>
+          <div className="flex flex-row items-center mt-1">
             <p className="text-[2.5px] uppercase">
               {resumeData?.wantedJobTitle}
             </p>
             <div className="flex flex-row items-center ml-1.5">
-              <MdLocationOn className="text-[2.5px]" />
+              {resumeData?.city ||
+              resumeData?.postalCode ||
+              resumeData?.country ? (
+                <MdLocationOn className="text-[2.5px]" />
+              ) : (
+                ""
+              )}
               <p className="text-[2.5px] ml-0.5 uppercase">
                 {resumeData?.city}
                 {resumeData?.postalCode || resumeData?.city ? `,` : ``}{" "}
@@ -71,7 +77,9 @@ const NewYorkTemplate = (props) => {
               </p>
             </div>
             <div className="flex flex-row items-center ml-1.5">
-              <BsTelephoneFill className="text-[2.5px]" />
+              {resumeData?.phone && (
+                <BsTelephoneFill className="text-[2.5px]" />
+              )}
               <p className="text-[2.5px] ml-0.5"> {resumeData?.phone} </p>
             </div>
           </div>
@@ -80,7 +88,7 @@ const NewYorkTemplate = (props) => {
 
       <div
         className="
-          grid grid-cols-[70px_minmax(200px,_1fr)_100px]
+          grid grid-cols-[55px_minmax(200px,_1fr)_100px]
           m-14
           p-12
           mr-0
@@ -206,7 +214,7 @@ const NewYorkTemplate = (props) => {
                           {item?.skill}
                         </p>
                         {resumeData?.isNotShowExpertLevel === false ? (
-                          <div className="w-[40px] bg-gray-300" id="myProgress">
+                          <div className="w-[30px] bg-gray-300" id="myProgress">
                             {/* 15 || 25 || 37 || 52 || 65 */}
                             <div
                               className={`${
@@ -270,7 +278,7 @@ const NewYorkTemplate = (props) => {
                         (index >= 1 && item?.level === "Select Level") ? (
                           ""
                         ) : (
-                          <div className="w-[40px] bg-gray-300" id="myProgress">
+                          <div className="w-[30px] bg-gray-300" id="myProgress">
                             {/* 40 || 53 || 65 */}
                             <div
                               className={`${
