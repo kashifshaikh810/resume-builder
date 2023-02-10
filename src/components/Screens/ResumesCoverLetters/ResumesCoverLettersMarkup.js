@@ -1,4 +1,11 @@
 import React from "react";
+import { TiPencil } from "react-icons/ti";
+import { FiShare } from "react-icons/fi";
+import { BiDownvote } from "react-icons/bi";
+import { BsThreeDots } from "react-icons/bs";
+import { AiOutlinePlus } from "react-icons/ai";
+import { SlReload } from "react-icons/sl";
+
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
@@ -6,12 +13,6 @@ import "./styles.css";
 import Cv from "../../images/test.png";
 import Switch from "../../images/switch.jpeg";
 import StockholmTemplate from "../../ResumesAndCoverLettersTemplates/StockholmTemplate";
-
-import { TiPencil } from "react-icons/ti";
-import { FiShare } from "react-icons/fi";
-import { BiDownvote } from "react-icons/bi";
-import { BsThreeDots } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
 import TorontoTemplate from "../../ResumesAndCoverLettersTemplates/TorontoTemplate";
 import NewYorkTemplate from "../../ResumesAndCoverLettersTemplates/NewYorkTemplate";
 import ViennaTemplate from "../../ResumesAndCoverLettersTemplates/ViennaTemplate";
@@ -31,9 +32,34 @@ const ResumesCoverLettersMarkup = (props) => {
 
             <div className="pl-10 w-10/12">
               <div className="pb-5">
-                <div className="flex flex-row items-center untitled-container">
-                  <p className="pb-0.5 text-xl untitled-text">Untitled</p>
-                  <TiPencil size={20} className="ml-2 pencil-icon" />
+                <div
+                  className="flex flex-row items-center untitled-container"
+                  onMouseEnter={() => {
+                    !!props?.untitledInput && props.setIsShowUntitledIcon(true);
+                  }}
+                  onMouseLeave={() => props.setIsShowUntitledIcon(false)}
+                >
+                  {props?.isShowUntitledInput ? (
+                    <input
+                      className="outline-none border-b-2 border-blue-400 font-bold text-lg w-20"
+                      value={props.untitledInput}
+                      onChange={(e) => props.setUntitledInput(e.target.value)}
+                    />
+                  ) : (
+                    <p className="font-bold text-lg hover:cursor-default untitled-text">
+                      {props?.untitledInput ? props?.untitledInput : "Untitled"}
+                    </p>
+                  )}
+                  {props?.isShowUntitledIcon && (
+                    <TiPencil
+                      className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
+                      onClick={() =>
+                        props.setIsShowUntitledInput(
+                          !props?.isShowUntitledInput
+                        )
+                      }
+                    />
+                  )}
                 </div>
                 <p className="text-xs text-gray-400">
                   Updated 11 November, 15:52
