@@ -14,6 +14,14 @@ const ResumesCoverLetters = (props) => {
   const [isShowUntitledIcon, setIsShowUntitledIcon] = useState(false);
   const [isShowUntitledInput, setIsShowUntitledInput] = useState(false);
 
+  // cover letters input
+  const [coverLetterUntitledInput, setCoverLetterUntitledInput] =
+    useState("Untitled");
+  const [isShowCoverLetterUntitledIcon, setIsShowCoverLetterUntitledIcon] =
+    useState(false);
+  const [isShowCoverLetterUntitledInput, setIsShowCoverLetterUntitledInput] =
+    useState(false);
+
   return (
     <ResumesCoverLettersMarkup
       {...props}
@@ -29,6 +37,12 @@ const ResumesCoverLetters = (props) => {
       setIsShowUntitledIcon={setIsShowUntitledIcon}
       isShowUntitledInput={isShowUntitledInput}
       setIsShowUntitledInput={setIsShowUntitledInput}
+      coverLetterUntitledInput={coverLetterUntitledInput}
+      setCoverLetterUntitledInput={setCoverLetterUntitledInput}
+      isShowCoverLetterUntitledIcon={isShowCoverLetterUntitledIcon}
+      setIsShowCoverLetterUntitledIcon={setIsShowCoverLetterUntitledIcon}
+      isShowCoverLetterUntitledInput={isShowCoverLetterUntitledInput}
+      setIsShowCoverLetterUntitledInput={setIsShowCoverLetterUntitledInput}
     />
   );
 };

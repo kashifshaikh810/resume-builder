@@ -179,9 +179,41 @@ const ResumesCoverLettersMarkup = (props) => {
 
             <div className="pl-10 w-11/12">
               <div className="pb-5">
-                <div className="flex flex-row items-center untitled-container">
-                  <p className="pb-0.5 text-xl untitled-text">Untitled</p>
-                  <TiPencil size={20} className="ml-2 pencil-icon" />
+                <div
+                  className="flex flex-row items-center untitled-container"
+                  onMouseEnter={() => {
+                    !!props?.coverLetterUntitledInput &&
+                      props.setIsShowCoverLetterUntitledIcon(true);
+                  }}
+                  onMouseLeave={() =>
+                    props.setIsShowCoverLetterUntitledIcon(false)
+                  }
+                >
+                  {props?.isShowCoverLetterUntitledInput ? (
+                    <input
+                      className="outline-none border-b-2 border-blue-400 font-bold text-lg w-20"
+                      value={props.coverLetterUntitledInput}
+                      onChange={(e) =>
+                        props.setCoverLetterUntitledInput(e.target.value)
+                      }
+                    />
+                  ) : (
+                    <p className="font-bold text-lg hover:cursor-default untitled-text">
+                      {props?.coverLetterUntitledInput
+                        ? props?.coverLetterUntitledInput
+                        : "Untitled"}
+                    </p>
+                  )}
+                  {props?.isShowCoverLetterUntitledIcon && (
+                    <TiPencil
+                      className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
+                      onClick={() =>
+                        props.setIsShowCoverLetterUntitledInput(
+                          !props?.isShowCoverLetterUntitledInput
+                        )
+                      }
+                    />
+                  )}
                 </div>
                 <p className="text-xs text-gray-400">
                   Updated 31 November, 20:24
