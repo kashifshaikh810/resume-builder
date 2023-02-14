@@ -27,7 +27,7 @@ const Header = (props) => {
     >
       {props.name === "app" ? (
         <div className="flex flex-1">
-          {props?.allowed === false ? (
+          {props?.allowed === false || props?.name === "app" ? (
             <div
               className="flex flex-row items-center cursor-pointer"
               onClick={() => navigate("/")}
