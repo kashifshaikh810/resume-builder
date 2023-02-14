@@ -67,7 +67,9 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
               <div
                 className="flex flex-row items-center pt-2"
-                onClick={() => props.navigate("/app/resumes/id/edit")}
+                onClick={() =>
+                  props.navigate(`/app/resumes/id/edit/${props?.isShowLine}`)
+                }
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Edit</p>
@@ -221,7 +223,9 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
               <div
                 className="flex flex-row items-center pt-2"
-                onClick={() => props.navigate("/app/resumes/id/edit")}
+                onClick={() =>
+                  props.navigate(`/app/resumes/id/edit/${props?.isShowLine}`)
+                }
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Edit</p>

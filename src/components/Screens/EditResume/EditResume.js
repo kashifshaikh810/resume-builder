@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { resumeDataSave } from "../../../redux/actions/resumeAction";
 
 import EditResumeMarkup from "./EditResumeMarkup";
@@ -7,6 +8,8 @@ import EditResumeMarkup from "./EditResumeMarkup";
 const EditResume = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
+
+  const param = useParams()?.tabName;
 
   // all inputs states
   const [wantedJobTitle, setWantedJobTitle] = useState("");
@@ -700,6 +703,8 @@ const EditResume = (props) => {
     websiteInput,
     isNotShowIdLikeToHide,
   ]);
+
+  console.log(param);
 
   return (
     <EditResumeMarkup

@@ -63,7 +63,7 @@ const Navigation = () => {
           }
         />
         <Route
-          path="/app/resumes/id/edit"
+          path="/app/resumes/id/edit/:tabName"
           element={<EditResume navigate={useNavigate} params={useParams} />}
         />
         <Route
