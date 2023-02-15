@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { resumeDataSave } from "../../../redux/actions/resumeAction";
+import {
+  coverLetterDataSave,
+  resumeDataSave,
+} from "../../../redux/actions/resumeAction";
 
 import EditResumeMarkup from "./EditResumeMarkup";
 
@@ -42,7 +45,7 @@ const EditResume = (props) => {
 
   // redux
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.resumeData);
+  const { data, coverLetterData } = useSelector((state) => state.resumeData);
 
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
@@ -666,7 +669,20 @@ const EditResume = (props) => {
       disabledPreferences: isNotShowIdLikeToHide,
     };
 
+    const dataOfCoverLetter = {
+      fullName,
+      jobTitle,
+      address,
+      email,
+      phone,
+      companyName,
+      hiringManagerName,
+      letterDetails,
+    };
+
     dispatch(resumeDataSave(resumeData));
+
+    dispatch(coverLetterDataSave(dataOfCoverLetter));
   }, [
     dispatch,
     profileImage,
@@ -708,6 +724,14 @@ const EditResume = (props) => {
     languagesInput,
     websiteInput,
     isNotShowIdLikeToHide,
+    fullName,
+    jobTitle,
+    address,
+    email,
+    phone,
+    companyName,
+    hiringManagerName,
+    letterDetails,
   ]);
 
   return (
@@ -959,6 +983,7 @@ const EditResume = (props) => {
       setHiringManagerName={setHiringManagerName}
       letterDetails={letterDetails}
       setLetterDetails={setLetterDetails}
+      coverLetterData={coverLetterData}
     />
   );
 };

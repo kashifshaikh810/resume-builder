@@ -37,6 +37,7 @@ import StockholmTemplate from "../../EditResumeTemplates/StockholmTemplate";
 import TorontoTemplate from "../../EditResumeTemplates/TorontoTemplate";
 import NewYorkTemplate from "../../EditResumeTemplates/NewYorkTemplate";
 import ViennaTemplate from "../../EditResumeTemplates/ViennaTemplate";
+import CoverLetterTorontoTemplate from "../../EditCoverLettersTemplates/CoverLetterTorontoTemplate";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -154,7 +155,9 @@ const EditResumeMarkup = (props) => {
 
             {/* <NewYorkTemplate {...props} /> */}
 
-            <ViennaTemplate {...props} />
+            {/* <ViennaTemplate {...props} /> */}
+
+            <CoverLetterTorontoTemplate {...props} />
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">
