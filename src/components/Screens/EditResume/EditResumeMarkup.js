@@ -441,7 +441,9 @@ const EditResumeMarkup = (props) => {
                           ? `Wanted Job Title`
                           : `Full Name`}
                       </p>
-                      <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
+                      {tabName === "resumes" && (
+                        <AiOutlineQuestionCircle className="ml-1 text-blue-400" />
+                      )}
                     </div>
                     <input
                       className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4
@@ -692,103 +694,107 @@ const EditResumeMarkup = (props) => {
                   </div>
                 )}
 
-                <div className="flex flex-col mt-4 pt-4">
-                  <p className="font-bold text-lg hover:cursor-default">
-                    Employer Details
-                  </p>
+                {tabName === "cover-letters" && (
+                  <div className="flex flex-col mt-4 pt-4">
+                    <p className="font-bold text-lg hover:cursor-default">
+                      Employer Details
+                    </p>
 
-                  <div className="flex flex-row items-end">
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">Company Name</p>
-                      <input
-                        className="bg-gray-100 w-full h-9 pl-4 mt-1
+                    <div className="flex flex-row items-end">
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">Company Name</p>
+                        <input
+                          className="bg-gray-100 w-full h-9 pl-4 mt-1
                      pr-4 text-gray-800 border-none overflow-hidden 
                      outline-none max-[767px]:w-full"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </div>
 
-                    <div className="mt-3 ml-5 pl-5">
-                      <p className="text-sm text-gray-500">
-                        Hiring Manager Name
-                      </p>
-                      <input
-                        className="bg-gray-100 w-full h-9 pl-4 mt-1
+                      <div className="mt-3 ml-5 pl-5">
+                        <p className="text-sm text-gray-500">
+                          Hiring Manager Name
+                        </p>
+                        <input
+                          className="bg-gray-100 w-full h-9 pl-4 mt-1
                      pr-4 text-gray-800 border-none 
                      overflow-hidden outline-none max-[767px]:w-full"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                          value={phone}
+                          onChange={(e) => setPhone(e.target.value)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {tabName === "cover-letters" && (
+                  <div className="mt-8">
+                    <div className="flex flex-row items-center hover:cursor-default">
+                      <p className="font-bold text-lg mb-3 hover:cursor-default">
+                        Letter Details
+                      </p>
+                    </div>
+                    <p className="text-sm text-gray-500">
+                      3–4 paragraphs explaining why you're the perfect candidate
+                      for a specific job
+                    </p>
+
+                    <div className="w-full mt-2 p-4 bg-gray-100 max-[767px]:w-full">
+                      <div className="flex flex-row items-center">
+                        {descIcons.map((item, index) => (
+                          <div
+                            key={index}
+                            className={`m-2 mt-0 ml-0 hover:cursor-pointer hover:text-blue-400  ${
+                              (props?.isChangedInputText?.num === index &&
+                                props?.isChangedInputText?.name === "bold") ||
+                              (props?.isChangedInputText?.num === index &&
+                                props?.isChangedInputText?.name === "italic") ||
+                              (props?.isChangedInputText?.num === index &&
+                                props?.isChangedInputText?.name ===
+                                  "underline") ||
+                              (props?.isChangedInputText?.num === index &&
+                                props?.isChangedInputText?.name ===
+                                  "line-through")
+                                ? `text-blue-400`
+                                : `text-gray-500`
+                            }`}
+                            onClick={() =>
+                              props.setIsChangedInputText({
+                                name: item.name,
+                                num: index,
+                              })
+                            }
+                            onDoubleClick={() =>
+                              props?.setIsChangedInputText({ name: "normal" })
+                            }
+                          >
+                            {item.icon()}
+                          </div>
+                        ))}
+                      </div>
+                      <textarea
+                        rows={10000}
+                        cols={10000}
+                        className={`w-full h-48 bg-gray-100 border-none text-gray-800 overflow-hidden outline-none ${
+                          (props?.isChangedInputText?.name === "normal" &&
+                            `font-normal`) ||
+                          (props?.isChangedInputText?.name === "bold" &&
+                            `font-bold`) ||
+                          (props?.isChangedInputText?.name === "italic" &&
+                            `italic`) ||
+                          (props?.isChangedInputText?.name === "underline" &&
+                            `underline`) ||
+                          (props?.isChangedInputText?.name === "line-through" &&
+                            `line-through`)
+                        }`}
+                        value={professionalSummary}
+                        onChange={(e) => setProfessionalSummary(e.target.value)}
                       />
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-8">
-                  <div className="flex flex-row items-center hover:cursor-default">
-                    <p className="font-bold text-lg mb-3 hover:cursor-default">
-                      Letter Details
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-500">
-                    3–4 paragraphs explaining why you're the perfect candidate
-                    for a specific job
-                  </p>
-
-                  <div className="w-full mt-2 p-4 bg-gray-100 max-[767px]:w-full">
-                    <div className="flex flex-row items-center">
-                      {descIcons.map((item, index) => (
-                        <div
-                          key={index}
-                          className={`m-2 mt-0 ml-0 hover:cursor-pointer hover:text-blue-400  ${
-                            (props?.isChangedInputText?.num === index &&
-                              props?.isChangedInputText?.name === "bold") ||
-                            (props?.isChangedInputText?.num === index &&
-                              props?.isChangedInputText?.name === "italic") ||
-                            (props?.isChangedInputText?.num === index &&
-                              props?.isChangedInputText?.name ===
-                                "underline") ||
-                            (props?.isChangedInputText?.num === index &&
-                              props?.isChangedInputText?.name ===
-                                "line-through")
-                              ? `text-blue-400`
-                              : `text-gray-500`
-                          }`}
-                          onClick={() =>
-                            props.setIsChangedInputText({
-                              name: item.name,
-                              num: index,
-                            })
-                          }
-                          onDoubleClick={() =>
-                            props?.setIsChangedInputText({ name: "normal" })
-                          }
-                        >
-                          {item.icon()}
-                        </div>
-                      ))}
-                    </div>
-                    <textarea
-                      rows={10000}
-                      cols={10000}
-                      className={`w-full h-48 bg-gray-100 border-none text-gray-800 overflow-hidden outline-none ${
-                        (props?.isChangedInputText?.name === "normal" &&
-                          `font-normal`) ||
-                        (props?.isChangedInputText?.name === "bold" &&
-                          `font-bold`) ||
-                        (props?.isChangedInputText?.name === "italic" &&
-                          `italic`) ||
-                        (props?.isChangedInputText?.name === "underline" &&
-                          `underline`) ||
-                        (props?.isChangedInputText?.name === "line-through" &&
-                          `line-through`)
-                      }`}
-                      value={professionalSummary}
-                      onChange={(e) => setProfessionalSummary(e.target.value)}
-                    />
-                  </div>
-                </div>
+                )}
 
                 {props?.tabName === "resumes" && (
                   <div className="mt-6 pt-6">
