@@ -71,6 +71,16 @@ const EditResumeMarkup = (props) => {
     hobbies,
     setHobbies,
     tabName,
+    fullName,
+    setFullName,
+    jobTitle,
+    setJobTitle,
+    companyName,
+    setCompanyName,
+    hiringManagerName,
+    setHiringManagerName,
+    letterDetails,
+    setLetterDetails,
   } = props;
 
   const descIcons = [
@@ -449,8 +459,12 @@ const EditResumeMarkup = (props) => {
                       className="bg-gray-100 w-full h-9 pl-4 mt-1 pr-4
                      text-gray-800 border-none overflow-hidden
                       outline-none max-[767px]:w-full"
-                      value={wantedJobTitle}
-                      onChange={(e) => setWantedJobTitle(e.target.value)}
+                      value={tabName === "resumes" ? wantedJobTitle : fullName}
+                      onChange={(e) =>
+                        tabName === "resumes"
+                          ? setWantedJobTitle(e.target.value)
+                          : setFullName(e.target.value)
+                      }
                     />
                   </div>
 
@@ -536,8 +550,8 @@ const EditResumeMarkup = (props) => {
                         className="bg-gray-100 w-full h-9 pl-4
                      mt-1 pr-4 text-gray-800 border-none 
                      overflow-hidden outline-none max-[767px]:w-full"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
+                        value={jobTitle}
+                        onChange={(e) => setJobTitle(e.target.value)}
                       />
                     </div>
                   )}
@@ -707,9 +721,8 @@ const EditResumeMarkup = (props) => {
                           className="bg-gray-100 w-full h-9 pl-4 mt-1
                      pr-4 text-gray-800 border-none overflow-hidden 
                      outline-none max-[767px]:w-full"
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={companyName}
+                          onChange={(e) => setCompanyName(e.target.value)}
                         />
                       </div>
 
@@ -721,8 +734,8 @@ const EditResumeMarkup = (props) => {
                           className="bg-gray-100 w-full h-9 pl-4 mt-1
                      pr-4 text-gray-800 border-none 
                      overflow-hidden outline-none max-[767px]:w-full"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
+                          value={hiringManagerName}
+                          onChange={(e) => setHiringManagerName(e.target.value)}
                         />
                       </div>
                     </div>
@@ -789,8 +802,8 @@ const EditResumeMarkup = (props) => {
                           (props?.isChangedInputText?.name === "line-through" &&
                             `line-through`)
                         }`}
-                        value={professionalSummary}
-                        onChange={(e) => setProfessionalSummary(e.target.value)}
+                        value={letterDetails}
+                        onChange={(e) => setLetterDetails(e.target.value)}
                       />
                     </div>
                   </div>

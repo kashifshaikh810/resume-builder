@@ -9,7 +9,13 @@ const EditResume = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
+  // cover letters states
   const tabName = useParams()?.tabName;
+  const [fullName, setFullName] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [hiringManagerName, setHiringManagerName] = useState("");
+  const [letterDetails, setLetterDetails] = useState("");
 
   // all inputs states
   const [wantedJobTitle, setWantedJobTitle] = useState("");
@@ -943,6 +949,16 @@ const EditResume = (props) => {
       totalPage={totalPage}
       setTotalPage={setTotalPage}
       tabName={tabName}
+      fullName={fullName}
+      setFullName={setFullName}
+      jobTitle={jobTitle}
+      setJobTitle={setJobTitle}
+      companyName={companyName}
+      setCompanyName={setCompanyName}
+      hiringManagerName={hiringManagerName}
+      setHiringManagerName={setHiringManagerName}
+      letterDetails={letterDetails}
+      setLetterDetails={setLetterDetails}
     />
   );
 };
