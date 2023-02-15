@@ -9,7 +9,7 @@ const EditResume = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
-  const param = useParams()?.tabName;
+  const tabName = useParams()?.tabName;
 
   // all inputs states
   const [wantedJobTitle, setWantedJobTitle] = useState("");
@@ -704,8 +704,6 @@ const EditResume = (props) => {
     isNotShowIdLikeToHide,
   ]);
 
-  console.log(param);
-
   return (
     <EditResumeMarkup
       {...props}
@@ -944,6 +942,7 @@ const EditResume = (props) => {
       setPage={setPage}
       totalPage={totalPage}
       setTotalPage={setTotalPage}
+      tabName={tabName}
     />
   );
 };
