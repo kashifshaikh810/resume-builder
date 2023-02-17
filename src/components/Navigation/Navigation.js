@@ -67,7 +67,7 @@ const Navigation = () => {
           element={<EditResume navigate={useNavigate} params={useParams} />}
         />
         <Route
-          path="/app/resumes/id/templates"
+          path="/app/resumes/id/templates/:tabName"
           element={<AllTemplates navigate={useNavigate} params={useParams} />}
         />
         {/* <Route path="*" element={<NotFound/>}/> */}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
 const AllTemplates = (props) => {
@@ -8,6 +9,8 @@ const AllTemplates = (props) => {
     numOfSelectedVal: Number,
     isChanged: false,
   });
+
+  const tabName = useParams()?.tabName;
 
   const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
 
@@ -26,6 +29,7 @@ const AllTemplates = (props) => {
       setPage={setPage}
       totalPage={totalPage}
       setTotalPage={setTotalPage}
+      tabName={tabName}
     />
   );
 };

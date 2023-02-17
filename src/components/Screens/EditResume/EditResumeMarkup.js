@@ -183,7 +183,7 @@ const EditResumeMarkup = (props) => {
             <div
               className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-gray-600 hover:cursor-pointer hover:rounded-full"
               onClick={() => {
-                props.navigate("/app/resumes/id/templates");
+                props.navigate(`/app/resumes/id/templates/${props?.tabName}`);
               }}
             >
               <GrCodeSandbox
