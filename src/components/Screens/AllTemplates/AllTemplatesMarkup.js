@@ -21,7 +21,7 @@ const AllTemplatesMarkup = (props) => {
     navigate,
   } = props;
 
-  const selectTemplatesData = [
+  const resumesTemplatesData = [
     {
       id: 0,
       name: "Toronto",
@@ -47,6 +47,38 @@ const AllTemplatesMarkup = (props) => {
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/406/persistent-resource/vienna-resume-templates.jpg",
     },
   ];
+
+  const coverLetterTemplatesData = [
+    {
+      id: 0,
+      name: "Toronto",
+      value: "toronto",
+      uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/3487/persistent-resource/toronto-cover-letter-templates.jpg",
+    },
+    {
+      id: 1,
+      name: "Stockholm",
+      value: "stockholm",
+      uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/696/persistent-resource/stockholm-cover-letter-templates.jpg",
+    },
+    {
+      id: 2,
+      name: "New York",
+      value: "new-york",
+      uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/733/persistent-resource/new-york-cover-letter-templates.jpg",
+    },
+    {
+      id: 3,
+      name: "Vienna",
+      value: "vienna",
+      uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/734/persistent-resource/vienna-cover-letter-templates.jpg",
+    },
+  ];
+
+  let mapping =
+    props?.tabName === "resumes"
+      ? resumesTemplatesData
+      : coverLetterTemplatesData;
 
   const selectTempColorObj = (item, index) => {
     if (
@@ -208,7 +240,7 @@ const AllTemplatesMarkup = (props) => {
                 TEMPLATE
               </p>
               <div className="flex flex-row mt-2">
-                {selectTemplatesData.map((item, index) => {
+                {mapping.map((item, index) => {
                   return (
                     <div
                       key={index}
@@ -256,7 +288,7 @@ const AllTemplatesMarkup = (props) => {
           w-11/12 ml-4
         "
         >
-          {selectTemplatesData.map((item, index) => {
+          {mapping.map((item, index) => {
             return (
               <div
                 key={index}
