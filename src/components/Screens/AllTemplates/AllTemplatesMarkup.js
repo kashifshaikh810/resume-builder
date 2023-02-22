@@ -11,6 +11,7 @@ import StockholmTemplate from "../../Templates/StockholmTemplate";
 import TorontoTemplate from "../../Templates/TorontoTemplate";
 import NewYorkTemplate from "../../Templates/NewYorkTemplate";
 import ViennaTemplate from "../../Templates/ViennaTemplate";
+import StockholmCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/StockholmCoverLetterTemplate";
 
 const AllTemplatesMarkup = (props) => {
   const {
@@ -76,7 +77,7 @@ const AllTemplatesMarkup = (props) => {
   ];
 
   let mapping =
-    props?.tabName === "resumes"
+    props?.tabName === "resumes &&"
       ? resumesTemplatesData
       : coverLetterTemplatesData;
 
@@ -216,7 +217,7 @@ const AllTemplatesMarkup = (props) => {
         hidden
         max-[768px]:flex`}
           onClick={() =>
-            isShowTemplateCard === false && navigate("/app/resumes/id/edit")
+            isShowTemplateCard === false && navigate("/app/resumes &&/id/edit")
           }
         >
           <MdClose
@@ -318,8 +319,8 @@ const AllTemplatesMarkup = (props) => {
           })}
         </div>
 
-        {/* template results */}
-        {isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+        {/* template results & resumes && templates */}
+        {/* {isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
           <TorontoTemplate {...props} />
         ) : null}
 
@@ -333,6 +334,12 @@ const AllTemplatesMarkup = (props) => {
 
         {isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
           <ViennaTemplate {...props} />
+        ) : null} */}
+
+        {/* template results & cover letter tab templates */}
+
+        {isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
+          <StockholmCoverLetterTemplate {...props} />
         ) : null}
 
         <div
@@ -348,11 +355,14 @@ const AllTemplatesMarkup = (props) => {
                 : `text-gray-600`
             }`}
             onClick={() =>
-              props.page > 1 ? props.setPage(props.page - 1) : null
+              props.tabName === "resumes" && props.page > 1
+                ? props.setPage(props.page - 1)
+                : null
             }
           />
           <p className="text-white ml-2 mr-2">
-            {props.page} / {props.totalPage}
+            {props.tabName === "resumes" ? props.page : 1} /{" "}
+            {props.tabName === "resumes" ? props.totalPage : 1}
           </p>
           <RiArrowRightSLine
             size={22}
@@ -362,7 +372,7 @@ const AllTemplatesMarkup = (props) => {
                 : `text-gray-600`
             }`}
             onClick={() =>
-              props.page !== props.totalPage
+              props.tabName === "resumes" && props.page !== props.totalPage
                 ? props.setPage(props.page + 1)
                 : null
             }

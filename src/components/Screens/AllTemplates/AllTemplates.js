@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
@@ -11,6 +12,8 @@ const AllTemplates = (props) => {
   });
 
   const tabName = useParams()?.tabName;
+
+  const { coverLetterData } = useSelector((state) => state.resumeData);
 
   const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
 
@@ -30,6 +33,7 @@ const AllTemplates = (props) => {
       totalPage={totalPage}
       setTotalPage={setTotalPage}
       tabName={tabName}
+      coverLetterData={coverLetterData}
     />
   );
 };
