@@ -13,6 +13,7 @@ import NewYorkTemplate from "../../Templates/NewYorkTemplate";
 import ViennaTemplate from "../../Templates/ViennaTemplate";
 import StockholmCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/StockholmCoverLetterTemplate";
 import TorontoCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/TorontoCoverLetterTemplate";
+import NewYorkCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/NewYorkCoverLetterTemplate";
 
 const AllTemplatesMarkup = (props) => {
   const {
@@ -345,6 +346,10 @@ const AllTemplatesMarkup = (props) => {
 
         {isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
           <StockholmCoverLetterTemplate {...props} />
+        ) : null}
+
+        {isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
+          <NewYorkCoverLetterTemplate {...props} />
         ) : null}
 
         <div
