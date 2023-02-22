@@ -12,6 +12,7 @@ import TorontoTemplate from "../../Templates/TorontoTemplate";
 import NewYorkTemplate from "../../Templates/NewYorkTemplate";
 import ViennaTemplate from "../../Templates/ViennaTemplate";
 import StockholmCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/StockholmCoverLetterTemplate";
+import TorontoCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/TorontoCoverLetterTemplate";
 
 const AllTemplatesMarkup = (props) => {
   const {
@@ -337,6 +338,10 @@ const AllTemplatesMarkup = (props) => {
         ) : null} */}
 
         {/* template results & cover letter tab templates */}
+
+        {isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+          <TorontoCoverLetterTemplate {...props} />
+        ) : null}
 
         {isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
           <StockholmCoverLetterTemplate {...props} />
