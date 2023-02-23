@@ -304,6 +304,22 @@ const AllTemplatesMarkup = (props) => {
                     <TiTick className="text-white text-xl" />
                   </div>
                 )}
+                <div
+                  className={`flex flex-row w-10/12 justify-between absolute ${
+                    selectTempColorObj(item) ? `top-[14.6rem]` : `top-[15rem]`
+                  }`}
+                >
+                  <div>
+                    <p className="text-white bg-[#9ba1fb] text-[12px] font-[600] p-0.5 rounded-[2px] leading-2">
+                      FREE
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-white bg-[#ec940c] text-[12px] font-[600] p-0.5 rounded-[2px] leading-2">
+                      PDF
+                    </p>
+                  </div>
+                </div>
                 <img
                   src={item.uri}
                   alt="temps"
