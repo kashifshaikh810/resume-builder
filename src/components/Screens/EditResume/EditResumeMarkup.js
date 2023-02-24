@@ -162,9 +162,9 @@ const EditResumeMarkup = (props) => {
             {/* <ViennaTemplate {...props} /> */}
 
             {/* cover letter tab templates */}
-            <CoverLetterTorontoTemplate {...props} />
+            {/* <CoverLetterTorontoTemplate {...props} /> */}
 
-            {/* <CoverLetterStockholmTemplate {...props} /> */}
+            <CoverLetterStockholmTemplate {...props} />
 
             {/* <CoverLetterNewYorkTemplate {...props} /> */}
 
