@@ -3,7 +3,7 @@ import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import { useSelector } from "react-redux";
 
 const ResumesCoverLetters = (props) => {
-  const { data } = useSelector((state) => state.resumeData);
+  const { data, coverLetterData } = useSelector((state) => state.resumeData);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isShowLine, setIsShowLine] = useState("resumes");
@@ -43,6 +43,7 @@ const ResumesCoverLetters = (props) => {
       setIsShowCoverLetterUntitledIcon={setIsShowCoverLetterUntitledIcon}
       isShowCoverLetterUntitledInput={isShowCoverLetterUntitledInput}
       setIsShowCoverLetterUntitledInput={setIsShowCoverLetterUntitledInput}
+      coverLetterData={coverLetterData}
     />
   );
 };

@@ -162,13 +162,13 @@ const EditResumeMarkup = (props) => {
             {/* <ViennaTemplate {...props} /> */}
 
             {/* cover letter tab templates */}
-            {/* <CoverLetterTorontoTemplate {...props} /> */}
+            <CoverLetterTorontoTemplate {...props} />
 
             {/* <CoverLetterStockholmTemplate {...props} /> */}
 
             {/* <CoverLetterNewYorkTemplate {...props} /> */}
 
-            <CoverLetterViennaTemplate {...props} />
+            {/* <CoverLetterViennaTemplate {...props} /> */}
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">

@@ -4,7 +4,6 @@ import { FiShare } from "react-icons/fi";
 import { BiDownvote } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-import { SlReload } from "react-icons/sl";
 
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 import Header from "../../Header/Header";
@@ -16,6 +15,7 @@ import StockholmTemplate from "../../ResumesAndCoverLettersTemplates/StockholmTe
 import TorontoTemplate from "../../ResumesAndCoverLettersTemplates/TorontoTemplate";
 import NewYorkTemplate from "../../ResumesAndCoverLettersTemplates/NewYorkTemplate";
 import ViennaTemplate from "../../ResumesAndCoverLettersTemplates/ViennaTemplate";
+import CoverLetterTorontoTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterTorontoTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
   const resumeSection = () => {
@@ -175,8 +175,8 @@ const ResumesCoverLettersMarkup = (props) => {
       return (
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
-            <div className="border-2 border-gray-100 w-6/12 h-72 rounded-lg cursor-pointer cv-box">
-              <p>abcde</p>
+            <div className="border-2 max-w-sm border-gray-100 w-2/12 rounded-lg cursor-pointer cv-box unselectable">
+              <CoverLetterTorontoTemplate {...props} />
             </div>
 
             <div className="pl-10 w-11/12">
