@@ -35,7 +35,7 @@ const ViennaCoverLetterTemplate = (props) => {
             <p className="text-lg mt-1.5">{jobTitle}</p>
           </div>
 
-          <div className="mt-5">
+          <div className="mt-5 w-5/12">
             <p className="text-xs font-bold">
               {hiringManagerName || companyName ? `To:` : ``}{" "}
               {hiringManagerName}
