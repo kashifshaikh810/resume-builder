@@ -17,6 +17,7 @@ import NewYorkTemplate from "../../ResumesAndCoverLettersTemplates/NewYorkTempla
 import ViennaTemplate from "../../ResumesAndCoverLettersTemplates/ViennaTemplate";
 import CoverLetterTorontoTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterTorontoTemplate";
 import CoverLetterStockholmTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterStockholmTemplate";
+import CoverLetterNewYorkTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterNewYorkTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
   const resumeSection = () => {
@@ -179,7 +180,9 @@ const ResumesCoverLettersMarkup = (props) => {
             <div className="border-2 max-w-sm border-gray-100 w-2/12 rounded-lg cursor-pointer cv-box unselectable">
               {/* <CoverLetterTorontoTemplate {...props} /> */}
 
-              <CoverLetterStockholmTemplate {...props} />
+              {/* <CoverLetterStockholmTemplate {...props} /> */}
+
+              <CoverLetterNewYorkTemplate {...props} />
             </div>
 
             <div className="pl-10 w-11/12">
