@@ -80,7 +80,7 @@ const AllTemplatesMarkup = (props) => {
   ];
 
   let mapping =
-    props?.tabName === "resumes &&"
+    props?.tabName === "resumes"
       ? resumesTemplatesData
       : coverLetterTemplatesData;
 
