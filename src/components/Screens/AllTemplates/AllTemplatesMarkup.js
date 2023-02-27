@@ -339,37 +339,44 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         {/* template results & resumes && templates */}
-        {/* {isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+        {props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
           <TorontoTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
+        {props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
           <StockholmTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
+        {props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
           <NewYorkTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
+        {props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
           <ViennaTemplate {...props} />
-        ) : null} */}
+        ) : null}
 
         {/* template results & cover letter tab templates */}
-
-        {isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+        {props?.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
           <TorontoCoverLetterTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
+        {props?.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
           <StockholmCoverLetterTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
+        {props?.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
           <NewYorkCoverLetterTemplate {...props} />
         ) : null}
 
-        {isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
+        {props?.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
           <ViennaCoverLetterTemplate {...props} />
         ) : null}
 
