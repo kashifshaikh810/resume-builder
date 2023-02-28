@@ -52,6 +52,14 @@ const StockholmTemplate = (props) => {
     disabledPreferences,
   } = props?.resumeData;
 
+  const linerProgressLine = {
+    Novice: "w-[80px]",
+    Beginner: "w-[120px]",
+    Skillful: "w-[150px]",
+    Experienced: "w-[180px]",
+    Expert: "w-[200px]",
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -1070,27 +1078,57 @@ const StockholmTemplate = (props) => {
               ""
             )}
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            <div className="w-full">
+              {skillsInputList?.length >= 1 ? (
+                <div className="mt-2">
+                  <p
+                    className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   font-semibold"
-              >
-                Skills
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                  >
+                    {skillsInput}
+                  </p>
+                  {skillsInputList &&
+                    skillsInputList.map((item, index) => {
+                      return (
+                        <div key={index} className="w-full">
+                          <p
+                            className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                communication
-              </p>
+                          >
+                            {item?.skill}
+                          </p>
+                          {isNotShowExpertLevel === false && item.skill ? (
+                            <div>
+                              <div
+                                className="w-[200px] bg-gray-200"
+                                id="myProgress"
+                              >
+                                <div
+                                  className={`${
+                                    linerProgressLine[item.level]
+                                  } h-[3px] bg-blue-400 mt-1`}
+                                  id="myBar"
+                                ></div>
+                              </div>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
             <div className="mt-2">
