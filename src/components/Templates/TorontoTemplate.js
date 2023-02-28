@@ -46,6 +46,14 @@ const TorontoTemplate = (props) => {
     disabledPreferences,
   } = props?.resumeData;
 
+  const levelNum = {
+    Novice: 1,
+    Beginner: 2,
+    Skillful: 3,
+    Experienced: 4,
+    Expert: 5,
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -363,12 +371,40 @@ const TorontoTemplate = (props) => {
                 ""
               )}
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
-                <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
-                  Skills
-                </p>
-                <p className="text-sm mt-2">skill content</p>
-              </div>
+              {skillsInputList?.length >= 1 ? (
+                <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+                  <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
+                    {skillsInput}
+                  </p>
+                  {skillsInputList &&
+                    skillsInputList.map((item, index) => {
+                      return (
+                        <div key={index} className="flex flex-row">
+                          <p
+                            className={`text-sm mt-2 ${
+                              isNotShowExpertLevel === false
+                                ? `font-semibold`
+                                : ``
+                            }`}
+                          >
+                            {item?.skill}
+                          </p>
+                          {isNotShowExpertLevel === false ? (
+                            <div className="flex flex-1 justify-end items-center mr-5 border-b border-dotted border-gray-400 w-11/12 relative -top-[2px]">
+                              <p className="text-sm absolute top-[14px] -right-[12px] font-semibold">
+                                {`${levelNum[item?.level]}/5`}
+                              </p>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
                 <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
