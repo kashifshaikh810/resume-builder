@@ -54,6 +54,12 @@ const TorontoTemplate = (props) => {
     Expert: 5,
   };
 
+  const levelWidth = {
+    "Very good command": "-right-[66px]",
+    "Highly Proficient": "-right-[55px]",
+    "Native Speaker": "-right-[50px]",
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -415,12 +421,50 @@ const TorontoTemplate = (props) => {
                 </div>
               )}
 
-              <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
-                <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
-                  Languages
-                </p>
-                <p className="text-sm mt-2">language content</p>
-              </div>
+              {languagesInputList?.length >= 1 ? (
+                <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+                  <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
+                    {languagesInput}
+                  </p>
+                  {languagesInputList &&
+                    languagesInputList.map((item, index) => {
+                      if (item?.level === "Select Level") {
+                        return null;
+                      } else {
+                        return (
+                          <div key={index} className="flex flex-row">
+                            {item?.language ? (
+                              <p
+                                className={`text-sm mt-2 ${
+                                  item.level ? `font-semibold` : ``
+                                }`}
+                              >
+                                {item?.language}
+                              </p>
+                            ) : (
+                              ""
+                            )}
+                            {item?.language ? (
+                              <div className="flex justify-end items-center mr-2 border-b border-dotted border-gray-400 w-5/12 relative -top-[2px]">
+                                <p
+                                  className={`text-sm absolute top-[13px] left-[6.5rem] w-full ${
+                                    levelWidth[item?.level]
+                                  } font-semibold`}
+                                >
+                                  {item?.level}
+                                </p>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        );
+                      }
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
