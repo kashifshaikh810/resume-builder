@@ -97,17 +97,19 @@ const StockholmTemplate = (props) => {
             </div>
 
             <div className="flex flex-row mt-3">
-              <HiUser
-                className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+              <div className="mt-[1px]">
+                <HiUser
+                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                   max-[768px]:text-[11px]
-                    max-[620px]:text-[10px]
-                    max-[703px]:text-[9px]
-                    max-[610px]:text-[8px]
-                    max-[570px]:text-[7px]
-                    max-[535px]:text-[6px]
-                    max-[500px]:text-[5px]
+                  max-[620px]:text-[10px]
+                  max-[703px]:text-[9px]
+                  max-[610px]:text-[8px]
+                  max-[570px]:text-[7px]
+                  max-[535px]:text-[6px]
+                  max-[500px]:text-[5px]
                   mt-0.5 max-[880px]:mt-1"
-              />
+                />
+              </div>
               <div className="ml-1">
                 <p
                   className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
