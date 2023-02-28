@@ -395,32 +395,76 @@ const TorontoTemplate = (props) => {
           p-2 pl-3"
         >
           <div>
-            <div>
-              <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
-                fwefewe, fwfef
-              </p>
-              <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
-                7/2022-8/2022
-              </p>
-              <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
-                fffwfwefwfe
-              </p>
-            </div>
+            {internshipInputList?.length >= 1 ? (
+              <div>
+                <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
+                  {internshipInput}
+                </p>
+                {internshipInputList &&
+                  internshipInputList.map((item, index) => {
+                    let startDate = new Date(item?.startDate);
+                    const startDateMonth = `${
+                      startDate.getMonth() + 1
+                    }`.padStart(2, "0");
 
-            <div className="mt-5">
-              <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
-                Internships
-              </p>
-              <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
-                regrg, at ewrggr, prfergg
-              </p>
-              <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
-                6/2022-12/2022
-              </p>
-              <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
-                eettttt
-              </p>
-            </div>
+                    const startDateYear = `${startDate.getFullYear()}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const startFullDate = [startDateMonth, startDateYear].join(
+                      "/"
+                    );
+
+                    let endDate = new Date(item?.endDate);
+                    const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const endDateYear = `${endDate.getFullYear()}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const endFullDate = [endDateMonth, endDateYear].join("/");
+
+                    return (
+                      <div
+                        key={index}
+                        className={`${
+                          internshipInputList?.length >= 2 && index >= 1
+                            ? `mt-2`
+                            : ``
+                        }`}
+                      >
+                        <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
+                          {`${item?.jobTitle} ${
+                            item?.jobTitle && item?.employer ? "at" : ""
+                          } ${item?.employer}${
+                            item?.employer && item.city && `,`
+                          } ${item.city}`}
+                        </p>
+                        {(startDateMonth && startDateYear) ||
+                        (endDateMonth && endDateYear) ? (
+                          <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
+                            {item?.startDate ? startFullDate : ""}
+                            {item?.startDate && item?.endDate ? `-` : ""}
+                            {item?.endDate ? endFullDate : ""}
+                          </p>
+                        ) : (
+                          ""
+                        )}
+                        <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
+                          {item?.description}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <div className="flex flex-col flex-1 items-end">
