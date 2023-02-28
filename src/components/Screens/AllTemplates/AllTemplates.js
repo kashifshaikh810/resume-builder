@@ -13,7 +13,7 @@ const AllTemplates = (props) => {
 
   const tabName = useParams()?.tabName;
 
-  const { coverLetterData } = useSelector((state) => state.resumeData);
+  const { data, coverLetterData } = useSelector((state) => state.resumeData);
 
   const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
 
@@ -34,6 +34,7 @@ const AllTemplates = (props) => {
       setTotalPage={setTotalPage}
       tabName={tabName}
       coverLetterData={coverLetterData}
+      resumeData={data}
     />
   );
 };
