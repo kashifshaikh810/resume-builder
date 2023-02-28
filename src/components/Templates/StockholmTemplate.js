@@ -1131,28 +1131,30 @@ const StockholmTemplate = (props) => {
               )}
             </div>
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {hobbies && (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   font-semibold"
-              >
-                Hobbies
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  {hobbiesInput}
+                </p>
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                efiwijoowijf
-              </p>
-            </div>
+                >
+                  {hobbies}
+                </p>
+              </div>
+            )}
 
             <div className="mt-2">
               <p
