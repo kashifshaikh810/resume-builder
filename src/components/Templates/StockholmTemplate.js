@@ -56,7 +56,7 @@ const StockholmTemplate = (props) => {
   const pageOne = () => {
     if (props.page === 1) {
       return (
-        <div className="p-14 grid grid-cols-2 gap-2 max-[880px]:pl-12 max-[830px]:pl-10">
+        <div className="p-14 grid grid-cols-2 -space-x-14 max-[880px]:pl-12 max-[830px]:pl-10">
           <div>
             <div className="flex flex-row items-center">
               {profileImage && (
@@ -116,7 +116,9 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[8px]
                     font-semibold"
                 >
-                  Profile
+                  {summaryInput === "Professional Summary"
+                    ? `Profile`
+                    : summaryInput}
                 </p>
                 <p
                   className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
@@ -129,7 +131,7 @@ const StockholmTemplate = (props) => {
                     max-[500px]:text-[5px]
                     text-gray-600"
                 >
-                  epfijwejifwijefiefioew
+                  {professionalSummary}
                 </p>
               </div>
             </div>
