@@ -4,6 +4,48 @@ import "./styles.css";
 import ProfileImage from "../images/profile.png";
 
 const TorontoTemplate = (props) => {
+  const {
+    profileImage,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+    coursesInputList,
+    internshipInputList,
+    extraCurricularInputList,
+    referencesInputList,
+    summaryInput,
+    employmentInput,
+    educationInput,
+    coursesInput,
+    extraCurricularInput,
+    internshipInput,
+    referencesInput,
+    personalDetailInput,
+    skillsInput,
+    hobbiesInput,
+    languagesInput,
+    websiteInput,
+    disabledPreferences,
+  } = props?.resumeData;
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -20,10 +62,10 @@ const TorontoTemplate = (props) => {
             />
             <div>
               <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
-                hamza
+                {firstName}
               </p>
               <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
-                khan
+                {lastName}
               </p>
             </div>
           </div>
@@ -31,26 +73,33 @@ const TorontoTemplate = (props) => {
           <div className="grid grid-cols-[225px_minmax(540px,_1fr)_100px]">
             <div>
               <div className="pt-1 mt-1">
-                <p className="font-bold text-lg">Web Developer</p>
-                <p className="text-sm">kashifshaikh910ss@gmail.com</p>
-                <p className="text-sm">0313454533534</p>
-                <p className="text-sm">grergrg, gregregreg, 2133, ffewfw</p>
+                <p className="font-bold text-lg">{wantedJobTitle}</p>
+                <p className="text-sm">{email}</p>
+                <p className="text-sm">{phone}</p>
+                <p className="text-sm">
+                  {address}
+                  {address && city ? `,` : ``} {city}
+                  {city && postalCode ? `,` : ``} {postalCode}
+                  {postalCode && country ? `,` : ``} {country}
+                </p>
               </div>
 
               <div className="pt-2 mt-2">
                 <div>
                   <p className="text-sm font-bold">Date / Place of birth</p>
-                  <p className="text-sm">24 / 342</p>
+                  <p className="text-sm">
+                    {dateOfBirth} / {placeOfBirth}
+                  </p>
                 </div>
 
                 <div className="pt-2 mt-2">
                   <p className="text-sm font-bold">Driving License</p>
-                  <p className="text-sm">232</p>
+                  <p className="text-sm">{drivingLicense}</p>
                 </div>
 
                 <div className="pt-2 mt-2">
                   <p className="text-sm font-bold">Nationality</p>
-                  <p className="text-sm">342</p>
+                  <p className="text-sm">{nationality}</p>
                 </div>
               </div>
             </div>
@@ -58,9 +107,11 @@ const TorontoTemplate = (props) => {
             <div className="pt-2 mt-2 ml-1 w-full h-full">
               <div className="bg-[#eeeeee] w-11/12 max-[1008px]:w-9/12 max-[879px]:w-6/12 max-[831px]:w-5/12 max-[916px]:w-7/12 max-[880px]:w-/12 max-[768px]:w-9/12  h-auto pl-3 pt-3 pb-3 rounded-2xl">
                 <p className="text-4xl max-[768px]:text-2xl max-[880px]:text-xl font-bold">
-                  Profile
+                  {summaryInput === "Professional Summary"
+                    ? `Profile`
+                    : summaryInput}
                 </p>
-                <p className="text-sm mt-2">profile content</p>
+                <p className="text-sm mt-2">{professionalSummary}</p>
               </div>
             </div>
           </div>
@@ -78,22 +129,75 @@ const TorontoTemplate = (props) => {
              "
           >
             <div>
-              <div>
-                <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
-                  Employment History
-                </p>
-                <div className="">
-                  <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
-                    fwefewe, at fwfef, wrfwrffewf
+              {employmentInputList?.length >= 1 ? (
+                <div>
+                  <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
+                    {employmentInput}
                   </p>
+                  {employmentInputList &&
+                    employmentInputList?.map((item, index) => {
+                      let startDate = new Date(item?.startDate);
+                      const startDateMonth = `${
+                        startDate.getMonth() + 1
+                      }`.padStart(2, "0");
+
+                      const startDateYear =
+                        `${startDate.getFullYear()}`.padStart(2, "0");
+
+                      const startFullDate = [
+                        startDateMonth,
+                        startDateYear,
+                      ].join("/");
+
+                      let endDate = new Date(item?.endDate);
+                      const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
+                        2,
+                        "0"
+                      );
+
+                      const endDateYear = `${endDate.getFullYear()}`.padStart(
+                        2,
+                        "0"
+                      );
+
+                      const endFullDate = [endDateMonth, endDateYear].join("/");
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            employmentInputList.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
+                            {`${item?.jobTitle} ${
+                              item?.jobTitle && item?.employer ? "at" : ""
+                            } ${item?.employer}${
+                              item?.employer && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
+                              {item?.startDate ? startFullDate : ""}
+                              {item?.startDate && item?.endDate ? `-` : ""}
+                              {item?.endDate ? endFullDate : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
                 </div>
-                <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
-                  12/2022-2022
-                </p>
-                <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
-                  fffwfwefwfe
-                </p>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
