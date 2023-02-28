@@ -7,6 +7,48 @@ import { IoMdSchool } from "react-icons/io";
 import "./styles.css";
 
 const StockholmTemplate = (props) => {
+  const {
+    profileImage,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+    coursesInputList,
+    internshipInputList,
+    extraCurricularInputList,
+    referencesInputList,
+    summaryInput,
+    employmentInput,
+    educationInput,
+    coursesInput,
+    extraCurricularInput,
+    internshipInput,
+    referencesInput,
+    personalDetailInput,
+    skillsInput,
+    hobbiesInput,
+    languagesInput,
+    websiteInput,
+    disabledPreferences,
+  } = props?.resumeData;
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -17,14 +59,14 @@ const StockholmTemplate = (props) => {
         <div className="p-14 grid grid-cols-2 gap-2 max-[880px]:pl-12 max-[830px]:pl-10">
           <div>
             <div className="flex flex-row items-center">
-              {props?.profileImage && (
+              {profileImage && (
                 <img
-                  src={props?.profileImage}
+                  src={profileImage}
                   alt="profile"
-                  className="w-8 h-8"
+                  className="w-16 h-16 rounded-md"
                 />
               )}
-              <div className={`${props?.profileImage ? `ml-3` : ``}`}>
+              <div className={`${profileImage ? `ml-3` : ``}`}>
                 <p
                   className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
@@ -36,7 +78,7 @@ const StockholmTemplate = (props) => {
                     max-[500px]:text-[5px]
                     font-bold"
                 >
-                  first name last name
+                  {firstName} {lastName}
                 </p>
                 <p
                   className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
@@ -49,7 +91,7 @@ const StockholmTemplate = (props) => {
                     max-[500px]:text-[5px]
                     text-gray-600"
                 >
-                  Finance
+                  {wantedJobTitle}
                 </p>
               </div>
             </div>
