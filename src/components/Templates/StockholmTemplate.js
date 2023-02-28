@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { BsArrowsAngleContract } from "react-icons/bs";
-import { HiUser } from "react-icons/hi";
+import { HiUser, HiUsers } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { MdStars } from "react-icons/md";
@@ -594,6 +594,135 @@ const StockholmTemplate = (props) => {
                           >
                             {`${item?.functionTitle} ${
                               item?.functionTitle && item?.employer ? "at" : ""
+                            } ${item?.employer}${
+                              item?.employer && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p
+                              className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                        max-[768px]:text-[11px]
+                        max-[620px]:text-[10px]
+                        max-[703px]:text-[9px]
+                        max-[610px]:text-[8px]
+                        max-[570px]:text-[7px]
+                        max-[535px]:text-[6px]
+                        max-[500px]:text-[5px]
+                        text-gray-400"
+                            >
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p
+                            className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    text-gray-600"
+                          >
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {internshipInputList?.length >= 1 ? (
+              <div className="flex flex-row mt-3">
+                <HiUsers
+                  className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                  max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                  mt-1.5"
+                />
+                <div className="ml-1">
+                  <p
+                    className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    font-semibold"
+                  >
+                    {internshipInput}
+                  </p>
+                  {internshipInputList &&
+                    internshipInputList.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            internshipInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p
+                            className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    text-gray-600"
+                          >
+                            {`${item?.jobTitle} ${
+                              item?.jobTitle && item?.employer ? "at" : ""
                             } ${item?.employer}${
                               item?.employer && item.city && `,`
                             } ${item.city}`}
