@@ -341,15 +341,27 @@ const TorontoTemplate = (props) => {
             </div>
 
             <div className="flex flex-col flex-1 items-end mr-10">
-              <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 rounded-2xl">
-                <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
-                  Links
-                </p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
-                <p className="text-sm mt-2 underline">links content</p>
-              </div>
+              {websiteInputList?.length >= 1 ? (
+                <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 rounded-2xl">
+                  <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
+                    {websiteInput === "Websites & Social Links"
+                      ? "Links"
+                      : websiteInput}
+                  </p>
+                  {websiteInputList &&
+                    websiteInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="text-sm mt-2 underline">
+                            {item?.label}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="bg-[#eeeeee] w-11/12 h-auto  max-[830px]:w-10/12 max-[1008px]:w-7/12 max-[916px]:w-7/12 max-[880px]:w-7/12 max-[768px]:w-11/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
                 <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
