@@ -125,7 +125,11 @@ const TorontoTemplate = (props) => {
               {resumeData?.professionalSummary && (
                 <div className="pt-2 mt-2 ml-1 w-11/12 h-full">
                   <div className="bg-[#eeeeee] w-11/12 h-auto pl-3 pt-2 pb-2 rounded-2xl">
-                    <p className="text-[10px] font-bold">Profile</p>
+                    <p className="text-[10px] font-bold">
+                      {resumeData?.summaryInput === "Professional Summary"
+                        ? `Profile`
+                        : resumeData?.summaryInput}
+                    </p>
                     <p className="text-[5px] mt-1">
                       {resumeData?.professionalSummary}
                     </p>
@@ -517,7 +521,7 @@ const TorontoTemplate = (props) => {
                             {item?.language ? (
                               <div className="flex justify-end items-center mr-2 border-b border-dotted border-gray-400 w-4/12 relative -top-[2px]">
                                 <p
-                                  className={`text-[6px] absolute top-[5px] ${
+                                  className={`text-[4px] absolute top-[5px] left-[45px] ${
                                     levelWidth[item?.level]
                                   } font-semibold`}
                                 >
