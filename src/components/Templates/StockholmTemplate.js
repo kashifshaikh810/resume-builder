@@ -269,9 +269,10 @@ const StockholmTemplate = (props) => {
               ""
             )}
 
-            <div className="flex flex-row mt-3">
-              <IoMdSchool
-                className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+            {educationInputList?.length >= 1 ? (
+              <div className="flex flex-row mt-3">
+                <IoMdSchool
+                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                   max-[768px]:text-[11px]
                     max-[620px]:text-[10px]
                     max-[703px]:text-[9px]
@@ -280,10 +281,10 @@ const StockholmTemplate = (props) => {
                     max-[535px]:text-[6px]
                     max-[500px]:text-[5px]
                   mt-1"
-              />
-              <div className="ml-1">
-                <p
-                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                />
+                <div className="ml-1">
+                  <p
+                    className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
                     max-[620px]:text-[10px]
                     max-[703px]:text-[9px]
@@ -292,11 +293,50 @@ const StockholmTemplate = (props) => {
                     max-[535px]:text-[6px]
                     max-[500px]:text-[5px]
                     font-semibold"
-                >
-                  Education
-                </p>
-                <p
-                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                  >
+                    {educationInput}
+                  </p>
+                  {educationInputList &&
+                    educationInputList.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            educationInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p
+                            className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
                     max-[620px]:text-[10px]
                     max-[703px]:text-[9px]
@@ -305,24 +345,39 @@ const StockholmTemplate = (props) => {
                     max-[535px]:text-[6px]
                     max-[500px]:text-[5px]
                     text-gray-600"
-                >
-                  epfijwej, ifwije, fiefioew
-                </p>
-                <p
-                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
-                    max-[768px]:text-[11px]
-                    max-[620px]:text-[10px]
-                    max-[703px]:text-[9px]
-                    max-[610px]:text-[8px]
-                    max-[570px]:text-[7px]
-                    max-[535px]:text-[6px]
-                    max-[500px]:text-[5px]
-                    text-gray-400"
-                >
-                  July 2022 - April 2022
-                </p>
-                <p
-                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                          >
+                            {`${item?.school}${
+                              item?.school && item?.degree ? "," : ""
+                            } ${item?.degree}${
+                              item?.degree && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p
+                              className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                        max-[768px]:text-[11px]
+                        max-[620px]:text-[10px]
+                        max-[703px]:text-[9px]
+                        max-[610px]:text-[8px]
+                        max-[570px]:text-[7px]
+                        max-[535px]:text-[6px]
+                        max-[500px]:text-[5px]
+                        text-gray-400"
+                            >
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p
+                            className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
                     max-[620px]:text-[10px]
                     max-[703px]:text-[9px]
@@ -331,11 +386,17 @@ const StockholmTemplate = (props) => {
                     max-[535px]:text-[6px]
                     max-[500px]:text-[5px]
                     text-gray-600"
-                >
-                  reigjierjirjige
-                </p>
+                          >
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
-            </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <div
