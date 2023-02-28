@@ -627,14 +627,46 @@ const TorontoTemplate = (props) => {
               ""
             )}
 
-            <div className="bg-[#eeeeee] max-[768px]:w-11/12 w-11/12 h-auto  max-[830px]:w-10/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
-              <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
-                Preferences
-              </p>
-              <p className="text-sm mt-2">fewfwfewfeqw</p>
-              <p className="text-sm">fewfwfewfeqw</p>
-              <p className="text-sm">fewfwfewfeqw</p>
-            </div>
+            {referencesInputList?.length >= 1 ? (
+              <div className="bg-[#eeeeee] max-[768px]:w-11/12 w-11/12 h-auto  max-[830px]:w-10/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+                <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
+                  {referencesInput}
+                </p>
+                {disabledPreferences ? (
+                  <p className="text-[6px] text-black font-bold">
+                    Preferences available upon request
+                  </p>
+                ) : (
+                  ""
+                )}
+                {disabledPreferences === false &&
+                  referencesInputList &&
+                  referencesInputList.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`${
+                          referencesInputList?.length >= 2 && index >= 1
+                            ? `mt-2`
+                            : ``
+                        }`}
+                      >
+                        <p className="text-sm mt-2">
+                          {`${item?.referentFullName} ${
+                            item?.referentFullName && item?.company
+                              ? "from"
+                              : ""
+                          } ${item?.company}${item?.company}`}
+                        </p>
+                        <p className="text-sm">{item?.email}</p>
+                        <p className="text-sm">{item?.phone}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       );
