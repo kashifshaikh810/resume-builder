@@ -897,7 +897,9 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                 font-semibold"
             >
-              Details
+              {personalDetailInput === "Personal Details"
+                ? "Details"
+                : personalDetailInput}
             </p>
             <div>
               <p
@@ -908,7 +910,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-gray-600"
               >
-                address
+                {address}
               </p>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
@@ -918,7 +920,8 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-gray-600"
               >
-                wwwwwwww, 2013
+                {city}
+                {city ? `,` : ``} {postalCode}
               </p>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
@@ -928,7 +931,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-gray-600"
               >
-                gijtjgijtg
+                {country}
               </p>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
@@ -938,7 +941,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-gray-600"
               >
-                0332244343433
+                {phone}
               </p>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
@@ -948,7 +951,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-blue-400"
               >
-                kashifshaikh910ssg@gmail.com
+                {email}
               </p>
             </div>
 
@@ -971,7 +974,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-black"
               >
-                24
+                {dateOfBirth}
               </p>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
@@ -981,7 +984,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-black"
               >
-                323
+                {placeOfBirth}
               </p>
             </div>
 
@@ -1004,7 +1007,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-black"
               >
-                text
+                {nationality}
               </p>
             </div>
 
@@ -1027,7 +1030,7 @@ const StockholmTemplate = (props) => {
                     max-[610px]:text-[6px]
                   text-black"
               >
-                text
+                {drivingLicense}
               </p>
             </div>
 
