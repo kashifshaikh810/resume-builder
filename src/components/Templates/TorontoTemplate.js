@@ -199,20 +199,75 @@ const TorontoTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
-                  Education
-                </p>
-                <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
-                  fwefewe, at fwfef, wrfwrffewf
-                </p>
-                <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
-                  12/2022-4/2022
-                </p>
-                <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
-                  fffwfwefwfe
-                </p>
-              </div>
+              {educationInputList?.length >= 1 ? (
+                <div className={employmentInputList?.length >= 1 ? `mt-5` : ``}>
+                  <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
+                    {educationInput}
+                  </p>
+                  {educationInputList &&
+                    educationInputList.map((item, index) => {
+                      let startDate = new Date(item?.startDate);
+                      const startDateMonth = `${
+                        startDate.getMonth() + 1
+                      }`.padStart(2, "0");
+
+                      const startDateYear =
+                        `${startDate.getFullYear()}`.padStart(2, "0");
+
+                      const startFullDate = [
+                        startDateMonth,
+                        startDateYear,
+                      ].join("/");
+
+                      let endDate = new Date(item?.endDate);
+                      const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
+                        2,
+                        "0"
+                      );
+
+                      const endDateYear = `${endDate.getFullYear()}`.padStart(
+                        2,
+                        "0"
+                      );
+
+                      const endFullDate = [endDateMonth, endDateYear].join("/");
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            educationInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p className="bg-black max-w-max min-w-max max-[880px]:text-[12px] text-white font-bold max-[768px]:text-[14px] mt-2 pl-1 pr-1">
+                            {`${item?.school}${
+                              item?.school && item?.degree ? "," : ""
+                            } ${item?.degree}${
+                              item?.degree && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-black tracking-widest max-[880px]:text-[14px] max-[768px]:text-[13px]">
+                              {item?.startDate ? startFullDate : ""}
+                              {item?.startDate && item?.endDate ? `-` : ""}
+                              {item?.endDate ? endFullDate : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p className="text-gray-800 text-sm mt-1 max-[768px]:text-[12px] max-[880px]:text-[13px]">
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="text-2xl max-[880px]:text-xl max-[768px]:text-xl font-bold">
