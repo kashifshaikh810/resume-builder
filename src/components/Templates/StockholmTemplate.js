@@ -1034,28 +1034,41 @@ const StockholmTemplate = (props) => {
               </p>
             </div>
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {websiteInputList?.length >= 1 ? (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   font-semibold"
-              >
-                Links
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  {websiteInput === "Websites & Social Links"
+                    ? `Links`
+                    : websiteInput}
+                </p>
+                {websiteInputList &&
+                  websiteInputList.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <p
+                          className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-blue-400"
-              >
-                text
-              </p>
-            </div>
+                        >
+                          {item?.label}
+                        </p>
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
 
             <div className="mt-2">
               <p
