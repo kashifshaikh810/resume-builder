@@ -153,9 +153,9 @@ const EditResumeMarkup = (props) => {
             onMouseLeave={() => props.setIsHovered(false)}
           >
             {/* resume tab templates */}
-            <TorontoTemplate {...props} />
+            {/* <TorontoTemplate {...props} /> */}
 
-            {/* <StockholmTemplate {...props} /> */}
+            <StockholmTemplate {...props} />
 
             {/* <NewYorkTemplate {...props} /> */}
 

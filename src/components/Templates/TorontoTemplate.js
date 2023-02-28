@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 import "./styles.css";
-import ProfileImage from "../images/profile.png";
 
 const TorontoTemplate = (props) => {
   const {
@@ -38,7 +37,6 @@ const TorontoTemplate = (props) => {
     extraCurricularInput,
     internshipInput,
     referencesInput,
-    personalDetailInput,
     skillsInput,
     hobbiesInput,
     languagesInput,
