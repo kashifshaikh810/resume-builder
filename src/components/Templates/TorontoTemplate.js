@@ -562,13 +562,70 @@ const TorontoTemplate = (props) => {
           </div>
 
           <div className="flex flex-col flex-1 items-end">
-            <div className="bg-[#eeeeee] max-[768px]:w-11/12 w-11/12 h-auto  max-[830px]:w-10/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
-              <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
-                Courses
-              </p>
-              <p className="text-sm font-bold mt-2">fewfwf at fewfeqw</p>
-              <p className="text-sm">2/2022-4/2022</p>
-            </div>
+            {coursesInputList?.length >= 1 ? (
+              <div className="bg-[#eeeeee] max-[768px]:w-11/12 w-11/12 h-auto  max-[830px]:w-10/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
+                <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
+                  {coursesInput}
+                </p>
+                {coursesInputList &&
+                  coursesInputList.map((item, index) => {
+                    let startDate = new Date(item?.startDate);
+                    const startDateMonth = `${
+                      startDate.getMonth() + 1
+                    }`.padStart(2, "0");
+
+                    const startDateYear = `${startDate.getFullYear()}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const startFullDate = [startDateMonth, startDateYear].join(
+                      "/"
+                    );
+
+                    let endDate = new Date(item?.endDate);
+                    const endDateMonth = `${endDate.getMonth() + 1}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const endDateYear = `${endDate.getFullYear()}`.padStart(
+                      2,
+                      "0"
+                    );
+
+                    const endFullDate = [endDateMonth, endDateYear].join("/");
+                    return (
+                      <div
+                        key={index}
+                        className={`${
+                          coursesInputList?.length >= 2 && index >= 1
+                            ? `mt-2`
+                            : ``
+                        }`}
+                      >
+                        <p className="text-sm font-bold mt-2">
+                          {`${item?.course}${
+                            item?.course && item?.institution ? " at" : ""
+                          } ${item?.institution}`}
+                        </p>
+                        {(startDateMonth && startDateYear) ||
+                        (endDateMonth && endDateYear) ? (
+                          <p className="text-sm">
+                            {item?.startDate ? startFullDate : ""}
+                            {item?.startDate && item?.endDate ? `-` : ""}
+                            {item?.endDate ? endFullDate : ""}
+                          </p>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
 
             <div className="bg-[#eeeeee] max-[768px]:w-11/12 w-11/12 h-auto  max-[830px]:w-10/12 pl-3 pt-3 pb-3 mt-2 rounded-2xl">
               <p className="text-3xl font-bold max-[768px]:text-xl max-[880px]:text-2xl">
