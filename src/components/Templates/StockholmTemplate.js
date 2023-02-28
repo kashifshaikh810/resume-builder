@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { BsArrowsAngleContract } from "react-icons/bs";
-import { HiUser, HiUsers } from "react-icons/hi";
+import { HiSpeakerphone, HiUser, HiUsers } from "react-icons/hi";
 import { BsBagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { MdStars } from "react-icons/md";
@@ -764,6 +764,107 @@ const StockholmTemplate = (props) => {
                           >
                             {item?.description}
                           </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+
+            {referencesInputList?.length >= 1 ? (
+              <div className="flex flex-row mt-3">
+                <HiSpeakerphone
+                  className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                  max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                  mt-1.5"
+                />
+                <div className="ml-1">
+                  <p
+                    className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    font-semibold"
+                  >
+                    {referencesInput}
+                  </p>
+                  {disabledPreferences ? (
+                    <p className="text-sm text-black font-bold">
+                      Preferences available upon request
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {disabledPreferences === false &&
+                    referencesInputList &&
+                    referencesInputList.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            referencesInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p
+                            className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    text-gray-600"
+                          >
+                            {`${item?.referentFullName} ${
+                              item?.referentFullName && item?.company
+                                ? "from"
+                                : ""
+                            } ${item?.company}${item?.company}`}
+                          </p>
+                          <div className="flex flex-row">
+                            <p
+                              className="text-blue-400 mr-1 text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    "
+                            >
+                              {item?.email}
+                            </p>
+                            <p
+                              className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                    max-[768px]:text-[11px]
+                    max-[620px]:text-[10px]
+                    max-[703px]:text-[9px]
+                    max-[610px]:text-[8px]
+                    max-[570px]:text-[7px]
+                    max-[535px]:text-[6px]
+                    max-[500px]:text-[5px]
+                    text-gray-600"
+                            >
+                              {item?.email && item?.phone ? "·" : ""}{" "}
+                              {item?.phone}
+                            </p>
+                          </div>
                         </div>
                       );
                     })}
