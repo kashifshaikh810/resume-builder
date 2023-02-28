@@ -60,6 +60,12 @@ const StockholmTemplate = (props) => {
     Expert: "w-[200px]",
   };
 
+  const linerProgressLanguageLine = {
+    "Very good command": "w-[100px]",
+    "Highly Proficient": "w-[150px]",
+    "Native Speaker": "w-[200px]",
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -1156,28 +1162,56 @@ const StockholmTemplate = (props) => {
               </div>
             )}
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {languagesInputList?.length >= 1 ? (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   font-semibold"
-              >
-                Languages
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  {languagesInput}
+                </p>
+                {languagesInputList &&
+                  languagesInputList.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <p
+                          className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                languages names
-              </p>
-            </div>
+                        >
+                          {item?.language}
+                        </p>
+                        {item?.language ? (
+                          <div>
+                            <div
+                              className="w-[200px] bg-gray-200"
+                              id="myProgress"
+                            >
+                              <div
+                                className={`${
+                                  linerProgressLanguageLine[item.level]
+                                } h-[3px] bg-blue-400 mt-1`}
+                                id="myBar"
+                              ></div>
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
+                  })}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       );
