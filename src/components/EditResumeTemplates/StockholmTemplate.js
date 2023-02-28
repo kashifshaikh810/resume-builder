@@ -511,7 +511,7 @@ const StockholmTemplate = (props) => {
       </div>
 
       <div
-        className={`relative left-16 ml-6 ${
+        className={`relative left-12 ml-6 ${
           props?.profileImage ? `top-14 mt-1` : `top-10`
         }
       ${resumeData?.isNotShowExpertLevel === false ? `left-20` : `left-32`}
