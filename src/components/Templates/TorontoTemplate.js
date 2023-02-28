@@ -53,14 +53,14 @@ const TorontoTemplate = (props) => {
   const oneSectionTemplate = () => {
     if (props.page === 1) {
       return (
-        <div className="p-5 pt-7">
+        <div className="p-5 pt-4">
           <div className="flex flex-row">
             <img
-              src={ProfileImage}
+              src={profileImage}
               alt="prof"
-              className="w-[6rem] h-[8.5rem]"
+              className="w-[6.4rem] h-[8rem]"
             />
-            <div>
+            <div className="relative -top-3">
               <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
                 {firstName}
               </p>
@@ -72,7 +72,7 @@ const TorontoTemplate = (props) => {
 
           <div className="grid grid-cols-[225px_minmax(540px,_1fr)_100px]">
             <div>
-              <div className="pt-1 mt-1">
+              <div>
                 <p className="font-bold text-lg">{wantedJobTitle}</p>
                 <p className="text-sm">{email}</p>
                 <p className="text-sm">{phone}</p>
@@ -104,7 +104,7 @@ const TorontoTemplate = (props) => {
               </div>
             </div>
 
-            <div className="pt-2 mt-2 ml-1 w-full h-full">
+            <div className="pt-1 ml-1 w-full h-full">
               <div className="bg-[#eeeeee] w-11/12 max-[1008px]:w-9/12 max-[879px]:w-6/12 max-[831px]:w-5/12 max-[916px]:w-7/12 max-[880px]:w-/12 max-[768px]:w-9/12  h-auto pl-3 pt-3 pb-3 rounded-2xl">
                 <p className="text-4xl max-[768px]:text-2xl max-[880px]:text-xl font-bold">
                   {summaryInput === "Professional Summary"
