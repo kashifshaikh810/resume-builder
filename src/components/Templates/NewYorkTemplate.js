@@ -271,18 +271,22 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="flex flex-col justify-center items-center mt-6">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Hobbies
+              {hobbies ? (
+                <div className="flex flex-col justify-center items-center mt-6">
+                  <div className="flex flex-row justify-center items-center">
+                    <CgShapeCircle className="text-[7px] mr-1.5" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {hobbiesInput}
+                    </p>
+                    <CgShapeCircle className="text-[7px] ml-1.5" />
+                  </div>
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
+                    {hobbies}
                   </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
                 </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
-                  rgerr
-                </p>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="flex flex-col justify-center items-center mt-5 w-full">
                 <div className="flex flex-row justify-center items-center">
