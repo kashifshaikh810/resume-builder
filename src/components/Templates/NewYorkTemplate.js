@@ -11,6 +11,48 @@ import { RiStarSFill } from "react-icons/ri";
 import "./styles.css";
 
 const NewYorkTemplate = (props) => {
+  const {
+    profileImage,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+    coursesInputList,
+    internshipInputList,
+    extraCurricularInputList,
+    referencesInputList,
+    summaryInput,
+    employmentInput,
+    educationInput,
+    coursesInput,
+    extraCurricularInput,
+    internshipInput,
+    referencesInput,
+    personalDetailInput,
+    skillsInput,
+    hobbiesInput,
+    languagesInput,
+    websiteInput,
+    disabledPreferences,
+  } = props?.resumeData;
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -19,34 +61,46 @@ const NewYorkTemplate = (props) => {
     if (props.page === 1) {
       return (
         <div>
-          <div className="pt-14 w-full">
+          <div className="pt-4 w-full">
             <div className="flex w-full flex-col justify-center items-center">
+              {profileImage && (
+                <img
+                  src={profileImage}
+                  className="w-[70px] h-[70px] rounded-[5px] m-4 mb-4"
+                  alt="profile"
+                />
+              )}
               <div>
                 <p className="text-2xl uppercase font-[500] tracking-widest font-serif max-[768px]:text-xl max-[690px]:text-lg max-[595px]:text-sm">
-                  Muhammad kashif
+                  {firstName} {lastName}
                 </p>
               </div>
               <div className="flex flex-row items-center mt-2">
                 <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]">
-                  WEB DEVELOPER
+                  {wantedJobTitle}
                 </p>
                 <div className="flex flex-row items-center ml-3">
-                  <MdLocationOn className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
+                  {city && (
+                    <MdLocationOn className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
+                  )}
                   <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    wwwwwww,{" "}
+                    {city}
+                    {city || postalCode || country ? `,` : ``}
                   </p>
                   <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    20132,{" "}
+                    {postalCode}
+                    {postalCode || country ? `,` : ``}
                   </p>
                   <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    CYCAD{" "}
+                    {country}
                   </p>
                 </div>
                 <div className="flex flex-row items-center ml-3">
-                  <BsTelephoneFill className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
+                  {phone && (
+                    <BsTelephoneFill className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px]" />
+                  )}
                   <p className="text-[10px] max-[768px]:text-[9px] max-[690px]:text-[8px] max-[595px]:text-[6px] ml-1">
-                    {" "}
-                    03235422343{" "}
+                    {phone}
                   </p>
                 </div>
               </div>
@@ -74,58 +128,72 @@ const NewYorkTemplate = (props) => {
               <div className="flex flex-row justify-center items-center">
                 <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] mr-1.5" />
                 <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                  Details
+                  {personalDetailInput === `Personal Details`
+                    ? `Details`
+                    : personalDetailInput}
                 </p>
                 <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] ml-1.5" />
               </div>
 
               <div className="mt-1 flex flex-col items-center">
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  bgrjknje
+                  {address}
                 </p>
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  wwweewe, 2042
+                  {city}
+                  {city ? `,` : ``} {postalCode}
                 </p>
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  cdwcsf
+                  {country}
                 </p>
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  0313423442
+                  {phone}
                 </p>
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] underline">
-                  kashifshaikh910ssg@gmail.com
+                  {email}
                 </p>
               </div>
 
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  Date / Place of birth
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  23
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  2421
-                </p>
-              </div>
+              {dateOfBirth || placeOfBirth ? (
+                <div className="mt-2 flex flex-col items-center">
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    Date / Place of birth
+                  </p>
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
+                    {dateOfBirth}
+                  </p>
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
+                    {placeOfBirth}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
+              {nationality ? (
+                <div className="mt-2 flex flex-col items-center">
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    Nationality
+                  </p>
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
+                    {nationality}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
 
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  Nationality
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  322
-                </p>
-              </div>
-
-              <div className="mt-2 flex flex-col items-center">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  Driving license
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  423
-                </p>
-              </div>
+              {drivingLicense ? (
+                <div className="mt-2 flex flex-col items-center">
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                    Driving license
+                  </p>
+                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
+                    {drivingLicense}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="flex flex-col justify-center items-center mt-7">
                 <div className="flex flex-row justify-center items-center">
