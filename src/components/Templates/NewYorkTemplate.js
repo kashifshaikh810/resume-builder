@@ -61,6 +61,12 @@ const NewYorkTemplate = (props) => {
     Expert: "w-[150px]",
   };
 
+  const languageLevelWidth = {
+    "Very good command": "w-[50px]",
+    "Highly Proficient": "w-[100px]",
+    "Native Speaker": "w-[150px]",
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -288,27 +294,53 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="flex flex-col justify-center items-center mt-5 w-full">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Languages
-                  </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
-                </div>
-                <div>
-                  <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 text-center">
-                    rgerr
-                  </p>
-                  <div className="w-[10rem] bg-gray-300" id="myProgress">
-                    {/* 6 || 8 || 10*/}
-                    <div
-                      className="w-[6rem] h-[3.5px] bg-gray-800 mt-1"
-                      id="myBar"
-                    ></div>
+              {languagesInputList?.length >= 1 ? (
+                <div className="flex flex-col justify-center items-center mt-5 w-full">
+                  <div className="flex flex-row justify-center items-center">
+                    <CgShapeCircle className="text-[7px] mr-1.5" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {languagesInput}
+                    </p>
+                    <CgShapeCircle className="text-[7px] ml-1.5" />
+                  </div>
+                  <div>
+                    {languagesInputList &&
+                      languagesInputList.map((item, index) => {
+                        return (
+                          <div key={index}>
+                            {item?.language ? (
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 text-center">
+                                {item?.language}
+                              </p>
+                            ) : (
+                              ""
+                            )}
+                            {!item?.language ||
+                            item?.level === "Select Level" ||
+                            (index >= 1 && item?.level === "Select Level") ? (
+                              ""
+                            ) : (
+                              <div
+                                className="w-[150px] bg-gray-300"
+                                id="myProgress"
+                              >
+                                {/* 40 || 53 || 65 */}
+                                <div
+                                  className={`${
+                                    languageLevelWidth[item?.level]
+                                  } h-[3px] bg-gray-800 mt-1`}
+                                  id="myBar"
+                                ></div>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
                   </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
 
             {/* Column 2 */}
