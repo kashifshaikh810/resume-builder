@@ -345,18 +345,42 @@ const NewYorkTemplate = (props) => {
 
             {/* Column 2 */}
             <div>
-              <div className="flex flex-row items-center">
-                <IoMdPerson className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                  profile
-                </p>
-              </div>
-              <div className="flex flex-row items-center mt-1">
-                <CgShapeCircle className="text-[7px] ml-1 mr-5" />
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
-                  ferfreregergetgrgr
-                </p>
-              </div>
+              {professionalSummary ? (
+                <div>
+                  <div className="flex flex-row items-center">
+                    <IoMdPerson className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {summaryInput === "Professional Summary"
+                        ? "Profile"
+                        : summaryInput}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-row items-center mt-1">
+                    <div className="flex flex-col">
+                      <CgShapeCircle
+                        className={`text-[7px] mt-2.5 ml-1 mr-5 ${
+                          professionalSummary?.length >= 90
+                            ? `-ml-[1px] text-[8px]`
+                            : ``
+                        }`}
+                      />
+                      {professionalSummary?.length >= 90 && (
+                        <div
+                          className={`bg-black w-[2px] ml-[2.5px] relative -top-[0.5px]`}
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
+                        {professionalSummary}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <div className="flex flex-row items-center">
