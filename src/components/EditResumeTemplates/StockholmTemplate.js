@@ -26,7 +26,7 @@ const StockholmTemplate = (props) => {
   };
 
   return (
-    <div className="p-5 pt-2 grid grid-cols-2 gap-2">
+    <div className="p-5 pt-2 grid grid-cols-2 -space-x-7">
       <div>
         <div className="flex flex-row items-center">
           {resumeData?.profileImage && (
@@ -53,7 +53,9 @@ const StockholmTemplate = (props) => {
 
         {resumeData?.professionalSummary && (
           <div className="flex flex-row mt-3">
-            <HiUser className="text-[6px] mt-0.5" />
+            <div>
+              <HiUser className="text-[6px] mt-0.5" />
+            </div>
             <div className="ml-1">
               <p className="text-[7px] font-semibold">
                 {props?.summaryInput === "Professional Summary"
@@ -532,7 +534,9 @@ const StockholmTemplate = (props) => {
         resumeData?.hobbies ||
         resumeData?.languagesInputList?.length >= 1 ? (
           <p className="text-[7px] font-semibold">
-            {props?.personalDetailInput}
+            {props?.personalDetailInput === `Personal Details`
+              ? `Details`
+              : props?.personalDetailInput}
           </p>
         ) : (
           ""
@@ -575,7 +579,11 @@ const StockholmTemplate = (props) => {
 
         {resumeData?.websiteInputList?.length >= 1 ? (
           <div className="mt-2">
-            <p className="text-[7px] font-semibold">{props?.websiteInput}</p>
+            <p className="text-[7px] font-semibold">
+              {props?.websiteInput === `Websites & Social Links`
+                ? `Links`
+                : props?.websiteInput}
+            </p>
             {resumeData?.websiteInputList &&
               resumeData?.websiteInputList.map((item, index) => {
                 return (
