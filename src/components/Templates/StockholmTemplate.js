@@ -114,9 +114,10 @@ const StockholmTemplate = (props) => {
             </div>
 
             <div className="flex flex-row mt-3">
-              <div className="mt-[1px]">
-                <HiUser
-                  className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+              {professionalSummary && (
+                <div className="mt-[1px]">
+                  <HiUser
+                    className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                   max-[768px]:text-[11px]
                   max-[620px]:text-[10px]
                   max-[703px]:text-[9px]
@@ -125,8 +126,9 @@ const StockholmTemplate = (props) => {
                   max-[535px]:text-[6px]
                   max-[500px]:text-[5px]
                   mt-1 max-[880px]:mt-1"
-                />
-              </div>
+                  />
+                </div>
+              )}
               <div className="ml-1">
                 <p
                   className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
@@ -969,84 +971,92 @@ const StockholmTemplate = (props) => {
               </p>
             </div>
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {dateOfBirth || placeOfBirth ? (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-gray-600"
-              >
-                Date / Place of birth
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  Date / Place of birth
+                </p>
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                {dateOfBirth}
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  {dateOfBirth}
+                </p>
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                {placeOfBirth}
-              </p>
-            </div>
+                >
+                  {placeOfBirth}
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {nationality && (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-gray-600"
-              >
-                Nationality
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  Nationality
+                </p>
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                {nationality}
-              </p>
-            </div>
+                >
+                  {nationality}
+                </p>
+              </div>
+            )}
 
-            <div className="mt-2">
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {drivingLicense && (
+              <div className="mt-2">
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-gray-600"
-              >
-                Driving License
-              </p>
-              <p
-                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+                >
+                  Driving License
+                </p>
+                <p
+                  className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                   max-[768px]:text-[9px]
                      max-[620px]:text810px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                   text-black"
-              >
-                {drivingLicense}
-              </p>
-            </div>
+                >
+                  {drivingLicense}
+                </p>
+              </div>
+            )}
 
             {websiteInputList?.length >= 1 ? (
               <div className="mt-2">
