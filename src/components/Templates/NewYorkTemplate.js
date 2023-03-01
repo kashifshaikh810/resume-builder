@@ -53,6 +53,14 @@ const NewYorkTemplate = (props) => {
     disabledPreferences,
   } = props?.resumeData;
 
+  const levelWidth = {
+    Novice: "w-[30px]",
+    Beginner: "w-[60px]",
+    Skillful: "w-[80px]",
+    Experienced: "w-[120px]",
+    Expert: "w-[150px]",
+  };
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -221,18 +229,47 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="flex flex-col justify-center items-center mt-7">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Skills
-                  </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
+              {skillsInputList?.length >= 1 ? (
+                <div className="flex flex-col justify-center items-center mt-7">
+                  <div className="flex flex-row justify-center items-center">
+                    <CgShapeCircle className="text-[7px] mr-1.5" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {skillsInput}
+                    </p>
+                    <CgShapeCircle className="text-[7px] ml-1.5" />
+                  </div>
+                  <div>
+                    {skillsInputList &&
+                      skillsInputList.map((item, index) => {
+                        return (
+                          <div key={index}>
+                            <p className="text-[12px] text-center max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
+                              {item?.skill}
+                            </p>
+                            {isNotShowExpertLevel === false ? (
+                              <div
+                                className="w-[150px] bg-gray-300"
+                                id="myProgress"
+                              >
+                                {/* 15 || 25 || 37 || 52 || 65 */}
+                                <div
+                                  className={`${
+                                    levelWidth[item?.level]
+                                  } h-[3px] bg-gray-800 mt-1`}
+                                  id="myBar"
+                                ></div>
+                              </div>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        );
+                      })}
+                  </div>
                 </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5">
-                  Communication
-                </p>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="flex flex-col justify-center items-center mt-6">
                 <div className="flex flex-row justify-center items-center">
