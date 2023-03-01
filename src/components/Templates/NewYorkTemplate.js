@@ -195,18 +195,31 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="flex flex-col justify-center items-center mt-7">
-                <div className="flex flex-row justify-center items-center">
-                  <CgShapeCircle className="text-[7px] mr-1.5" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Links
-                  </p>
-                  <CgShapeCircle className="text-[7px] ml-1.5" />
+              {websiteInputList?.length >= 1 ? (
+                <div className="flex flex-col justify-center items-center mt-7">
+                  <div className="flex flex-row justify-center items-center">
+                    <CgShapeCircle className="text-[7px] mr-1.5" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {websiteInput === "Websites & Social Links"
+                        ? "Links"
+                        : websiteInput}
+                    </p>
+                    <CgShapeCircle className="text-[7px] ml-1.5" />
+                  </div>
+                  {websiteInputList &&
+                    websiteInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 underline">
+                            {item?.label}
+                          </p>
+                        </div>
+                      );
+                    })}
                 </div>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-1.5 underline">
-                  greijgijrr
-                </p>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="flex flex-col justify-center items-center mt-7">
                 <div className="flex flex-row justify-center items-center">
