@@ -66,25 +66,25 @@ const TorontoTemplate = (props) => {
     if (props.page === 1) {
       return (
         <div className="p-5 pt-4">
-          <div className="flex flex-row">
-            {profileImage ? (
+          {profileImage ? (
+            <div className="flex flex-row">
               <img
                 src={profileImage}
                 alt="prof"
                 className="w-[6.4rem] h-[8rem]"
               />
-            ) : (
-              ""
-            )}
-            <div className="relative -top-3">
-              <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
-                {firstName}
-              </p>
-              <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
-                {lastName}
-              </p>
+              <div className="relative -top-3">
+                <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
+                  {firstName}
+                </p>
+                <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold ml-16 pl-16">
+                  {lastName}
+                </p>
+              </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
 
           <div className="grid grid-cols-[225px_minmax(540px,_1fr)_100px]">
             <div>
@@ -132,20 +132,35 @@ const TorontoTemplate = (props) => {
               </div>
             </div>
 
-            {professionalSummary ? (
-              <div className="pt-1 ml-1 w-full h-full">
-                <div className="bg-[#eeeeee] w-11/12 max-[1008px]:w-9/12 max-[879px]:w-6/12 max-[831px]:w-5/12 max-[916px]:w-7/12 max-[880px]:w-/12 max-[768px]:w-9/12  h-auto pl-3 pt-3 pb-3 rounded-2xl">
-                  <p className="text-4xl max-[768px]:text-2xl max-[880px]:text-xl font-bold">
-                    {summaryInput === "Professional Summary"
-                      ? `Profile`
-                      : summaryInput}
-                  </p>
-                  <p className="text-sm mt-2">{professionalSummary}</p>
+            <div>
+              {!profileImage && (
+                <div>
+                  <div>
+                    <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold">
+                      {firstName}
+                    </p>
+                    <p className="text-7xl max-lg:text-6xl max-md:text-4xl max-sm:text-3xl font-bold">
+                      {lastName}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              ""
-            )}
+              )}
+
+              {professionalSummary ? (
+                <div className="pt-1 ml-1 w-full h-full">
+                  <div className="bg-[#eeeeee] w-11/12 max-[1008px]:w-9/12 max-[879px]:w-6/12 max-[831px]:w-5/12 max-[916px]:w-7/12 max-[880px]:w-/12 max-[768px]:w-9/12  h-auto pl-3 pt-3 pb-3 rounded-2xl">
+                    <p className="text-4xl max-[768px]:text-2xl max-[880px]:text-xl font-bold">
+                      {summaryInput === "Professional Summary"
+                        ? `Profile`
+                        : summaryInput}
+                    </p>
+                    <p className="text-sm mt-2">{professionalSummary}</p>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
 
           <div className="bg-gray-200 h-[1.5px] w-10/12 mt-5" />
