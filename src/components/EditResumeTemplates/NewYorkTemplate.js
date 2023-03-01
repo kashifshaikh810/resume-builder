@@ -257,7 +257,7 @@ const NewYorkTemplate = (props) => {
                   <div className="flex flex-row justify-center items-center">
                     <CgShapeCircle className="text-[4px] mr-1.5" />
                     <p className="uppercase text-[6px] font-[600] -tracking-[0.5px]">
-                      Hobbies
+                      {resumeData?.hobbiesInput}
                     </p>
                     <CgShapeCircle className="text-[4px] ml-1.5" />
                   </div>
