@@ -155,9 +155,9 @@ const EditResumeMarkup = (props) => {
             {/* resume tab templates */}
             {/* <TorontoTemplate {...props} /> */}
 
-            <StockholmTemplate {...props} />
+            {/* <StockholmTemplate {...props} /> */}
 
-            {/* <NewYorkTemplate {...props} /> */}
+            <NewYorkTemplate {...props} />
 
             {/* <ViennaTemplate {...props} /> */}
 

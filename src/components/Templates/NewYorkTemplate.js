@@ -139,15 +139,17 @@ const NewYorkTemplate = (props) => {
           >
             {/* Column 1 */}
             <div>
-              <div className="flex flex-row justify-center items-center">
-                <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] mr-1.5" />
-                <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                  {personalDetailInput === `Personal Details`
-                    ? `Details`
-                    : personalDetailInput}
-                </p>
-                <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] ml-1.5" />
-              </div>
+              {personalDetailInput && (
+                <div className="flex flex-row justify-center items-center">
+                  <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] mr-1.5" />
+                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                    {personalDetailInput === `Personal Details`
+                      ? `Details`
+                      : personalDetailInput}
+                  </p>
+                  <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] ml-1.5" />
+                </div>
+              )}
 
               <div className="mt-1 flex flex-col items-center">
                 <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px]">
@@ -572,7 +574,7 @@ const NewYorkTemplate = (props) => {
 
   return (
     <div
-      className="flex flex-col w-full h-[930px] 
+      className="flex flex-1 flex-col w-full h-[930px] 
       border-l border-gray-600 ml-5
       pl-10 pb-10 
       unselectable
@@ -581,7 +583,7 @@ const NewYorkTemplate = (props) => {
       max-[1029px]:pr-5 max-[1029px]:pl-5 
       "
     >
-      <div className="flex bg-white flex-col w-full overflow-hidden h-[900px] rounded-md hover:default">
+      <div className="flex flex-1 bg-white flex-col w-full overflow-hidden h-[900px] rounded-md hover:default">
         {/* page one */}
         {pageOne()}
 
