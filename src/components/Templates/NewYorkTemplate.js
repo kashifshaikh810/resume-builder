@@ -397,32 +397,95 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <div className="flex flex-row items-center">
-                  <BsFillHandbagFill className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Employment History
-                  </p>
-                </div>
+              {employmentInputList?.length >= 1 ? (
+                <div className={professionalSummary ? `mt-5` : `mt-0`}>
+                  <div className="flex flex-row items-center">
+                    <BsFillHandbagFill className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {employmentInput}
+                    </p>
+                  </div>
 
-                <div className="flex flex-row mt-1">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      sdqd at dsadas, ewfewfw
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                      December 2022 - 2022
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      rgeregr
-                    </p>
+                  <div className="flex flex-row mt-1">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
+                      <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-1">
+                      {employmentInputList &&
+                        employmentInputList?.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                employmentInputList.length >= 2 && index >= 1
+                                  ? `mt-2`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                                {`${item?.jobTitle} ${
+                                  item?.jobTitle && item?.employer ? "at" : ""
+                                } ${item?.employer}${
+                                  item?.employer && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <div className="flex flex-row items-center">
