@@ -5,7 +5,7 @@ import { CgShapeCircle } from "react-icons/cg";
 import { IoMdPerson } from "react-icons/io";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
-import { HiBadgeCheck, HiUsers } from "react-icons/hi";
+import { HiBadgeCheck, HiSpeakerphone, HiUsers } from "react-icons/hi";
 import { RiStarSFill } from "react-icons/ri";
 
 import "./styles.css";
@@ -859,29 +859,63 @@ const NewYorkTemplate = (props) => {
     if (props.page === 2) {
       return (
         <div className="pt-10 flex flex-col w-10/12 items-center">
-          <div>
-            <div className="flex flex-row items-center">
-              <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-              <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                Preferences
-              </p>
-            </div>
+          {referencesInputList?.length >= 1 ? (
+            <div>
+              <div className="flex flex-row items-center">
+                <HiSpeakerphone className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                  {referencesInput}
+                </p>
+              </div>
 
-            <div className="flex flex-row mt-1">
-              <div className="flex flex-col">
-                <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
-              </div>
-              <div className="mt-1">
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                  efvfewfwfewfw
-                </p>
-                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                  regogreoioi · girejgife
-                </p>
+              <div className="flex flex-row mt-1">
+                <div className="flex flex-col">
+                  <CgShapeCircle className="text-[7px] mt-1.5 ml-1 mr-5" />
+                  {disabledPreferences === false && (
+                    <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
+                  )}
+                </div>
+                <div className="1">
+                  {disabledPreferences ? (
+                    <p className="text-[10px] text-black font-bold">
+                      Preferences available upon request
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                  {disabledPreferences === false &&
+                    referencesInputList &&
+                    referencesInputList.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            referencesInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                            {`${item?.referentFullName} ${
+                              item?.referentFullName && item?.company
+                                ? "from"
+                                : ""
+                            } ${item?.company}${item?.company}`}
+                          </p>
+                          <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">{`${
+                            item?.email
+                          } ${item?.email && item?.phone ? `·` : ``} ${
+                            item?.phone
+                          }`}</p>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            ""
+          )}
         </div>
       );
     }
