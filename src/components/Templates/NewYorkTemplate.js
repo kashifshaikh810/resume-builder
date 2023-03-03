@@ -771,7 +771,7 @@ const NewYorkTemplate = (props) => {
                   <div className="flex flex-row mt-1">
                     <div className="flex flex-col">
                       <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                      <div className="bg-black w-[2px] h-full ml-[6.5px] relative -top-[1px]" />
+                      <div className="bg-black w-[2px] h-full mb-1 ml-[6.5px] relative -top-[1px]" />
                     </div>
                     <div className="mt-1">
                       {internshipInputList &&
