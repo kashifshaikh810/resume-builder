@@ -358,19 +358,17 @@ const NewYorkTemplate = (props) => {
                     </p>
                   </div>
 
-                  <div className="flex flex-row items-center mt-1">
+                  <div className="flex flex-row mt-1">
                     <div className="flex flex-col">
                       <CgShapeCircle
-                        className={`text-[7px] mt-2.5 ml-1 mr-5 ${
+                        className={`text-[7px] mt-1.5 ml-1 mr-5 ${
                           professionalSummary?.length >= 90
-                            ? `-ml-[1px] text-[8px]`
+                            ? `-ml-[0.5px] text-[8px]`
                             : ``
                         }`}
                       />
                       {professionalSummary?.length >= 90 && (
-                        <div
-                          className={`bg-black w-[2px] ml-[2.5px] relative -top-[0.5px]`}
-                        />
+                        <div className="bg-black w-[2px] h-full ml-[2.5px] mb-1 relative -top-[1px]" />
                       )}
                     </div>
                     <div>
