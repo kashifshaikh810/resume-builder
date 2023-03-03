@@ -341,7 +341,7 @@ const NewYorkTemplate = (props) => {
                         }`}
                       />
                       {resumeData?.professionalSummary?.length >= 90 && (
-                        <div className="bg-black w-[1px] h-full ml-[2.5px] relative -top-[0.5px]" />
+                        <div className="bg-black w-[1px] h-full ml-[1.7px] relative -top-[0.5px]" />
                       )}
                     </div>
                     <div>
