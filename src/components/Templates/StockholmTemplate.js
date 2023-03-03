@@ -905,18 +905,35 @@ const StockholmTemplate = (props) => {
                 max-[473px]:left-8
                 ${props?.profileImage ? `top-14 mt-1` : `top-16`}`}
           >
-            <p
-              className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
+            {address ||
+            city ||
+            postalCode ||
+            country ||
+            phone ||
+            email ||
+            dateOfBirth ||
+            placeOfBirth ||
+            nationality ||
+            drivingLicense ||
+            websiteInputList?.length >= 1 ||
+            skillsInputList?.length >= 1 ||
+            hobbies ||
+            languagesInputList?.length >= 1 ? (
+              <p
+                className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
                 max-[768px]:text-[9px]
                    max-[620px]:text-[8px]
                     max-[703px]:text-[7px]
                     max-[610px]:text-[6px]
                 font-semibold"
-            >
-              {personalDetailInput === "Personal Details"
-                ? "Details"
-                : personalDetailInput}
-            </p>
+              >
+                {personalDetailInput === "Personal Details"
+                  ? "Details"
+                  : personalDetailInput}
+              </p>
+            ) : (
+              ""
+            )}
             <div>
               <p
                 className="text-sm max-[1004px]:text-[12px] max-[880px]:text-[11px]
