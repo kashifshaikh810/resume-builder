@@ -690,27 +690,6 @@ const NewYorkTemplate = (props) => {
               </div>
 
               <div className="mt-5">
-                <RiStarSFill className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                <div className="flex flex-row relative -top-[3px]">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[46px] ml-[6.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="relative -top-[7px]">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      sdqd at dsadas, ewfewfw
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                      June 2022 - August 2022
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
-                      rgeregr
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5">
                 <div className="flex flex-row items-center">
                   <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
                   <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
