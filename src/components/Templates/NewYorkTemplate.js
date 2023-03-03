@@ -449,7 +449,7 @@ const NewYorkTemplate = (props) => {
                               key={index}
                               className={`${
                                 employmentInputList.length >= 2 && index >= 1
-                                  ? `mt-2`
+                                  ? `mt-5`
                                   : ``
                               }`}
                             >
@@ -539,7 +539,7 @@ const NewYorkTemplate = (props) => {
                               key={index}
                               className={`${
                                 educationInputList?.length >= 2 && index >= 1
-                                  ? `mt-2`
+                                  ? `mt-5`
                                   : ``
                               }`}
                             >
@@ -577,29 +577,90 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <div className="flex flex-row items-center">
-                  <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    Courses
-                  </p>
-                </div>
+              {coursesInputList?.length >= 1 ? (
+                <div className={educationInputList?.length >= 1 ? `mt-5` : ``}>
+                  <div className="flex flex-row items-center">
+                    <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {coursesInput}
+                    </p>
+                  </div>
 
-                <div className="flex flex-row mt-1">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      efvr, grwf
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                      February 2022 - April 2022
-                    </p>
+                  <div className="flex flex-row mt-1">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
+                      <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-1">
+                      {coursesInputList &&
+                        coursesInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                coursesInputList?.length >= 2 && index >= 1
+                                  ? `mt-5`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                                {`${item?.course}${
+                                  item?.course && item?.institution ? "," : ""
+                                } ${item?.institution}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <div className="flex flex-row items-center">
