@@ -5,7 +5,7 @@ import { CgShapeCircle } from "react-icons/cg";
 import { IoMdPerson } from "react-icons/io";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
-import { HiBadgeCheck } from "react-icons/hi";
+import { HiBadgeCheck, HiUsers } from "react-icons/hi";
 import { RiStarSFill } from "react-icons/ri";
 
 import "./styles.css";
@@ -755,29 +755,99 @@ const NewYorkTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <div className="flex flex-row items-center">
-                  <HiBadgeCheck className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
-                  <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
-                    internships
-                  </p>
-                </div>
+              {internshipInputList?.length >= 1 ? (
+                <div
+                  className={
+                    extraCurricularInputList?.length >= 1 ? `mt-5` : ``
+                  }
+                >
+                  <div className="flex flex-row items-center">
+                    <HiUsers className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                    <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
+                      {internshipInput}
+                    </p>
+                  </div>
 
-                <div className="flex flex-row mt-1">
-                  <div className="flex flex-col">
-                    <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
-                    <div className="bg-black w-[2px] h-[20px] ml-[6.5px] relative -top-[1px]" />
-                  </div>
-                  <div className="mt-1">
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
-                      efwefefw at grwfefrf, rfwfwfew
-                    </p>
-                    <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
-                      June 2022 - December 2022
-                    </p>
+                  <div className="flex flex-row mt-1">
+                    <div className="flex flex-col">
+                      <CgShapeCircle className="text-[7px] mt-2.5 ml-1 mr-5" />
+                      <div className="bg-black w-[2px] h-full ml-[6.5px] relative -top-[1px]" />
+                    </div>
+                    <div className="mt-1">
+                      {internshipInputList &&
+                        internshipInputList.map((item, index) => {
+                          let monthNames = [
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                          ];
+                          let startDate = new Date(item?.startDate);
+                          let month = startDate ? startDate.getMonth() : "";
+                          let startDateMonth = startDate
+                            ? monthNames[month]
+                            : "";
+                          let startDateYear = startDate
+                            ? new Date(startDate).getFullYear()
+                            : "";
+
+                          let endDate = new Date(item?.endDate);
+                          let myMonth = endDate ? endDate.getMonth() : "";
+                          let endDateMonth = endDate ? monthNames[myMonth] : "";
+                          let endDateYear = endDate
+                            ? new Date(endDate).getFullYear()
+                            : "";
+
+                          return (
+                            <div
+                              key={index}
+                              className={`${
+                                internshipInputList?.length >= 2 && index >= 1
+                                  ? `mt-5`
+                                  : ``
+                              }`}
+                            >
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] font-[700]">
+                                {`${item?.jobTitle} ${
+                                  item?.jobTitle && item?.employer ? "at" : ""
+                                } ${item?.employer}${
+                                  item?.employer && item.city && `,`
+                                } ${item.city}`}
+                              </p>
+                              {(startDateMonth && startDateYear) ||
+                              (endDateMonth && endDateYear) ? (
+                                <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] text-gray-500">
+                                  {startDateMonth && startDateYear
+                                    ? `${startDateMonth} ${startDateYear}`
+                                    : ""}{" "}
+                                  {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                                  {endDateMonth && endDateYear
+                                    ? `${endDateMonth} ${endDateYear}`
+                                    : ""}
+                                </p>
+                              ) : (
+                                ""
+                              )}
+                              <p className="text-[12px] max-[768px]:text-[11px] max-[690px]:text-[10px] max-[595px]:text-[8px] mt-2">
+                                {item?.description}
+                              </p>
+                            </div>
+                          );
+                        })}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
