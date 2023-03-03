@@ -365,7 +365,7 @@ const NewYorkTemplate = (props) => {
               {professionalSummary ? (
                 <div>
                   <div className="flex flex-row items-center">
-                    <IoMdPerson className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-4" />
+                    <IoMdPerson className="text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] mr-3.5" />
                     <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
                       {summaryInput === "Professional Summary"
                         ? "Profile"
@@ -378,12 +378,12 @@ const NewYorkTemplate = (props) => {
                       <CgShapeCircle
                         className={`text-[7px] mt-1.5 ml-1 mr-5 ${
                           professionalSummary?.length >= 90
-                            ? `-ml-[0.5px] text-[8px]`
+                            ? `ml-[1px] text-[8px]`
                             : ``
                         }`}
                       />
                       {professionalSummary?.length >= 90 && (
-                        <div className="bg-black w-[2px] h-full ml-[2.5px] mb-1 relative -top-[1px]" />
+                        <div className="bg-black w-[2px] h-full ml-[4px] mb-1 relative -top-[1px]" />
                       )}
                     </div>
                     <div>
