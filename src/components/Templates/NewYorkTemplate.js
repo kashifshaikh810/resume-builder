@@ -139,7 +139,20 @@ const NewYorkTemplate = (props) => {
           >
             {/* Column 1 */}
             <div>
-              {personalDetailInput && (
+              {address ||
+              city ||
+              postalCode ||
+              country ||
+              phone ||
+              email ||
+              dateOfBirth ||
+              placeOfBirth ||
+              nationality ||
+              drivingLicense ||
+              websiteInputList?.length >= 1 ||
+              skillsInputList?.length >= 1 ||
+              hobbies ||
+              languagesInputList?.length >= 1 ? (
                 <div className="flex flex-row justify-center items-center">
                   <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] mr-1.5" />
                   <p className="uppercase text-[13px] max-[768px]:text-[12px] max-[690px]:text-[11px] max-[595px]:text-[9px] font-[600]">
@@ -149,6 +162,8 @@ const NewYorkTemplate = (props) => {
                   </p>
                   <CgShapeCircle className="text-[7px] max-[768px]:text-[6px] ml-1.5" />
                 </div>
+              ) : (
+                ""
               )}
 
               <div className="mt-1 flex flex-col items-center">
