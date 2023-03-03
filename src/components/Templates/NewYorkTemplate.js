@@ -6,7 +6,6 @@ import { IoMdPerson } from "react-icons/io";
 import { BsFillHandbagFill } from "react-icons/bs";
 import { IoMdSchool } from "react-icons/io";
 import { HiBadgeCheck, HiSpeakerphone, HiUsers } from "react-icons/hi";
-import { RiStarSFill } from "react-icons/ri";
 
 import "./styles.css";
 
