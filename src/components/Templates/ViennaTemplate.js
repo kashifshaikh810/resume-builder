@@ -225,14 +225,75 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Languages</p>
-                <p className="text-[12px]">fewofwe</p>
-                <p className="text-[12px]">fewofwiojf</p>
-                <p className="text-[12px]">ewfncwjnc</p>
-                <p className="text-[12px]">wefeueuurr</p>
-                <p className="text-[12px]">=weeweuuru</p>
-              </div>
+              {languagesInputList?.length >= 1 ? (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">{languagesInput}</p>
+                  {languagesInputList &&
+                    languagesInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          {item?.language ? (
+                            <p className="text-[12px]">{item?.language}</p>
+                          ) : (
+                            ""
+                          )}
+                          {!item?.language ||
+                          item?.level === "Select Level" ||
+                          (index >= 1 && item?.level === "Select Level") ? (
+                            ""
+                          ) : (
+                            <div className="flex flex-row items-center mt-0.5">
+                              <div
+                                className={`${
+                                  item?.level === "Very good command" ||
+                                  item?.level === "Highly Proficient" ||
+                                  item?.level === "Native Speaker"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px]`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Very good command" ||
+                                  item?.level === "Highly Proficient" ||
+                                  item?.level === "Native Speaker"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Very good command" ||
+                                  item?.level === "Highly Proficient" ||
+                                  item?.level === "Native Speaker"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Highly Proficient" ||
+                                  item?.level === "Native Speaker"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Native Speaker"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
             <div>
               <div>
