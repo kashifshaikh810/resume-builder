@@ -4,6 +4,48 @@ import { MdOutlineAttachment } from "react-icons/md";
 import "./styles.css";
 
 const ViennaTemplate = (props) => {
+  const {
+    profileImage,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+    coursesInputList,
+    internshipInputList,
+    extraCurricularInputList,
+    referencesInputList,
+    summaryInput,
+    employmentInput,
+    educationInput,
+    coursesInput,
+    extraCurricularInput,
+    internshipInput,
+    referencesInput,
+    personalDetailInput,
+    skillsInput,
+    hobbiesInput,
+    languagesInput,
+    websiteInput,
+    disabledPreferences,
+  } = props?.resumeData;
+
   useEffect(() => {
     props.setTotalPage(2);
   }, [props]);
@@ -13,28 +55,35 @@ const ViennaTemplate = (props) => {
       return (
         <div className="p-10 w-full">
           <div className="flex flex-row w-full">
-            <img
-              src="https://picsum.photos/seed/picsum/200/300"
-              alt="prof"
-              className="w-64 h-48"
-            />
+            <img src={profileImage} alt="prof" className="w-64 h-48" />
             <div className="w-full bg-[#4afbba] p-5 pl-10">
-              <p className="text-3xl font-bold">kashif here</p>
-              <p className="text-xl capitalize">Web developer</p>
+              <p className="text-3xl font-bold">
+                {firstName} {lastName}
+              </p>
+              <p className="text-xl capitalize">{wantedJobTitle}</p>
 
               <div className="pt-10">
                 <div className="flex flex-row">
-                  <p className="text-[12px]">fewfew, </p>
-                  <p className="text-[12px] ml-1"> wwww, </p>
-                  <p className="text-[12px] ml-1"> 2013eer, </p>
-                  <p className="text-[12px] ml-1"> fffederr </p>
+                  <p className="text-[12px]">
+                    {address}
+                    {(address && city) || postalCode || country ? `,` : ``}{" "}
+                  </p>
+                  <p className="text-[12px] ml-1">
+                    {" "}
+                    {city}
+                    {(city && postalCode) || country ? `,` : ``}{" "}
+                  </p>
+                  <p className="text-[12px] ml-1">
+                    {" "}
+                    {postalCode}
+                    {postalCode && country ? `,` : ``}{" "}
+                  </p>
+                  <p className="text-[12px] ml-1"> {country} </p>
                 </div>
                 <div className="flex flex-row items-center">
-                  <p className="text-[12px]">031232424324</p>
+                  <p className="text-[12px]">{phone}</p>
                   <div className="bg-black w-[2px] h-[2px] rounded-full ml-2 mr-2" />
-                  <p className="text-[12px] underline">
-                    kashifshaikh910ss@gmail.com
-                  </p>
+                  <p className="text-[12px] underline">{email}</p>
                 </div>
               </div>
             </div>
