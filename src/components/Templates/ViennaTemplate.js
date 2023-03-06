@@ -309,16 +309,79 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div>
-                <p className="font-bold">Employment History</p>
-                <p className="font-bold text-[12px] mt-1">
-                  gregreg, efwojnrreg, wgktjejg
-                </p>
-                <p className="text-[12px] mt-1">december 2022 - 2022</p>
-                <p className="text-[12px] mt-1.5 font-[600] text-gray-600">
-                  rgekngnregerkjnn
-                </p>
-              </div>
+              {employmentInputList?.length >= 1 ? (
+                <div className={professionalSummary ? `mt-2` : ``}>
+                  <p className="font-bold">{employmentInput}</p>
+                  {employmentInputList &&
+                    employmentInputList?.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            employmentInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p className="font-bold text-[12px] mt-1">
+                            {`${item?.jobTitle}${
+                              item?.jobTitle && item?.employer ? "," : ""
+                            } ${item?.employer}${
+                              item?.employer && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-[12px] mt-1">
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p className="text-[12px] mt-1.5 font-[600] text-gray-600">
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="font-bold">Education</p>
