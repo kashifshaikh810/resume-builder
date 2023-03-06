@@ -459,13 +459,74 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="font-bold">Courses</p>
-                <p className="font-bold text-[12px] mt-1">
-                  gregreg, efwojnrreg
-                </p>
-                <p className="text-[12px] mt-1">February 2022 - April 2022</p>
-              </div>
+              {coursesInputList?.length >= 1 ? (
+                <div className={educationInputList?.length >= 1 ? `mt-5` : ``}>
+                  <p className="font-bold">{coursesInput}</p>
+                  {coursesInputList &&
+                    coursesInputList.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            coursesInputList?.length >= 2 && index >= 1
+                              ? `mt-5`
+                              : ``
+                          }`}
+                        >
+                          <p className="font-bold text-[12px] mt-1">
+                            {`${item?.course}${
+                              item?.course && item?.institution ? "," : ""
+                            } ${item?.institution}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-[12px] mt-1">
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
