@@ -149,10 +149,72 @@ const ViennaTemplate = (props) => {
                 </div>
               )}
 
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Skills</p>
-                <p className="text-[12px]">Communication</p>
-              </div>
+              {skillsInputList?.length >= 1 ? (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">{skillsInput}</p>
+                  {skillsInputList &&
+                    skillsInputList.map((item, index) => {
+                      return (
+                        <div key={index}>
+                          <p className="text-[12px] mt-0.5">{item?.skill}</p>
+                          {isNotShowExpertLevel === false && item?.skill ? (
+                            <div className="flex flex-row items-center mt-0.5">
+                              <div
+                                className={`${
+                                  item?.level === "Novice" ||
+                                  item?.level === "Beginner" ||
+                                  item?.level === "Skillful" ||
+                                  item?.level === "Experienced" ||
+                                  item?.level === "Expert"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px]`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Beginner" ||
+                                  item?.level === "Skillful" ||
+                                  item?.level === "Experienced" ||
+                                  item?.level === "Expert"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Skillful" ||
+                                  item?.level === "Experienced" ||
+                                  item?.level === "Expert"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Experienced" ||
+                                  item?.level === "Expert"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                              <div
+                                className={`${
+                                  item?.level === "Expert"
+                                    ? `bg-black`
+                                    : `bg-gray-400`
+                                } w-[15px] h-[1.5px] ml-0.5`}
+                              />
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="text-[12px] font-bold">Hobbies</p>
