@@ -216,10 +216,14 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Hobbies</p>
-                <p className="text-[12px]">efownfnoewof</p>
-              </div>
+              {hobbies ? (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">{hobbiesInput}</p>
+                  <p className="text-[12px]">{hobbies}</p>
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="text-[12px] font-bold">Languages</p>
