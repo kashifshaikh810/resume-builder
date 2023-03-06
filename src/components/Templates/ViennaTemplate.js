@@ -570,7 +570,7 @@ const ViennaTemplate = (props) => {
                               : ``
                           }`}
                         >
-                          <p className="font-bold text-[12px] mt-0.5">
+                          <p className="font-bold text-[12px] mt-1">
                             {`${item?.functionTitle}${
                               item?.functionTitle && item?.employer ? "," : ""
                             } ${item?.employer}${
@@ -579,7 +579,7 @@ const ViennaTemplate = (props) => {
                           </p>
                           {(startDateMonth && startDateYear) ||
                           (endDateMonth && endDateYear) ? (
-                            <p className="text-[12px] mt-0.5">
+                            <p className="text-[12px] mt-1">
                               {startDateMonth && startDateYear
                                 ? `${startDateMonth} ${startDateYear}`
                                 : ""}{" "}
