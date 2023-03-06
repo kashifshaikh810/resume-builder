@@ -97,10 +97,34 @@ const ViennaTemplate = (props) => {
     "
           >
             <div>
-              <div className="flex flex-row items-center">
-                <MdOutlineAttachment className="text-[12px]" />
-                <p className="ml-2.5 underline text-[12px]">efwfew</p>
-              </div>
+              {websiteInputList?.length >= 1 ? (
+                <div className="flex flex-row items-center flex-wrap">
+                  <MdOutlineAttachment className="text-[12px]" />
+                  {websiteInputList &&
+                    websiteInputList.map((item, index) => {
+                      const lastIndex = websiteInputList.length - 1;
+                      if (index === lastIndex) {
+                        var resOfLastIndex = index || index === 0;
+                      }
+
+                      return (
+                        <div key={index}>
+                          <p
+                            className={`${
+                              index >= 1 ? `ml-0.5` : `ml-1`
+                            } underline text-[12px]`}
+                          >
+                            {item?.label}
+                            {resOfLastIndex ? `` : item?.label ? `,` : ``}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
+
               <div className="mt-5">
                 <p className="text-[12px] font-bold">Date / Place of birth</p>
                 <p className="text-[12px]">24, 432</p>
