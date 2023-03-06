@@ -296,6 +296,19 @@ const ViennaTemplate = (props) => {
               )}
             </div>
             <div>
+              {professionalSummary ? (
+                <div>
+                  <p className="font-bold text-[16px]">
+                    {summaryInput === "Professional Summary"
+                      ? "Profile"
+                      : summaryInput}
+                  </p>
+                  <p className="text-[12px] p-3 pl-0">{professionalSummary}</p>
+                </div>
+              ) : (
+                ""
+              )}
+
               <div>
                 <p className="font-bold">Employment History</p>
                 <p className="font-bold text-[12px] mt-1">
