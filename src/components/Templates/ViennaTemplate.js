@@ -125,21 +125,29 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Date / Place of birth</p>
-                <p className="text-[12px]">
-                  {dateOfBirth}
-                  {dateOfBirth && placeOfBirth ? `,` : ``} {placeOfBirth}
-                </p>
-              </div>
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Nationality</p>
-                <p className="text-[12px]">{nationality}</p>
-              </div>
-              <div className="mt-5">
-                <p className="text-[12px] font-bold">Driving License</p>
-                <p className="text-[12px]">{drivingLicense}</p>
-              </div>
+              {dateOfBirth || placeOfBirth ? (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">Date / Place of birth</p>
+                  <p className="text-[12px]">
+                    {dateOfBirth}
+                    {dateOfBirth && placeOfBirth ? `,` : ``} {placeOfBirth}
+                  </p>
+                </div>
+              ) : (
+                ``
+              )}
+              {nationality && (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">Nationality</p>
+                  <p className="text-[12px]">{nationality}</p>
+                </div>
+              )}
+              {drivingLicense && (
+                <div className="mt-5">
+                  <p className="text-[12px] font-bold">Driving License</p>
+                  <p className="text-[12px]">{drivingLicense}</p>
+                </div>
+              )}
 
               <div className="mt-5">
                 <p className="text-[12px] font-bold">Skills</p>
