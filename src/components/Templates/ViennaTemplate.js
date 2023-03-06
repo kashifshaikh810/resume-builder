@@ -689,8 +689,53 @@ const ViennaTemplate = (props) => {
   const pageTwo = () => {
     if (props.page === 2) {
       return (
-        <div>
-          <p>pageTwo</p>
+        <div className="flex flex-1 justify-center mt-5">
+          {referencesInputList?.length >= 1 ? (
+            <div className={internshipInputList?.length >= 1 ? `mt-5` : ``}>
+              <p className="font-bold">{referencesInput}</p>
+
+              {disabledPreferences ? (
+                <p className="text-[12px] text-black font-bold">
+                  Preferences available upon request
+                </p>
+              ) : (
+                ""
+              )}
+              {disabledPreferences === false &&
+                referencesInputList &&
+                referencesInputList.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`${
+                        referencesInputList?.length >= 2 && index >= 1
+                          ? `mt-5`
+                          : ``
+                      }`}
+                    >
+                      <p className="font-bold text-[12px] mt-1">
+                        {`${item?.referentFullName} ${
+                          item?.referentFullName && item?.company ? "from" : ""
+                        } ${item?.company}${item?.company}`}
+                      </p>
+                      <div className="flex flex-row items-center">
+                        <p className="text-[12px] mt-0.5">{item?.phone}</p>
+                        {item?.phone && item?.email ? (
+                          <div className="bg-gray-700 w-[2px] h-[2px] rounded-full ml-2 mr-2 mt-1" />
+                        ) : (
+                          ""
+                        )}
+                        <p className="text-[12px] mt-1 underline">
+                          {item?.email}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       );
     }
