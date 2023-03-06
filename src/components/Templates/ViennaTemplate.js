@@ -601,6 +601,84 @@ const ViennaTemplate = (props) => {
               ) : (
                 ""
               )}
+
+              {internshipInputList?.length >= 1 ? (
+                <div
+                  className={
+                    extraCurricularInputList?.length >= 1 ? `mt-5` : ``
+                  }
+                >
+                  <p className="font-bold">{internshipInput}</p>
+                  {internshipInputList &&
+                    internshipInputList.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            internshipInputList?.length >= 2 && index >= 1
+                              ? `mt-5`
+                              : ``
+                          }`}
+                        >
+                          <p className="font-bold text-[12px] mt-1">
+                            {`${item?.jobTitle}${
+                              item?.jobTitle && item?.employer ? "," : ""
+                            } ${item?.employer}${
+                              item?.employer && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-[12px] mt-1">
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p className="text-[12px] mt-1 font-[600] text-gray-600">
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>
