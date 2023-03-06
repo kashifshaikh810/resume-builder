@@ -385,16 +385,79 @@ const ViennaTemplate = (props) => {
                 ""
               )}
 
-              <div className="mt-5">
-                <p className="font-bold">Education</p>
-                <p className="font-bold text-[12px] mt-1">
-                  gregreg, efwojnrreg, wgktjejg
-                </p>
-                <p className="text-[12px] mt-1">July 2022 - April 2022</p>
-                <p className="text-[12px] mt-1.5 font-[600] text-gray-600">
-                  rgekngnregerkjnn
-                </p>
-              </div>
+              {educationInputList?.length >= 1 ? (
+                <div className={employmentInputList?.length >= 1 ? `mt-5` : ``}>
+                  <p className="font-bold">{educationInput}</p>
+                  {educationInputList &&
+                    educationInputList.map((item, index) => {
+                      let monthNames = [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                      ];
+                      let startDate = new Date(item?.startDate);
+                      let month = startDate ? startDate.getMonth() : "";
+                      let startDateMonth = startDate ? monthNames[month] : "";
+                      let startDateYear = startDate
+                        ? new Date(startDate).getFullYear()
+                        : "";
+
+                      let endDate = new Date(item?.endDate);
+                      let myMonth = endDate ? endDate.getMonth() : "";
+                      let endDateMonth = endDate ? monthNames[myMonth] : "";
+                      let endDateYear = endDate
+                        ? new Date(endDate).getFullYear()
+                        : "";
+
+                      return (
+                        <div
+                          key={index}
+                          className={`${
+                            educationInputList?.length >= 2 && index >= 1
+                              ? `mt-2`
+                              : ``
+                          }`}
+                        >
+                          <p className="font-bold text-[12px] mt-1">
+                            {`${item?.school}${
+                              item?.school && item?.degree ? "," : ""
+                            } ${item?.degree}${
+                              item?.degree && item.city && `,`
+                            } ${item.city}`}
+                          </p>
+                          {(startDateMonth && startDateYear) ||
+                          (endDateMonth && endDateYear) ? (
+                            <p className="text-[12px] mt-1">
+                              {startDateMonth && startDateYear
+                                ? `${startDateMonth} ${startDateYear}`
+                                : ""}{" "}
+                              {item?.startDate && item?.endDate ? `-` : ""}{" "}
+                              {endDateMonth && endDateYear
+                                ? `${endDateMonth} ${endDateYear}`
+                                : ""}
+                            </p>
+                          ) : (
+                            ""
+                          )}
+                          <p className="text-[12px] mt-1.5 font-[600] text-gray-600">
+                            {item?.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="mt-5">
                 <p className="font-bold">Courses</p>
