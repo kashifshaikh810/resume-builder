@@ -223,7 +223,9 @@ const ViennaTemplate = (props) => {
 
               {resumeData?.hobbies ? (
                 <div className="mt-3">
-                  <p className="text-[6px] font-bold">Hobbies</p>
+                  <p className="text-[6px] font-bold">
+                    {resumeData?.hobbiesInput}
+                  </p>
                   <p className="text-[6px] mt-0.5 p-4 pt-0 pl-0 pb-0">
                     {resumeData?.hobbies}
                   </p>
