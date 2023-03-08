@@ -3,7 +3,7 @@ import { TfiUser } from "react-icons/tfi";
 import { IoCloudDone } from "react-icons/io5";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { GrCodeSandbox, GrStrikeThrough, GrUnderline } from "react-icons/gr";
-import { BiPlus, BiQuestionMark } from "react-icons/bi";
+import { BiArrowBack, BiPlus, BiQuestionMark } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 import {
   BsArrowsAngleContract,
@@ -371,6 +371,12 @@ const EditResumeMarkup = (props) => {
                 : `flex flex-1 flex-col justify-center`
             }
           >
+            <div
+              className="hover:bg-gray-200 rounded-full hover:cursor-pointer flex w-[30px] h-[30px] justify-center items-center"
+              onClick={() => props.navigate("/app")}
+            >
+              <BiArrowBack name="BiArrowBack" />
+            </div>
             <div className="flex flex-row justify-center items-center hover:cursor-text">
               {props?.isShowTitleInput ? (
                 <input
