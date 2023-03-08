@@ -157,7 +157,7 @@ const EditResumeMarkup = (props) => {
 
             {/* <StockholmTemplate {...props} /> */}
 
-            <NewYorkTemplate {...props} />
+            {/* <NewYorkTemplate {...props} /> */}
 
             {/* <ViennaTemplate {...props} /> */}
 
@@ -166,7 +166,7 @@ const EditResumeMarkup = (props) => {
 
             {/* <CoverLetterStockholmTemplate {...props} /> */}
 
-            {/* <CoverLetterNewYorkTemplate {...props} /> */}
+            <CoverLetterNewYorkTemplate {...props} />
 
             {/* <CoverLetterViennaTemplate {...props} /> */}
 
