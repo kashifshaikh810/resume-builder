@@ -18,7 +18,7 @@ const AccountSettingsMarkup = (props) => {
 
       <div className="m-auto bg-blue-50 flex-col main">
         <div className="main-child">
-          <div className="pl-6 max-[767px]:pl-7 max-[767px]:pt-5">
+          <div className="pt-14 pl-6 max-[767px]:pl-7 max-[767px]:pt-5">
             <p className="text-2xl text-black font-bold">Account Settings</p>
           </div>
           <div className="mt-4 pl-6 max-[767px]:pl-1">
