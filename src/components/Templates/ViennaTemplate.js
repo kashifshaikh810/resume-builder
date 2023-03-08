@@ -55,8 +55,25 @@ const ViennaTemplate = (props) => {
       return (
         <div className="p-10 w-full">
           <div className="flex flex-row w-full">
-            <img src={profileImage} alt="prof" className="w-64 h-48" />
-            <div className="w-full bg-[#4afbba] p-5 pl-10">
+            {profileImage && (
+              <img src={profileImage} alt="prof" className="w-64 h-48" />
+            )}
+            <div
+              className={`w-full ${
+                profileImage ||
+                firstName ||
+                lastName ||
+                wantedJobTitle ||
+                address ||
+                city ||
+                postalCode ||
+                country ||
+                phone ||
+                email
+                  ? `bg-[#4afbba]`
+                  : ``
+              } p-5 pl-10`}
+            >
               <p className="text-3xl font-bold">
                 {firstName} {lastName}
               </p>
