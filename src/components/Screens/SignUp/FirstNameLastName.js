@@ -37,7 +37,7 @@ const FirstNameLastName = (props) => {
     }
 
     if (firstName && lastName) {
-      navigate("/create-resume/contact-info");
+      navigate(`/create-resume/contact-info/${firstName}/${lastName}`);
     }
   };
 

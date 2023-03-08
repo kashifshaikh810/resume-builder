@@ -33,7 +33,7 @@ const Navigation = () => {
           }
         />
         <Route
-          path="/create-resume/contact-info"
+          path="/create-resume/contact-info/:firstName/:lastName"
           element={<EmailScreen navigate={useNavigate} params={useParams} />}
         />
         <Route

@@ -8,9 +8,11 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
 import { resumeDataReducer } from "./reducers/resumeReducer";
+import { signUpReducer } from "./reducers/authReducer";
 
 const reducer = combineReducers({
   resumeData: resumeDataReducer,
+  userSignUp: signUpReducer,
 });
 
 let initialState = {};

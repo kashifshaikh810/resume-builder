@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { signUpAction } from "../../../redux/actions/authAction";
 
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
@@ -10,7 +13,14 @@ const EmailScreen = (props) => {
   const [email, setEmail] = useState("");
   const [showEmailErr, setShowEmailErr] = useState("");
 
-  // const navigate = props.navigate();
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { loading, isAuthenticated, user, error } = useSelector(
+    (state) => state.userSignUp
+  );
+
+  const { firstName, lastName } = useParams();
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -26,9 +36,11 @@ const EmailScreen = (props) => {
     if (!email) {
       setShowEmailErr("This field is required");
     } else {
+      dispatch(signUpAction(firstName, lastName, email));
     }
   };
 
+  console.log(loading, isAuthenticated, user, error);
   return (
     <div>
       <Header {...props} openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
@@ -61,9 +73,10 @@ const EmailScreen = (props) => {
           Email
         </p>
         <input
+          type="email"
           value={email}
           onChange={(e) => emailOnChangeHandler(e)}
-          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input border-none ${
+          className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input outline-none ${
             showEmailErr && `border-2 border-red-500`
           }`}
         />
@@ -76,7 +89,7 @@ const EmailScreen = (props) => {
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
           textStyle="text-black font-bold back-button"
-          onPress={() => {}}
+          onPress={() => navigate("/create-resume/introduction")}
           loading={false}
         />
 
@@ -86,7 +99,7 @@ const EmailScreen = (props) => {
           className="bg-blue-500 mt-4 ml-12 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
           textStyle="text-white font-bold"
           onPress={(e) => continuePressHandler(e)}
-          loading={false}
+          loading={loading}
         />
       </div>
     </div>
