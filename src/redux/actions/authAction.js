@@ -27,7 +27,6 @@ export const signUpAction =
             .then(() => {
               dispatch({
                 type: SIGNUP_SUCCESS,
-                payload: userData,
               });
               set(_ref(database, "users/" + user?.uid), {
                 userId: user?.uid,
@@ -39,25 +38,25 @@ export const signUpAction =
             .catch((error) => {
               dispatch({
                 type: SIGNUP_FAIL,
-                payload: error?.message,
+                payload: error?.code,
               });
             });
         })
         .catch((error) => {
           dispatch({
             type: SIGNUP_FAIL,
-            payload: error?.message,
+            payload: error?.code,
           });
         });
     } catch (error) {
       dispatch({
         type: SIGNUP_FAIL,
-        payload: error?.message,
+        payload: error?.code,
       });
     }
   };
 
-export const clearErrors = (dispatch) => {
+export const clearErrors = () => (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
     payload: null,

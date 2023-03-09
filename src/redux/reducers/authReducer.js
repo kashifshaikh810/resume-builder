@@ -3,9 +3,10 @@ import {
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
   CLEAR_ERRORS,
+  SIGNUP_RESET,
 } from "../constants/authConstants";
 
-export const signUpReducer = (state = { user: {} }, action) => {
+export const signUpReducer = (state = {}, action) => {
   switch (action.type) {
     case SIGNUP_REQUEST:
       return {
@@ -18,7 +19,6 @@ export const signUpReducer = (state = { user: {} }, action) => {
         ...state,
         loading: false,
         isAuthenticated: true,
-        user: action.payload,
       };
     case SIGNUP_FAIL:
       return {
@@ -26,6 +26,11 @@ export const signUpReducer = (state = { user: {} }, action) => {
         loading: false,
         isAuthenticated: false,
         error: action.payload,
+      };
+    case SIGNUP_RESET:
+      return {
+        ...state,
+        isAuthenticated: false,
       };
     case CLEAR_ERRORS:
       return {

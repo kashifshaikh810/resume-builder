@@ -1,5 +1,6 @@
 export const SIGNUP_REQUEST = "SIGNUP_REQUEST";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 export const SIGNUP_FAIL = "SIGNUP_FAIL";
+export const SIGNUP_RESET = "SIGNUP_RESET";
 
 export const CLEAR_ERRORS = "CLEAR_ERRORS";

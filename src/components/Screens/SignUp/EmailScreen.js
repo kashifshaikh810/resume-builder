@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { signUpAction } from "../../../redux/actions/authAction";
+import { clearErrors, signUpAction } from "../../../redux/actions/authAction";
+import { SIGNUP_RESET } from "../../../redux/constants/authConstants";
 
 import Header from "../../Header/Header";
 import MyButton from "../../MyButton/MyButton";
@@ -12,11 +13,12 @@ const EmailScreen = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const [email, setEmail] = useState("");
   const [showEmailErr, setShowEmailErr] = useState("");
+  const [signUpError, setSignUpError] = useState("");
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { loading, isAuthenticated, user, error } = useSelector(
+  const { loading, isAuthenticated, error } = useSelector(
     (state) => state.userSignUp
   );
 
@@ -40,7 +42,19 @@ const EmailScreen = (props) => {
     }
   };
 
-  console.log(loading, isAuthenticated, user, error);
+  useEffect(() => {
+    if (error) {
+      setSignUpError(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      navigate("/app/auth/log-in");
+      alert("Successfully SignUp");
+      dispatch({ type: SIGNUP_RESET });
+    }
+  }, [dispatch, error, navigate, isAuthenticated]);
+
   return (
     <div>
       <Header {...props} openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
@@ -67,7 +81,7 @@ const EmailScreen = (props) => {
       <div className="flex flex-1 justify-center flex-col items-center pt-5">
         <p
           className={`w-6/12 pb-1 text-sm input-heading ${
-            showEmailErr ? `text-red-600` : `text-gray-500`
+            showEmailErr || signUpError ? `text-red-600` : `text-gray-500`
           }`}
         >
           Email
@@ -77,10 +91,14 @@ const EmailScreen = (props) => {
           value={email}
           onChange={(e) => emailOnChangeHandler(e)}
           className={`bg-gray-100 w-6/12 h-10 pl-3 pr-3 input outline-none ${
-            showEmailErr && `border-2 border-red-500`
+            showEmailErr || signUpError ? `border-2 border-red-500` : ``
           }`}
         />
-        {showEmailErr && <p className="email-error">{showEmailErr}</p>}
+        {showEmailErr || signUpError ? (
+          <p className="email-error">{showEmailErr || signUpError}</p>
+        ) : (
+          ``
+        )}
       </div>
 
       <div className="flex flex-row flex-1 justify-evenly mt-4 pt-4 buttons-container">
