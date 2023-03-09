@@ -21,6 +21,8 @@ const DashboardMarkup = (props) => {
           - try now for free!
         </p>
 
+        <p>{props?.user?.accessToken}</p>
+
         <MyButton
           {...props}
           title="Create My Resume"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,8 +17,21 @@ import AccountSettings from "../Screens/AccountSettings/AccountSettings";
 import FirstNameLastName from "../Screens/SignUp/FirstNameLastName";
 import EditResume from "../Screens/EditResume/EditResume";
 import AllTemplates from "../Screens/AllTemplates/AllTemplates.js";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, getCurrentUser } from "../../redux/actions/authAction";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const { user, error } = useSelector((state) => state.userSignIn);
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, error]);
+
+  console.log(user);
   return (
     <Router>
       <Routes>
