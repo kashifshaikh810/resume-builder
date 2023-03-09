@@ -17,12 +17,6 @@ export const signUpAction =
       });
       await createUserWithEmailAndPassword(Auth, email, password)
         .then(({ user }) => {
-          let userData = {
-            userId: user?.uid,
-            firstName: firstName,
-            lastName: lastName,
-            email: user?.email,
-          };
           signOut(Auth)
             .then(() => {
               dispatch({
