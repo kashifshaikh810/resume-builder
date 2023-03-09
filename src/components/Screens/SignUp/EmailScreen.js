@@ -96,9 +96,15 @@ const EmailScreen = (props) => {
         <MyButton
           {...props}
           title="Continue"
-          className="bg-blue-500 mt-4 ml-12 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"
+          className={`${
+            loading
+              ? `bg-gray-200 cursor-progress`
+              : `bg-blue-500 cursor-pointer hover:bg-blue-700`
+          } mt-4 ml-12 p-3 pl-5 pr-5 rounded-md ${
+            loading ? `p-3 pl-[2.9rem] pr-[2.9rem] mt-4` : ``
+          }`}
           textStyle="text-white font-bold"
-          onPress={(e) => continuePressHandler(e)}
+          onPress={(e) => (loading ? null : continuePressHandler(e))}
           loading={loading}
         />
       </div>
