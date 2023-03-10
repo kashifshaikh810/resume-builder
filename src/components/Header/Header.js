@@ -2,14 +2,41 @@ import React from "react";
 import { FaRegAddressCard } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
-import MyButton from "../MyButton/MyButton";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { TfiUser } from "react-icons/tfi";
-import "./styles.css";
 import { useNavigate } from "react-router-dom";
+
+import MyButton from "../MyButton/MyButton";
+import "./styles.css";
+import { useSelector } from "react-redux";
 
 const Header = (props) => {
   const navigate = useNavigate();
+  const { loading, user, error } = useSelector((state) => state.currentUser);
+
+  const renderButton = () => {
+    if (user) {
+      return (
+        <MyButton
+          {...props}
+          title="My Account"
+          className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
+          textStyle="text-blue-400 font-bold"
+          onPress={() => navigate("/app")}
+          loading={false}
+        />
+      );
+    } else {
+      <MyButton
+        {...props}
+        title="no user"
+        className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
+        textStyle="text-blue-400 font-bold"
+        onPress={() => navigate("/app")}
+        loading={false}
+      />;
+    }
+  };
 
   return (
     <div
@@ -68,14 +95,7 @@ const Header = (props) => {
             <p className="text-base pr-10">Blog</p>
             <p className="text-base pr-10">FAQ</p>
             <div className="bg-gray-200 w-0.5 h-5 mr-10" />
-            <MyButton
-              {...props}
-              title="My Account"
-              className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
-              textStyle="text-blue-400 font-bold"
-              onPress={() => navigate("/app")}
-              loading={false}
-            />
+            {renderButton()}
           </div>
           <div>
             {props?.toggleDrawer ? (
