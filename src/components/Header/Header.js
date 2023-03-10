@@ -15,10 +15,8 @@ import { LOGOUT_RESET } from "../../redux/constants/authConstants";
 const Header = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.currentUser);
-  const { success, isAuthenticated, error } = useSelector(
-    (state) => state.logOut
-  );
+  const { user, isAuthenticated } = useSelector((state) => state.currentUser);
+  const { success, error } = useSelector((state) => state.logOut);
 
   useEffect(() => {
     if (error) {
@@ -54,7 +52,7 @@ const Header = (props) => {
             title="Log In"
             className="p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
             textStyle="text-blue-400 hover:text-blue-600"
-            onPress={() => {}}
+            onPress={() => navigate("/app/auth/log-in")}
             loading={false}
           />
           <MyButton
@@ -62,7 +60,7 @@ const Header = (props) => {
             title="Sign Up"
             className="bg-blue-500 hover:bg-blue-600 p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
             textStyle="text-white font-bold"
-            onPress={() => {}}
+            onPress={() => navigate("/create-resume/introduction")}
             loading={false}
           />
         </div>
