@@ -1,6 +1,5 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -17,7 +16,7 @@ import {
   CURRENT_USER_SUCCESS,
   CURRENT_USER_FAIL,
 } from "../constants/authConstants";
-import { getDatabase, onValue, ref, ref as _ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
 export const signUpAction =
   (firstName, lastName, email) => async (dispatch) => {
@@ -33,7 +32,7 @@ export const signUpAction =
               dispatch({
                 type: SIGNUP_SUCCESS,
               });
-              set(_ref(database, "users/" + user?.uid), {
+              set(ref(database, "users/" + user?.uid), {
                 userId: user?.uid,
                 firstName: firstName,
                 lastName: lastName,
@@ -89,29 +88,34 @@ export const signInAction = (email) => async (dispatch) => {
   }
 };
 
-export const getCurrentUser = () => (dispatch) => {
-  const auth = getAuth();
-  const user = auth.currentUser;
-
+export const getCurrentUser = (data) => (dispatch) => {
+  const { loading, user, error } = data;
   try {
     dispatch({
       type: CURRENT_USER_REQUEST,
+      payload: loading,
     });
     const db = getDatabase();
-    const starCountRef = ref(db, "users/" + user?.uid);
-    onValue(starCountRef, (snapshot) => {
-      const data = snapshot.val();
+    const dbRef = ref(db, "users/" + user?.uid);
+    onValue(dbRef, (snapshot) => {
+      const dbUser = snapshot.val();
+      const userData = {
+        dbUser,
+        loading,
+      };
       dispatch({
         type: CURRENT_USER_SUCCESS,
-        payload: data,
+        payload: userData,
       });
-      console.log(data);
     });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    const errorData = {
+      error: err.code || error.code,
+      loading,
+    };
     dispatch({
       type: CURRENT_USER_FAIL,
-      payload: error,
+      payload: errorData,
     });
   }
 };

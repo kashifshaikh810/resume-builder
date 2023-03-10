@@ -18,20 +18,19 @@ import FirstNameLastName from "../Screens/SignUp/FirstNameLastName";
 import EditResume from "../Screens/EditResume/EditResume";
 import AllTemplates from "../Screens/AllTemplates/AllTemplates.js";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, getCurrentUser } from "../../redux/actions/authAction";
+import { clearErrors } from "../../redux/actions/authAction";
 
 const Navigation = () => {
   const dispatch = useDispatch();
-  const { user, error } = useSelector((state) => state.userSignIn);
+  const { error: signInError } = useSelector((state) => state.userSignIn);
 
   useEffect(() => {
-    if (error) {
-      alert(error);
+    if (signInError) {
+      alert(signInError);
       dispatch(clearErrors());
     }
-  }, [dispatch, error]);
+  }, [dispatch, signInError]);
 
-  console.log(user);
   return (
     <Router>
       <Routes>

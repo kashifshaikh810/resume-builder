@@ -50,7 +50,7 @@ export const signUpReducer = (state = {}, action) => {
   }
 };
 
-export const signInReducer = (state = { user: null }, action) => {
+export const signInReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case SIGNIN_REQUEST:
       return {
@@ -78,23 +78,36 @@ export const signInReducer = (state = { user: null }, action) => {
         ...state,
         success: false,
       };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
+    default:
+      return state;
+  }
+};
+
+export const currentUserReducer = (state = {}, action) => {
+  switch (action.type) {
     case CURRENT_USER_REQUEST:
       return {
         ...state,
-        loading: true,
+        loading: action.payload?.loading,
         isAuthenticated: false,
       };
     case CURRENT_USER_SUCCESS:
       return {
         ...state,
-        loading: false,
+        loading: action.payload?.loading,
         isAuthenticated: true,
-        user: action.payload,
+        user: action.payload?.dbUser,
       };
     case CURRENT_USER_FAIL:
       return {
         ...state,
-        loading: false,
+        loading: action.payload?.loading,
         isAuthenticated: false,
         error: action.payload,
       };
@@ -103,7 +116,6 @@ export const signInReducer = (state = { user: null }, action) => {
         ...state,
         error: null,
       };
-
     default:
       return state;
   }
