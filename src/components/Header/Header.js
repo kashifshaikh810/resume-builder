@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import MyButton from "../MyButton/MyButton";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, logOutAction } from "../../redux/actions/authAction";
+import { clearErrors } from "../../redux/actions/authAction";
 import { LOGOUT_RESET } from "../../redux/constants/authConstants";
 
 const Header = (props) => {
