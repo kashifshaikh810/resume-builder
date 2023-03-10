@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaRegAddressCard } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
@@ -8,14 +8,34 @@ import { useNavigate } from "react-router-dom";
 
 import MyButton from "../MyButton/MyButton";
 import "./styles.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, logOutAction } from "../../redux/actions/authAction";
+import { LOGOUT_RESET } from "../../redux/constants/authConstants";
 
 const Header = (props) => {
   const navigate = useNavigate();
-  const { loading, user, error } = useSelector((state) => state.currentUser);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.currentUser);
+  const { success, isAuthenticated, error } = useSelector(
+    (state) => state.logOut
+  );
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      props.setIsMenuShown(!props?.isMenuShown);
+      navigate("/");
+      alert("Log Out Successfully");
+      dispatch({ type: LOGOUT_RESET });
+    }
+  }, [dispatch, error, success, navigate, props]);
 
   const renderButton = () => {
-    if (user) {
+    if (user && isAuthenticated) {
       return (
         <MyButton
           {...props}
@@ -27,21 +47,33 @@ const Header = (props) => {
         />
       );
     } else {
-      <MyButton
-        {...props}
-        title="no user"
-        className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
-        textStyle="text-blue-400 font-bold"
-        onPress={() => navigate("/app")}
-        loading={false}
-      />;
+      return (
+        <div className="flex flex-row">
+          <MyButton
+            {...props}
+            title="Log In"
+            className="p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
+            textStyle="text-blue-400 hover:text-blue-600"
+            onPress={() => {}}
+            loading={false}
+          />
+          <MyButton
+            {...props}
+            title="Sign Up"
+            className="bg-blue-500 hover:bg-blue-600 p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
+            textStyle="text-white font-bold"
+            onPress={() => {}}
+            loading={false}
+          />
+        </div>
+      );
     }
   };
 
   return (
     <div
-      className={`flex flex-1 p-3 ${
-        props?.allowed === false ? `` : `pb-0`
+      className={`flex flex-1 p-6 ${
+        props?.allowed === false ? `` : `pb-6`
       } max-h-20 items-center bg-white sticky top-0 overflow-hidden  ${
         props.isMenuShown ? `` : `z-50`
       } ${

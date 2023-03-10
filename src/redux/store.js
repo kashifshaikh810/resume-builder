@@ -10,6 +10,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { resumeDataReducer } from "./reducers/resumeReducer";
 import {
   currentUserReducer,
+  logOutReducer,
   signInReducer,
   signUpReducer,
 } from "./reducers/authReducer";
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   userSignUp: signUpReducer,
   userSignIn: signInReducer,
   currentUser: currentUserReducer,
+  logOut: logOutReducer,
 });
 
 let initialState = {};

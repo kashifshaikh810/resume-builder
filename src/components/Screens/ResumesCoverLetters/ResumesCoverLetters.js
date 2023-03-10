@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logOutAction } from "../../../redux/actions/authAction";
 
 const ResumesCoverLetters = (props) => {
+  const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -21,6 +23,10 @@ const ResumesCoverLetters = (props) => {
     useState(false);
   const [isShowCoverLetterUntitledInput, setIsShowCoverLetterUntitledInput] =
     useState(false);
+
+  const logOutOnClickHandler = () => {
+    dispatch(logOutAction());
+  };
 
   return (
     <ResumesCoverLettersMarkup
@@ -44,6 +50,7 @@ const ResumesCoverLetters = (props) => {
       isShowCoverLetterUntitledInput={isShowCoverLetterUntitledInput}
       setIsShowCoverLetterUntitledInput={setIsShowCoverLetterUntitledInput}
       coverLetterData={coverLetterData}
+      logOutOnClickHandler={logOutOnClickHandler}
     />
   );
 };

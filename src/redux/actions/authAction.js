@@ -15,6 +15,9 @@ import {
   CURRENT_USER_REQUEST,
   CURRENT_USER_SUCCESS,
   CURRENT_USER_FAIL,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
 } from "../constants/authConstants";
 import { getDatabase, onValue, ref, set } from "firebase/database";
 
@@ -118,6 +121,24 @@ export const getCurrentUser = (data) => (dispatch) => {
       payload: errorData,
     });
   }
+};
+
+export const logOutAction = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT_REQUEST,
+  });
+  signOut(Auth)
+    .then(() => {
+      dispatch({
+        type: LOGOUT_SUCCESS,
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: LOGOUT_FAIL,
+        payload: error,
+      });
+    });
 };
 
 export const clearErrors = () => (dispatch) => {

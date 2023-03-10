@@ -11,6 +11,10 @@ import {
   CURRENT_USER_REQUEST,
   CURRENT_USER_SUCCESS,
   CURRENT_USER_FAIL,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
+  LOGOUT_RESET,
 } from "../constants/authConstants";
 
 export const signUpReducer = (state = {}, action) => {
@@ -110,6 +114,43 @@ export const currentUserReducer = (state = {}, action) => {
         loading: action.payload?.loading,
         isAuthenticated: false,
         error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const logOutReducer = (state = {}, action) => {
+  switch (action.type) {
+    case LOGOUT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        isAuthenticated: true,
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        success: true,
+      };
+    case LOGOUT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        error: action.payload,
+      };
+    case LOGOUT_RESET:
+      return {
+        ...state,
+        success: false,
       };
     case CLEAR_ERRORS:
       return {

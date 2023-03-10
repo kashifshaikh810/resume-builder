@@ -55,7 +55,12 @@ const DropDownMenu = (props) => {
             >
               FAQ
             </p>
-            <p className="text-base pl-5 pt-3 text-style">Log Out</p>
+            <p
+              className="text-base pl-5 pt-3 text-style"
+              onClick={() => props.logOutOnClickHandler()}
+            >
+              Log Out
+            </p>
           </div>
         </div>
       ) : null}
