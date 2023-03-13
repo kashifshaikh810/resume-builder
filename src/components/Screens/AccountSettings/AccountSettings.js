@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
 
+import { Auth } from "../../../Firebase/FirebaseConfig";
 import AccountSettingsMarkup from "./AccountSettingsMarkup";
 
 const AccountSettings = (props) => {
@@ -12,8 +15,17 @@ const AccountSettings = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [user, loading, error] = useAuthState(Auth);
+
+  const { user: reduxUser } = useSelector((state) => state.currentUser);
 
   const onSaveHandler = () => {};
+
+  useEffect(() => {
+    setFirstName(reduxUser?.firstName);
+    setLastName(reduxUser?.lastName);
+    setEmail(reduxUser?.email);
+  }, [reduxUser]);
 
   return (
     <AccountSettingsMarkup
@@ -33,6 +45,7 @@ const AccountSettings = (props) => {
       email={email}
       setEmail={setEmail}
       onSaveHandler={onSaveHandler}
+      loading={loading}
     />
   );
 };

@@ -18,6 +18,7 @@ const AccountSettingsMarkup = (props) => {
     email,
     setEmail,
     onSaveHandler,
+    loading,
   } = props;
 
   return (
@@ -74,7 +75,9 @@ const AccountSettingsMarkup = (props) => {
                   <input
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                    className={`${
+                      loading ? `animate-pulse` : ``
+                    } bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full`}
                   />
                 </div>
 
@@ -83,7 +86,9 @@ const AccountSettingsMarkup = (props) => {
                   <input
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                    className={`${
+                      loading ? `animate-pulse` : ``
+                    } bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full`}
                   />
                 </div>
               </div>
@@ -94,7 +99,9 @@ const AccountSettingsMarkup = (props) => {
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                    className={` ${
+                      loading ? `animate-pulse` : ``
+                    }bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full`}
                   />
                 </div>
 
