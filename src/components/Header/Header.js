@@ -83,16 +83,17 @@ const Header = (props) => {
       }`}
     >
       {props.name === "app" ? (
-        <div className="flex flex-1">
+        <div className="flex flex-1 flex-row items-center">
           {props?.allowed === false || props?.name === "app" ? (
             <div
               className="flex flex-row items-center cursor-pointer"
               onClick={() => navigate("/")}
             >
-              <div className="bg-gray-400 p-2 rounded-full">
-                <FaRegAddressCard size={25} color="#f3f3f3" />
-              </div>
-              <p className="pl-2 text-base font-bold">resume</p>
+              <img
+                src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg"
+                className="w-28 h-28 ml-2"
+                alt="icon"
+              />
             </div>
           ) : null}
           <div className="flex flex-1 justify-end p-2">
@@ -113,6 +114,7 @@ const Header = (props) => {
             <img
               src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg"
               className="w-28 h-28 ml-2"
+              alt="icon"
             />
           </div>
           <div className="flex flex-1 flex-row justify-end items-center mainContainer">

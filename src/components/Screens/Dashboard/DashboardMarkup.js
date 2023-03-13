@@ -38,7 +38,11 @@ const DashboardMarkup = (props) => {
           title="Create My Resume"
           className="bg-blue-500 hover:bg-blue-600 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer"
           textStyle="text-white font-bold"
-          onPress={() => props.navigate("/resumes-templates")}
+          onPress={() =>
+            props?.user
+              ? props.navigate("/resumes-templates")
+              : props.navigate("/app/auth/sign-in")
+          }
           loading={false}
         />
 

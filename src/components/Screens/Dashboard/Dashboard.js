@@ -7,7 +7,7 @@ const Dashboard = (props) => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const navigate = props.navigate();
 
-  const { loading, user, error } = useSelector((state) => state.currentUser);
+  const { loading, user } = useSelector((state) => state.currentUser);
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
@@ -20,6 +20,7 @@ const Dashboard = (props) => {
       openDrawer={openDrawer}
       navigate={navigate}
       loading={loading}
+      user={user}
     />
   );
 };
