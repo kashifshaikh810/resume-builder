@@ -10,6 +10,16 @@ import MyButton from "../../MyButton/MyButton";
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 
 const AccountSettingsMarkup = (props) => {
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    email,
+    setEmail,
+    onSaveHandler,
+  } = props;
+
   return (
     <div>
       <Header {...props} name="app" />
@@ -61,19 +71,31 @@ const AccountSettingsMarkup = (props) => {
               <div className="flex flex-row ml-7 max-[767px]:block max-[767px]:ml-2">
                 <div className="w-full max-[767px]:block">
                   <p className="text-sm text-gray-400 pb-2">First Name</p>
-                  <input className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                  <input
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                  />
                 </div>
 
                 <div className="ml-8 w-full max-[767px]:ml-0 max-[767px]:mt-4">
                   <p className="text-sm text-gray-400 pb-2">Last Name</p>
-                  <input className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                  <input
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                  />
                 </div>
               </div>
 
               <div className="flex flex-row mr-10 ml-7 mt-5 max-[767px]:block max-[767px]:ml-2 max-[767px]:mr-0">
                 <div className="w-full max-[767px]:block">
                   <p className="text-sm text-gray-400 pb-2">Email</p>
-                  <input className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full" />
+                  <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-gray-200 caret-blue-400 w-11/12 h-9 pl-4 pr-4 text-gray-800 border-none overflow-hidden outline-none max-[767px]:w-full"
+                  />
                 </div>
 
                 <div className="ml-10 w-10/12 max-[767px]:ml-0">
@@ -89,7 +111,7 @@ const AccountSettingsMarkup = (props) => {
                   title="Save"
                   className="bg-white mr-5"
                   textStyle="text-blue-400 button-text"
-                  onPress={(e) => {}}
+                  onPress={(e) => onSaveHandler()}
                   loading={false}
                 />
               </div>
