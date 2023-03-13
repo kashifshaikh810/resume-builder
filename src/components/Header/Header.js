@@ -38,8 +38,8 @@ const Header = (props) => {
         <MyButton
           {...props}
           title="My Account"
-          className="border-2 border-blue-200 p-3 pl-5 pr-5 rounded-md cursor-pointer button"
-          textStyle="text-blue-400 font-bold"
+          className="border-2 border-blue-500 hover:bg-blue-50 p-3 pl-5 pr-5 rounded-md cursor-pointer"
+          textStyle="text-blue-500 font-bold"
           onPress={() => navigate("/app")}
           loading={false}
         />
@@ -110,10 +110,10 @@ const Header = (props) => {
             className="flex flex-row items-center mainContainer cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <div className="bg-gray-400 p-2 rounded-full">
-              <FaRegAddressCard size={25} color="#f3f3f3" />
-            </div>
-            <p className="pl-2 text-base font-bold">resume</p>
+            <img
+              src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg"
+              className="w-28 h-28 ml-2"
+            />
           </div>
           <div className="flex flex-1 flex-row justify-end items-center mainContainer">
             <p className="text-base">Resume</p>
