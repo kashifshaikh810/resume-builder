@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Auth } from "../../../Firebase/FirebaseConfig";
+import {
+  clearErrors,
+  updateProfileAction,
+} from "../../../redux/actions/profileAction";
+import { UPDATE_PROFILE_RESET } from "../../../redux/constants/profileConstants";
 import AccountSettingsMarkup from "./AccountSettingsMarkup";
 
 const AccountSettings = (props) => {
@@ -16,16 +21,36 @@ const AccountSettings = (props) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(Auth);
+  const dispatch = useDispatch();
 
   const { user: reduxUser } = useSelector((state) => state.currentUser);
+  const {
+    loading: isUpdateLoading,
+    isUpdated,
+    error: isUpdateError,
+  } = useSelector((state) => state.userProfile);
 
-  const onSaveHandler = () => {};
+  const onSaveHandler = () => {
+    if (firstName || lastName || email) {
+      dispatch(updateProfileAction(user, firstName, lastName, email));
+    }
+  };
 
   useEffect(() => {
     setFirstName(reduxUser?.firstName);
     setLastName(reduxUser?.lastName);
     setEmail(reduxUser?.email);
-  }, [reduxUser]);
+
+    if (isUpdateError) {
+      alert(isUpdateError);
+      dispatch(clearErrors());
+    }
+
+    if (isUpdated) {
+      alert("Successfully updated");
+      dispatch({ type: UPDATE_PROFILE_RESET });
+    }
+  }, [reduxUser, isUpdateError, dispatch, isUpdated]);
 
   return (
     <AccountSettingsMarkup
@@ -46,6 +71,7 @@ const AccountSettings = (props) => {
       setEmail={setEmail}
       onSaveHandler={onSaveHandler}
       loading={loading}
+      isUpdateLoading={isUpdateLoading}
     />
   );
 };

@@ -1,10 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./styles.css";
 import { CgHome } from "react-icons/cg";
+import { useDispatch } from "react-redux";
+
+import "./styles.css";
+import { logOutAction } from "../../redux/actions/authAction";
 
 const DropDownMenu = (props) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logOutOnClickHandler = () => {
+    dispatch(logOutAction());
+  };
+
   return (
     <>
       {props.isMenuShown ? (
@@ -57,7 +66,7 @@ const DropDownMenu = (props) => {
             </p>
             <p
               className="text-base pl-5 pt-3 text-style"
-              onClick={() => props.logOutOnClickHandler()}
+              onClick={() => logOutOnClickHandler()}
             >
               Log Out
             </p>

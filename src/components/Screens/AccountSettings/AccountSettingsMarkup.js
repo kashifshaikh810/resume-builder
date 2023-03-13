@@ -19,6 +19,7 @@ const AccountSettingsMarkup = (props) => {
     setEmail,
     onSaveHandler,
     loading,
+    isUpdateLoading,
   } = props;
 
   return (
@@ -115,10 +116,10 @@ const AccountSettingsMarkup = (props) => {
               <div className="flex flex-1 justify-end mt-4 mb-2 max-[767px]:block max-[767px]:ml-2 mr-2">
                 <MyButton
                   {...props}
-                  title="Save"
+                  title={isUpdateLoading ? "Saving..." : "Save"}
                   className="bg-white mr-5"
                   textStyle="text-blue-400 button-text"
-                  onPress={(e) => onSaveHandler()}
+                  onPress={(e) => (isUpdateLoading ? `` : onSaveHandler())}
                   loading={false}
                 />
               </div>

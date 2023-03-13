@@ -14,6 +14,7 @@ import {
   signInReducer,
   signUpReducer,
 } from "./reducers/authReducer";
+import { profileReducer } from "./reducers/profileReducer";
 
 const reducer = combineReducers({
   resumeData: resumeDataReducer,
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   userSignIn: signInReducer,
   currentUser: currentUserReducer,
   logOut: logOutReducer,
+  userProfile: profileReducer,
 });
 
 let initialState = {};
