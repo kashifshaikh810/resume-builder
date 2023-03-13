@@ -38,7 +38,7 @@ const Header = (props) => {
         <MyButton
           {...props}
           title="My Account"
-          className="border-2 border-blue-500 hover:bg-blue-50 p-3 pl-5 pr-5 rounded-md cursor-pointer"
+          className="border border-blue-500 hover:bg-blue-50 p-3 pl-5 pr-5 rounded-md cursor-pointer"
           textStyle="text-blue-500 font-bold"
           onPress={() => navigate("/app")}
           loading={false}
