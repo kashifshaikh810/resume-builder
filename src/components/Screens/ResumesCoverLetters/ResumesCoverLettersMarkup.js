@@ -19,6 +19,7 @@ import CoverLetterTorontoTemplate from "../../CoverLetterTemplatesFromResumesNCo
 import CoverLetterStockholmTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterStockholmTemplate";
 import CoverLetterNewYorkTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterNewYorkTemplate";
 import CoverLetterViennaTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterViennaTemplate";
+import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
   const resumeSection = () => {
@@ -30,7 +31,12 @@ const ResumesCoverLettersMarkup = (props) => {
               {/* <StockholmTemplate {...props} /> */}
               {/* <TorontoTemplate {...props} /> */}
               {/* <NewYorkTemplate {...props} /> */}
-              <ViennaTemplate {...props} />
+              {/* <ViennaTemplate {...props} /> */}
+              <SelectTemplate
+                {...props}
+                containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+                textStyle="text-xs text-gray-300 animate-bounce font-mono"
+              />
             </div>
 
             <div className="pl-10 w-10/12">
@@ -185,7 +191,13 @@ const ResumesCoverLettersMarkup = (props) => {
 
               {/* <CoverLetterNewYorkTemplate {...props} /> */}
 
-              <CoverLetterViennaTemplate {...props} />
+              {/* <CoverLetterViennaTemplate {...props} /> */}
+
+              <SelectTemplate
+                {...props}
+                containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+                textStyle="text-xs text-gray-300 animate-bounce font-mono"
+              />
             </div>
 
             <div className="pl-10 w-11/12">
