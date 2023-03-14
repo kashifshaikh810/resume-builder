@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -28,6 +28,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const { error: signInError } = useSelector((state) => state.userSignIn);
   const [user, loading, error] = useAuthState(Auth);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (signInError) {
@@ -38,12 +39,22 @@ const Navigation = () => {
     if (error) {
       alert(error);
     }
-  }, [dispatch, signInError, error]);
+
+    if (loading) {
+      setIsLoading(loading);
+    }
+
+    if (loading === false) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1500);
+    }
+  }, [dispatch, signInError, error, loading]);
 
   return (
     <Router>
       <Routes>
-        {loading ? (
+        {isLoading ? (
           <Route path="*" element={<Loader />} />
         ) : (
           <>
