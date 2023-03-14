@@ -5,9 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Auth } from "../../../Firebase/FirebaseConfig";
 import {
   clearErrors,
+  deleteUserAction,
   updateProfileAction,
 } from "../../../redux/actions/profileAction";
-import { UPDATE_PROFILE_RESET } from "../../../redux/constants/profileConstants";
+import {
+  DELETE_USER_RESET,
+  UPDATE_PROFILE_RESET,
+} from "../../../redux/constants/profileConstants";
 import AccountSettingsMarkup from "./AccountSettingsMarkup";
 
 const AccountSettings = (props) => {
@@ -23,6 +27,7 @@ const AccountSettings = (props) => {
   const [email, setEmail] = useState("");
   const [user, loading, error] = useAuthState(Auth);
   const dispatch = useDispatch();
+  const navigate = props.navigate();
 
   const { user: reduxUser } = useSelector((state) => state.currentUser);
   const {
@@ -42,7 +47,9 @@ const AccountSettings = (props) => {
     }
   };
 
-  const deleteAccountOnClickHandler = () => {};
+  const deleteAccountOnClickHandler = () => {
+    dispatch(deleteUserAction(user));
+  };
 
   useEffect(() => {
     setFirstName(reduxUser?.firstName);
@@ -57,7 +64,30 @@ const AccountSettings = (props) => {
     if (isUpdated) {
       dispatch({ type: UPDATE_PROFILE_RESET });
     }
-  }, [reduxUser, isUpdateError, dispatch, isUpdated]);
+
+    if (isDeleted) {
+      navigate("/");
+      dispatch({ type: DELETE_USER_RESET });
+    }
+
+    if (deletedError) {
+      alert(deletedError);
+      dispatch(clearErrors());
+    }
+
+    if (error) {
+      alert(error);
+    }
+  }, [
+    reduxUser,
+    isUpdateError,
+    dispatch,
+    isUpdated,
+    isDeleted,
+    deletedError,
+    navigate,
+    error,
+  ]);
 
   useEffect(() => {
     if (isUpdateLoading) {
@@ -95,6 +125,7 @@ const AccountSettings = (props) => {
       isUpdateLoading={isUpdateLoading}
       isDone={isDone}
       deleteAccountOnClickHandler={deleteAccountOnClickHandler}
+      deletedLoading={deletedLoading}
     />
   );
 };

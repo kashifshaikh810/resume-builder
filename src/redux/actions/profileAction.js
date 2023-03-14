@@ -1,5 +1,5 @@
 import { deleteUser, updateEmail } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, remove, set } from "firebase/database";
 
 import {
   UPDATE_PROFILE_REQUEST,
@@ -47,7 +47,15 @@ export const deleteUserAction = (user) => async (dispatch) => {
     dispatch({ type: DELETE_USER_REQUEST });
     deleteUser(user)
       .then(() => {
-        dispatch({ type: DELETE_USER_SUCCESS });
+        const db = getDatabase();
+        const dbRef = ref(db, "users/" + user?.uid);
+        remove(dbRef)
+          .then(() => {
+            dispatch({ type: DELETE_USER_SUCCESS });
+          })
+          .catch((error) => {
+            dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
+          });
       })
       .catch((error) => {
         // An error ocurred
