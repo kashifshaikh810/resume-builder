@@ -6,15 +6,6 @@ import SideDrawer from "../../SideDrawer/SideDrawer";
 import "./styles.css";
 
 const DashboardMarkup = (props) => {
-  const { loading } = props;
-
-  if (loading === true) {
-    return (
-      <div className="flex h-[40rem] w-full justify-center items-center">
-        <p>Loading...</p>
-      </div>
-    );
-  }
   return (
     <div className="flex flex-1 flex-col bg-blue-50 pb-8">
       <Header {...props} />
