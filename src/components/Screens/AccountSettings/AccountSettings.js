@@ -15,6 +15,7 @@ const AccountSettings = (props) => {
   const [isUpdate, setIsUpdate] = useState(false);
   const [isViews, setIsViews] = useState(false);
   const [isUseful, setIsUseful] = useState(false);
+  const [isDone, setIsDone] = useState(false);
 
   // inputs states
   const [firstName, setFirstName] = useState("");
@@ -47,10 +48,23 @@ const AccountSettings = (props) => {
     }
 
     if (isUpdated) {
-      alert("Successfully updated");
       dispatch({ type: UPDATE_PROFILE_RESET });
     }
   }, [reduxUser, isUpdateError, dispatch, isUpdated]);
+
+  useEffect(() => {
+    if (isUpdateLoading) {
+      setTimeout(() => {
+        setIsDone(true);
+      }, 1000);
+    }
+
+    if (isUpdateLoading === false) {
+      setTimeout(() => {
+        setIsDone(false);
+      }, 1000);
+    }
+  }, [isUpdateLoading]);
 
   return (
     <AccountSettingsMarkup
@@ -72,6 +86,7 @@ const AccountSettings = (props) => {
       onSaveHandler={onSaveHandler}
       loading={loading}
       isUpdateLoading={isUpdateLoading}
+      isDone={isDone}
     />
   );
 };

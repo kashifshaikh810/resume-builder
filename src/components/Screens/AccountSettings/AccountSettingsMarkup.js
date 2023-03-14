@@ -1,13 +1,16 @@
 import React from "react";
-import "./styles.css";
-import Header from "../../Header/Header";
 import { TfiInkPen } from "react-icons/tfi";
 import { GrFacebookOption } from "react-icons/gr";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { BsToggleOff, BsToggleOn } from "react-icons/bs";
-import MyButton from "../../MyButton/MyButton";
+import { MdOutlineDoneOutline } from "react-icons/md";
+import { RiLoader4Fill } from "react-icons/ri";
+
+import Header from "../../Header/Header";
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
+import MyButton from "../../MyButton/MyButton";
+import "./styles.css";
 
 const AccountSettingsMarkup = (props) => {
   const {
@@ -20,6 +23,7 @@ const AccountSettingsMarkup = (props) => {
     onSaveHandler,
     loading,
     isUpdateLoading,
+    isDone,
   } = props;
 
   return (
@@ -113,11 +117,31 @@ const AccountSettingsMarkup = (props) => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-1 justify-end mt-4 mb-2 max-[767px]:block max-[767px]:ml-2 mr-2">
+              <div className="flex flex-1 items-center justify-end mt-4 mb-2 max-[767px]:block max-[767px]:ml-2 mr-2">
+                {isUpdateLoading ? (
+                  <RiLoader4Fill
+                    name="RiLoader4Fill"
+                    size={20}
+                    className="text-sky-400 animate-spin"
+                  />
+                ) : (
+                  ""
+                )}
+                {isDone ? (
+                  <div className="bg-green-400 flex justify-center items-center rounded-full w-5 h-5">
+                    <MdOutlineDoneOutline
+                      name="MdOutlineDoneOutline"
+                      size={12}
+                      color="#fff"
+                    />
+                  </div>
+                ) : (
+                  ""
+                )}
                 <MyButton
                   {...props}
                   title={isUpdateLoading ? "Saving..." : "Save"}
-                  className="bg-white mr-5"
+                  className="bg-white ml-2 mr-5"
                   textStyle="text-blue-400 button-text"
                   onPress={(e) => (isUpdateLoading ? `` : onSaveHandler())}
                   loading={false}
