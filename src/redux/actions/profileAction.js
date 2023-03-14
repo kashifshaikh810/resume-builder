@@ -1,4 +1,4 @@
-import { updateEmail } from "firebase/auth";
+import { deleteUser, updateEmail } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 
 import {
@@ -6,6 +6,9 @@ import {
   UPDATE_PROFILE_FAIL,
   UPDATE_PROFILE_SUCCESS,
   CLEAR_ERRORS,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
+  DELETE_USER_FAIL,
 } from "../constants/profileConstants";
 
 export const updateProfileAction =
@@ -38,6 +41,23 @@ export const updateProfileAction =
       dispatch({ type: UPDATE_PROFILE_FAIL, payload: error.code });
     }
   };
+
+export const deleteUserAction = (user) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_USER_REQUEST });
+    deleteUser(user)
+      .then(() => {
+        dispatch({ type: DELETE_USER_SUCCESS });
+      })
+      .catch((error) => {
+        // An error ocurred
+        dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
+        // ...
+      });
+  } catch (error) {
+    dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
+  }
+};
 
 export const clearErrors = () => (dispatch) => {
   dispatch({

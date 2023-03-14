@@ -30,12 +30,19 @@ const AccountSettings = (props) => {
     isUpdated,
     error: isUpdateError,
   } = useSelector((state) => state.userProfile);
+  const {
+    loading: deletedLoading,
+    isDeleted,
+    error: deletedError,
+  } = useSelector((state) => state.deleteUser);
 
   const onSaveHandler = () => {
     if (firstName || lastName || email) {
       dispatch(updateProfileAction(user, firstName, lastName, email));
     }
   };
+
+  const deleteAccountOnClickHandler = () => {};
 
   useEffect(() => {
     setFirstName(reduxUser?.firstName);
@@ -87,6 +94,7 @@ const AccountSettings = (props) => {
       loading={loading}
       isUpdateLoading={isUpdateLoading}
       isDone={isDone}
+      deleteAccountOnClickHandler={deleteAccountOnClickHandler}
     />
   );
 };

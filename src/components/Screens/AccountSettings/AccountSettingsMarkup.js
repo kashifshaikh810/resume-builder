@@ -24,6 +24,7 @@ const AccountSettingsMarkup = (props) => {
     loading,
     isUpdateLoading,
     isDone,
+    deleteAccountOnClickHandler,
   } = props;
 
   return (
@@ -313,7 +314,7 @@ const AccountSettingsMarkup = (props) => {
                   title="Delete Account"
                   className="bg-white mr-5"
                   textStyle="text-red-400 delete-button"
-                  onPress={(e) => {}}
+                  onPress={(e) => deleteAccountOnClickHandler()}
                   loading={false}
                 />
               </div>
