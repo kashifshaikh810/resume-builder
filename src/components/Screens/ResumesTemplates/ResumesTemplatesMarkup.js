@@ -32,7 +32,9 @@ const ResumesTemplatesMarkup = (props) => {
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                         textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                        onPress={() => props.navigate("/app")}
+                        onPress={() =>
+                          props.selectTemplate(props?.user, item?.name)
+                        }
                         loading={false}
                       />
                     </div>
@@ -44,7 +46,9 @@ const ResumesTemplatesMarkup = (props) => {
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                       textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                      onPress={() => props.navigate("/app")}
+                      onPress={() =>
+                        props.selectTemplate(props?.user, item?.name)
+                      }
                       loading={false}
                     />
                   </div>
@@ -101,7 +105,9 @@ const ResumesTemplatesMarkup = (props) => {
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                         textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                        onPress={() => props.navigate("/app")}
+                        onPress={() =>
+                          props.selectTemplate(props?.user, item?.name)
+                        }
                         loading={false}
                       />
                     </div>
@@ -113,7 +119,9 @@ const ResumesTemplatesMarkup = (props) => {
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                       textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                      onPress={() => props.navigate("/app")}
+                      onPress={() =>
+                        props.selectTemplate(props?.user, item?.name)
+                      }
                       loading={false}
                     />
                   </div>
@@ -170,7 +178,9 @@ const ResumesTemplatesMarkup = (props) => {
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                         textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                        onPress={() => props.navigate("/app")}
+                        onPress={() =>
+                          props.selectTemplate(props?.user, item?.name)
+                        }
                         loading={false}
                       />
                     </div>
@@ -182,7 +192,9 @@ const ResumesTemplatesMarkup = (props) => {
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                       textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                      onPress={() => props.navigate("/app")}
+                      onPress={() =>
+                        props.selectTemplate(props?.user, item?.name)
+                      }
                       loading={false}
                     />
                   </div>
@@ -239,7 +251,9 @@ const ResumesTemplatesMarkup = (props) => {
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                         textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                        onPress={() => props.navigate("/app")}
+                        onPress={() =>
+                          props.selectTemplate(props?.user, item?.name)
+                        }
                         loading={false}
                       />
                     </div>
@@ -251,7 +265,9 @@ const ResumesTemplatesMarkup = (props) => {
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                       textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                      onPress={() => props.navigate("/app")}
+                      onPress={() =>
+                        props.selectTemplate(props?.user, item?.name)
+                      }
                       loading={false}
                     />
                   </div>
@@ -308,7 +324,9 @@ const ResumesTemplatesMarkup = (props) => {
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                         textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                        onPress={() => props.navigate("/app")}
+                        onPress={() =>
+                          props.selectTemplate(props?.user, item?.name)
+                        }
                         loading={false}
                       />
                     </div>
@@ -320,7 +338,9 @@ const ResumesTemplatesMarkup = (props) => {
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
                       textStyle="text-white font-bold text-center max-[565px]:text-sm max-[463px]:text-xs"
-                      onPress={() => props.navigate("/app")}
+                      onPress={() =>
+                        props.selectTemplate(props?.user, item?.name)
+                      }
                       loading={false}
                     />
                   </div>

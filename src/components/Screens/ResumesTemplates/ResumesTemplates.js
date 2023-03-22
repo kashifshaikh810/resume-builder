@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import ResumesTemplatesMarkup from "./ResumesTemplatesMarkup";
+import React, { useEffect, useState } from "react";
 import { VscFiles } from "react-icons/vsc";
 import { FaRegCopyright } from "react-icons/fa";
 import { BsStars } from "react-icons/bs";
 import { TbBriefcase } from "react-icons/tb";
 import { TbHandRock } from "react-icons/tb";
+import { useSelector, useDispatch } from "react-redux";
+
+import ResumesTemplatesMarkup from "./ResumesTemplatesMarkup";
+import {
+  clearErrors,
+  selectResumeTemplateAction,
+} from "../../../redux/actions/resumeAction";
+import { SELECTED_RESUME_TEMPLATE_RESET } from "../../../redux/constants/resumeConstants";
 
 const ResumesTemplates = (props) => {
   const [showSelectedTab, setShowSelectedTab] = useState({
@@ -21,6 +28,12 @@ const ResumesTemplates = (props) => {
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
+
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.currentUser);
+  const { templateData, success, error } = useSelector(
+    (state) => state.selectTemplate
+  );
 
   const tabsData = [
     { id: 0, tabName: "All templates", tabIcon: () => <VscFiles size={25} /> },
@@ -209,6 +222,22 @@ const ResumesTemplates = (props) => {
     },
   ];
 
+  const selectTemplate = (user, templateName) => {
+    dispatch(selectResumeTemplateAction(user, templateName));
+  };
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      navigate("/app");
+      dispatch({ type: SELECTED_RESUME_TEMPLATE_RESET });
+    }
+  }, [dispatch, error, navigate, success]);
+
   return (
     <ResumesTemplatesMarkup
       {...props}
@@ -226,6 +255,8 @@ const ResumesTemplates = (props) => {
       isHovered={isHovered}
       setIsHovered={setIsHovered}
       screenWidth={width}
+      selectTemplate={selectTemplate}
+      user={user}
     />
   );
 };

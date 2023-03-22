@@ -7,7 +7,10 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
-import { resumeDataReducer } from "./reducers/resumeReducer";
+import {
+  resumeDataReducer,
+  selectTemplateReducer,
+} from "./reducers/resumeReducer";
 import {
   currentUserReducer,
   logOutReducer,
@@ -24,6 +27,7 @@ const reducer = combineReducers({
   logOut: logOutReducer,
   userProfile: profileReducer,
   deleteUser: deleteUserReducer,
+  selectTemplate: selectTemplateReducer,
 });
 
 let initialState = {};
