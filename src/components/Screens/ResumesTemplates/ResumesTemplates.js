@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ResumesTemplatesMarkup from "./ResumesTemplatesMarkup";
 import {
   clearErrors,
+  getSelectResumeTemplateAction,
   selectResumeTemplateAction,
 } from "../../../redux/actions/resumeAction";
 import { SELECTED_RESUME_TEMPLATE_RESET } from "../../../redux/constants/resumeConstants";
@@ -233,10 +234,11 @@ const ResumesTemplates = (props) => {
     }
 
     if (success) {
+      dispatch(getSelectResumeTemplateAction(user));
       navigate("/app");
       dispatch({ type: SELECTED_RESUME_TEMPLATE_RESET });
     }
-  }, [dispatch, error, navigate, success]);
+  }, [dispatch, error, navigate, success, user]);
 
   return (
     <ResumesTemplatesMarkup
@@ -257,6 +259,7 @@ const ResumesTemplates = (props) => {
       screenWidth={width}
       selectTemplate={selectTemplate}
       user={user}
+      templateData={templateData}
     />
   );
 };

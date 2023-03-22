@@ -401,7 +401,11 @@ const ResumesTemplatesMarkup = (props) => {
               title="Create My Resume"
               className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer button max-[767px]:hidden"
               textStyle="text-white font-bold"
-              onPress={() => props.navigate("/app")}
+              onPress={() =>
+                props?.templateData
+                  ? props.navigate("/app")
+                  : alert("Kindly select a template & let's begin")
+              }
               loading={false}
             />
           </div>
