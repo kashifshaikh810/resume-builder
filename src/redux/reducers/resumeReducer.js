@@ -6,6 +6,9 @@ import {
   SELECTED_RESUME_TEMPLATE_FAIL,
   CLEAR_ERRORS,
   SELECTED_RESUME_TEMPLATE_RESET,
+  GET_SELECTED_RESUME_TEMPLATE_REQUEST,
+  GET_SELECTED_RESUME_TEMPLATE_SUCCESS,
+  GET_SELECTED_RESUME_TEMPLATE_FAIL,
 } from "../constants/resumeConstants";
 
 export const resumeDataReducer = (
@@ -30,6 +33,7 @@ export const resumeDataReducer = (
 
 export const selectTemplateReducer = (state = {}, action) => {
   switch (action.type) {
+    case GET_SELECTED_RESUME_TEMPLATE_REQUEST:
     case SELECTED_RESUME_TEMPLATE_REQUEST:
       return {
         ...state,
@@ -42,6 +46,13 @@ export const selectTemplateReducer = (state = {}, action) => {
         templateData: action.payload,
         success: true,
       };
+    case GET_SELECTED_RESUME_TEMPLATE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        templateData: action.payload,
+      };
+    case GET_SELECTED_RESUME_TEMPLATE_FAIL:
     case SELECTED_RESUME_TEMPLATE_FAIL:
       return {
         ...state,

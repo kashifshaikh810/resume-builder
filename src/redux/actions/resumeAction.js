@@ -1,4 +1,4 @@
-import { getDatabase, ref, set } from "firebase/database";
+import { onValue, ref, set } from "firebase/database";
 import { database } from "../../Firebase/FirebaseConfig";
 
 import {
@@ -8,6 +8,9 @@ import {
   SELECTED_RESUME_TEMPLATE_SUCCESS,
   SELECTED_RESUME_TEMPLATE_FAIL,
   CLEAR_ERRORS,
+  GET_SELECTED_RESUME_TEMPLATE_REQUEST,
+  GET_SELECTED_RESUME_TEMPLATE_SUCCESS,
+  GET_SELECTED_RESUME_TEMPLATE_FAIL,
 } from "../constants/resumeConstants";
 
 export const resumeDataSave = (data) => (dispatch) => {
@@ -40,7 +43,6 @@ export const selectResumeTemplateAction =
           dispatch({ type: SELECTED_RESUME_TEMPLATE_SUCCESS, payload: data });
         })
         .catch((error) => {
-          alert(error);
           dispatch({
             type: SELECTED_RESUME_TEMPLATE_FAIL,
             payload: error?.code,
@@ -48,9 +50,21 @@ export const selectResumeTemplateAction =
         });
     } catch (error) {
       dispatch({ type: SELECTED_RESUME_TEMPLATE_FAIL, payload: error?.code });
-      alert(error);
     }
   };
+
+export const getSelectResumeTemplateAction = (user) => (dispatch) => {
+  try {
+    dispatch({ type: GET_SELECTED_RESUME_TEMPLATE_REQUEST });
+    const tempRef = ref(database, "usersSelectedTemplate/" + user?.userId);
+    onValue(tempRef, (snapshot) => {
+      const data = snapshot ? snapshot.val() : {};
+      dispatch({ type: GET_SELECTED_RESUME_TEMPLATE_SUCCESS, payload: data });
+    });
+  } catch (error) {
+    dispatch({ type: GET_SELECTED_RESUME_TEMPLATE_FAIL, payload: error?.code });
+  }
+};
 
 export const clearErrors = () => (dispatch) => {
   dispatch({
