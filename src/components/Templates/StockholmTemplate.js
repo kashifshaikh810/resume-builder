@@ -129,20 +129,21 @@ const StockholmTemplate = (props) => {
                   />
                 </div>
               )}
-              <div className="ml-1">
-                <p
-                  className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+              {professionalSummary && (
+                <div className="ml-1">
+                  <p
+                    className="text-base max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
                     max-[703px]:text-[9px]
                     max-[610px]:text-[8px]
                     font-semibold"
-                >
-                  {summaryInput === "Professional Summary"
-                    ? `Profile`
-                    : summaryInput}
-                </p>
-                <p
-                  className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
+                  >
+                    {summaryInput === "Professional Summary"
+                      ? `Profile`
+                      : summaryInput}
+                  </p>
+                  <p
+                    className="text-sm max-[1004px]:text-[14px] max-[880px]:text-[13px] max-[830px]:text-[12px] 
                     max-[768px]:text-[11px]
                     max-[620px]:text-[10px]
                     max-[703px]:text-[9px]
@@ -151,10 +152,11 @@ const StockholmTemplate = (props) => {
                     max-[535px]:text-[6px]
                     max-[500px]:text-[5px]
                     text-gray-600"
-                >
-                  {professionalSummary}
-                </p>
-              </div>
+                  >
+                    {professionalSummary}
+                  </p>
+                </div>
+              )}
             </div>
 
             {employmentInputList?.length >= 1 ? (
