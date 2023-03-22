@@ -111,11 +111,17 @@ const Header = (props) => {
             className="flex flex-row items-center mainContainer cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <img
-              src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg"
-              className="w-28 h-28 ml-2"
-              alt="icon"
-            />
+            {props?.shown ? (
+              <p>
+                {user && `Hi,`} {user?.firstName} {user?.lastName} &#127801;
+              </p>
+            ) : (
+              <img
+                src="https://s3.resume.io/uploads/country/logo_default/2/for-light-bg.svg"
+                className="w-28 h-28 ml-2"
+                alt="icon"
+              />
+            )}
           </div>
           <div className="flex flex-1 flex-row justify-end items-center mainContainer">
             <p className="text-base">Resume</p>

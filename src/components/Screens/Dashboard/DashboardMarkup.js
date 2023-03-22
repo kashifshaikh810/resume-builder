@@ -8,7 +8,7 @@ import "./styles.css";
 const DashboardMarkup = (props) => {
   return (
     <div className="flex flex-1 flex-col bg-blue-50 pb-8">
-      <Header {...props} />
+      <Header {...props} shown={props?.user} />
 
       {props?.toggleDrawer ? <SideDrawer {...props} /> : <></>}
       <div className="flex flex-1 flex-col items-center justify-center">
