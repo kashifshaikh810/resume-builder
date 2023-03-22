@@ -6,6 +6,7 @@ import { logOutAction } from "../../../redux/actions/authAction";
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
+  const { templateData } = useSelector((state) => state.selectTemplate);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isShowLine, setIsShowLine] = useState("resumes");
@@ -51,6 +52,7 @@ const ResumesCoverLetters = (props) => {
       setIsShowCoverLetterUntitledInput={setIsShowCoverLetterUntitledInput}
       coverLetterData={coverLetterData}
       logOutOnClickHandler={logOutOnClickHandler}
+      templateData={templateData}
     />
   );
 };
