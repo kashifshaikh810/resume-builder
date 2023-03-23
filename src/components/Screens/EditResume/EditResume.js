@@ -12,6 +12,9 @@ const EditResume = (props) => {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
+  const resumeTempId = 29364313;
+  const coverTempId = 54274626;
+
   // cover letters states
   const tabName = useParams()?.tabName;
   const [fullName, setFullName] = useState("");
@@ -46,6 +49,7 @@ const EditResume = (props) => {
   // redux
   const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
+  const { templateData } = useSelector((state) => state.selectTemplate);
 
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
@@ -984,6 +988,9 @@ const EditResume = (props) => {
       letterDetails={letterDetails}
       setLetterDetails={setLetterDetails}
       coverLetterData={coverLetterData}
+      templateData={templateData}
+      resumeTempId={resumeTempId}
+      coverTempId={coverTempId}
     />
   );
 };

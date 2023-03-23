@@ -166,7 +166,7 @@ const EditResumeMarkup = (props) => {
 
             {/* <CoverLetterStockholmTemplate {...props} /> */}
 
-            <CoverLetterNewYorkTemplate {...props} />
+            {/* <CoverLetterNewYorkTemplate {...props} /> */}
 
             {/* <CoverLetterViennaTemplate {...props} /> */}
 
@@ -183,7 +183,13 @@ const EditResumeMarkup = (props) => {
             <div
               className="flex flex-row items-center hover:w-50 hover:h-auto p-1.5 hover:bg-gray-600 hover:cursor-pointer hover:rounded-full"
               onClick={() => {
-                props.navigate(`/app/resumes/id/templates/${props?.tabName}`);
+                props?.tabName === "resumes"
+                  ? props.navigate(
+                      `/app/${props?.tabName}/${props.resumeTempId}/templates`
+                    )
+                  : props.navigate(
+                      `/app/${props?.tabName}/${props.coverTempId}/templates`
+                    );
               }}
             >
               <GrCodeSandbox

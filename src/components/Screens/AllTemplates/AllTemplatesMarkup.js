@@ -154,7 +154,15 @@ const AllTemplatesMarkup = (props) => {
         >
           <div
             className="flex flex-row items-center hover:cursor-pointer hover:bg-gray-700 rounded-full pl-0.5 pr-2.5"
-            onClick={() => navigate(`/app/resumes/id/edit/${props?.tabName}`)}
+            onClick={() =>
+              props?.tabName === "resumes"
+                ? props.navigate(
+                    `/app/${props?.tabName}/${props.resumeTempId}/edit`
+                  )
+                : props.navigate(
+                    `/app/${props?.tabName}/${props.coverTempId}/edit`
+                  )
+            }
           >
             <BiChevronLeft className="text-white text-3xl" />
             <p className="text-white text-base">Back to editor</p>

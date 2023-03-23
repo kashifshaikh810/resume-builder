@@ -22,7 +22,7 @@ import CoverLetterViennaTemplate from "../../CoverLetterTemplatesFromResumesNCov
 import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
-  const { templateData, resumeData } = props;
+  const { templateData, resumeData, resumeTempId, coverTempId } = props;
   const resumeSection = () => {
     if (props?.isShowLine === "resumes") {
       return (
@@ -84,7 +84,9 @@ const ResumesCoverLettersMarkup = (props) => {
               <div
                 className="flex flex-row items-center pt-2"
                 onClick={() =>
-                  props.navigate(`/app/resumes/id/edit/${props?.isShowLine}`)
+                  props.navigate(
+                    `/app/${props?.isShowLine}/${resumeTempId}/edit`
+                  )
                 }
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />
@@ -252,7 +254,9 @@ const ResumesCoverLettersMarkup = (props) => {
               <div
                 className="flex flex-row items-center pt-2"
                 onClick={() =>
-                  props.navigate(`/app/resumes/id/edit/${props?.isShowLine}`)
+                  props.navigate(
+                    `/app/${props?.isShowLine}/${coverTempId}/edit`
+                  )
                 }
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />

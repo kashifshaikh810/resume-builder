@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
 const AllTemplates = (props) => {
@@ -12,6 +13,9 @@ const AllTemplates = (props) => {
   });
 
   const tabName = useParams()?.tabName;
+
+  const resumeTempId = 29364313;
+  const coverTempId = 54274626;
 
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
 
@@ -35,6 +39,8 @@ const AllTemplates = (props) => {
       tabName={tabName}
       coverLetterData={coverLetterData}
       resumeData={data}
+      resumeTempId={resumeTempId}
+      coverTempId={coverTempId}
     />
   );
 };

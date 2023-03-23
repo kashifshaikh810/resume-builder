@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutAction } from "../../../redux/actions/authAction";
+import { getSelectResumeTemplateAction } from "../../../redux/actions/resumeAction";
 
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
   const { templateData } = useSelector((state) => state.selectTemplate);
+  const { user } = useSelector((state) => state.currentUser);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isShowLine, setIsShowLine] = useState("resumes");
   const navigate = props.navigate();
+
+  const resumeTempId = 29364313;
+  const coverTempId = 54274626;
 
   // input
   const [untitledInput, setUntitledInput] = useState("Untitled");
@@ -28,6 +33,10 @@ const ResumesCoverLetters = (props) => {
   const logOutOnClickHandler = () => {
     dispatch(logOutAction());
   };
+
+  useEffect(() => {
+    dispatch(getSelectResumeTemplateAction(user));
+  }, [dispatch, user]);
 
   return (
     <ResumesCoverLettersMarkup
@@ -53,6 +62,8 @@ const ResumesCoverLetters = (props) => {
       coverLetterData={coverLetterData}
       logOutOnClickHandler={logOutOnClickHandler}
       templateData={templateData}
+      resumeTempId={resumeTempId}
+      coverTempId={coverTempId}
     />
   );
 };

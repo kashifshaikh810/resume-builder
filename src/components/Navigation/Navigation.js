@@ -141,7 +141,7 @@ const Navigation = () => {
             )}
             {user ? (
               <Route
-                path="/app/resumes/id/edit/:tabName"
+                path="/app/:tabName/:id/edit"
                 element={
                   <EditResume navigate={useNavigate} params={useParams} />
                 }
@@ -151,7 +151,7 @@ const Navigation = () => {
             )}
             {user ? (
               <Route
-                path="/app/resumes/id/templates/:tabName"
+                path="/app/:tabName/:id/templates"
                 element={
                   <AllTemplates navigate={useNavigate} params={useParams} />
                 }
