@@ -4,6 +4,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import { TiTick } from "react-icons/ti";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
+import { RiLoader4Line } from "react-icons/ri";
 
 import MyButton from "../../MyButton/MyButton";
 import "./styles.css";
@@ -23,6 +24,11 @@ const AllTemplatesMarkup = (props) => {
     isShowTemplateCard,
     setIsShowTemplateCard,
     navigate,
+    selectTemplateHandler,
+    selectTempColorObj,
+    selectTemplateTwoHandler,
+    templateData,
+    loading,
   } = props;
 
   const resumesTemplatesData = [
@@ -83,19 +89,6 @@ const AllTemplatesMarkup = (props) => {
     props?.tabName === "resumes"
       ? resumesTemplatesData
       : coverLetterTemplatesData;
-
-  const selectTempColorObj = (item, index) => {
-    if (
-      isSelectedTemplate.numOfSelectedVal === item.id &&
-      isSelectedTemplate.nameOfSelectedVal === item.value
-    ) {
-      if (isSelectedTemplate?.isChanged) {
-        return "text-white";
-      } else {
-        return "border-[4px] border-blue-400";
-      }
-    }
-  };
 
   return (
     <div
@@ -195,6 +188,17 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         <div className="flex flex-row flex-1 justify-end items-center max-[768px]:justify-center">
+          {loading && (
+            <div className="flex flex-row items-center mr-10">
+              <RiLoader4Line
+                name="RiLoader4Line"
+                size={20}
+                color="#fff"
+                className="mr-2 animate-spin"
+              />
+              <p className="text-white">Updating...</p>
+            </div>
+          )}
           <MyButton
             {...props}
             title="Download PDF"
@@ -228,7 +232,7 @@ const AllTemplatesMarkup = (props) => {
         hidden
         max-[768px]:flex`}
           onClick={() =>
-            isShowTemplateCard === false && navigate("/app/resumes &&/id/edit")
+            isShowTemplateCard === false && navigate("/app/resumes/id/edit")
           }
         >
           <MdClose
@@ -257,17 +261,15 @@ const AllTemplatesMarkup = (props) => {
                     <div
                       key={index}
                       className="cursor-default"
-                      onClick={() => {
-                        setIsSelectedTemplate({
-                          nameOfSelectedVal: item.value,
-                          numOfSelectedVal: item.id,
-                          isChanged: true,
-                        });
-                      }}
+                      onClick={() => selectTemplateHandler(item)}
                     >
                       <p
-                        className={`text-gray-600 text-base pb-1 pl-3 ml-3
-                      ${selectTempColorObj(item, index)}`}
+                        className={` text-base pb-1 pl-3 ml-3
+                      ${
+                        !selectTempColorObj(item, index)
+                          ? `text-gray-600`
+                          : selectTempColorObj(item, index)
+                      }`}
                       >
                         {item.name}
                       </p>
@@ -334,12 +336,7 @@ const AllTemplatesMarkup = (props) => {
                   className={`w-11/12 h-auto rounded-[7px] opacity-1 hover:cursor-pointer
                   hover:border-[4px] hover:border-blue-400 
                   max-[1029px]:mb-4 ${selectTempColorObj(item)}`}
-                  onClick={() => {
-                    setIsSelectedTemplate({
-                      nameOfSelectedVal: item.value,
-                      numOfSelectedVal: item.id,
-                    });
-                  }}
+                  onClick={() => selectTemplateTwoHandler(item)}
                 />
               </div>
             );
@@ -347,44 +344,48 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         {/* template results & resumes && templates */}
-        {props.tabName === "resumes" &&
-        isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+        {(props.tabName === "resumes" &&
+          isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
+        templateData?.selectedTemplate === "Toronto" ? (
           <TorontoTemplate {...props} />
         ) : null}
 
-        {props.tabName === "resumes" &&
-        isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
+        {(props.tabName === "resumes" &&
+          isSelectedTemplate.nameOfSelectedVal === "Stockholm") ||
+        templateData?.selectedTemplate === "Stockholm" ? (
           <StockholmTemplate {...props} />
         ) : null}
 
-        {props.tabName === "resumes" &&
-        isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
+        {(props.tabName === "resumes" &&
+          isSelectedTemplate.nameOfSelectedVal === "New York") ||
+        templateData?.selectedTemplate === "New York" ? (
           <NewYorkTemplate {...props} />
         ) : null}
 
-        {props.tabName === "resumes" &&
-        isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
+        {(props.tabName === "resumes" &&
+          isSelectedTemplate.nameOfSelectedVal === "Vienna") ||
+        templateData?.selectedTemplate === "Vienna" ? (
           <ViennaTemplate {...props} />
         ) : null}
 
         {/* template results & cover letter tab templates */}
         {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "toronto" ? (
+        isSelectedTemplate.nameOfSelectedVal === "Toronto" ? (
           <TorontoCoverLetterTemplate {...props} />
         ) : null}
 
         {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "stockholm" ? (
+        isSelectedTemplate.nameOfSelectedVal === "Stockholm" ? (
           <StockholmCoverLetterTemplate {...props} />
         ) : null}
 
         {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "new-york" ? (
+        isSelectedTemplate.nameOfSelectedVal === "New York" ? (
           <NewYorkCoverLetterTemplate {...props} />
         ) : null}
 
         {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "vienna" ? (
+        isSelectedTemplate.nameOfSelectedVal === "Vienna" ? (
           <ViennaCoverLetterTemplate {...props} />
         ) : null}
 
