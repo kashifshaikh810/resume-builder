@@ -28,7 +28,7 @@ export const coverLetterDataSave = (coverLetterData) => (dispatch) => {
 };
 
 export const selectResumeTemplateAction =
-  (user, templateName) => (dispatch) => {
+  (user, templateName, isSelectedTemplate) => (dispatch) => {
     try {
       dispatch({ type: SELECTED_RESUME_TEMPLATE_REQUEST });
       const data = {
@@ -36,6 +36,7 @@ export const selectResumeTemplateAction =
         username: `${user?.firstName} ${user?.lastName}`,
         email: user?.email,
         selectedTemplate: templateName,
+        isSelectedTemplate,
       };
 
       set(ref(database, "usersSelectedTemplate/" + user?.userId), data)
