@@ -85,6 +85,7 @@ const EditResumeMarkup = (props) => {
     setHiringManagerName,
     letterDetails,
     setLetterDetails,
+    templateData,
   } = props;
 
   const descIcons = [
@@ -96,6 +97,27 @@ const EditResumeMarkup = (props) => {
     { icon: () => <FaListUl />, name: "" },
     { icon: () => <TiAttachmentOutline />, name: "" },
   ];
+
+  const resumesTemplates = () => {
+    if (tabName === "resumes" && templateData?.selectedTemplate === "Toronto") {
+      return <TorontoTemplate {...props} />;
+    } else if (
+      tabName === "resumes" &&
+      templateData?.selectedTemplate === "Stockholm"
+    ) {
+      return <StockholmTemplate {...props} />;
+    } else if (
+      tabName === "resumes" &&
+      templateData?.selectedTemplate === "New York"
+    ) {
+      return <NewYorkTemplate {...props} />;
+    } else if (
+      tabName === "resumes" &&
+      templateData?.selectedTemplate === "Vienna"
+    ) {
+      return <ViennaTemplate {...props} />;
+    }
+  };
 
   const previewCvSection = () => {
     if (props?.screenWidth >= 1030) {
@@ -153,13 +175,7 @@ const EditResumeMarkup = (props) => {
             onMouseLeave={() => props.setIsHovered(false)}
           >
             {/* resume tab templates */}
-            {/* <TorontoTemplate {...props} /> */}
-
-            {/* <StockholmTemplate {...props} /> */}
-
-            {/* <NewYorkTemplate {...props} /> */}
-
-            {/* <ViennaTemplate {...props} /> */}
+            {resumesTemplates()}
 
             {/* cover letter tab templates */}
             {/* <CoverLetterTorontoTemplate {...props} /> */}
@@ -424,7 +440,7 @@ const EditResumeMarkup = (props) => {
               <div
                 className="flex flex-row items-center"
                 onMouseEnter={() => {
-                  props?.tabName === "resumes" &&
+                  tabName === "resumes" &&
                     !!props?.personalDetailInput &&
                     props.setIsShowPersonalIcon(true);
                 }}
