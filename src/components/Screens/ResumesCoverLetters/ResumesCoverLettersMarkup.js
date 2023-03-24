@@ -22,8 +22,17 @@ import CoverLetterViennaTemplate from "../../CoverLetterTemplatesFromResumesNCov
 import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
-  const { templateData, resumeData, resumeTempId, coverTempId, titleData } =
-    props;
+  const {
+    templateData,
+    resumeData,
+    resumeTempId,
+    coverTempId,
+    titleData,
+    updateResumeTitleDate,
+    updateResumeTitleMonth,
+    updateResumeTitleTime,
+  } = props;
+
   const resumeSection = () => {
     if (props?.isShowLine === "resumes") {
       return (
@@ -64,21 +73,30 @@ const ResumesCoverLettersMarkup = (props) => {
                     />
                   ) : (
                     <p className="font-bold text-lg hover:cursor-default untitled-text">
-                      {titleData?.resumeTitle
-                        ? titleData?.resumeTitle
-                        : "Untitled"}
+                      {titleData ? titleData?.resumeTitle : "Untitled"}
                     </p>
                   )}
                   {props?.isShowUntitledIcon && (
                     <TiPencil
                       className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
+                      onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                          alert("hi");
+                        }
+                      }}
                       onClick={() => props?.resumeTitleOnClickHandler()}
                     />
                   )}
                 </div>
-                <p className="text-xs text-gray-400">
-                  Updated 11 November, 15:52
-                </p>
+                {updateResumeTitleDate &&
+                updateResumeTitleMonth &&
+                updateResumeTitleTime ? (
+                  <p className="text-xs text-gray-400">
+                    {`Updated ${updateResumeTitleDate} ${updateResumeTitleMonth}, ${updateResumeTitleTime}`}
+                  </p>
+                ) : (
+                  <></>
+                )}
               </div>
               <div
                 className="flex flex-row items-center pt-2"

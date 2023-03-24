@@ -14,6 +14,9 @@ import {
   RESUME_TITLE_REQUEST,
   RESUME_TITLE_SUCCESS,
   RESUME_TITLE_FAIL,
+  GET_RESUME_TITLE_FAIL,
+  GET_RESUME_TITLE_SUCCESS,
+  GET_RESUME_TITLE_REQUEST,
 } from "../constants/resumeConstants";
 
 export const resumeDataSave = (data) => (dispatch) => {
@@ -85,6 +88,19 @@ export const resumeTitleAction = (user, data) => (dispatch) => {
       });
   } catch (error) {
     dispatch({ type: RESUME_TITLE_FAIL, payload: error?.code });
+  }
+};
+
+export const getResumeTitleAction = (user) => (dispatch) => {
+  try {
+    dispatch({ type: GET_RESUME_TITLE_REQUEST });
+    const tempRef = ref(database, "userResumesTitle/" + user?.userId);
+    onValue(tempRef, (snapshot) => {
+      const data = snapshot ? snapshot.val() : {};
+      dispatch({ type: GET_RESUME_TITLE_SUCCESS, payload: data });
+    });
+  } catch (error) {
+    dispatch({ type: GET_RESUME_TITLE_FAIL, payload: error?.code });
   }
 };
 

@@ -12,6 +12,9 @@ import {
   RESUME_TITLE_REQUEST,
   RESUME_TITLE_SUCCESS,
   RESUME_TITLE_FAIL,
+  GET_RESUME_TITLE_REQUEST,
+  GET_RESUME_TITLE_SUCCESS,
+  GET_RESUME_TITLE_FAIL,
 } from "../constants/resumeConstants";
 
 export const resumeDataReducer = (
@@ -79,17 +82,20 @@ export const selectTemplateReducer = (state = {}, action) => {
 
 export const resumeTitleReducer = (state = {}, action) => {
   switch (action.type) {
+    case GET_RESUME_TITLE_REQUEST:
     case RESUME_TITLE_REQUEST:
       return {
         ...state,
         loading: true,
       };
+    case GET_RESUME_TITLE_SUCCESS:
     case RESUME_TITLE_SUCCESS:
       return {
         ...state,
         loading: false,
         titleData: action.payload,
       };
+    case GET_RESUME_TITLE_FAIL:
     case RESUME_TITLE_FAIL:
       return {
         ...state,

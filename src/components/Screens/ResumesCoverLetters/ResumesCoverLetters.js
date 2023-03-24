@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutAction } from "../../../redux/actions/authAction";
 import {
   clearErrors,
+  getResumeTitleAction,
   getSelectResumeTemplateAction,
   resumeTitleAction,
 } from "../../../redux/actions/resumeAction";
@@ -20,6 +21,35 @@ const ResumesCoverLetters = (props) => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isShowLine, setIsShowLine] = useState("resumes");
   const navigate = props.navigate();
+
+  const updateResumeTitleDate = new Date(
+    titleData?.resumeTitleUpdated
+  ).getDate();
+  const month = new Date(titleData?.resumeTitleUpdated).getMonth();
+
+  let monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const updateResumeTitleMonth = new Date(titleData?.resumeTitleUpdated)
+    ? monthNames[month]
+    : "";
+
+  const updateResumeTitleTime =
+    new Date(titleData?.resumeTitleUpdated).getHours() +
+    ":" +
+    new Date(titleData?.resumeTitleUpdated).getMinutes();
 
   const resumeTempId = 29364313;
   const coverTempId = 54274626;
@@ -43,7 +73,7 @@ const ResumesCoverLetters = (props) => {
 
   const resumeTitleOnClickHandler = () => {
     const data = {
-      resumeTitle: untitledInput,
+      resumeTitle: titleData ? titleData?.resumeTitle : untitledInput,
       resumeTitleUpdated: Date.now(),
     };
 
@@ -53,6 +83,7 @@ const ResumesCoverLetters = (props) => {
 
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
+    dispatch(getResumeTitleAction(user));
 
     if (error) {
       alert(error);
@@ -88,6 +119,9 @@ const ResumesCoverLetters = (props) => {
       coverTempId={coverTempId}
       resumeTitleOnClickHandler={resumeTitleOnClickHandler}
       titleData={titleData}
+      updateResumeTitleDate={updateResumeTitleDate}
+      updateResumeTitleMonth={updateResumeTitleMonth}
+      updateResumeTitleTime={updateResumeTitleTime}
     />
   );
 };
