@@ -223,8 +223,40 @@ const ResumesTemplates = (props) => {
     },
   ];
 
-  const selectTemplate = (user, templateName) => {
-    dispatch(selectResumeTemplateAction(user, templateName));
+  const selectTemplate = (user, templateName, index) => {
+    if (templateData?.selectedTemplate === "Toronto") {
+      const isSelectedTemplate = {
+        nameOfSelectedVal: templateName,
+        numOfSelectedVal: index,
+      };
+      dispatch(
+        selectResumeTemplateAction(user, templateName, isSelectedTemplate)
+      );
+    } else if (templateData?.selectedTemplate === "Stockholm") {
+      const isSelectedTemplate = {
+        nameOfSelectedVal: templateName,
+        numOfSelectedVal: index,
+      };
+      dispatch(
+        selectResumeTemplateAction(user, templateName, isSelectedTemplate)
+      );
+    } else if (templateData?.selectedTemplate === "New York") {
+      const isSelectedTemplate = {
+        nameOfSelectedVal: templateName,
+        numOfSelectedVal: index,
+      };
+      dispatch(
+        selectResumeTemplateAction(user, templateName, isSelectedTemplate)
+      );
+    } else if (templateData?.selectedTemplate === "Vienna") {
+      const isSelectedTemplate = {
+        nameOfSelectedVal: templateName,
+        numOfSelectedVal: index,
+      };
+      dispatch(
+        selectResumeTemplateAction(user, templateName, isSelectedTemplate)
+      );
+    }
   };
 
   useEffect(() => {
@@ -232,6 +264,8 @@ const ResumesTemplates = (props) => {
       alert(error);
       dispatch(clearErrors());
     }
+
+    dispatch(getSelectResumeTemplateAction(user));
 
     if (success) {
       dispatch(getSelectResumeTemplateAction(user));
