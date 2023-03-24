@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import {
   getSelectResumeTemplateAction,
   selectResumeTemplateAction,
 } from "../../../redux/actions/resumeAction";
-import { SELECTED_RESUME_TEMPLATE_RESET } from "../../../redux/constants/resumeConstants";
 
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
