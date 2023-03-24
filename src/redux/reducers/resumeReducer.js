@@ -9,6 +9,9 @@ import {
   GET_SELECTED_RESUME_TEMPLATE_REQUEST,
   GET_SELECTED_RESUME_TEMPLATE_SUCCESS,
   GET_SELECTED_RESUME_TEMPLATE_FAIL,
+  RESUME_TITLE_REQUEST,
+  RESUME_TITLE_SUCCESS,
+  RESUME_TITLE_FAIL,
 } from "../constants/resumeConstants";
 
 export const resumeDataReducer = (
@@ -63,6 +66,35 @@ export const selectTemplateReducer = (state = {}, action) => {
       return {
         ...state,
         success: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const resumeTitleReducer = (state = {}, action) => {
+  switch (action.type) {
+    case RESUME_TITLE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case RESUME_TITLE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        titleData: action.payload,
+      };
+    case RESUME_TITLE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     case CLEAR_ERRORS:
       return {

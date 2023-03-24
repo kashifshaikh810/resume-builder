@@ -22,7 +22,8 @@ import CoverLetterViennaTemplate from "../../CoverLetterTemplatesFromResumesNCov
 import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const ResumesCoverLettersMarkup = (props) => {
-  const { templateData, resumeData, resumeTempId, coverTempId } = props;
+  const { templateData, resumeData, resumeTempId, coverTempId, titleData } =
+    props;
   const resumeSection = () => {
     if (props?.isShowLine === "resumes") {
       return (
@@ -63,17 +64,15 @@ const ResumesCoverLettersMarkup = (props) => {
                     />
                   ) : (
                     <p className="font-bold text-lg hover:cursor-default untitled-text">
-                      {props?.untitledInput ? props?.untitledInput : "Untitled"}
+                      {titleData?.resumeTitle
+                        ? titleData?.resumeTitle
+                        : "Untitled"}
                     </p>
                   )}
                   {props?.isShowUntitledIcon && (
                     <TiPencil
                       className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
-                      onClick={() =>
-                        props.setIsShowUntitledInput(
-                          !props?.isShowUntitledInput
-                        )
-                      }
+                      onClick={() => props?.resumeTitleOnClickHandler()}
                     />
                   )}
                 </div>

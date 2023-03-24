@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import { useDispatch, useSelector } from "react-redux";
 import { logOutAction } from "../../../redux/actions/authAction";
-import { getSelectResumeTemplateAction } from "../../../redux/actions/resumeAction";
+import {
+  clearErrors,
+  getSelectResumeTemplateAction,
+  resumeTitleAction,
+} from "../../../redux/actions/resumeAction";
 
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
   const { templateData } = useSelector((state) => state.selectTemplate);
+  const { loading, titleData, error } = useSelector(
+    (state) => state.resumeTitle
+  );
   const { user } = useSelector((state) => state.currentUser);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -34,9 +41,24 @@ const ResumesCoverLetters = (props) => {
     dispatch(logOutAction());
   };
 
+  const resumeTitleOnClickHandler = () => {
+    const data = {
+      resumeTitle: untitledInput,
+      resumeTitleUpdated: Date.now(),
+    };
+
+    dispatch(resumeTitleAction(user, data));
+    setIsShowUntitledInput(!isShowUntitledInput);
+  };
+
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
-  }, [dispatch, user]);
+
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, user, error]);
 
   return (
     <ResumesCoverLettersMarkup
@@ -64,6 +86,8 @@ const ResumesCoverLetters = (props) => {
       templateData={templateData}
       resumeTempId={resumeTempId}
       coverTempId={coverTempId}
+      resumeTitleOnClickHandler={resumeTitleOnClickHandler}
+      titleData={titleData}
     />
   );
 };
