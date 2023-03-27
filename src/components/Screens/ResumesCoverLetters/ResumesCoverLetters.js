@@ -55,7 +55,9 @@ const ResumesCoverLetters = (props) => {
   const coverTempId = 54274626;
 
   // input
-  const [untitledInput, setUntitledInput] = useState("Untitled");
+  const [untitledInput, setUntitledInput] = useState(
+    titleData?.resumeTitle ? titleData?.resumeTitle : "Untitled"
+  );
   const [isShowUntitledIcon, setIsShowUntitledIcon] = useState(false);
   const [isShowUntitledInput, setIsShowUntitledInput] = useState(false);
 
@@ -73,12 +75,14 @@ const ResumesCoverLetters = (props) => {
 
   const resumeTitleOnClickHandler = () => {
     const data = {
-      resumeTitle: titleData ? titleData?.resumeTitle : untitledInput,
+      resumeTitle: untitledInput,
       resumeTitleUpdated: Date.now(),
     };
-
-    dispatch(resumeTitleAction(user, data));
     setIsShowUntitledInput(!isShowUntitledInput);
+
+    if (isShowUntitledInput) {
+      dispatch(resumeTitleAction(user, data));
+    }
   };
 
   useEffect(() => {
@@ -90,6 +94,12 @@ const ResumesCoverLetters = (props) => {
       dispatch(clearErrors());
     }
   }, [dispatch, user, error]);
+
+  useEffect(() => {
+    if (titleData) {
+      setUntitledInput(titleData?.resumeTitle);
+    }
+  }, [titleData]);
 
   return (
     <ResumesCoverLettersMarkup

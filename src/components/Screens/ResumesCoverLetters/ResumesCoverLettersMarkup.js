@@ -73,17 +73,14 @@ const ResumesCoverLettersMarkup = (props) => {
                     />
                   ) : (
                     <p className="font-bold text-lg hover:cursor-default untitled-text">
-                      {titleData ? titleData?.resumeTitle : "Untitled"}
+                      {titleData?.resumeTitle
+                        ? titleData?.resumeTitle
+                        : "Untitled"}
                     </p>
                   )}
                   {props?.isShowUntitledIcon && (
                     <TiPencil
                       className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
-                      onKeyPress={(e) => {
-                        if (e.key === "Enter") {
-                          alert("hi");
-                        }
-                      }}
                       onClick={() => props?.resumeTitleOnClickHandler()}
                     />
                   )}
