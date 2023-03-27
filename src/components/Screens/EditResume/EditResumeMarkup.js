@@ -86,6 +86,8 @@ const EditResumeMarkup = (props) => {
     letterDetails,
     setLetterDetails,
     templateData,
+    editResumeTitleOnPressHandler,
+    titleData,
   } = props;
 
   const descIcons = [
@@ -415,7 +417,7 @@ const EditResumeMarkup = (props) => {
                   onChange={(e) => props.setTitleInput(e.target.value)}
                   onKeyPress={(e) => {
                     if (e.key === "Enter") {
-                      props.setIsShowTitleInput(!props?.isShowTitleInput);
+                      editResumeTitleOnPressHandler();
                     }
                   }}
                 />
@@ -426,7 +428,7 @@ const EditResumeMarkup = (props) => {
                     props.setIsShowTitleInput(!props?.isShowTitleInput);
                   }}
                 >
-                  {props?.titleInput ? props?.titleInput : "Untitled"}
+                  {titleData?.resumeTitle ? titleData?.resumeTitle : "Untitled"}
                 </p>
               )}
             </div>

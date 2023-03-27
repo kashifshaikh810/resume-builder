@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   coverLetterDataSave,
   resumeDataSave,
+  resumeTitleAction,
 } from "../../../redux/actions/resumeAction";
 
 import EditResumeMarkup from "./EditResumeMarkup";
@@ -50,7 +51,8 @@ const EditResume = (props) => {
   const dispatch = useDispatch();
   const { data, coverLetterData } = useSelector((state) => state.resumeData);
   const { templateData } = useSelector((state) => state.selectTemplate);
-
+  const { user } = useSelector((state) => state.currentUser);
+  const { titleData } = useSelector((state) => state.resumeTitle);
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
   const [employmentInput, setEmploymentInput] = useState("Employment History");
@@ -541,6 +543,24 @@ const EditResume = (props) => {
     setShowModal(false);
   };
 
+  const editResumeTitleOnPressHandler = () => {
+    const data = {
+      resumeTitle: titleInput,
+      resumeTitleUpdated: Date.now(),
+    };
+    setIsShowTitleInput(!isShowTitleInput);
+
+    if (isShowTitleInput) {
+      dispatch(resumeTitleAction(user, data));
+    }
+  };
+
+  useEffect(() => {
+    if (titleData) {
+      setTitleInput(titleData?.resumeTitle);
+    }
+  }, [titleData]);
+
   useEffect(() => {
     const onScroll = (e) => {
       setScrollValue(e.target.documentElement.scrollTop);
@@ -991,6 +1011,8 @@ const EditResume = (props) => {
       templateData={templateData}
       resumeTempId={resumeTempId}
       coverTempId={coverTempId}
+      editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
+      titleData={titleData}
     />
   );
 };
