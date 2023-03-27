@@ -49,7 +49,9 @@ const EditResume = (props) => {
 
   // redux
   const dispatch = useDispatch();
-  const { data, coverLetterData } = useSelector((state) => state.resumeData);
+  const { resumeTemplateData, coverLetterData } = useSelector(
+    (state) => state.resumeData
+  );
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { user } = useSelector((state) => state.currentUser);
   const { titleData } = useSelector((state) => state.resumeTitle);
@@ -704,7 +706,7 @@ const EditResume = (props) => {
       letterDetails,
     };
 
-    dispatch(resumeDataSave(resumeData));
+    dispatch(resumeDataSave(user, resumeData));
 
     dispatch(coverLetterDataSave(dataOfCoverLetter));
   }, [
@@ -920,7 +922,7 @@ const EditResume = (props) => {
       setProfessionalSummary={setProfessionalSummary}
       hobbies={hobbies}
       setHobbies={setHobbies}
-      resumeData={data}
+      resumeData={resumeTemplateData}
       coursesInputList={coursesInputList}
       coursesInput={coursesInput}
       setCoursesInput={setCoursesInput}

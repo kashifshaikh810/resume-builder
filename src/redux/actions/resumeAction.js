@@ -2,7 +2,6 @@ import { onValue, ref, set } from "firebase/database";
 import { database } from "../../Firebase/FirebaseConfig";
 
 import {
-  RESUME_DATA,
   COVER_LETTER_DATA,
   SELECTED_RESUME_TEMPLATE_REQUEST,
   SELECTED_RESUME_TEMPLATE_SUCCESS,
@@ -17,13 +16,33 @@ import {
   GET_RESUME_TITLE_FAIL,
   GET_RESUME_TITLE_SUCCESS,
   GET_RESUME_TITLE_REQUEST,
+  RESUME_DATA_REQUEST,
+  RESUME_DATA_SUCCESS,
+  RESUME_DATA_FAIL,
 } from "../constants/resumeConstants";
 
-export const resumeDataSave = (data) => (dispatch) => {
-  dispatch({
-    type: RESUME_DATA,
-    payload: data,
-  });
+export const resumeDataSave = (user, data) => (dispatch) => {
+  try {
+    dispatch({ type: RESUME_DATA_REQUEST });
+    const resumeData = {
+      data,
+      username: `${user?.firstName} ${user?.lastName}`,
+      userId: user?.userId,
+    };
+
+    set(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
+      .then(() => {
+        dispatch({ type: RESUME_DATA_SUCCESS, payload: resumeData });
+      })
+      .catch((error) => {
+        dispatch({
+          type: RESUME_DATA_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({ type: RESUME_DATA_FAIL, payload: error?.code });
+  }
 };
 
 export const coverLetterDataSave = (coverLetterData) => (dispatch) => {
