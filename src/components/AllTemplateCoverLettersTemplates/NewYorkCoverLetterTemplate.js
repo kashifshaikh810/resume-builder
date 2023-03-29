@@ -10,7 +10,7 @@ const NewYorkCoverLetterTemplate = (props) => {
     companyName,
     hiringManagerName,
     letterDetails,
-  } = props?.coverLetterData;
+  } = props?.coverLetterData || {};
 
   return (
     <div

@@ -50,7 +50,7 @@ const NewYorkTemplate = (props) => {
     languagesInput,
     websiteInput,
     disabledPreferences,
-  } = props?.resumeData;
+  } = props?.resumeData || {};
 
   const levelWidth = {
     Novice: "w-[30px]",

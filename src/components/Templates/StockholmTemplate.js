@@ -50,7 +50,7 @@ const StockholmTemplate = (props) => {
     languagesInput,
     websiteInput,
     disabledPreferences,
-  } = props?.resumeData;
+  } = props?.resumeData || {};
 
   const linerProgressLine = {
     Novice: "w-[80px]",

@@ -42,7 +42,7 @@ const TorontoTemplate = (props) => {
     languagesInput,
     websiteInput,
     disabledPreferences,
-  } = props?.resumeData;
+  } = props?.resumeData || {};
 
   const levelNum = {
     Novice: 1,

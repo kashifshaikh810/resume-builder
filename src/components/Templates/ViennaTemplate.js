@@ -44,7 +44,7 @@ const ViennaTemplate = (props) => {
     languagesInput,
     websiteInput,
     disabledPreferences,
-  } = props?.resumeData;
+  } = props?.resumeData || {};
 
   useEffect(() => {
     props.setTotalPage(2);

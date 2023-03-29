@@ -10,7 +10,7 @@ const ViennaCoverLetterTemplate = (props) => {
     companyName,
     hiringManagerName,
     letterDetails,
-  } = props?.coverLetterData;
+  } = props?.coverLetterData || {};
 
   return (
     <div
