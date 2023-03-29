@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import {
+  getResumeData,
   getSelectResumeTemplateAction,
   selectResumeTemplateAction,
 } from "../../../redux/actions/resumeAction";
@@ -24,7 +25,11 @@ const AllTemplates = (props) => {
 
   const dispatch = useDispatch();
 
-  const { data, coverLetterData } = useSelector((state) => state.resumeData);
+  const { resumeTemplateData, coverLetterData } = useSelector(
+    (state) => state.resumeData
+  );
+  const { resumeTemplateGetData } = useSelector((state) => state.getResumeData);
+
   const { user } = useSelector((state) => state.currentUser);
   const { loading, templateData } = useSelector(
     (state) => state.selectTemplate
@@ -81,6 +86,7 @@ const AllTemplates = (props) => {
 
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
+    dispatch(getResumeData(user));
   }, [dispatch, user]);
 
   return (
@@ -97,7 +103,11 @@ const AllTemplates = (props) => {
       setTotalPage={setTotalPage}
       tabName={tabName}
       coverLetterData={coverLetterData}
-      resumeData={data}
+      resumeData={
+        resumeTemplateData?.data
+          ? resumeTemplateData?.data
+          : resumeTemplateGetData?.data
+      }
       resumeTempId={resumeTempId}
       coverTempId={coverTempId}
       selectTemplateHandler={selectTemplateHandler}
