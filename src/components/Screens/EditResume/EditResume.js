@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   coverLetterDataSave,
+  getResumeData,
   getResumeTitleAction,
   getSelectResumeTemplateAction,
   resumeDataSave,
@@ -54,6 +55,8 @@ const EditResume = (props) => {
   const { loading, resumeTemplateData, coverLetterData } = useSelector(
     (state) => state.resumeData
   );
+  const { loading: resumeTemplateGetDataLoading, resumeTemplateGetData } =
+    useSelector((state) => state.getResumeData);
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { user } = useSelector((state) => state.currentUser);
   const { titleData } = useSelector((state) => state.resumeTitle);
@@ -658,26 +661,34 @@ const EditResume = (props) => {
     dispatch(getSelectResumeTemplateAction(user));
 
     dispatch(getResumeTitleAction(user));
+
+    dispatch(getResumeData(user));
   }, [dispatch, user]);
 
   useEffect(() => {
+    const data = resumeTemplateGetData?.data;
+
     let resumeData = {
-      profileImage,
-      wantedJobTitle,
-      firstName,
-      lastName,
-      email,
-      phone,
-      country,
-      city,
-      address,
-      postalCode,
-      drivingLicense,
-      nationality,
-      placeOfBirth,
-      dateOfBirth,
-      professionalSummary,
-      employmentInputList,
+      profileImage: profileImage ? profileImage : data?.profileImage,
+      wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
+      firstName: firstName ? firstName : data?.firstName,
+      lastName: lastName ? lastName : data?.lastName,
+      email: email ? email : data?.email,
+      phone: phone ? phone : data?.phone,
+      country: country ? country : data?.country,
+      city: city ? city : data?.city,
+      address: address ? address : data?.address,
+      postalCode: postalCode ? postalCode : data?.postalCode,
+      drivingLicense: drivingLicense ? drivingLicense : data?.drivingLicense,
+      nationality: nationality ? nationality : data?.nationality,
+      placeOfBirth: placeOfBirth ? placeOfBirth : data?.placeOfBirth,
+      dateOfBirth: dateOfBirth ? dateOfBirth : data?.dateOfBirth,
+      professionalSummary: professionalSummary
+        ? professionalSummary
+        : data?.professionalSummary,
+      employmentInputList: employmentInputList
+        ? employmentInputList
+        : data?.employmentInputList,
       educationInputList,
       websiteInputList,
       skillsInputList,
@@ -767,8 +778,33 @@ const EditResume = (props) => {
     hiringManagerName,
     letterDetails,
     user,
+    resumeTemplateGetData,
   ]);
 
+  // set states from database
+  useEffect(() => {
+    const resumeData = resumeTemplateGetData?.data;
+    setWantedJobTitle(resumeData?.wantedJobTitle);
+    setProfileImage(resumeData?.profileImage);
+    setFirstName(resumeData?.firstName);
+    setLastName(resumeData?.lastName);
+    setEmail(resumeData?.email);
+    setPhone(resumeData?.phone);
+    setCountry(resumeData?.country);
+    setCity(resumeData?.city);
+    setAddress(resumeData?.address);
+    setPostalCode(resumeData?.postalCode);
+    setDrivingLicense(resumeData?.drivingLicense);
+    setNationality(resumeData?.nationality);
+    setDateOfBirth(resumeData?.dateOfBirth);
+    setPlaceOfBirth(resumeData?.placeOfBirth);
+    setProfessionalSummary(resumeData?.professionalSummary);
+    if (resumeData?.employmentInputList?.length >= 1) {
+      setEmploymentInputList(resumeData?.employmentInputList);
+    }
+  }, [resumeTemplateGetData]);
+
+  console.log(employmentInputList);
   return (
     <EditResumeMarkup
       {...props}
@@ -931,7 +967,11 @@ const EditResume = (props) => {
       setProfessionalSummary={setProfessionalSummary}
       hobbies={hobbies}
       setHobbies={setHobbies}
-      resumeData={resumeTemplateData?.data}
+      resumeData={
+        resumeTemplateData?.data
+          ? resumeTemplateData?.data
+          : resumeTemplateGetData?.data
+      }
       coursesInputList={coursesInputList}
       coursesInput={coursesInput}
       setCoursesInput={setCoursesInput}
@@ -1024,7 +1064,7 @@ const EditResume = (props) => {
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
-      loading={loading}
+      loading={loading ? loading : resumeTemplateGetDataLoading}
     />
   );
 };

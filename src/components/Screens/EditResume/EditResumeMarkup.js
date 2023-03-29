@@ -1037,7 +1037,7 @@ const EditResumeMarkup = (props) => {
                       <MyButton
                         {...props}
                         title={
-                          props.employmentInputList.length === 0
+                          props.employmentInputList?.length === 0
                             ? "Add employment"
                             : "Add one more employment"
                         }
