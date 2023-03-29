@@ -8,6 +8,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
 import {
+  getResumeDataReducer,
   resumeDataReducer,
   resumeTitleReducer,
   selectTemplateReducer,
@@ -30,6 +31,7 @@ const reducer = combineReducers({
   deleteUser: deleteUserReducer,
   selectTemplate: selectTemplateReducer,
   resumeTitle: resumeTitleReducer,
+  getResumeData: getResumeDataReducer,
 });
 
 let initialState = {};

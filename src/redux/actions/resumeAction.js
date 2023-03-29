@@ -19,7 +19,23 @@ import {
   RESUME_DATA_REQUEST,
   RESUME_DATA_SUCCESS,
   RESUME_DATA_FAIL,
+  GET_RESUME_DATA_REQUEST,
+  GET_RESUME_DATA_SUCCESS,
+  GET_RESUME_DATA_FAIL,
 } from "../constants/resumeConstants";
+
+export const getResumeData = (user) => (dispatch) => {
+  try {
+    dispatch({ type: GET_RESUME_DATA_REQUEST });
+    const tempRef = ref(database, "userResumeTemplateData/" + user?.userId);
+    onValue(tempRef, (snapshot) => {
+      const data = snapshot ? snapshot.val() : {};
+      dispatch({ type: GET_RESUME_DATA_SUCCESS, payload: data });
+    });
+  } catch (error) {
+    dispatch({ type: GET_RESUME_DATA_FAIL, payload: error?.code });
+  }
+};
 
 export const resumeDataSave = (user, data) => (dispatch) => {
   try {

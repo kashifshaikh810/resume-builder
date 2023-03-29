@@ -1,6 +1,5 @@
 import {
   COVER_LETTER_DATA,
-  RESUME_DATA,
   SELECTED_RESUME_TEMPLATE_REQUEST,
   SELECTED_RESUME_TEMPLATE_SUCCESS,
   SELECTED_RESUME_TEMPLATE_FAIL,
@@ -18,12 +17,12 @@ import {
   RESUME_DATA_REQUEST,
   RESUME_DATA_SUCCESS,
   RESUME_DATA_FAIL,
+  GET_RESUME_DATA_REQUEST,
+  GET_RESUME_DATA_SUCCESS,
+  GET_RESUME_DATA_FAIL,
 } from "../constants/resumeConstants";
 
-export const resumeDataReducer = (
-  state = { resumeTemplateData: [], coverLetterData: [] },
-  action
-) => {
+export const resumeDataReducer = (state = {}, action) => {
   switch (action.type) {
     case RESUME_DATA_REQUEST:
       return {
@@ -51,6 +50,35 @@ export const resumeDataReducer = (
       return {
         ...state,
         coverLetterData: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getResumeDataReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_RESUME_DATA_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case GET_RESUME_DATA_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        resumeTemplateGetData: action.payload,
+      };
+    case GET_RESUME_DATA_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
       };
     default:
       return state;
