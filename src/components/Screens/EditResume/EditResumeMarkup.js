@@ -1,7 +1,11 @@
 import React from "react";
 import { TfiUser } from "react-icons/tfi";
 import { IoCloudDone } from "react-icons/io5";
-import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import {
+  RiArrowLeftSLine,
+  RiArrowRightSLine,
+  RiLoader4Fill,
+} from "react-icons/ri";
 import { GrCodeSandbox, GrStrikeThrough, GrUnderline } from "react-icons/gr";
 import { BiArrowBack, BiPlus, BiQuestionMark } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
@@ -88,6 +92,7 @@ const EditResumeMarkup = (props) => {
     templateData,
     editResumeTitleOnPressHandler,
     titleData,
+    loading,
   } = props;
 
   const descIcons = [
@@ -126,8 +131,20 @@ const EditResumeMarkup = (props) => {
       return (
         <div className="bg-gray-500 flex flex-col flex-wrap w-6/12 min-h-screen h-96 fixed right-0 unselectable">
           <div className="flex flex-row items-center pl-16 ml-16">
-            <IoCloudDone size={30} className="text-gray-600 ml-2 mr-1" />
-            <p className="text-xs text-white">Saved</p>
+            {loading ? (
+              <>
+                <RiLoader4Fill
+                  size={30}
+                  className="text-white ml-2 mr-2 animate-spin"
+                />
+                <p className="text-xs text-white">Saving...</p>
+              </>
+            ) : (
+              <>
+                <IoCloudDone size={30} className="text-gray-600 ml-2 mr-2" />
+                <p className="text-xs text-white">Saved</p>
+              </>
+            )}
 
             <div className="flex flex-row items-center w-8/12 justify-end">
               <RiArrowLeftSLine

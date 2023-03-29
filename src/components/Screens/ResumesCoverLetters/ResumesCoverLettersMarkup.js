@@ -40,7 +40,7 @@ const ResumesCoverLettersMarkup = (props) => {
           <div className="flex flex-row w-full justify-between mr-5">
             <div
               className={`border-2 max-w-sm border-gray-100 ${
-                resumeData.length >= 1 ? `w-2/12` : `w-4/12`
+                resumeData?.length >= 1 ? `w-2/12` : `w-4/12`
               } h-72 rounded-lg cursor-pointer cv-box unselectable`}
             >
               {templateData === "Stockholm" && <StockholmTemplate {...props} />}

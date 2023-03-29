@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   coverLetterDataSave,
+  getResumeTitleAction,
+  getSelectResumeTemplateAction,
   resumeDataSave,
   resumeTitleAction,
 } from "../../../redux/actions/resumeAction";
@@ -49,7 +51,7 @@ const EditResume = (props) => {
 
   // redux
   const dispatch = useDispatch();
-  const { resumeTemplateData, coverLetterData } = useSelector(
+  const { loading, resumeTemplateData, coverLetterData } = useSelector(
     (state) => state.resumeData
   );
   const { templateData } = useSelector((state) => state.selectTemplate);
@@ -653,6 +655,12 @@ const EditResume = (props) => {
   }, []);
 
   useEffect(() => {
+    dispatch(getSelectResumeTemplateAction(user));
+
+    dispatch(getResumeTitleAction(user));
+  }, [dispatch, user]);
+
+  useEffect(() => {
     let resumeData = {
       profileImage,
       wantedJobTitle,
@@ -758,6 +766,7 @@ const EditResume = (props) => {
     companyName,
     hiringManagerName,
     letterDetails,
+    user,
   ]);
 
   return (
@@ -922,7 +931,7 @@ const EditResume = (props) => {
       setProfessionalSummary={setProfessionalSummary}
       hobbies={hobbies}
       setHobbies={setHobbies}
-      resumeData={resumeTemplateData}
+      resumeData={resumeTemplateData?.data}
       coursesInputList={coursesInputList}
       coursesInput={coursesInput}
       setCoursesInput={setCoursesInput}
@@ -1015,6 +1024,7 @@ const EditResume = (props) => {
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
+      loading={loading}
     />
   );
 };
