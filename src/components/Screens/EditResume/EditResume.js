@@ -692,7 +692,9 @@ const EditResume = (props) => {
       educationInputList: educationInputList
         ? educationInputList
         : data?.educationInputList,
-      websiteInputList,
+      websiteInputList: websiteInputList
+        ? websiteInputList
+        : data?.websiteInputList,
       skillsInputList,
       isNotShowExpertLevel,
       hobbies,
@@ -806,6 +808,9 @@ const EditResume = (props) => {
     }
     if (resumeData?.educationInputList?.length >= 1) {
       setEducationInputList(resumeData?.educationInputList);
+    }
+    if (resumeData?.websiteInputList?.length >= 1) {
+      setWebsiteInputList(resumeData?.websiteInputList);
     }
   }, [resumeTemplateGetData]);
 
