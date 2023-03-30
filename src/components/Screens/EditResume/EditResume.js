@@ -689,7 +689,9 @@ const EditResume = (props) => {
       employmentInputList: employmentInputList
         ? employmentInputList
         : data?.employmentInputList,
-      educationInputList,
+      educationInputList: educationInputList
+        ? educationInputList
+        : data?.educationInputList,
       websiteInputList,
       skillsInputList,
       isNotShowExpertLevel,
@@ -802,9 +804,11 @@ const EditResume = (props) => {
     if (resumeData?.employmentInputList?.length >= 1) {
       setEmploymentInputList(resumeData?.employmentInputList);
     }
+    if (resumeData?.educationInputList?.length >= 1) {
+      setEducationInputList(resumeData?.educationInputList);
+    }
   }, [resumeTemplateGetData]);
 
-  console.log(employmentInputList);
   return (
     <EditResumeMarkup
       {...props}
