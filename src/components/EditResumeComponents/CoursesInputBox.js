@@ -5,10 +5,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 const CoursesInputBox = (props) => {
   const coursesSection = () => {
-    if (props.coursesInputList) {
+    if (props?.coursesInputList?.length) {
       return (
         <>
-          {props.coursesInputList.map((x, i) => {
+          {props?.coursesInputList?.map((x, i) => {
             let monthNames = [
               "Jan",
               "Feb",

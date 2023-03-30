@@ -11,10 +11,10 @@ const LanguagesInputBox = (props) => {
   ];
 
   const LanguagesSection = () => {
-    if (props.languagesInputList) {
+    if (props?.languagesInputList?.length >= 1) {
       return (
         <>
-          {props.languagesInputList.map((x, i) => {
+          {props?.languagesInputList?.map((x, i) => {
             return (
               <div
                 key={i}

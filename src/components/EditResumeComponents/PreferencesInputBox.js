@@ -5,10 +5,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 const PreferencesInputBox = (props) => {
   const PreferencesSection = () => {
-    if (props.referencesInputList) {
+    if (props?.referencesInputList?.length >= 1) {
       return (
         <>
-          {props.referencesInputList.map((x, i) => {
+          {props?.referencesInputList?.map((x, i) => {
             return (
               <div
                 key={i}

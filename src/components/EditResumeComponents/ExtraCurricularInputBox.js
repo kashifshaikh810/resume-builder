@@ -20,10 +20,10 @@ const ExtraCurricularInputBox = (props) => {
   ];
 
   const extraCurricularSection = () => {
-    if (props.extraCurricularInputList) {
+    if (props?.extraCurricularInputList?.length) {
       return (
         <>
-          {props.extraCurricularInputList.map((x, i) => {
+          {props?.extraCurricularInputList?.map((x, i) => {
             let monthNames = [
               "Jan",
               "Feb",

@@ -20,10 +20,10 @@ const EmploymentInputBox = (props) => {
   ];
 
   const employmentHistorySection = () => {
-    if (props.employmentInputList) {
+    if (props?.employmentInputList?.length >= 1) {
       return (
         <>
-          {props.employmentInputList.map((x, i) => {
+          {props?.employmentInputList?.map((x, i) => {
             let monthNames = [
               "Jan",
               "Feb",

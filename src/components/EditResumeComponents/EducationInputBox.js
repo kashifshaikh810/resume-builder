@@ -20,10 +20,10 @@ const EducationInputBox = (props) => {
   ];
 
   const educationSection = () => {
-    if (props.educationInputList) {
+    if (props?.educationInputList?.length) {
       return (
         <>
-          {props.educationInputList.map((x, i) => {
+          {props?.educationInputList?.map((x, i) => {
             let monthNames = [
               "Jan",
               "Feb",

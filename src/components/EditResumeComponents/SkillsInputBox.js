@@ -59,11 +59,11 @@ const SkillsInputBox = (props) => {
     Expert: "bg-gray-300",
   };
 
-  const websiteAndSocialSection = () => {
-    if (props.skillsInputList) {
+  const skillsSection = () => {
+    if (props?.skillsInputList?.length >= 1) {
       return (
         <>
-          {props.skillsInputList.map((x, i) => {
+          {props?.skillsInputList?.map((x, i) => {
             return (
               <div
                 key={i}
@@ -274,7 +274,7 @@ const SkillsInputBox = (props) => {
     }
   };
 
-  return <>{websiteAndSocialSection()}</>;
+  return <>{skillsSection()}</>;
 };
 
 export default SkillsInputBox;

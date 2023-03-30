@@ -4,10 +4,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 const WebsiteAndSocialInputBox = (props) => {
   const websiteAndSocialSection = () => {
-    if (props.websiteInputList) {
+    if (props?.websiteInputList?.length >= 1) {
       return (
         <>
-          {props.websiteInputList.map((x, i) => {
+          {props?.websiteInputList?.map((x, i) => {
             return (
               <div
                 key={i}

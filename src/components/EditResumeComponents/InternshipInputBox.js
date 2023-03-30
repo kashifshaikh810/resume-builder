@@ -20,10 +20,10 @@ const InternshipInputBox = (props) => {
   ];
 
   const internshipSection = () => {
-    if (props.internshipInputList) {
+    if (props?.internshipInputList?.length >= 1) {
       return (
         <>
-          {props.internshipInputList.map((x, i) => {
+          {props?.internshipInputList?.map((x, i) => {
             let monthNames = [
               "Jan",
               "Feb",
