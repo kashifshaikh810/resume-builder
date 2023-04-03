@@ -715,7 +715,7 @@ const EditResume = (props) => {
       referencesInputList: referencesInputList
         ? referencesInputList
         : data?.referencesInputList,
-      summaryInput,
+      summaryInput: summaryInput ? summaryInput : data?.summaryInput,
       employmentInput,
       educationInput,
       coursesInput,
@@ -848,6 +848,7 @@ const EditResume = (props) => {
     }
     setIsNotShowIdLikeToHide(resumeData?.disabledPreferences);
     setPersonalDetailInput(resumeData?.personalDetailInput);
+    setSummaryInput(resumeData?.summaryInput);
   }, [resumeTemplateGetData]);
 
   return (
