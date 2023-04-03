@@ -700,7 +700,9 @@ const EditResume = (props) => {
         : data?.skillsInputList,
       isNotShowExpertLevel,
       hobbies: hobbies ? hobbies : data?.hobbies,
-      languagesInputList,
+      languagesInputList: languagesInputList
+        ? languagesInputList
+        : data?.languagesInputList,
       coursesInputList,
       internshipInputList,
       extraCurricularInputList,
@@ -819,6 +821,9 @@ const EditResume = (props) => {
     }
     setIsNotShowExpertLevel(resumeData?.isNotShowExpertLevel);
     setHobbies(resumeData?.hobbies);
+    if (resumeData?.languagesInputList?.length >= 1) {
+      setLanguagesInputList(resumeData?.languagesInputList);
+    }
   }, [resumeTemplateGetData]);
 
   return (
