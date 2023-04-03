@@ -727,7 +727,9 @@ const EditResume = (props) => {
       internshipInput: internshipInput
         ? internshipInput
         : data?.internshipInput,
-      referencesInput,
+      referencesInput: referencesInput
+        ? referencesInput
+        : data?.referencesInput,
       personalDetailInput: personalDetailInput
         ? personalDetailInput
         : data?.personalDetailInput,
@@ -864,6 +866,7 @@ const EditResume = (props) => {
     setCoursesInput(resumeData?.coursesInput);
     setExtraCurricularInput(resumeData?.extraCurricularInput);
     setInternshipInput(resumeData?.internshipInput);
+    setReferencesInput(resumeData?.referencesInput);
   }, [resumeTemplateGetData]);
 
   return (
