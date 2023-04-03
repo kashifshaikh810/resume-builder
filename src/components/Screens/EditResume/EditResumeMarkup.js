@@ -1274,13 +1274,7 @@ const EditResumeMarkup = (props) => {
                                   ? `bg-blue-100`
                                   : `bg-gray-100`
                               }
-                              ${
-                                props?.resumeData?.skillsInputList[
-                                  item.name
-                                ] === item.name
-                                  ? `bg-blue-500`
-                                  : `bg-red-200`
-                              }
+                             
                             `}
                               key={index}
                               onMouseEnter={() => {
