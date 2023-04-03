@@ -703,7 +703,9 @@ const EditResume = (props) => {
       languagesInputList: languagesInputList
         ? languagesInputList
         : data?.languagesInputList,
-      coursesInputList,
+      coursesInputList: coursesInputList
+        ? coursesInputList
+        : data?.coursesInputList,
       internshipInputList,
       extraCurricularInputList,
       referencesInputList,
@@ -823,6 +825,9 @@ const EditResume = (props) => {
     setHobbies(resumeData?.hobbies);
     if (resumeData?.languagesInputList?.length >= 1) {
       setLanguagesInputList(resumeData?.languagesInputList);
+    }
+    if (resumeData?.coursesInputList?.length >= 1) {
+      setCoursesInputList(resumeData?.coursesInputList);
     }
   }, [resumeTemplateGetData]);
 
