@@ -720,7 +720,7 @@ const EditResume = (props) => {
         ? employmentInput
         : data?.employmentInput,
       educationInput: educationInput ? educationInput : data?.educationInput,
-      coursesInput,
+      coursesInput: coursesInput ? coursesInput : data?.coursesInput,
       extraCurricularInput,
       internshipInput,
       referencesInput,
@@ -857,6 +857,7 @@ const EditResume = (props) => {
     setSkillsInput(resumeData?.skillsInput);
     setHobbiesInput(resumeData?.hobbiesInput);
     setLanguagesInput(resumeData?.languagesInput);
+    setCoursesInput(resumeData?.coursesInput);
   }, [resumeTemplateGetData]);
 
   return (
