@@ -729,7 +729,7 @@ const EditResume = (props) => {
         : data?.personalDetailInput,
       skillsInput: skillsInput ? skillsInput : data?.skillsInput,
       hobbiesInput: hobbiesInput ? hobbiesInput : data?.hobbiesInput,
-      languagesInput,
+      languagesInput: languagesInput ? languagesInput : data?.languagesInput,
       websiteInput: websiteInput ? websiteInput : data?.websiteInput,
       disabledPreferences: isNotShowIdLikeToHide,
     };
@@ -856,6 +856,7 @@ const EditResume = (props) => {
     setWebsiteInput(resumeData?.websiteInput);
     setSkillsInput(resumeData?.skillsInput);
     setHobbiesInput(resumeData?.hobbiesInput);
+    setLanguagesInput(resumeData?.languagesInput);
   }, [resumeTemplateGetData]);
 
   return (
