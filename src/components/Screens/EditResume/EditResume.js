@@ -719,7 +719,7 @@ const EditResume = (props) => {
       employmentInput: employmentInput
         ? employmentInput
         : data?.employmentInput,
-      educationInput,
+      educationInput: educationInput ? educationInput : data?.educationInput,
       coursesInput,
       extraCurricularInput,
       internshipInput,
@@ -852,6 +852,7 @@ const EditResume = (props) => {
     setPersonalDetailInput(resumeData?.personalDetailInput);
     setSummaryInput(resumeData?.summaryInput);
     setEmploymentInput(resumeData?.employmentInput);
+    setEducationInput(resumeData?.educationInput);
   }, [resumeTemplateGetData]);
 
   return (
