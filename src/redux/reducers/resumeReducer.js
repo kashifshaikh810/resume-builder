@@ -20,6 +20,10 @@ import {
   GET_RESUME_DATA_REQUEST,
   GET_RESUME_DATA_SUCCESS,
   GET_RESUME_DATA_FAIL,
+  REMOVE_PROFILE_IMAGE_REQUEST,
+  REMOVE_PROFILE_IMAGE_SUCCESS,
+  REMOVE_PROFILE_IMAGE_FAIL,
+  REMOVE_PROFILE_IMAGE_RESET,
 } from "../constants/resumeConstants";
 
 export const resumeDataReducer = (state = {}, action) => {
@@ -145,6 +149,41 @@ export const resumeTitleReducer = (state = {}, action) => {
       };
     case GET_RESUME_TITLE_FAIL:
     case RESUME_TITLE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const removeProfileImageReducer = (state = {}, action) => {
+  switch (action.type) {
+    case REMOVE_PROFILE_IMAGE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case REMOVE_PROFILE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: action.payload,
+      };
+    case REMOVE_PROFILE_IMAGE_RESET:
+      return {
+        ...state,
+        loading: false,
+        success: false,
+      };
+    case REMOVE_PROFILE_IMAGE_FAIL:
       return {
         ...state,
         loading: false,

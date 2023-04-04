@@ -534,7 +534,7 @@ const EditResumeMarkup = (props) => {
                       className="flex flex-row ml-5 pl-4 items-center hover:cursor-pointer"
                       onClick={() =>
                         props?.profileImage
-                          ? props.setProfileImage("")
+                          ? props.deleteProfileImageHandler()
                           : props.setShowModal(true)
                       }
                       onMouseEnter={() => {

@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
 import {
   coverLetterDataSave,
   getResumeData,
   getResumeTitleAction,
   getSelectResumeTemplateAction,
+  removeProfileImageFromDB,
   resumeDataSave,
   resumeTitleAction,
 } from "../../../redux/actions/resumeAction";
-
+import { REMOVE_PROFILE_IMAGE_RESET } from "../../../redux/constants/resumeConstants";
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
@@ -60,6 +62,7 @@ const EditResume = (props) => {
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { user } = useSelector((state) => state.currentUser);
   const { titleData } = useSelector((state) => state.resumeTitle);
+  const { success } = useSelector((state) => state.removeProfileImage);
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
   const [employmentInput, setEmploymentInput] = useState("Employment History");
@@ -562,6 +565,84 @@ const EditResume = (props) => {
     }
   };
 
+  const deleteProfileImageHandler = () => {
+    setProfileImage("");
+    const data = resumeTemplateGetData?.data;
+
+    let resumeData = {
+      profileImage,
+      wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
+      firstName: firstName ? firstName : data?.firstName,
+      lastName: lastName ? lastName : data?.lastName,
+      email: email ? email : data?.email,
+      phone: phone ? phone : data?.phone,
+      country: country ? country : data?.country,
+      city: city ? city : data?.city,
+      address: address ? address : data?.address,
+      postalCode: postalCode ? postalCode : data?.postalCode,
+      drivingLicense: drivingLicense ? drivingLicense : data?.drivingLicense,
+      nationality: nationality ? nationality : data?.nationality,
+      placeOfBirth: placeOfBirth ? placeOfBirth : data?.placeOfBirth,
+      dateOfBirth: dateOfBirth ? dateOfBirth : data?.dateOfBirth,
+      professionalSummary: professionalSummary
+        ? professionalSummary
+        : data?.professionalSummary,
+      employmentInputList: employmentInputList
+        ? employmentInputList
+        : data?.employmentInputList,
+      educationInputList: educationInputList
+        ? educationInputList
+        : data?.educationInputList,
+      websiteInputList: websiteInputList
+        ? websiteInputList
+        : data?.websiteInputList,
+      skillsInputList: skillsInputList
+        ? skillsInputList
+        : data?.skillsInputList,
+      isNotShowExpertLevel,
+      hobbies: hobbies ? hobbies : data?.hobbies,
+      languagesInputList: languagesInputList
+        ? languagesInputList
+        : data?.languagesInputList,
+      coursesInputList: coursesInputList
+        ? coursesInputList
+        : data?.coursesInputList,
+      internshipInputList: internshipInputList
+        ? internshipInputList
+        : data?.internshipInputList,
+      extraCurricularInputList: extraCurricularInputList
+        ? extraCurricularInputList
+        : data?.extraCurricularInputList,
+      referencesInputList: referencesInputList
+        ? referencesInputList
+        : data?.referencesInputList,
+      summaryInput: summaryInput ? summaryInput : data?.summaryInput,
+      employmentInput: employmentInput
+        ? employmentInput
+        : data?.employmentInput,
+      educationInput: educationInput ? educationInput : data?.educationInput,
+      coursesInput: coursesInput ? coursesInput : data?.coursesInput,
+      extraCurricularInput: extraCurricularInput
+        ? extraCurricularInput
+        : data?.extraCurricularInput,
+      internshipInput: internshipInput
+        ? internshipInput
+        : data?.internshipInput,
+      referencesInput: referencesInput
+        ? referencesInput
+        : data?.referencesInput,
+      personalDetailInput: personalDetailInput
+        ? personalDetailInput
+        : data?.personalDetailInput,
+      skillsInput: skillsInput ? skillsInput : data?.skillsInput,
+      hobbiesInput: hobbiesInput ? hobbiesInput : data?.hobbiesInput,
+      languagesInput: languagesInput ? languagesInput : data?.languagesInput,
+      websiteInput: websiteInput ? websiteInput : data?.websiteInput,
+      disabledPreferences: isNotShowIdLikeToHide,
+    };
+    dispatch(removeProfileImageFromDB(user, profileImage));
+  };
+
   useEffect(() => {
     if (titleData) {
       setTitleInput(titleData?.resumeTitle);
@@ -754,6 +835,11 @@ const EditResume = (props) => {
     dispatch(resumeDataSave(user, resumeData));
 
     dispatch(coverLetterDataSave(dataOfCoverLetter));
+
+    if (success) {
+      dispatch(getResumeData(user));
+      dispatch({ type: REMOVE_PROFILE_IMAGE_RESET });
+    }
   }, [
     dispatch,
     profileImage,
@@ -805,6 +891,7 @@ const EditResume = (props) => {
     letterDetails,
     user,
     resumeTemplateGetData,
+    success,
   ]);
 
   // set states from database
@@ -1129,6 +1216,7 @@ const EditResume = (props) => {
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
       loading={loading ? loading : resumeTemplateGetDataLoading}
+      deleteProfileImageHandler={deleteProfileImageHandler}
     />
   );
 };

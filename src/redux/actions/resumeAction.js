@@ -1,4 +1,4 @@
-import { onValue, ref, set } from "firebase/database";
+import { onValue, ref, remove, set, update } from "firebase/database";
 import { database } from "../../Firebase/FirebaseConfig";
 
 import {
@@ -22,6 +22,9 @@ import {
   GET_RESUME_DATA_REQUEST,
   GET_RESUME_DATA_SUCCESS,
   GET_RESUME_DATA_FAIL,
+  REMOVE_PROFILE_IMAGE_REQUEST,
+  REMOVE_PROFILE_IMAGE_SUCCESS,
+  REMOVE_PROFILE_IMAGE_FAIL,
 } from "../constants/resumeConstants";
 
 export const getResumeData = (user) => (dispatch) => {
@@ -40,6 +43,7 @@ export const getResumeData = (user) => (dispatch) => {
 export const resumeDataSave = (user, data) => (dispatch) => {
   try {
     dispatch({ type: RESUME_DATA_REQUEST });
+    console.log(data);
     const resumeData = {
       data,
       username: `${user?.firstName} ${user?.lastName}`,
@@ -136,6 +140,31 @@ export const getResumeTitleAction = (user) => (dispatch) => {
     });
   } catch (error) {
     dispatch({ type: GET_RESUME_TITLE_FAIL, payload: error?.code });
+  }
+};
+
+export const removeProfileImageFromDB = (user, profileImage) => (dispatch) => {
+  try {
+    dispatch({ type: REMOVE_PROFILE_IMAGE_REQUEST });
+    // const resumeData = {
+    //   data,
+    //   username: `${user?.firstName} ${user?.lastName}`,
+    //   userId: user?.userId,
+    // };
+
+    // resumeData[`userResumeTemplateData/${user?.userId}/data`] = profileImage;
+    update(database, { profileImage: profileImage })
+      .then(() => {
+        dispatch({ type: REMOVE_PROFILE_IMAGE_SUCCESS });
+      })
+      .catch((error) => {
+        dispatch({
+          type: RESUME_DATA_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({ type: REMOVE_PROFILE_IMAGE_FAIL, payload: error });
   }
 };
 
