@@ -175,7 +175,7 @@ export const removeProfileImageReducer = (state = {}, action) => {
       return {
         ...state,
         loading: false,
-        success: action.payload,
+        success: true,
       };
     case REMOVE_PROFILE_IMAGE_RESET:
       return {

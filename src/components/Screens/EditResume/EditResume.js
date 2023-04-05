@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import {
+  clearErrors,
   coverLetterDataSave,
   getResumeData,
   getResumeTitleAction,
@@ -62,7 +63,11 @@ const EditResume = (props) => {
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { user } = useSelector((state) => state.currentUser);
   const { titleData } = useSelector((state) => state.resumeTitle);
-  const { success } = useSelector((state) => state.removeProfileImage);
+  const {
+    loading: deleteLoading,
+    success,
+    error,
+  } = useSelector((state) => state.removeProfileImage);
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
   const [employmentInput, setEmploymentInput] = useState("Employment History");
@@ -566,41 +571,30 @@ const EditResume = (props) => {
   };
 
   const deleteProfileImageHandler = () => {
-    setProfileImage("");
     const data = resumeTemplateGetData?.data;
 
     let resumeData = {
-      profileImage,
-      wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
-      firstName: firstName ? firstName : data?.firstName,
-      lastName: lastName ? lastName : data?.lastName,
-      email: email ? email : data?.email,
-      phone: phone ? phone : data?.phone,
-      country: country ? country : data?.country,
-      city: city ? city : data?.city,
-      address: address ? address : data?.address,
-      postalCode: postalCode ? postalCode : data?.postalCode,
-      drivingLicense: drivingLicense ? drivingLicense : data?.drivingLicense,
-      nationality: nationality ? nationality : data?.nationality,
-      placeOfBirth: placeOfBirth ? placeOfBirth : data?.placeOfBirth,
-      dateOfBirth: dateOfBirth ? dateOfBirth : data?.dateOfBirth,
-      professionalSummary: professionalSummary
-        ? professionalSummary
-        : data?.professionalSummary,
-      employmentInputList: employmentInputList
-        ? employmentInputList
-        : data?.employmentInputList,
-      educationInputList: educationInputList
-        ? educationInputList
-        : data?.educationInputList,
-      websiteInputList: websiteInputList
-        ? websiteInputList
-        : data?.websiteInputList,
-      skillsInputList: skillsInputList
-        ? skillsInputList
-        : data?.skillsInputList,
+      profileImage: "",
+      wantedJobTitle: wantedJobTitle,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phone: phone,
+      country: country,
+      city: city,
+      address: address,
+      postalCode: postalCode,
+      drivingLicense,
+      nationality,
+      placeOfBirth,
+      dateOfBirth,
+      professionalSummary,
+      employmentInputList,
+      educationInputList,
+      websiteInputList,
+      skillsInputList,
       isNotShowExpertLevel,
-      hobbies: hobbies ? hobbies : data?.hobbies,
+      hobbies: hobbies,
       languagesInputList: languagesInputList
         ? languagesInputList
         : data?.languagesInputList,
@@ -628,9 +622,7 @@ const EditResume = (props) => {
       internshipInput: internshipInput
         ? internshipInput
         : data?.internshipInput,
-      referencesInput: referencesInput
-        ? referencesInput
-        : data?.referencesInput,
+      referencesInput: "",
       personalDetailInput: personalDetailInput
         ? personalDetailInput
         : data?.personalDetailInput,
@@ -640,14 +632,24 @@ const EditResume = (props) => {
       websiteInput: websiteInput ? websiteInput : data?.websiteInput,
       disabledPreferences: isNotShowIdLikeToHide,
     };
-    dispatch(removeProfileImageFromDB(user, profileImage));
+    dispatch(removeProfileImageFromDB(user, resumeData));
   };
 
   useEffect(() => {
     if (titleData) {
       setTitleInput(titleData?.resumeTitle);
     }
-  }, [titleData]);
+
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+    if (success) {
+      setProfileImage("");
+      dispatch(getResumeData(user));
+      dispatch({ type: REMOVE_PROFILE_IMAGE_RESET });
+    }
+  }, [titleData, dispatch, error, success]);
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -835,11 +837,6 @@ const EditResume = (props) => {
     dispatch(resumeDataSave(user, resumeData));
 
     dispatch(coverLetterDataSave(dataOfCoverLetter));
-
-    if (success) {
-      dispatch(getResumeData(user));
-      dispatch({ type: REMOVE_PROFILE_IMAGE_RESET });
-    }
   }, [
     dispatch,
     profileImage,
@@ -898,7 +895,9 @@ const EditResume = (props) => {
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
     setWantedJobTitle(resumeData?.wantedJobTitle);
-    setProfileImage(resumeData?.profileImage);
+    if (resumeData?.profileImage) {
+      setProfileImage(resumeData?.profileImage);
+    }
     setFirstName(resumeData?.firstName);
     setLastName(resumeData?.lastName);
     setEmail(resumeData?.email);

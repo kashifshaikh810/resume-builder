@@ -143,17 +143,16 @@ export const getResumeTitleAction = (user) => (dispatch) => {
   }
 };
 
-export const removeProfileImageFromDB = (user, profileImage) => (dispatch) => {
+export const removeProfileImageFromDB = (user, data) => (dispatch) => {
   try {
     dispatch({ type: REMOVE_PROFILE_IMAGE_REQUEST });
-    // const resumeData = {
-    //   data,
-    //   username: `${user?.firstName} ${user?.lastName}`,
-    //   userId: user?.userId,
-    // };
+    const resumeData = {
+      data,
+      username: `${user?.firstName} ${user?.lastName}`,
+      userId: user?.userId,
+    };
 
-    // resumeData[`userResumeTemplateData/${user?.userId}/data`] = profileImage;
-    update(database, { profileImage: profileImage })
+    update(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
       .then(() => {
         dispatch({ type: REMOVE_PROFILE_IMAGE_SUCCESS });
       })
@@ -164,7 +163,7 @@ export const removeProfileImageFromDB = (user, profileImage) => (dispatch) => {
         });
       });
   } catch (error) {
-    dispatch({ type: REMOVE_PROFILE_IMAGE_FAIL, payload: error });
+    dispatch({ type: REMOVE_PROFILE_IMAGE_FAIL, payload: error?.code });
   }
 };
 
