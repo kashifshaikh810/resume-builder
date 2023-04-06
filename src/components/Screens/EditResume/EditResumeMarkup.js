@@ -45,6 +45,7 @@ import CoverLetterTorontoTemplate from "../../EditCoverLettersTemplates/CoverLet
 import CoverLetterStockholmTemplate from "../../EditCoverLettersTemplates/CoverLetterStockholmTemplate";
 import CoverLetterNewYorkTemplate from "../../EditCoverLettersTemplates/CoverLetterNewYorkTemplate";
 import CoverLetterViennaTemplate from "../../EditCoverLettersTemplates/CoverLetterViennaTemplate";
+import TemplateLoader from "../../EditResumeLoaders/TemplateLoader";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -205,7 +206,7 @@ const EditResumeMarkup = (props) => {
             onMouseLeave={() => props.setIsHovered(false)}
           >
             {/* resume tab templates */}
-            {resumesTemplates()}
+            {!loading ? <TemplateLoader /> : resumesTemplates()}
 
             {/* cover letter tab templates */}
             {/* <CoverLetterTorontoTemplate {...props} /> */}
