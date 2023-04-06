@@ -1,4 +1,4 @@
-import { onValue, ref, remove, set, update } from "firebase/database";
+import { onValue, ref, set } from "firebase/database";
 import { database } from "../../Firebase/FirebaseConfig";
 
 import {
@@ -152,7 +152,7 @@ export const removeProfileImageFromDB = (user, data) => (dispatch) => {
       userId: user?.userId,
     };
 
-    update(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
+    set(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
       .then(() => {
         dispatch({ type: REMOVE_PROFILE_IMAGE_SUCCESS });
       })

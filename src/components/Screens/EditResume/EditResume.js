@@ -622,7 +622,9 @@ const EditResume = (props) => {
       internshipInput: internshipInput
         ? internshipInput
         : data?.internshipInput,
-      referencesInput: "",
+      referencesInput: referencesInput
+        ? referencesInput
+        : data?.referencesInput,
       personalDetailInput: personalDetailInput
         ? personalDetailInput
         : data?.personalDetailInput,
@@ -646,7 +648,6 @@ const EditResume = (props) => {
     }
     if (success) {
       setProfileImage("");
-      dispatch(getResumeData(user));
       dispatch({ type: REMOVE_PROFILE_IMAGE_RESET });
     }
   }, [titleData, dispatch, error, success]);
@@ -752,7 +753,7 @@ const EditResume = (props) => {
     const data = resumeTemplateGetData?.data;
 
     let resumeData = {
-      profileImage: profileImage ? profileImage : data?.profileImage,
+      profileImage,
       wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
       firstName: firstName ? firstName : data?.firstName,
       lastName: lastName ? lastName : data?.lastName,
@@ -888,16 +889,13 @@ const EditResume = (props) => {
     letterDetails,
     user,
     resumeTemplateGetData,
-    success,
   ]);
 
   // set states from database
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
     setWantedJobTitle(resumeData?.wantedJobTitle);
-    if (resumeData?.profileImage) {
-      setProfileImage(resumeData?.profileImage);
-    }
+    setProfileImage(resumeData?.profileImage);
     setFirstName(resumeData?.firstName);
     setLastName(resumeData?.lastName);
     setEmail(resumeData?.email);
