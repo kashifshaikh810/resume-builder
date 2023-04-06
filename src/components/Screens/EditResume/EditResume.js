@@ -68,6 +68,9 @@ const EditResume = (props) => {
     success,
     error,
   } = useSelector((state) => state.removeProfileImage);
+
+  const data = resumeTemplateGetData?.data;
+
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
   const [employmentInput, setEmploymentInput] = useState("Employment History");
@@ -1214,6 +1217,7 @@ const EditResume = (props) => {
       titleData={titleData}
       loading={loading ? loading : resumeTemplateGetDataLoading}
       deleteProfileImageHandler={deleteProfileImageHandler}
+      data={data}
     />
   );
 };

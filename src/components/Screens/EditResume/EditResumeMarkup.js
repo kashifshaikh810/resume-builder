@@ -176,14 +176,25 @@ const EditResumeMarkup = (props) => {
                 }
               />
             </div>
-            <div className="flex w-full justify-end pt-4">
-              <div
-                className="flex justify-center items-center mr-4 w-8 h-8 bg-gray-100 rounded-full user-icon"
-                onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
-              >
-                <TfiUser size={15} className="text-gray-400" />
+            {props?.data?.profileImage ? (
+              <div className="flex w-full justify-end pt-4">
+                <img
+                  className="mr-4 w-8 h-8 rounded-full user-icon"
+                  onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
+                  src={props?.data?.profileImage}
+                  alt="prof"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="flex w-full justify-end pt-4">
+                <div
+                  className="flex justify-center items-center mr-4 w-8 h-8 bg-gray-100 rounded-full user-icon"
+                  onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
+                >
+                  <TfiUser size={15} className="text-gray-400" />
+                </div>
+              </div>
+            )}
           </div>
 
           <div
@@ -542,9 +553,9 @@ const EditResumeMarkup = (props) => {
                       }}
                       onMouseLeave={() => props.setUploadIsHovered(false)}
                     >
-                      {props?.profileImage ? (
+                      {props?.data?.profileImage ? (
                         <img
-                          src={props?.profileImage}
+                          src={props?.data?.profileImage}
                           alt="profile"
                           className="w-14 h-14 rounded-sm"
                         />
@@ -566,7 +577,7 @@ const EditResumeMarkup = (props) => {
                           />
                         </div>
                       )}
-                      {props.profileImage ? (
+                      {props?.data?.profileImage ? (
                         <div className="flex flex-row items-center">
                           <MdDeleteOutline
                             className={`ml-2 text-xl ${
