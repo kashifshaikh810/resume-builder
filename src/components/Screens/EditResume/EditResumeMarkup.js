@@ -583,7 +583,7 @@ const EditResumeMarkup = (props) => {
                                 ? `text-red-500`
                                 : `text-gray-400`
                             } text-sm ml-1`}
-                            onPress={() => {}}
+                            onPress={() => props.deleteProfileImageHandler()}
                             loading={false}
                           />
                         </div>
