@@ -756,7 +756,11 @@ const EditResume = (props) => {
     const data = resumeTemplateGetData?.data;
 
     let resumeData = {
-      profileImage,
+      profileImage: success
+        ? profileImage
+        : profileImage
+        ? profileImage
+        : data?.profileImage,
       wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
       firstName: firstName ? firstName : data?.firstName,
       lastName: lastName ? lastName : data?.lastName,
@@ -892,6 +896,7 @@ const EditResume = (props) => {
     letterDetails,
     user,
     resumeTemplateGetData,
+    success,
   ]);
 
   // set states from database
