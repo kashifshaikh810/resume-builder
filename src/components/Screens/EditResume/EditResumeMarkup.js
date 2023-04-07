@@ -206,7 +206,7 @@ const EditResumeMarkup = (props) => {
             onMouseLeave={() => props.setIsHovered(false)}
           >
             {/* resume tab templates */}
-            {!loading ? <TemplateLoader /> : resumesTemplates()}
+            {loading ? <TemplateLoader /> : resumesTemplates()}
 
             {/* cover letter tab templates */}
             {/* <CoverLetterTorontoTemplate {...props} /> */}
