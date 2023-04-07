@@ -541,17 +541,19 @@ const StockholmTemplate = (props) => {
         ) : (
           ""
         )}
-        <div>
-          <p className="text-[6px] text-gray-600">{resumeData?.address}</p>
-          <p className="text-[6px] text-gray-600">
-            {`${resumeData?.city} ${
-              resumeData?.city && resumeData?.postalCode ? `,` : ``
-            } ${resumeData?.postalCode}`}
-          </p>
-          <p className="text-[6px] text-gray-600">{resumeData?.country}</p>
-          <p className="text-[6px] text-gray-600">{resumeData?.phone}</p>
-          <p className="text-[6px] text-blue-400">{resumeData?.email}</p>
-        </div>
+        {resumeData && (
+          <div>
+            <p className="text-[6px] text-gray-600">{resumeData?.address}</p>
+            <p className="text-[6px] text-gray-600">
+              {`${resumeData?.city} ${
+                resumeData?.city && resumeData?.postalCode ? `,` : ``
+              } ${resumeData?.postalCode}`}
+            </p>
+            <p className="text-[6px] text-gray-600">{resumeData?.country}</p>
+            <p className="text-[6px] text-gray-600">{resumeData?.phone}</p>
+            <p className="text-[6px] text-blue-400">{resumeData?.email}</p>
+          </div>
+        )}
 
         {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
           <div className="mt-2">
