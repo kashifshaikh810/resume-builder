@@ -295,7 +295,7 @@ const ViennaTemplate = (props) => {
                       ? "Profile"
                       : resumeData?.summaryInput}
                   </p>
-                  <p className="text-[3px] p-4 pb-0 pl-0 pt-0">
+                  <p className="text-[3px] p-4 pb-0 pl-0 pt-0 w-6/12">
                     {resumeData?.professionalSummary}
                   </p>
                 </div>
