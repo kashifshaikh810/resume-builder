@@ -22,10 +22,10 @@ const TorontoTemplate = (props) => {
   return (
     <div className="p-2 overflow-hidden">
       <div className="flex flex-row">
-        {resumeData.profileImage && (
+        {resumeData?.profileImage && (
           <>
             <img
-              src={resumeData.profileImage}
+              src={resumeData?.profileImage}
               alt="prof"
               className="w-[25px] h-[30px]"
             />
@@ -43,20 +43,20 @@ const TorontoTemplate = (props) => {
 
       <div
         className={
-          props.profileImage
-            ? `grid grid-cols-[300px_minmax(200px,_1fr)_100px]`
+          resumeData?.profileImage
+            ? `grid grid-cols-[44px_minmax(145px,_1fr)_100px]`
             : `flex flex-row`
         }
       >
         <div>
-          <div className={props.profileImage && `pt-1 mt-1`}>
+          <div className={resumeData?.profileImage && `pt-1 mt-1`}>
             <p className="font-bold text-[3px] mt-1">
               {resumeData?.wantedJobTitle}
             </p>
             <p className="text-[3px]">{resumeData?.email}</p>
             <p className="text-[3px]">{resumeData?.phone}</p>
             <p className="text-[3px]">
-              {resumeData.address ||
+              {resumeData?.address ||
               resumeData?.city ||
               resumeData?.postalCode ||
               resumeData?.country
@@ -104,7 +104,7 @@ const TorontoTemplate = (props) => {
         </div>
 
         <div className="w-full">
-          {props.profileImage && (
+          {!resumeData?.profileImage && (
             <div>
               <div>
                 <p className="text-[10px] font-bold ml-4">
@@ -120,8 +120,12 @@ const TorontoTemplate = (props) => {
           {resumeData?.professionalSummary && (
             <div className="mt-1 w-full h-full ml-3">
               <div className="bg-[#eeeeee] w-11/12 h-auto pl-1.5 pt-1 pb-1 rounded-md  mt-[2px]">
-                <p className="text-[5px] font-bold">Profile</p>
-                <p className="text-[3px]">{resumeData?.professionalSummary}</p>
+                <p className="text-[5px] font-bold">
+                  {resumeData?.summaryInput}
+                </p>
+                <p className="text-[3px] pr-1">
+                  {resumeData?.professionalSummary}
+                </p>
               </div>
             </div>
           )}
