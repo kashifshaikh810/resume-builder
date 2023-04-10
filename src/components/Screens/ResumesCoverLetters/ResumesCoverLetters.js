@@ -139,6 +139,7 @@ const ResumesCoverLetters = (props) => {
       updateResumeTitleDate={updateResumeTitleDate}
       updateResumeTitleMonth={updateResumeTitleMonth}
       updateResumeTitleTime={updateResumeTitleTime}
+      loading={resumeDataLoading}
     />
   );
 };

@@ -20,6 +20,7 @@ import CoverLetterStockholmTemplate from "../../CoverLetterTemplatesFromResumesN
 import CoverLetterNewYorkTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterNewYorkTemplate";
 import CoverLetterViennaTemplate from "../../CoverLetterTemplatesFromResumesNCoverLetter/CoverLetterViennaTemplate";
 import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
+import TemplateLoader from "../../ResumesCoverLettersLoader/TemplateLoader";
 
 const ResumesCoverLettersMarkup = (props) => {
   const {
@@ -31,7 +32,26 @@ const ResumesCoverLettersMarkup = (props) => {
     updateResumeTitleDate,
     updateResumeTitleMonth,
     updateResumeTitleTime,
+    loading,
   } = props;
+
+  const renderTemplate = () => {
+    if (templateData?.selectedTemplate === "Stockholm") {
+      return <StockholmTemplate {...props} />;
+    } else if (templateData?.selectedTemplate === "Toronto") {
+      return <TorontoTemplate {...props} />;
+    } else if (templateData?.selectedTemplate === "New York") {
+      return <NewYorkTemplate {...props} />;
+    } else if (templateData?.selectedTemplate === "Vienna") {
+      return <ViennaTemplate {...props} />;
+    } else {
+      <SelectTemplate
+        {...props}
+        containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+        textStyle="text-xs text-gray-300 animate-bounce font-mono"
+      />;
+    }
+  };
 
   const resumeSection = () => {
     if (props?.isShowLine === "resumes") {
@@ -39,27 +59,11 @@ const ResumesCoverLettersMarkup = (props) => {
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
             <div
-              className={`border-2 max-w-sm border-gray-100 w-2/12 h-72 rounded-lg cursor-pointer cv-box unselectable`}
+              className={`border-2 max-w-sm border-gray-100 ${
+                loading ? `w-4/12` : `w-2/12`
+              } h-72 rounded-lg cursor-pointer cv-box unselectable`}
             >
-              {templateData?.selectedTemplate === "Stockholm" && (
-                <StockholmTemplate {...props} />
-              )}
-              {templateData?.selectedTemplate === "Toronto" && (
-                <TorontoTemplate {...props} />
-              )}
-              {templateData?.selectedTemplate === "New York" && (
-                <NewYorkTemplate {...props} />
-              )}
-              {templateData?.selectedTemplate === "Vienna" && (
-                <ViennaTemplate {...props} />
-              )}
-              {!templateData && (
-                <SelectTemplate
-                  {...props}
-                  containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
-                  textStyle="text-xs text-gray-300 animate-bounce font-mono"
-                />
-              )}
+              {loading ? <TemplateLoader /> : renderTemplate()}
             </div>
 
             <div className="pl-10 w-10/12">
