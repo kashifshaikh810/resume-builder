@@ -25,7 +25,6 @@ import TemplateLoader from "../../ResumesCoverLettersLoader/TemplateLoader";
 const ResumesCoverLettersMarkup = (props) => {
   const {
     templateData,
-    resumeData,
     resumeTempId,
     coverTempId,
     titleData,
