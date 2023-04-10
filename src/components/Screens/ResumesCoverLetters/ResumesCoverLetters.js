@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutAction } from "../../../redux/actions/authAction";
 import {
   clearErrors,
+  getResumeData,
   getResumeTitleAction,
   getSelectResumeTemplateAction,
   resumeTitleAction,
@@ -11,7 +12,12 @@ import {
 
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
-  const { data, coverLetterData } = useSelector((state) => state.resumeData);
+  const { coverLetterData } = useSelector((state) => state.resumeData);
+  const {
+    loading: resumeDataLoading,
+    resumeTemplateGetData,
+    error: resumeDataError,
+  } = useSelector((state) => state.getResumeData);
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { loading, titleData, error } = useSelector(
     (state) => state.resumeTitle
@@ -88,6 +94,7 @@ const ResumesCoverLetters = (props) => {
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
     dispatch(getResumeTitleAction(user));
+    dispatch(getResumeData(user));
 
     if (error) {
       alert(error);
@@ -109,7 +116,7 @@ const ResumesCoverLetters = (props) => {
       setIsMenuShown={setIsMenuShown}
       isShowLine={isShowLine}
       setIsShowLine={setIsShowLine}
-      resumeData={data}
+      resumeData={resumeTemplateGetData?.data}
       untitledInput={untitledInput}
       setUntitledInput={setUntitledInput}
       isShowUntitledIcon={isShowUntitledIcon}

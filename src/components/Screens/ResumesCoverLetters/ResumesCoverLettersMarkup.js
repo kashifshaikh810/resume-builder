@@ -39,14 +39,20 @@ const ResumesCoverLettersMarkup = (props) => {
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
             <div
-              className={`border-2 max-w-sm border-gray-100 ${
-                resumeData?.length >= 1 ? `w-2/12` : `w-4/12`
-              } h-72 rounded-lg cursor-pointer cv-box unselectable`}
+              className={`border-2 max-w-sm border-gray-100 w-2/12 h-72 rounded-lg cursor-pointer cv-box unselectable`}
             >
-              {templateData === "Stockholm" && <StockholmTemplate {...props} />}
-              {templateData === "Toronto" && <TorontoTemplate {...props} />}
-              {templateData === "New York" && <NewYorkTemplate {...props} />}
-              {templateData === "Vienna" && <ViennaTemplate {...props} />}
+              {templateData?.selectedTemplate === "Stockholm" && (
+                <StockholmTemplate {...props} />
+              )}
+              {templateData?.selectedTemplate === "Toronto" && (
+                <TorontoTemplate {...props} />
+              )}
+              {templateData?.selectedTemplate === "New York" && (
+                <NewYorkTemplate {...props} />
+              )}
+              {templateData?.selectedTemplate === "Vienna" && (
+                <ViennaTemplate {...props} />
+              )}
               {!templateData && (
                 <SelectTemplate
                   {...props}
