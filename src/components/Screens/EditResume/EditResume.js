@@ -618,25 +618,18 @@ const EditResume = (props) => {
         ? employmentInput
         : data?.employmentInput,
       educationInput: educationInput ? educationInput : data?.educationInput,
-      coursesInput: coursesInput ? coursesInput : data?.coursesInput,
-      extraCurricularInput: extraCurricularInput
-        ? extraCurricularInput
-        : data?.extraCurricularInput,
-      internshipInput: internshipInput
-        ? internshipInput
-        : data?.internshipInput,
-      referencesInput: referencesInput
-        ? referencesInput
-        : data?.referencesInput,
-      personalDetailInput: personalDetailInput
-        ? personalDetailInput
-        : data?.personalDetailInput,
-      skillsInput: skillsInput ? skillsInput : data?.skillsInput,
-      hobbiesInput: hobbiesInput ? hobbiesInput : data?.hobbiesInput,
-      languagesInput: languagesInput ? languagesInput : data?.languagesInput,
-      websiteInput: websiteInput ? websiteInput : data?.websiteInput,
+      coursesInput,
+      extraCurricularInput,
+      internshipInput,
+      referencesInput,
+      personalDetailInput,
+      skillsInput,
+      hobbiesInput,
+      languagesInput,
+      websiteInput,
       disabledPreferences: isNotShowIdLikeToHide,
     };
+    setProfileImage("");
     dispatch(removeProfileImageFromDB(user, resumeData));
   };
 
@@ -1222,7 +1215,6 @@ const EditResume = (props) => {
       titleData={titleData}
       loading={loading ? loading : resumeTemplateGetDataLoading}
       deleteProfileImageHandler={deleteProfileImageHandler}
-      data={data}
     />
   );
 };

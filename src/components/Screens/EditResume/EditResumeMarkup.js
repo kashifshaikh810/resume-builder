@@ -95,6 +95,7 @@ const EditResumeMarkup = (props) => {
     editResumeTitleOnPressHandler,
     titleData,
     loading,
+    resumeData,
   } = props;
 
   const descIcons = [
@@ -178,12 +179,12 @@ const EditResumeMarkup = (props) => {
                 }
               />
             </div>
-            {props?.data?.profileImage ? (
+            {resumeData?.profileImage ? (
               <div className="flex w-full justify-end pt-4">
                 <img
                   className="mr-4 w-8 h-8 rounded-full user-icon"
                   onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
-                  src={props?.data?.profileImage}
+                  src={resumeData?.profileImage}
                   alt="prof"
                 />
               </div>
@@ -562,9 +563,9 @@ const EditResumeMarkup = (props) => {
                         }}
                         onMouseLeave={() => props.setUploadIsHovered(false)}
                       >
-                        {props?.data?.profileImage ? (
+                        {resumeData?.profileImage ? (
                           <img
-                            src={props?.data?.profileImage}
+                            src={resumeData?.profileImage}
                             alt="profile"
                             className="w-14 h-14 rounded-sm"
                           />
@@ -586,7 +587,7 @@ const EditResumeMarkup = (props) => {
                             />
                           </div>
                         )}
-                        {props?.data?.profileImage ? (
+                        {resumeData?.profileImage ? (
                           <div className="flex flex-row items-center">
                             <MdDeleteOutline
                               className={`ml-2 text-xl ${
