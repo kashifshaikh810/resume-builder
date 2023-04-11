@@ -36,19 +36,25 @@ const StockholmTemplate = (props) => {
               className="w-5 h-5"
             />
           )}
-          <div className={`${resumeData?.profileImage ? `ml-3` : ``}`}>
-            {resumeData?.firstName || resumeData?.lastName ? (
-              <p className="text-[6px] font-bold">
-                {resumeData?.firstName && resumeData?.firstName}{" "}
-                {resumeData?.lastName && resumeData?.lastName}
-              </p>
-            ) : null}
-            {resumeData?.wantedJobTitle && (
-              <p className="text-[3px] text-gray-600">
-                {resumeData?.wantedJobTitle}
-              </p>
-            )}
-          </div>
+          {resumeData?.firstName ||
+          resumeData?.lastName ||
+          resumeData?.wantedJobTitle ? (
+            <div className={`${resumeData?.profileImage ? `ml-3` : ``}`}>
+              {resumeData?.firstName || resumeData?.lastName ? (
+                <p className="text-[6px] font-bold">
+                  {resumeData?.firstName && resumeData?.firstName}{" "}
+                  {resumeData?.lastName && resumeData?.lastName}
+                </p>
+              ) : null}
+              {resumeData?.wantedJobTitle && (
+                <p className="text-[3px] text-gray-600">
+                  {resumeData?.wantedJobTitle}
+                </p>
+              )}
+            </div>
+          ) : (
+            ""
+          )}
         </div>
 
         {resumeData?.professionalSummary && (
@@ -539,17 +545,26 @@ const StockholmTemplate = (props) => {
         ) : (
           ""
         )}
-        <div>
-          <p className="text-[3px] text-gray-600">{resumeData?.address}</p>
-          <p className="text-[3px] text-gray-600">
-            {`${resumeData?.city} ${
-              resumeData?.city && resumeData?.postalCode ? `,` : ``
-            } ${resumeData?.postalCode}`}
-          </p>
-          <p className="text-[3px] text-gray-600">{resumeData?.country}</p>
-          <p className="text-[3px] text-gray-600">{resumeData?.phone}</p>
-          <p className="text-[4px] text-blue-400">{resumeData?.email}</p>
-        </div>
+        {resumeData?.address ||
+        resumeData?.city ||
+        resumeData?.postalCode ||
+        resumeData?.country ||
+        resumeData?.phone ||
+        resumeData?.email ? (
+          <div>
+            <p className="text-[3px] text-gray-600">{resumeData?.address}</p>
+            <p className="text-[3px] text-gray-600">
+              {`${resumeData?.city} ${
+                resumeData?.city && resumeData?.postalCode ? `,` : ``
+              } ${resumeData?.postalCode}`}
+            </p>
+            <p className="text-[3px] text-gray-600">{resumeData?.country}</p>
+            <p className="text-[3px] text-gray-600">{resumeData?.phone}</p>
+            <p className="text-[4px] text-blue-400">{resumeData?.email}</p>
+          </div>
+        ) : (
+          ""
+        )}
 
         {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
           <div className="mt-2">
