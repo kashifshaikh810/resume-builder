@@ -316,7 +316,7 @@ const NewYorkTemplate = (props) => {
                   <CgShapeCircle
                     className={`text-[2.5px] mt-[1px] mr-2 ${
                       resumeData?.professionalSummary?.length >= 90
-                        ? `-ml-[1px] text-[8px]`
+                        ? `ml-[2px] text-[8px]`
                         : ``
                     }`}
                   />
@@ -325,7 +325,7 @@ const NewYorkTemplate = (props) => {
                   )}
                 </div>
                 <div>
-                  <p className="text-[2.5px]">
+                  <p className="text-[2.5px] w-8/12">
                     {resumeData?.professionalSummary}
                   </p>
                 </div>
