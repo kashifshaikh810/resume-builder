@@ -55,22 +55,31 @@ const TorontoTemplate = (props) => {
             }
           >
             <div>
-              <div className={props.profileImage && `pt-1 mt-1`}>
-                <p className="font-bold text-[6px]">
-                  {resumeData?.wantedJobTitle}
-                </p>
-                <p className="text-[6px]">{resumeData?.email}</p>
-                <p className="text-[6px]">{resumeData?.phone}</p>
-                <p className="text-[6px]">
-                  {`${resumeData?.address}${
-                    resumeData?.address && resumeData?.city ? `,` : ""
-                  } ${resumeData?.city}${
-                    resumeData?.city && resumeData?.postalCode ? `,` : ""
-                  } ${resumeData?.postalCode}${
-                    resumeData?.country && resumeData?.postalCode ? `,` : ""
-                  } ${resumeData?.country}`}
-                </p>
-              </div>
+              {resumeData?.email ||
+              resumeData?.phone ||
+              resumeData?.address ||
+              resumeData?.city ||
+              resumeData?.postalCode ||
+              resumeData?.country ? (
+                <div className={props.profileImage && `pt-1 mt-1`}>
+                  <p className="font-bold text-[6px]">
+                    {resumeData?.wantedJobTitle}
+                  </p>
+                  <p className="text-[6px]">{resumeData?.email}</p>
+                  <p className="text-[6px]">{resumeData?.phone}</p>
+                  <p className="text-[6px]">
+                    {`${resumeData?.address}${
+                      resumeData?.address && resumeData?.city ? `,` : ""
+                    } ${resumeData?.city}${
+                      resumeData?.city && resumeData?.postalCode ? `,` : ""
+                    } ${resumeData?.postalCode}${
+                      resumeData?.country && resumeData?.postalCode ? `,` : ""
+                    } ${resumeData?.country}`}
+                  </p>
+                </div>
+              ) : (
+                ""
+              )}
 
               <div className="pt-1 mt-1">
                 {resumeData?.dateOfBirth || resumeData?.placeOfBirth ? (
