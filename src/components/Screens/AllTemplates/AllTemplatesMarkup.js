@@ -16,6 +16,7 @@ import StockholmCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates
 import TorontoCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/TorontoCoverLetterTemplate";
 import NewYorkCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/NewYorkCoverLetterTemplate";
 import ViennaCoverLetterTemplate from "../../AllTemplateCoverLettersTemplates/ViennaCoverLetterTemplate";
+import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const AllTemplatesMarkup = (props) => {
   const {
@@ -84,6 +85,42 @@ const AllTemplatesMarkup = (props) => {
       uri: "https://s3.resume.io/cdn-cgi/image/format=auto,fit=scale-down,dpr=2,width=154/uploads/local_template_image/image/734/persistent-resource/vienna-cover-letter-templates.jpg",
     },
   ];
+
+  const renderResumesTemplate = () => {
+    if (
+      (props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
+      templateData?.selectedTemplate === "Toronto"
+    ) {
+      return <TorontoTemplate {...props} />;
+    } else if (
+      (props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "Stockholm") ||
+      templateData?.selectedTemplate === "Stockholm"
+    ) {
+      return <StockholmTemplate {...props} />;
+    } else if (
+      (props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "New York") ||
+      templateData?.selectedTemplate === "New York"
+    ) {
+      return <NewYorkTemplate {...props} />;
+    } else if (
+      (props.tabName === "resumes" &&
+        isSelectedTemplate.nameOfSelectedVal === "Vienna") ||
+      templateData?.selectedTemplate === "Vienna"
+    ) {
+      return <ViennaTemplate {...props} />;
+    } else {
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex flex-col justify-center items-center pt-6 ml-3 pb-7 bg-white w-full overflow-hidden h-[900px] rounded-md"
+          textStyle="text-2xl text-gray-300 animate-bounce font-mono"
+        />
+      );
+    }
+  };
 
   let mapping =
     props?.tabName === "resumes"
@@ -344,7 +381,8 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         {/* template results & resumes && templates */}
-        {(props.tabName === "resumes" &&
+        {renderResumesTemplate()}
+        {/* {(props.tabName === "resumes" &&
           isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
         templateData?.selectedTemplate === "Toronto" ? (
           <TorontoTemplate {...props} />
@@ -366,7 +404,7 @@ const AllTemplatesMarkup = (props) => {
           isSelectedTemplate.nameOfSelectedVal === "Vienna") ||
         templateData?.selectedTemplate === "Vienna" ? (
           <ViennaTemplate {...props} />
-        ) : null}
+        ) : null} */}
 
         {/* template results & cover letter tab templates */}
         {props?.tabName === "cover-letters" &&
