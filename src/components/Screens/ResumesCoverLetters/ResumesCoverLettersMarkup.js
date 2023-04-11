@@ -44,11 +44,13 @@ const ResumesCoverLettersMarkup = (props) => {
     } else if (templateData?.selectedTemplate === "Vienna") {
       return <ViennaTemplate {...props} />;
     } else {
-      <SelectTemplate
-        {...props}
-        containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
-        textStyle="text-xs text-gray-300 animate-bounce font-mono"
-      />;
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+          textStyle="text-xs text-gray-300 animate-bounce font-mono"
+        />
+      );
     }
   };
 
