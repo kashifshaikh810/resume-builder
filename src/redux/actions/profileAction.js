@@ -26,6 +26,7 @@ export const updateProfileAction =
             firstName,
             lastName,
             email,
+            userId,
           })
             .then((res) => {
               dispatch({ type: UPDATE_PROFILE_SUCCESS });
