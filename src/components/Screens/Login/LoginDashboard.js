@@ -20,14 +20,34 @@ const LoginDashboard = (props) => {
           We are happy to see you back!
         </p>
 
-        <MyButton
-          {...props}
-          title="Email"
-          className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 rounded-md email-button"
-          textStyle="text-black font-bold email-button"
-          onPress={() => navigate("/app/auth/log-in")}
-          loading={false}
-        />
+        <div className="flex flex-row">
+          <MyButton
+            {...props}
+            title="Email"
+            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
+            textStyle="text-black font-bold email-button"
+            onPress={() => navigate("/app/auth/log-in")}
+            loading={false}
+          />
+
+          <MyButton
+            {...props}
+            title="Google"
+            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
+            textStyle="text-black font-bold email-button"
+            onPress={() => {}}
+            loading={false}
+          />
+
+          <MyButton
+            {...props}
+            title="Facebook"
+            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
+            textStyle="text-black font-bold email-button"
+            onPress={() => {}}
+            loading={false}
+          />
+        </div>
 
         <div className="flex flex-row pt-5">
           <p className="text-base text-gray-400">I am not registered —</p>
