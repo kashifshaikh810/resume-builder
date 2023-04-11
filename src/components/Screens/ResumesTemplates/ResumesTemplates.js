@@ -223,8 +223,11 @@ const ResumesTemplates = (props) => {
     },
   ];
 
-  const selectTemplate = (user, templateName, index) => {
-    if (templateData?.selectedTemplate === "Toronto") {
+  const selectTemplateHandler = (user, templateName, index) => {
+    if (
+      templateData?.selectedTemplate === "Toronto" ||
+      (templateName === "Toronto" && index === 0)
+    ) {
       const isSelectedTemplate = {
         nameOfSelectedVal: templateName,
         numOfSelectedVal: index,
@@ -232,7 +235,10 @@ const ResumesTemplates = (props) => {
       dispatch(
         selectResumeTemplateAction(user, templateName, isSelectedTemplate)
       );
-    } else if (templateData?.selectedTemplate === "Stockholm") {
+    } else if (
+      templateData?.selectedTemplate === "Stockholm" ||
+      (templateName === "Stockholm" && index === 1)
+    ) {
       const isSelectedTemplate = {
         nameOfSelectedVal: templateName,
         numOfSelectedVal: index,
@@ -240,7 +246,10 @@ const ResumesTemplates = (props) => {
       dispatch(
         selectResumeTemplateAction(user, templateName, isSelectedTemplate)
       );
-    } else if (templateData?.selectedTemplate === "New York") {
+    } else if (
+      templateData?.selectedTemplate === "New York" ||
+      (templateName === "New York" && index === 2)
+    ) {
       const isSelectedTemplate = {
         nameOfSelectedVal: templateName,
         numOfSelectedVal: index,
@@ -248,7 +257,10 @@ const ResumesTemplates = (props) => {
       dispatch(
         selectResumeTemplateAction(user, templateName, isSelectedTemplate)
       );
-    } else if (templateData?.selectedTemplate === "Vienna") {
+    } else if (
+      templateData?.selectedTemplate === "Vienna" ||
+      (templateName === "Vienna" && index === 3)
+    ) {
       const isSelectedTemplate = {
         nameOfSelectedVal: templateName,
         numOfSelectedVal: index,
@@ -291,7 +303,7 @@ const ResumesTemplates = (props) => {
       isHovered={isHovered}
       setIsHovered={setIsHovered}
       screenWidth={width}
-      selectTemplate={selectTemplate}
+      selectTemplateHandler={selectTemplateHandler}
       user={user}
       templateData={templateData}
     />
