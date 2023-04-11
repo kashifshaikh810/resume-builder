@@ -47,6 +47,7 @@ import CoverLetterNewYorkTemplate from "../../EditCoverLettersTemplates/CoverLet
 import CoverLetterViennaTemplate from "../../EditCoverLettersTemplates/CoverLetterViennaTemplate";
 import TemplateLoader from "../../EditResumeLoaders/TemplateLoader";
 import EditResumeScreenLoader from "../../EditResumeLoaders/EditResumeScreenLoader";
+import SelectTemplate from "../../ResumesAndCoverLettersTemplates/SelectTemplate";
 
 const EditResumeMarkup = (props) => {
   const {
@@ -126,6 +127,14 @@ const EditResumeMarkup = (props) => {
       templateData?.selectedTemplate === "Vienna"
     ) {
       return <ViennaTemplate {...props} />;
+    } else {
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex w-full h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+          textStyle="text-xs text-gray-300 animate-bounce font-mono"
+        />
+      );
     }
   };
 
