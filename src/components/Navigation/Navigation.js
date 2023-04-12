@@ -23,6 +23,7 @@ import { clearErrors } from "../../redux/actions/authAction";
 import { Auth } from "../../Firebase/FirebaseConfig";
 import NotFoundPage from "../Screens/NotFoundPage/NotFoundPage";
 import Loader from "../Screens/NotFoundPage/Loader";
+import SocialSignUp from "../Screens/SocialSignUp/SocialSignUp";
 
 const Navigation = () => {
   const dispatch = useDispatch();
@@ -158,6 +159,19 @@ const Navigation = () => {
               />
             ) : (
               <Route path="*" element={<NotFoundPage />} />
+            )}
+            {user ? (
+              <Route
+                path="*"
+                element={<NotFoundPage navigate={useNavigate} />}
+              />
+            ) : (
+              <Route
+                path="/app/create-resume/social-profile"
+                element={
+                  <SocialSignUp navigate={useNavigate} params={useParams} />
+                }
+              />
             )}
           </>
         )}

@@ -71,7 +71,7 @@ const LoginDashboard = (props) => {
           <p className="text-base text-gray-400">I am not registered —</p>
           <p
             className="text-base pl-1 text-blue-400 sign-up-text"
-            onClick={() => navigate("/create-resume/introduction")}
+            onClick={() => navigate("/app/create-resume/social-profile")}
           >
             Sign Up
           </p>
