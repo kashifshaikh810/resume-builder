@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import MyButton from "../../MyButton/MyButton";
+
+import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
 
 const LoginDashboard = (props) => {
+  const [emailHover, setEmailHover] = useState("");
   const navigate = props?.navigate();
+
   return (
     <div className="flex-col flex flex-1 justify-center items-center overflow-hidden">
       <div className="flex w-full h-24 justify-end pt-5 pr-5">
@@ -21,29 +24,44 @@ const LoginDashboard = (props) => {
         </p>
 
         <div className="flex flex-row">
-          <MyButton
+          <AppButton
             {...props}
             title="Email"
-            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
-            textStyle="text-black font-bold email-button"
+            iconName="email"
+            onMouseEnter={() => setEmailHover(!emailHover)}
+            onMouseLeave={() => setEmailHover(!emailHover)}
+            iconStyle="mr-8"
+            iconContainerStyle="flex flex-row items-center"
+            className={`border  mt-5 p-3 pl-5 pr-10 mr-4 rounded-md cursor-pointer ${
+              emailHover ? `border-blue-300` : `border-gray-200`
+            }`}
+            textStyle={`font-bold ${
+              emailHover ? `text-blue-500` : `text-black`
+            }`}
             onPress={() => navigate("/app/auth/log-in")}
             loading={false}
           />
 
-          <MyButton
+          <AppButton
             {...props}
             title="Google"
-            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
-            textStyle="text-black font-bold email-button"
+            iconName="google"
+            iconStyle="mr-8"
+            iconContainerStyle="flex flex-row items-center"
+            className="bg-red-500 mt-5 p-3 pl-5 pr-10 mr-4 rounded-md cursor-pointer hover:bg-red-600"
+            textStyle="text-white font-bold"
             onPress={() => {}}
             loading={false}
           />
 
-          <MyButton
+          <AppButton
             {...props}
             title="Facebook"
-            className="border-2 border-gray-200 mt-4 p-3 pl-10 pr-10 mr-4 rounded-md email-button"
-            textStyle="text-black font-bold email-button"
+            iconName="facebook"
+            iconStyle="mr-8"
+            iconContainerStyle="flex flex-row items-center"
+            className="bg-blue-500 mt-5 p-3 pl-5 pr-10 mr-4 rounded-md cursor-pointer hover:bg-blue-600"
+            textStyle="text-white font-bold"
             onPress={() => {}}
             loading={false}
           />

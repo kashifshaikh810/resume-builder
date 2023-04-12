@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, signInAction } from "../../../redux/actions/authAction";
 import { SIGNIN_RESET } from "../../../redux/constants/authConstants";
 
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -74,7 +74,7 @@ const Login = (props) => {
         )}
 
         <div className="flex flex-row w-10/12 justify-around mt-4 pt-4 my-buttons-container">
-          <MyButton
+          <AppButton
             {...props}
             title="Back"
             className="border-2 border-gray-200 mt-4 p-2.5 h-12 pl-5 pr-5 rounded-md cursor-pointer back-button"
@@ -83,7 +83,7 @@ const Login = (props) => {
             loading={false}
           />
 
-          <MyButton
+          <AppButton
             {...props}
             title="Continue"
             className={`${
