@@ -1,7 +1,7 @@
 import React from "react";
 
 import Header from "../../Header/Header";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
 import "./styles.css";
 
@@ -24,7 +24,7 @@ const DashboardMarkup = (props) => {
           - try now for free!
         </p>
 
-        <MyButton
+        <AppButton
           {...props}
           title="Create My Resume"
           className="bg-blue-500 hover:bg-blue-600 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer"

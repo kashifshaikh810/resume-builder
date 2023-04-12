@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import { RiLoader4Line } from "react-icons/ri";
 
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
 import StockholmTemplate from "../../Templates/StockholmTemplate";
 import TorontoTemplate from "../../Templates/TorontoTemplate";
@@ -236,7 +236,7 @@ const AllTemplatesMarkup = (props) => {
               <p className="text-white">Updating...</p>
             </div>
           )}
-          <MyButton
+          <AppButton
             {...props}
             title="Download PDF"
             className={`bg-blue-500 p-2 pl-6 pr-6 rounded-md ${
@@ -248,7 +248,7 @@ const AllTemplatesMarkup = (props) => {
             onPress={() => {}}
             loading={false}
           />
-          <MyButton
+          <AppButton
             {...props}
             title="..."
             className={`bg-blue-500 ml-2 p-2 pl-4 pr-4 rounded-md ${

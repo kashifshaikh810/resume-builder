@@ -28,7 +28,7 @@ import ExtraCurricularInputBox from "../../EditResumeComponents/ExtraCurricularI
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 import Header from "../../Header/Header";
 import "./styles.css";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import FLAG from "../../images/flag.svg";
 import FileModal from "../../FileModal/FileModal";
 import EmploymentInputBox from "../../EditResumeComponents/EmploymentInputBox";
@@ -258,7 +258,7 @@ const EditResumeMarkup = (props) => {
               <p className="text-white text-base">Select template</p>
             </div>
             <div className="ml-11 pl-12 flex flex-row">
-              <MyButton
+              <AppButton
                 {...props}
                 title="Download PDF"
                 className="bg-blue-500 p-3 pl-6 pr-6 rounded-md hover:bg-blue-600 hover:cursor-pointer"
@@ -266,7 +266,7 @@ const EditResumeMarkup = (props) => {
                 onPress={() => {}}
                 loading={false}
               />
-              <MyButton
+              <AppButton
                 {...props}
                 title="..."
                 className="bg-blue-500 ml-2 p-3 pt-2 pl-6 pr-6 rounded-md hover:bg-blue-600 hover:cursor-pointer"
@@ -605,7 +605,7 @@ const EditResumeMarkup = (props) => {
                                   : `text-gray-400`
                               }`}
                             />
-                            <MyButton
+                            <AppButton
                               {...props}
                               title="Delete"
                               textStyle={` ${
@@ -618,7 +618,7 @@ const EditResumeMarkup = (props) => {
                             />
                           </div>
                         ) : (
-                          <MyButton
+                          <AppButton
                             {...props}
                             title="Upload photo"
                             textStyle={` ${
@@ -1075,7 +1075,7 @@ const EditResumeMarkup = (props) => {
 
                         <EmploymentInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.employmentInputList?.length === 0
@@ -1144,7 +1144,7 @@ const EditResumeMarkup = (props) => {
 
                         <EducationInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.educationInputList.length === 0
@@ -1215,7 +1215,7 @@ const EditResumeMarkup = (props) => {
 
                         <WebsiteAndSocialInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.websiteInputList.length === 0
@@ -1362,7 +1362,7 @@ const EditResumeMarkup = (props) => {
 
                         <SkillsInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.skillsInputList?.length === 0
@@ -1486,7 +1486,7 @@ const EditResumeMarkup = (props) => {
 
                         <LanguagesInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.languagesInputList?.length === 0
@@ -1549,7 +1549,7 @@ const EditResumeMarkup = (props) => {
 
                         <CoursesInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.coursesInputList.length === 0
@@ -1617,7 +1617,7 @@ const EditResumeMarkup = (props) => {
 
                         <ExtraCurricularInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.extraCurricularInputList.length === 0
@@ -1682,7 +1682,7 @@ const EditResumeMarkup = (props) => {
 
                         <InternshipInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.internshipInputList.length === 0
@@ -1765,7 +1765,7 @@ const EditResumeMarkup = (props) => {
 
                         <PreferencesInputBox {...props} />
 
-                        <MyButton
+                        <AppButton
                           {...props}
                           title={
                             props.referencesInputList.length === 0

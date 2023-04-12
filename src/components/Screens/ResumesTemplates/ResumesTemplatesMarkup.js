@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../../Header/Header";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import SideDrawer from "../../../components/SideDrawer/SideDrawer";
 import "./styles.css";
 
@@ -27,7 +27,7 @@ const ResumesTemplatesMarkup = (props) => {
                   props?.isHovered?.show &&
                   props?.isHovered?.num === index && (
                     <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                      <MyButton
+                      <AppButton
                         {...props}
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -45,7 +45,7 @@ const ResumesTemplatesMarkup = (props) => {
                   )
                 ) : (
                   <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                    <MyButton
+                    <AppButton
                       {...props}
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -104,7 +104,7 @@ const ResumesTemplatesMarkup = (props) => {
                   props?.isHovered?.show &&
                   props?.isHovered?.num === index && (
                     <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                      <MyButton
+                      <AppButton
                         {...props}
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -118,7 +118,7 @@ const ResumesTemplatesMarkup = (props) => {
                   )
                 ) : (
                   <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                    <MyButton
+                    <AppButton
                       {...props}
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -177,7 +177,7 @@ const ResumesTemplatesMarkup = (props) => {
                   props?.isHovered?.show &&
                   props?.isHovered?.num === index && (
                     <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                      <MyButton
+                      <AppButton
                         {...props}
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -191,7 +191,7 @@ const ResumesTemplatesMarkup = (props) => {
                   )
                 ) : (
                   <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                    <MyButton
+                    <AppButton
                       {...props}
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -250,7 +250,7 @@ const ResumesTemplatesMarkup = (props) => {
                   props?.isHovered?.show &&
                   props?.isHovered?.num === index && (
                     <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                      <MyButton
+                      <AppButton
                         {...props}
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -264,7 +264,7 @@ const ResumesTemplatesMarkup = (props) => {
                   )
                 ) : (
                   <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                    <MyButton
+                    <AppButton
                       {...props}
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -323,7 +323,7 @@ const ResumesTemplatesMarkup = (props) => {
                   props?.isHovered?.show &&
                   props?.isHovered?.num === index && (
                     <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                      <MyButton
+                      <AppButton
                         {...props}
                         title="Use This Template"
                         className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -337,7 +337,7 @@ const ResumesTemplatesMarkup = (props) => {
                   )
                 ) : (
                   <div className="flex w-full justify-center relative top-52 max-[1023px]:top-72 max-[767px]:top-96 max-[565px]:top-52 max-[463px]:top-26 bottom-0 right-0 left-0">
-                    <MyButton
+                    <AppButton
                       {...props}
                       title="Use This Template"
                       className="pb-4 pt-4 w-8/12 max-[565px]:w-8/12 max-[320px]:w-8/12 max-[463px]:w-7/12 max-[463px]:w-6/12 rounded-md bg-blue-500 absolute hover:bg-blue-600"
@@ -400,7 +400,7 @@ const ResumesTemplatesMarkup = (props) => {
               faster with field-tested resume templates.
             </p>
 
-            <MyButton
+            <AppButton
               {...props}
               title="Create My Resume"
               className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer button max-[767px]:hidden"

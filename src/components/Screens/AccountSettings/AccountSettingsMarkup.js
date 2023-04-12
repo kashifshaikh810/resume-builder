@@ -9,7 +9,7 @@ import { RiLoader4Fill } from "react-icons/ri";
 
 import Header from "../../Header/Header";
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
 
 const AccountSettingsMarkup = (props) => {
@@ -58,7 +58,7 @@ const AccountSettingsMarkup = (props) => {
                     for jobs. Upgrade for PDF downloads & premium features.
                   </p>
                 </div>
-                <MyButton
+                <AppButton
                   {...props}
                   title="Upgrade"
                   className="bg-white mr-2 max-[767px]:mt-2"
@@ -140,7 +140,7 @@ const AccountSettingsMarkup = (props) => {
                 ) : (
                   ""
                 )}
-                <MyButton
+                <AppButton
                   {...props}
                   title={isUpdateLoading ? "Saving..." : "Save"}
                   className="bg-white ml-2 mr-5"
@@ -167,7 +167,7 @@ const AccountSettingsMarkup = (props) => {
                 </div>
 
                 <div className="flex flex-1 justify-end">
-                  <MyButton
+                  <AppButton
                     {...props}
                     title="Connect"
                     className="bg-white mr-6"
@@ -188,7 +188,7 @@ const AccountSettingsMarkup = (props) => {
                 </div>
 
                 <div className="flex flex-1 justify-end">
-                  <MyButton
+                  <AppButton
                     {...props}
                     title="Connect"
                     className="bg-white mr-6"
@@ -209,7 +209,7 @@ const AccountSettingsMarkup = (props) => {
                 </div>
 
                 <div className="flex flex-1 justify-end">
-                  <MyButton
+                  <AppButton
                     {...props}
                     title="Connect"
                     className="bg-white mr-6"
@@ -310,7 +310,7 @@ const AccountSettingsMarkup = (props) => {
               </p>
 
               <div className="flex flex-1 justify-end max-[767px]:ml-3 max-[767px]:pl-3 max-[767px]:mt-2">
-                <MyButton
+                <AppButton
                   {...props}
                   title="Delete Account"
                   className="bg-white mr-5"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+
 import Header from "../../Header/Header";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
 import "./styles.css";
 
@@ -97,7 +98,7 @@ const FirstNameLastName = (props) => {
       </div>
 
       <div className="flex flex-row w-full justify-evenly items-center mt-4 pt-4 buttons-container">
-        <MyButton
+        <AppButton
           {...props}
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
@@ -106,7 +107,7 @@ const FirstNameLastName = (props) => {
           loading={false}
         />
 
-        <MyButton
+        <AppButton
           {...props}
           title="Continue"
           className="bg-blue-500 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer continue-button"

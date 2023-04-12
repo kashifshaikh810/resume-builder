@@ -6,7 +6,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { TfiUser } from "react-icons/tfi";
 import { useNavigate } from "react-router-dom";
 
-import MyButton from "../MyButton/MyButton";
+import AppButton from "../AppButton/AppButton";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors } from "../../redux/actions/authAction";
@@ -35,7 +35,7 @@ const Header = (props) => {
   const renderButton = () => {
     if (user && isAuthenticated) {
       return (
-        <MyButton
+        <AppButton
           {...props}
           title="My Account"
           className="border border-blue-500 hover:bg-blue-50 p-3 pl-5 pr-5 rounded-md cursor-pointer"
@@ -47,7 +47,7 @@ const Header = (props) => {
     } else {
       return (
         <div className="flex flex-row">
-          <MyButton
+          <AppButton
             {...props}
             title="Log In"
             className="p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
@@ -55,7 +55,7 @@ const Header = (props) => {
             onPress={() => navigate("/app/auth/log-in")}
             loading={false}
           />
-          <MyButton
+          <AppButton
             {...props}
             title="Sign Up"
             className="bg-blue-500 hover:bg-blue-600 p-3.5 pl-6 pr-6 rounded-md cursor-pointer"

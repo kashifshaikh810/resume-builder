@@ -7,7 +7,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 import DropDownMenu from "../../DropDownMenu/DropDownMenu";
 import Header from "../../Header/Header";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
 import Cv from "../../images/test.png";
 import Switch from "../../images/switch.jpeg";
@@ -171,7 +171,7 @@ const ResumesCoverLettersMarkup = (props) => {
                   apart.
                 </p>
 
-                <MyButton
+                <AppButton
                   {...props}
                   title="Order Now"
                   className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 order-button"
@@ -197,7 +197,7 @@ const ResumesCoverLettersMarkup = (props) => {
                   more out of it.
                 </p>
 
-                <MyButton
+                <AppButton
                   {...props}
                   title="Get Started"
                   className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 started-button"
@@ -344,7 +344,7 @@ const ResumesCoverLettersMarkup = (props) => {
                   apart.
                 </p>
 
-                <MyButton
+                <AppButton
                   {...props}
                   title="Order Now"
                   className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 order-button"
@@ -370,7 +370,7 @@ const ResumesCoverLettersMarkup = (props) => {
                   more out of it.
                 </p>
 
-                <MyButton
+                <AppButton
                   {...props}
                   title="Get Started"
                   className="bg-blue-500 w-5/12 mt-4 p-2 justify-center items-center h-10 rounded-md cursor-pointer pt-2 started-button"
@@ -394,7 +394,7 @@ const ResumesCoverLettersMarkup = (props) => {
       <div className="pt-10 pl-5">
         <p className="text-3xl font-bold">Resumes & Cover Letters</p>
         <div className="flex w-11/12 h-2 justify-end items-center">
-          <MyButton
+          <AppButton
             {...props}
             title="Create New"
             className="bg-blue-500 mt-4 p-2 justify-center items-center h-10 pl-5 pr-5 rounded-md cursor-pointer pt-2 create-button"
@@ -427,7 +427,7 @@ const ResumesCoverLettersMarkup = (props) => {
         </div>
 
         <div className="flex flex-1 mr-5">
-          <MyButton
+          <AppButton
             {...props}
             title={
               props?.isShowLine === "resumes"

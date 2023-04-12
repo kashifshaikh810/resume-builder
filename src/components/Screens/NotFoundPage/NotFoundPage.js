@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 
 const NotFoundPage = (props) => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const NotFoundPage = (props) => {
         It shouldn't have happened! We've been notified about this issue and
         we'll take a look at it shortly.
       </p>
-      <MyButton
+      <AppButton
         {...props}
         title="Back to Home"
         className="bg-blue-500 mt-5 p-3 pl-5 pr-5 rounded-md hover:cursor-pointer hover:bg-blue-600"

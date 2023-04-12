@@ -1,6 +1,6 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
-import MyButton from "../MyButton/MyButton";
+import AppButton from "../AppButton/AppButton";
 
 const FileModal = (props) => {
   return (
@@ -38,7 +38,7 @@ const FileModal = (props) => {
                   <p className="my-4 text-slate-500 text-lg leading-relaxed mt-2">
                     Select a photo from your computer
                   </p>
-                  <MyButton
+                  <AppButton
                     {...props}
                     title="Choose Image"
                     className="bg-blue-500 w-3/12 h-9 flex justify-center items-center rounded-md hover:cursor-pointer mt-2"

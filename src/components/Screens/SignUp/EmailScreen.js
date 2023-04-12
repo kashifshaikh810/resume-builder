@@ -5,7 +5,7 @@ import { clearErrors, signUpAction } from "../../../redux/actions/authAction";
 import { SIGNUP_RESET } from "../../../redux/constants/authConstants";
 
 import Header from "../../Header/Header";
-import MyButton from "../../MyButton/MyButton";
+import AppButton from "../../AppButton/AppButton";
 import SideDrawer from "../../SideDrawer/SideDrawer";
 import "./styles.css";
 
@@ -102,7 +102,7 @@ const EmailScreen = (props) => {
       </div>
 
       <div className="flex flex-row flex-1 justify-evenly mt-4 pt-4 buttons-container">
-        <MyButton
+        <AppButton
           {...props}
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
@@ -111,7 +111,7 @@ const EmailScreen = (props) => {
           loading={false}
         />
 
-        <MyButton
+        <AppButton
           {...props}
           title="Continue"
           className={`${
