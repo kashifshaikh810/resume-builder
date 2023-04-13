@@ -52,7 +52,7 @@ const Header = (props) => {
             title="Log In"
             className="p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
             textStyle="text-blue-400 hover:text-blue-600"
-            onPress={() => navigate("/app/auth/log-in")}
+            onPress={() => navigate("/app/auth/sign-in")}
             loading={false}
           />
           <AppButton
@@ -60,7 +60,7 @@ const Header = (props) => {
             title="Sign Up"
             className="bg-blue-500 hover:bg-blue-600 p-3.5 pl-6 pr-6 rounded-md cursor-pointer"
             textStyle="text-white font-bold"
-            onPress={() => navigate("/create-resume/introduction")}
+            onPress={() => navigate("/app/create-resume/social-profile")}
             loading={false}
           />
         </div>
