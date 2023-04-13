@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BiChevronRight } from "react-icons/bi";
 import { GrFacebookOption } from "react-icons/gr";
 import { RiGoogleFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 import AppButton from "../../AppButton/AppButton";
 
@@ -11,6 +12,7 @@ const SocialSignUp = () => {
     useState(false);
   const [isChangeGoogleTextColor, setIsChangeGoogleTextColor] = useState(false);
   const [isChangeBackBtnColor, setIsChangeBackBtnColor] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="flex-col flex flex-1 justify-center items-center">
@@ -18,7 +20,7 @@ const SocialSignUp = () => {
         <AiOutlineClose
           size={30}
           className="text-gray-300 cursor-pointer"
-          onClick={() => {}}
+          onClick={() => navigate("/")}
         />
       </div>
       <div>
@@ -77,12 +79,12 @@ const SocialSignUp = () => {
         <AppButton
           title="Back"
           className={`border mt-5 p-3 pl-10 pr-10 mr-20 rounded-md cursor-pointer ${
-            isChangeBackBtnColor ? `border-blue-500` : `border-gray-100`
+            isChangeBackBtnColor ? `border-blue-500` : `border-gray-200`
           }`}
           textStyle={`font-bold ${
             isChangeBackBtnColor ? `text-blue-500` : `text-black`
           }`}
-          onPress={() => {}}
+          onPress={() => navigate("/app/auth/sign-in")}
           loading={false}
           onMouseEnter={() => setIsChangeBackBtnColor(true)}
           onMouseLeave={() => setIsChangeBackBtnColor(false)}
@@ -92,7 +94,7 @@ const SocialSignUp = () => {
           title="Skip"
           className="bg-blue-500 mt-5 p-3 pl-10 ml-20 pr-10 rounded-md cursor-pointer hover:bg-blue-600"
           textStyle="text-white font-bold"
-          onPress={() => {}}
+          onPress={() => navigate("/create-resume/introduction")}
           loading={false}
         />
       </div>
