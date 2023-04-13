@@ -103,7 +103,7 @@ const FirstNameLastName = (props) => {
           title="Back"
           className="border-2 border-gray-200 mt-4 p-3 pl-5 pr-5 rounded-md cursor-pointer back-button"
           textStyle="text-black font-bold back-button"
-          onPress={() => navigate("/app/auth/sign-in")}
+          onPress={() => navigate("/app/create-resume/social-profile")}
           loading={false}
         />
 
