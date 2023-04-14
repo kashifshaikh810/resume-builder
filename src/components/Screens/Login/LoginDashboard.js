@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { signInWithGoogle } from "../../../redux/actions/authAction";
 
 import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
@@ -7,6 +9,11 @@ import "./styles.css";
 const LoginDashboard = (props) => {
   const [emailHover, setEmailHover] = useState("");
   const navigate = props?.navigate();
+  const dispatch = useDispatch();
+
+  const googleOnClickHandler = () => {
+    dispatch(signInWithGoogle());
+  };
 
   return (
     <div className="flex-col flex flex-1 justify-center items-center overflow-hidden">
@@ -50,7 +57,7 @@ const LoginDashboard = (props) => {
             iconContainerStyle="flex flex-row items-center"
             className="bg-red-500 mt-5 p-3 pl-5 pr-10 mr-4 rounded-md cursor-pointer hover:bg-red-600"
             textStyle="text-white font-bold"
-            onPress={() => {}}
+            onPress={() => googleOnClickHandler()}
             loading={false}
           />
 

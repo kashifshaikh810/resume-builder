@@ -193,6 +193,36 @@ export const signUpWithGoogle = () => (dispatch) => {
   }
 };
 
+export const signInWithGoogle = () => (dispatch) => {
+  try {
+    dispatch({
+      type: SIGNIN_REQUEST,
+    });
+    const provider = new GoogleAuthProvider();
+
+    const auth = Auth;
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        dispatch({
+          type: SIGNIN_SUCCESS,
+          payload: res?.user,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: SIGNIN_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({
+      type: SIGNIN_FAIL,
+      payload: error?.code,
+    });
+  }
+};
+
 export const clearErrors = () => (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,

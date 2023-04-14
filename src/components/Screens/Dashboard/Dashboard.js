@@ -28,7 +28,6 @@ const Dashboard = (props) => {
     }
   }, [dispatch, user, error]);
 
-  console.log(templateData);
   return (
     <DashboardMarkup
       {...props}
