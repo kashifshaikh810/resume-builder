@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  FacebookAuthProvider,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -218,6 +219,53 @@ export const signInWithGoogle = () => (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGNIN_FAIL,
+      payload: error?.code,
+    });
+  }
+};
+
+export const signUpWithFacebook = () => (dispatch) => {
+  try {
+    const provider = new FacebookAuthProvider();
+
+    const auth = Auth;
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        let user = res?.user;
+        signOut(Auth)
+          .then(() => {
+            dispatch({
+              type: SIGNUP_SUCCESS,
+            });
+            set(ref(database, "users/" + user?.uid), {
+              userId: user?.uid,
+              firstName: user?.displayName?.substring(
+                0,
+                user?.displayName?.indexOf(" ")
+              ),
+              lastName: user?.displayName?.substring(
+                user?.displayName?.indexOf(" ") + 1
+              ),
+              email: user?.email,
+            });
+          })
+          .catch((error) => {
+            dispatch({
+              type: SIGNUP_FAIL,
+              payload: error?.code,
+            });
+          });
+      })
+      .catch((error) => {
+        dispatch({
+          type: SIGNUP_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({
+      type: SIGNUP_FAIL,
       payload: error?.code,
     });
   }

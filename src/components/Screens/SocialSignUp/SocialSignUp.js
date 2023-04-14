@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import {
   clearErrors,
+  signUpWithFacebook,
   signUpWithGoogle,
 } from "../../../redux/actions/authAction";
 import { SIGNUP_RESET } from "../../../redux/constants/authConstants";
@@ -23,6 +24,10 @@ const SocialSignUp = () => {
 
   const dispatch = useDispatch();
   const { isAuthenticated, error } = useSelector((state) => state.userSignUp);
+
+  const facebookOnClickHandler = () => {
+    dispatch(signUpWithFacebook());
+  };
 
   const googleOnClickHandler = () => {
     dispatch(signUpWithGoogle());
@@ -65,6 +70,7 @@ const SocialSignUp = () => {
           }`}
           onMouseEnter={() => setIsChangeFacebookTextColor(true)}
           onMouseLeave={() => setIsChangeFacebookTextColor(false)}
+          onClick={() => facebookOnClickHandler()}
         >
           <div className="flex flex-row items-center">
             <GrFacebookOption name="GrFacebookOption" size={20} color="blue" />
