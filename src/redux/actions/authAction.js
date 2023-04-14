@@ -226,6 +226,9 @@ export const signInWithGoogle = () => (dispatch) => {
 
 export const signUpWithFacebook = () => (dispatch) => {
   try {
+    dispatch({
+      type: SIGNUP_REQUEST,
+    });
     const provider = new FacebookAuthProvider();
 
     const auth = Auth;
@@ -266,6 +269,36 @@ export const signUpWithFacebook = () => (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGNUP_FAIL,
+      payload: error?.code,
+    });
+  }
+};
+
+export const signInWithFacebook = () => (dispatch) => {
+  try {
+    dispatch({
+      type: SIGNIN_REQUEST,
+    });
+    const provider = new FacebookAuthProvider();
+
+    const auth = Auth;
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        dispatch({
+          type: SIGNIN_SUCCESS,
+          payload: res?.user,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: SIGNIN_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({
+      type: SIGNIN_FAIL,
       payload: error?.code,
     });
   }

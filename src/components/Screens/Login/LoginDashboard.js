@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { signInWithGoogle } from "../../../redux/actions/authAction";
+import {
+  signInWithFacebook,
+  signInWithGoogle,
+} from "../../../redux/actions/authAction";
 
 import AppButton from "../../AppButton/AppButton";
 import "./styles.css";
@@ -10,6 +13,10 @@ const LoginDashboard = (props) => {
   const [emailHover, setEmailHover] = useState("");
   const navigate = props?.navigate();
   const dispatch = useDispatch();
+
+  const facebookOnClickHandler = () => {
+    dispatch(signInWithFacebook());
+  };
 
   const googleOnClickHandler = () => {
     dispatch(signInWithGoogle());
@@ -69,7 +76,7 @@ const LoginDashboard = (props) => {
             iconContainerStyle="flex flex-row items-center"
             className="bg-blue-500 mt-5 p-3 pl-5 pr-10 mr-4 rounded-md cursor-pointer hover:bg-blue-600"
             textStyle="text-white font-bold"
-            onPress={() => {}}
+            onPress={() => facebookOnClickHandler()}
             loading={false}
           />
         </div>
