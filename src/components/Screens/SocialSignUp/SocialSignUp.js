@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiChevronRight } from "react-icons/bi";
 import { GrFacebookOption } from "react-icons/gr";
 import { RiGoogleFill } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+import {
+  clearErrors,
+  signUpWithGoogle,
+} from "../../../redux/actions/authAction";
 
 import AppButton from "../../AppButton/AppButton";
 
@@ -13,6 +19,25 @@ const SocialSignUp = () => {
   const [isChangeGoogleTextColor, setIsChangeGoogleTextColor] = useState(false);
   const [isChangeBackBtnColor, setIsChangeBackBtnColor] = useState(false);
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { isAuthenticated, error } = useSelector((state) => state.userSignUp);
+
+  const googleOnClickHandler = () => {
+    dispatch(signUpWithGoogle());
+  };
+
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      alert("Successfully signup, Please login & lets begin");
+      navigate("/app/auth/sign-in");
+    }
+  }, [dispatch, error, isAuthenticated, navigate]);
 
   return (
     <div className="flex-col flex flex-1 justify-center items-center">
@@ -59,6 +84,7 @@ const SocialSignUp = () => {
           }`}
           onMouseEnter={() => setIsChangeGoogleTextColor(true)}
           onMouseLeave={() => setIsChangeGoogleTextColor(false)}
+          onClick={() => googleOnClickHandler()}
         >
           <div className="flex flex-row items-center">
             <RiGoogleFill name="RiGoogleFill" size={20} color="red" />

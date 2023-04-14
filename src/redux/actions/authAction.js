@@ -1,6 +1,8 @@
 import {
   createUserWithEmailAndPassword,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { Auth, database } from "../../Firebase/FirebaseConfig";
@@ -139,6 +141,56 @@ export const logOutAction = () => (dispatch) => {
         payload: error,
       });
     });
+};
+
+export const signUpWithGoogle = () => (dispatch) => {
+  try {
+    dispatch({
+      type: SIGNUP_REQUEST,
+    });
+    const provider = new GoogleAuthProvider();
+
+    const auth = Auth;
+
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        let user = res?.user;
+        signOut(Auth)
+          .then(() => {
+            dispatch({
+              type: SIGNUP_SUCCESS,
+            });
+            set(ref(database, "users/" + user?.uid), {
+              userId: user?.uid,
+              firstName: user?.displayName?.substring(
+                0,
+                user?.displayName?.indexOf(" ")
+              ),
+              lastName: user?.displayName?.substring(
+                user?.displayName?.indexOf(" ") + 1
+              ),
+              email: user?.email,
+            });
+          })
+          .catch((error) => {
+            dispatch({
+              type: SIGNUP_FAIL,
+              payload: error?.code,
+            });
+          });
+      })
+      .catch((error) => {
+        dispatch({
+          type: SIGNUP_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({
+      type: SIGNUP_FAIL,
+      payload: error?.code,
+    });
+  }
 };
 
 export const clearErrors = () => (dispatch) => {
