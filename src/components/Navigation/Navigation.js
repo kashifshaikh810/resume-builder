@@ -160,19 +160,12 @@ const Navigation = () => {
             ) : (
               <Route path="*" element={<NotFoundPage />} />
             )}
-            {user ? (
-              <Route
-                path="*"
-                element={<NotFoundPage navigate={useNavigate} />}
-              />
-            ) : (
-              <Route
-                path="/app/create-resume/social-profile"
-                element={
-                  <SocialSignUp navigate={useNavigate} params={useParams} />
-                }
-              />
-            )}
+            <Route
+              path="/app/create-resume/social-profile"
+              element={
+                <SocialSignUp navigate={useNavigate} params={useParams} />
+              }
+            />
           </>
         )}
       </Routes>

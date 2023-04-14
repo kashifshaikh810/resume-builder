@@ -10,6 +10,7 @@ import {
   clearErrors,
   signUpWithGoogle,
 } from "../../../redux/actions/authAction";
+import { SIGNUP_RESET } from "../../../redux/constants/authConstants";
 
 import AppButton from "../../AppButton/AppButton";
 
@@ -36,6 +37,7 @@ const SocialSignUp = () => {
     if (isAuthenticated) {
       alert("Successfully signup, Please login & lets begin");
       navigate("/app/auth/sign-in");
+      dispatch({ type: SIGNUP_RESET });
     }
   }, [dispatch, error, isAuthenticated, navigate]);
 
