@@ -43,24 +43,26 @@ export const getResumeData = (user) => (dispatch) => {
 export const resumeDataSave = (user, data) => (dispatch) => {
   try {
     dispatch({ type: RESUME_DATA_REQUEST });
-    console.log(data);
     const resumeData = {
       data,
       username: `${user?.firstName} ${user?.lastName}`,
       userId: user?.userId,
     };
 
+    // console.log(resumeData, "resumeData");
     set(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
       .then(() => {
         dispatch({ type: RESUME_DATA_SUCCESS, payload: resumeData });
       })
       .catch((error) => {
+        console.log(error, `err 1`);
         dispatch({
           type: RESUME_DATA_FAIL,
           payload: error?.code,
         });
       });
   } catch (error) {
+    console.log(error, `err 2`);
     dispatch({ type: RESUME_DATA_FAIL, payload: error?.code });
   }
 };

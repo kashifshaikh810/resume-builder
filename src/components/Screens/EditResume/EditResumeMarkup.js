@@ -96,6 +96,7 @@ const EditResumeMarkup = (props) => {
     editResumeTitleOnPressHandler,
     titleData,
     loading,
+    saveLoading,
     resumeData,
   } = props;
 
@@ -143,7 +144,7 @@ const EditResumeMarkup = (props) => {
       return (
         <div className="bg-gray-500 flex flex-col flex-wrap w-6/12 min-h-screen h-96 fixed right-0 unselectable">
           <div className="flex flex-row items-center pl-16 ml-16">
-            {loading ? (
+            {saveLoading ? (
               <>
                 <RiLoader4Fill
                   size={30}

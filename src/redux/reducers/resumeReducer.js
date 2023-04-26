@@ -26,7 +26,10 @@ import {
   REMOVE_PROFILE_IMAGE_RESET,
 } from "../constants/resumeConstants";
 
-export const resumeDataReducer = (state = {}, action) => {
+export const resumeDataReducer = (
+  state = { resumeTemplateData: {} },
+  action
+) => {
   switch (action.type) {
     case RESUME_DATA_REQUEST:
       return {
@@ -60,7 +63,10 @@ export const resumeDataReducer = (state = {}, action) => {
   }
 };
 
-export const getResumeDataReducer = (state = {}, action) => {
+export const getResumeDataReducer = (
+  state = { resumeTemplateGetData: {} },
+  action
+) => {
   switch (action.type) {
     case GET_RESUME_DATA_REQUEST:
       return {

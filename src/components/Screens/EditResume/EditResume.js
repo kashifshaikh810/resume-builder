@@ -748,80 +748,66 @@ const EditResume = (props) => {
   useEffect(() => {
     const data = resumeTemplateGetData?.data;
 
+    console.log(resumeTemplateData?.data, "resumeTemplateData");
+    console.log(resumeTemplateGetData?.data, "resumeTemplateGetData");
     let resumeData = {
-      profileImage: success
+      profileImage: profileImage
         ? profileImage
-        : profileImage
-        ? profileImage
+        : "" || data?.profileImage === undefined
+        ? ""
         : data?.profileImage,
-      wantedJobTitle: wantedJobTitle ? wantedJobTitle : data?.wantedJobTitle,
-      firstName: firstName ? firstName : data?.firstName,
-      lastName: lastName ? lastName : data?.lastName,
-      email: email ? email : data?.email,
-      phone: phone ? phone : data?.phone,
-      country: country ? country : data?.country,
-      city: city ? city : data?.city,
-      address: address ? address : data?.address,
-      postalCode: postalCode ? postalCode : data?.postalCode,
-      drivingLicense: drivingLicense ? drivingLicense : data?.drivingLicense,
-      nationality: nationality ? nationality : data?.nationality,
-      placeOfBirth: placeOfBirth ? placeOfBirth : data?.placeOfBirth,
-      dateOfBirth: dateOfBirth ? dateOfBirth : data?.dateOfBirth,
-      professionalSummary: professionalSummary
-        ? professionalSummary
-        : data?.professionalSummary,
-      employmentInputList: employmentInputList
-        ? employmentInputList
-        : data?.employmentInputList,
-      educationInputList: educationInputList
-        ? educationInputList
-        : data?.educationInputList,
-      websiteInputList: websiteInputList
-        ? websiteInputList
-        : data?.websiteInputList,
-      skillsInputList: skillsInputList
-        ? skillsInputList
-        : data?.skillsInputList,
-      isNotShowExpertLevel,
-      hobbies: hobbies ? hobbies : data?.hobbies,
-      languagesInputList: languagesInputList
-        ? languagesInputList
-        : data?.languagesInputList,
-      coursesInputList: coursesInputList
-        ? coursesInputList
-        : data?.coursesInputList,
-      internshipInputList: internshipInputList
-        ? internshipInputList
-        : data?.internshipInputList,
+      wantedJobTitle: wantedJobTitle
+        ? wantedJobTitle
+        : "" || data?.wantedJobTitle === undefined
+        ? ""
+        : data?.wantedJobTitle,
+      firstName: firstName
+        ? firstName
+        : "" || data?.firstName === undefined
+        ? ""
+        : data?.firstName,
+      lastName: lastName
+        ? lastName
+        : "" || data?.lastName === undefined
+        ? ""
+        : data?.lastName,
+      email: email ? email : "" || data?.email === undefined ? "" : data?.email,
+      phone: phone ? phone : "" || data?.phone === undefined ? "" : data?.phone,
+      country: country ? country : "",
+      city: city ? city : "",
+      address: address ? address : "",
+      postalCode: postalCode ? postalCode : "",
+      drivingLicense: drivingLicense ? drivingLicense : "",
+      nationality: nationality ? nationality : "",
+      placeOfBirth: placeOfBirth ? placeOfBirth : "",
+      dateOfBirth: dateOfBirth ? dateOfBirth : "",
+      professionalSummary: professionalSummary ? professionalSummary : "",
+      employmentInputList: employmentInputList ? employmentInputList : [],
+      educationInputList: educationInputList ? educationInputList : [],
+      websiteInputList: websiteInputList ? websiteInputList : [],
+      skillsInputList: skillsInputList ? skillsInputList : [],
+      isNotShowExpertLevel: isNotShowExpertLevel ? isNotShowExpertLevel : "",
+      hobbies: hobbies ? hobbies : "",
+      languagesInputList: languagesInputList ? languagesInputList : [],
+      coursesInputList: coursesInputList ? coursesInputList : [],
+      internshipInputList: internshipInputList ? internshipInputList : [],
       extraCurricularInputList: extraCurricularInputList
         ? extraCurricularInputList
-        : data?.extraCurricularInputList,
-      referencesInputList: referencesInputList
-        ? referencesInputList
-        : data?.referencesInputList,
-      summaryInput: summaryInput ? summaryInput : data?.summaryInput,
-      employmentInput: employmentInput
-        ? employmentInput
-        : data?.employmentInput,
-      educationInput: educationInput ? educationInput : data?.educationInput,
-      coursesInput: coursesInput ? coursesInput : data?.coursesInput,
-      extraCurricularInput: extraCurricularInput
-        ? extraCurricularInput
-        : data?.extraCurricularInput,
-      internshipInput: internshipInput
-        ? internshipInput
-        : data?.internshipInput,
-      referencesInput: referencesInput
-        ? referencesInput
-        : data?.referencesInput,
-      personalDetailInput: personalDetailInput
-        ? personalDetailInput
-        : data?.personalDetailInput,
-      skillsInput: skillsInput ? skillsInput : data?.skillsInput,
-      hobbiesInput: hobbiesInput ? hobbiesInput : data?.hobbiesInput,
-      languagesInput: languagesInput ? languagesInput : data?.languagesInput,
-      websiteInput: websiteInput ? websiteInput : data?.websiteInput,
-      disabledPreferences: isNotShowIdLikeToHide,
+        : [],
+      referencesInputList: referencesInputList ? referencesInputList : [],
+      summaryInput: referencesInputList ? referencesInputList : "",
+      employmentInput: employmentInput ? employmentInput : "",
+      educationInput: educationInput ? educationInput : "",
+      coursesInput: coursesInput ? coursesInput : "",
+      extraCurricularInput: extraCurricularInput ? extraCurricularInput : "",
+      internshipInput: internshipInput ? internshipInput : "",
+      referencesInput: referencesInput ? referencesInput : "",
+      personalDetailInput: personalDetailInput ? personalDetailInput : "",
+      skillsInput: skillsInput ? skillsInput : "",
+      hobbiesInput: hobbiesInput ? hobbiesInput : "",
+      languagesInput: languagesInput ? languagesInput : "",
+      websiteInput: websiteInput ? websiteInput : "",
+      disabledPreferences: isNotShowIdLikeToHide ? isNotShowIdLikeToHide : "",
     };
 
     const dataOfCoverLetter = {
@@ -895,6 +881,7 @@ const EditResume = (props) => {
   // set states from database
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
+    console.log(resumeData, "dse");
     setWantedJobTitle(resumeData?.wantedJobTitle);
     setProfileImage(resumeData?.profileImage);
     setFirstName(resumeData?.firstName);
@@ -1116,11 +1103,7 @@ const EditResume = (props) => {
       setProfessionalSummary={setProfessionalSummary}
       hobbies={hobbies}
       setHobbies={setHobbies}
-      resumeData={
-        resumeTemplateData?.data
-          ? resumeTemplateData?.data
-          : resumeTemplateGetData?.data
-      }
+      resumeData={resumeTemplateGetData?.data}
       coursesInputList={coursesInputList}
       coursesInput={coursesInput}
       setCoursesInput={setCoursesInput}
@@ -1213,7 +1196,8 @@ const EditResume = (props) => {
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
-      loading={loading ? loading : resumeTemplateGetDataLoading}
+      loading={resumeTemplateGetDataLoading}
+      saveLoading={loading}
       deleteProfileImageHandler={deleteProfileImageHandler}
     />
   );
