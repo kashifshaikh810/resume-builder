@@ -745,139 +745,6 @@ const EditResume = (props) => {
     dispatch(getResumeData(user));
   }, [dispatch, user]);
 
-  useEffect(() => {
-    const data = resumeTemplateGetData?.data;
-
-    console.log(resumeTemplateData?.data, "resumeTemplateData");
-    console.log(resumeTemplateGetData?.data, "resumeTemplateGetData");
-    let resumeData = {
-      profileImage: profileImage
-        ? profileImage
-        : "" || data?.profileImage === undefined
-        ? ""
-        : data?.profileImage,
-      wantedJobTitle: wantedJobTitle
-        ? wantedJobTitle
-        : "" || data?.wantedJobTitle === undefined
-        ? ""
-        : data?.wantedJobTitle,
-      firstName: firstName
-        ? firstName
-        : "" || data?.firstName === undefined
-        ? ""
-        : data?.firstName,
-      lastName: lastName
-        ? lastName
-        : "" || data?.lastName === undefined
-        ? ""
-        : data?.lastName,
-      email: email ? email : "" || data?.email === undefined ? "" : data?.email,
-      phone: phone ? phone : "" || data?.phone === undefined ? "" : data?.phone,
-      country: country ? country : "",
-      city: city ? city : "",
-      address: address ? address : "",
-      postalCode: postalCode ? postalCode : "",
-      drivingLicense: drivingLicense ? drivingLicense : "",
-      nationality: nationality ? nationality : "",
-      placeOfBirth: placeOfBirth ? placeOfBirth : "",
-      dateOfBirth: dateOfBirth ? dateOfBirth : "",
-      professionalSummary: professionalSummary ? professionalSummary : "",
-      employmentInputList: employmentInputList ? employmentInputList : [],
-      educationInputList: educationInputList ? educationInputList : [],
-      websiteInputList: websiteInputList ? websiteInputList : [],
-      skillsInputList: skillsInputList ? skillsInputList : [],
-      isNotShowExpertLevel: isNotShowExpertLevel ? isNotShowExpertLevel : "",
-      hobbies: hobbies ? hobbies : "",
-      languagesInputList: languagesInputList ? languagesInputList : [],
-      coursesInputList: coursesInputList ? coursesInputList : [],
-      internshipInputList: internshipInputList ? internshipInputList : [],
-      extraCurricularInputList: extraCurricularInputList
-        ? extraCurricularInputList
-        : [],
-      referencesInputList: referencesInputList ? referencesInputList : [],
-      summaryInput: referencesInputList ? referencesInputList : "",
-      employmentInput: employmentInput ? employmentInput : "",
-      educationInput: educationInput ? educationInput : "",
-      coursesInput: coursesInput ? coursesInput : "",
-      extraCurricularInput: extraCurricularInput ? extraCurricularInput : "",
-      internshipInput: internshipInput ? internshipInput : "",
-      referencesInput: referencesInput ? referencesInput : "",
-      personalDetailInput: personalDetailInput ? personalDetailInput : "",
-      skillsInput: skillsInput ? skillsInput : "",
-      hobbiesInput: hobbiesInput ? hobbiesInput : "",
-      languagesInput: languagesInput ? languagesInput : "",
-      websiteInput: websiteInput ? websiteInput : "",
-      disabledPreferences: isNotShowIdLikeToHide ? isNotShowIdLikeToHide : "",
-    };
-
-    const dataOfCoverLetter = {
-      fullName,
-      jobTitle,
-      address,
-      email,
-      phone,
-      companyName,
-      hiringManagerName,
-      letterDetails,
-    };
-
-    dispatch(resumeDataSave(user, resumeData));
-
-    dispatch(coverLetterDataSave(dataOfCoverLetter));
-  }, [
-    dispatch,
-    profileImage,
-    wantedJobTitle,
-    firstName,
-    lastName,
-    email,
-    phone,
-    country,
-    city,
-    address,
-    postalCode,
-    drivingLicense,
-    nationality,
-    placeOfBirth,
-    dateOfBirth,
-    professionalSummary,
-    employmentInputList,
-    educationInputList,
-    websiteInputList,
-    skillsInputList,
-    isNotShowExpertLevel,
-    hobbies,
-    languagesInputList,
-    coursesInputList,
-    internshipInputList,
-    extraCurricularInputList,
-    referencesInputList,
-    summaryInput,
-    employmentInput,
-    educationInput,
-    coursesInput,
-    extraCurricularInput,
-    internshipInput,
-    referencesInput,
-    personalDetailInput,
-    skillsInput,
-    hobbiesInput,
-    languagesInput,
-    websiteInput,
-    isNotShowIdLikeToHide,
-    fullName,
-    jobTitle,
-    address,
-    email,
-    phone,
-    companyName,
-    hiringManagerName,
-    letterDetails,
-    user,
-    resumeTemplateGetData,
-    success,
-  ]);
-
   // set states from database
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
@@ -940,6 +807,151 @@ const EditResume = (props) => {
     setInternshipInput(resumeData?.internshipInput);
     setReferencesInput(resumeData?.referencesInput);
   }, [resumeTemplateGetData]);
+
+  useEffect(() => {
+    const data = resumeTemplateGetData?.data;
+
+    console.log(lastName, data?.lastName, "resumeTemplateGetData");
+    let resumeData = {
+      profileImage:
+        data?.profileImage === undefined
+          ? ""
+          : data?.profileImage || profileImage !== ""
+          ? profileImage
+          : "" || data?.profileImage
+          ? data?.profileImage !== ""
+          : "",
+      wantedJobTitle:
+        data?.wantedJobTitle === undefined
+          ? ""
+          : data?.wantedJobTitle || wantedJobTitle !== ""
+          ? wantedJobTitle
+          : "" || data?.wantedJobTitle !== ""
+          ? data?.wantedJobTitle
+          : "",
+      firstName:
+        data?.firstName === undefined
+          ? ""
+          : data?.firstName || firstName !== ""
+          ? firstName
+          : "" || data?.firstName !== ""
+          ? data?.firstName
+          : "",
+      lastName:
+        data?.lastName === undefined
+          ? ""
+          : data?.lastName || lastName !== ""
+          ? lastName
+          : "" || data?.lastName !== ""
+          ? data?.lastName
+          : "",
+      email: email ? email : "",
+      phone: country ? country : "",
+      country: country ? country : "",
+      city: city ? city : "",
+      address: address ? address : "",
+      postalCode: postalCode ? postalCode : "",
+      drivingLicense: drivingLicense ? drivingLicense : "",
+      nationality: nationality ? nationality : "",
+      placeOfBirth: placeOfBirth ? placeOfBirth : "",
+      dateOfBirth: dateOfBirth ? dateOfBirth : "",
+      professionalSummary: professionalSummary ? professionalSummary : "",
+      employmentInputList: employmentInputList ? employmentInputList : "",
+      educationInputList: educationInputList ? educationInputList : [],
+      websiteInputList: websiteInputList ? websiteInputList : [],
+      skillsInputList: skillsInputList ? skillsInputList : [],
+      isNotShowExpertLevel: isNotShowExpertLevel ? isNotShowExpertLevel : "",
+      hobbies: hobbies ? hobbies : "",
+      languagesInputList: languagesInputList ? languagesInputList : [],
+      coursesInputList: coursesInputList ? coursesInputList : [],
+      internshipInputList: internshipInputList ? internshipInputList : [],
+      extraCurricularInputList: extraCurricularInputList
+        ? extraCurricularInputList
+        : [],
+      referencesInputList: referencesInputList ? referencesInputList : [],
+      summaryInput: referencesInputList ? referencesInputList : "",
+      employmentInput: employmentInput ? employmentInput : "",
+      educationInput: educationInput ? educationInput : "",
+      coursesInput: coursesInput ? coursesInput : "",
+      extraCurricularInput: extraCurricularInput ? extraCurricularInput : "",
+      internshipInput: internshipInput ? internshipInput : "",
+      referencesInput: referencesInput ? referencesInput : "",
+      personalDetailInput: personalDetailInput ? personalDetailInput : "",
+      skillsInput: skillsInput ? skillsInput : "",
+      hobbiesInput: hobbiesInput ? hobbiesInput : "",
+      languagesInput: languagesInput ? languagesInput : "",
+      websiteInput: websiteInput ? websiteInput : "",
+      disabledPreferences: isNotShowIdLikeToHide ? isNotShowIdLikeToHide : "",
+    };
+
+    const dataOfCoverLetter = {
+      fullName,
+      jobTitle,
+      address,
+      email,
+      phone,
+      companyName,
+      hiringManagerName,
+      letterDetails,
+    };
+
+    dispatch(resumeDataSave(user, resumeData));
+    console.log(resumeData, "resumeData");
+
+    dispatch(coverLetterDataSave(dataOfCoverLetter));
+  }, [
+    dispatch,
+    profileImage,
+    wantedJobTitle,
+    firstName,
+    lastName,
+    email,
+    phone,
+    country,
+    city,
+    address,
+    postalCode,
+    drivingLicense,
+    nationality,
+    placeOfBirth,
+    dateOfBirth,
+    professionalSummary,
+    employmentInputList,
+    educationInputList,
+    websiteInputList,
+    skillsInputList,
+    isNotShowExpertLevel,
+    hobbies,
+    languagesInputList,
+    coursesInputList,
+    internshipInputList,
+    extraCurricularInputList,
+    referencesInputList,
+    summaryInput,
+    employmentInput,
+    educationInput,
+    coursesInput,
+    extraCurricularInput,
+    internshipInput,
+    referencesInput,
+    personalDetailInput,
+    skillsInput,
+    hobbiesInput,
+    languagesInput,
+    websiteInput,
+    isNotShowIdLikeToHide,
+    fullName,
+    jobTitle,
+    address,
+    email,
+    phone,
+    companyName,
+    hiringManagerName,
+    letterDetails,
+    user,
+    resumeTemplateGetData,
+    success,
+  ]);
 
   return (
     <EditResumeMarkup
