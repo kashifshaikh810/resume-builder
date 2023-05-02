@@ -724,6 +724,12 @@ const EditResume = (props) => {
     };
   }
 
+  function isEmpty(value) {
+    return (
+      value == null || (typeof value === "string" && value.trim().length === 0)
+    );
+  }
+
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -738,17 +744,14 @@ const EditResume = (props) => {
   }, []);
 
   useEffect(() => {
-    dispatch(getSelectResumeTemplateAction(user));
-
-    dispatch(getResumeTitleAction(user));
-
     dispatch(getResumeData(user));
+    dispatch(getSelectResumeTemplateAction(user));
+    dispatch(getResumeTitleAction(user));
   }, [dispatch, user]);
 
   // set states from database
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
-    console.log(resumeData, "dse");
     setWantedJobTitle(resumeData?.wantedJobTitle);
     setProfileImage(resumeData?.profileImage);
     setFirstName(resumeData?.firstName);
@@ -811,40 +814,59 @@ const EditResume = (props) => {
   useEffect(() => {
     const data = resumeTemplateGetData?.data;
 
-    console.log(lastName, data?.lastName, "resumeTemplateGetData");
     let resumeData = {
-      profileImage:
-        data?.profileImage === undefined
-          ? ""
-          : data?.profileImage || profileImage !== ""
-          ? profileImage
-          : "" || data?.profileImage
-          ? data?.profileImage !== ""
-          : "",
-      wantedJobTitle:
-        data?.wantedJobTitle === undefined
-          ? ""
-          : data?.wantedJobTitle || wantedJobTitle !== ""
-          ? wantedJobTitle
-          : "" || data?.wantedJobTitle !== ""
-          ? data?.wantedJobTitle
-          : "",
-      firstName:
-        data?.firstName === undefined
-          ? ""
-          : data?.firstName || firstName !== ""
-          ? firstName
-          : "" || data?.firstName !== ""
-          ? data?.firstName
-          : "",
-      lastName:
-        data?.lastName === undefined
-          ? ""
-          : data?.lastName || lastName !== ""
-          ? lastName
-          : "" || data?.lastName !== ""
-          ? data?.lastName
-          : "",
+      profileImage: profileImage
+        ? profileImage
+        : "" || data?.profileImage
+        ? data?.profileImage
+        : "" || isEmpty(data?.profileImage)
+        ? ""
+        : data?.profileImage || isEmpty(profileImage)
+        ? ""
+        : profileImage || profileImage !== ""
+        ? profileImage
+        : "" || data?.profileImage !== ""
+        ? data?.profileImage
+        : "",
+      wantedJobTitle: wantedJobTitle
+        ? wantedJobTitle
+        : "" || data?.wantedJobTitle
+        ? data?.wantedJobTitle
+        : "" || isEmpty(data?.wantedJobTitle)
+        ? ""
+        : data?.wantedJobTitle || isEmpty(wantedJobTitle)
+        ? ""
+        : wantedJobTitle || wantedJobTitle !== ""
+        ? wantedJobTitle
+        : "" || data?.wantedJobTitle !== ""
+        ? data?.wantedJobTitle
+        : "",
+      firstName: firstName
+        ? firstName
+        : "" || data?.firstName
+        ? data?.firstName
+        : "" || isEmpty(data?.firstName)
+        ? ""
+        : data?.firstName || isEmpty(firstName)
+        ? ""
+        : firstName || firstName !== ""
+        ? firstName
+        : "" || data?.firstName !== ""
+        ? data?.firstName
+        : "",
+      lastName: lastName
+        ? lastName
+        : "" || data?.lastName
+        ? data?.lastName
+        : "" || isEmpty(data?.lastName)
+        ? ""
+        : data?.lastName || isEmpty(lastName)
+        ? ""
+        : lastName || lastName !== ""
+        ? lastName
+        : "" || data?.lastName !== ""
+        ? data?.lastName
+        : "",
       email: email ? email : "",
       phone: country ? country : "",
       country: country ? country : "",
@@ -896,7 +918,6 @@ const EditResume = (props) => {
     };
 
     dispatch(resumeDataSave(user, resumeData));
-    console.log(resumeData, "resumeData");
 
     dispatch(coverLetterDataSave(dataOfCoverLetter));
   }, [
