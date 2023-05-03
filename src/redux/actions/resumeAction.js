@@ -36,6 +36,7 @@ export const getResumeData = (user) => (dispatch) => {
       dispatch({ type: GET_RESUME_DATA_SUCCESS, payload: data });
     });
   } catch (error) {
+    console.log(error, `err 1`);
     dispatch({ type: GET_RESUME_DATA_FAIL, payload: error?.code });
   }
 };

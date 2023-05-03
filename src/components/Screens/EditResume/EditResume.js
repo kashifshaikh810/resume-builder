@@ -16,6 +16,22 @@ import { REMOVE_PROFILE_IMAGE_RESET } from "../../../redux/constants/resumeConst
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
+  // redux
+  const dispatch = useDispatch();
+  const { loading, resumeTemplateData, coverLetterData } = useSelector(
+    (state) => state.resumeData
+  );
+  const { loading: resumeTemplateGetDataLoading, resumeTemplateGetData } =
+    useSelector((state) => state.getResumeData);
+  const { templateData } = useSelector((state) => state.selectTemplate);
+  const { user } = useSelector((state) => state.currentUser);
+  const { titleData } = useSelector((state) => state.resumeTitle);
+  const {
+    loading: deleteLoading,
+    success,
+    error,
+  } = useSelector((state) => state.removeProfileImage);
+
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
@@ -52,24 +68,6 @@ const EditResume = (props) => {
 
   // hobbies
   const [hobbies, setHobbies] = useState("");
-
-  // redux
-  const dispatch = useDispatch();
-  const { loading, resumeTemplateData, coverLetterData } = useSelector(
-    (state) => state.resumeData
-  );
-  const { loading: resumeTemplateGetDataLoading, resumeTemplateGetData } =
-    useSelector((state) => state.getResumeData);
-  const { templateData } = useSelector((state) => state.selectTemplate);
-  const { user } = useSelector((state) => state.currentUser);
-  const { titleData } = useSelector((state) => state.resumeTitle);
-  const {
-    loading: deleteLoading,
-    success,
-    error,
-  } = useSelector((state) => state.removeProfileImage);
-
-  const data = resumeTemplateGetData?.data;
 
   // Employment history section states
   const [employmentInputList, setEmploymentInputList] = useState([]);
@@ -752,158 +750,136 @@ const EditResume = (props) => {
   // set states from database
   useEffect(() => {
     const resumeData = resumeTemplateGetData?.data;
-    setWantedJobTitle(resumeData?.wantedJobTitle);
-    setProfileImage(resumeData?.profileImage);
-    setFirstName(resumeData?.firstName);
-    setLastName(resumeData?.lastName);
-    setEmail(resumeData?.email);
-    setPhone(resumeData?.phone);
-    setCountry(resumeData?.country);
-    setCity(resumeData?.city);
-    setAddress(resumeData?.address);
-    setPostalCode(resumeData?.postalCode);
-    setDrivingLicense(resumeData?.drivingLicense);
-    setNationality(resumeData?.nationality);
-    setDateOfBirth(resumeData?.dateOfBirth);
-    setPlaceOfBirth(resumeData?.placeOfBirth);
-    setProfessionalSummary(resumeData?.professionalSummary);
-    if (resumeData?.employmentInputList?.length >= 1) {
-      setEmploymentInputList(resumeData?.employmentInputList);
+    if (resumeData) {
+      setWantedJobTitle(resumeData?.wantedJobTitle);
+      setProfileImage(resumeData?.profileImage);
+      setFirstName(resumeData?.firstName);
+      setLastName(resumeData?.lastName);
+      setEmail(resumeData?.email);
+      setPhone(resumeData?.phone);
+      setCountry(resumeData?.country);
+      setCity(resumeData?.city);
+      setAddress(resumeData?.address);
+      setPostalCode(resumeData?.postalCode);
+      setDrivingLicense(resumeData?.drivingLicense);
+      setNationality(resumeData?.nationality);
+      setDateOfBirth(resumeData?.dateOfBirth);
+      setPlaceOfBirth(resumeData?.placeOfBirth);
+      setProfessionalSummary(resumeData?.professionalSummary);
+      if (resumeData?.employmentInputList?.length >= 1) {
+        setEmploymentInputList(resumeData?.employmentInputList);
+      }
+      if (resumeData?.educationInputList?.length >= 1) {
+        setEducationInputList(resumeData?.educationInputList);
+      }
+      if (resumeData?.websiteInputList?.length >= 1) {
+        setWebsiteInputList(resumeData?.websiteInputList);
+      }
+      if (resumeData?.skillsInputList?.length >= 1) {
+        setSkillsInputList(resumeData?.skillsInputList);
+      }
+      setIsNotShowExpertLevel(resumeData?.isNotShowExpertLevel);
+      setHobbies(resumeData?.hobbies);
+      if (resumeData?.languagesInputList?.length >= 1) {
+        setLanguagesInputList(resumeData?.languagesInputList);
+      }
+      if (resumeData?.coursesInputList?.length >= 1) {
+        setCoursesInputList(resumeData?.coursesInputList);
+      }
+      if (resumeData?.extraCurricularInputList?.length >= 1) {
+        setExtraCurricularInputList(resumeData?.extraCurricularInputList);
+      }
+      if (resumeData?.internshipInputList?.length >= 1) {
+        setInternshipInputList(resumeData?.internshipInputList);
+      }
+      if (resumeData?.referencesInputList?.length >= 1) {
+        setReferencesInputList(resumeData?.referencesInputList);
+      }
+      setIsNotShowIdLikeToHide(resumeData?.disabledPreferences);
+      setPersonalDetailInput(resumeData?.personalDetailInput);
+      setSummaryInput(resumeData?.summaryInput);
+      setEmploymentInput(resumeData?.employmentInput);
+      setEducationInput(resumeData?.educationInput);
+      setWebsiteInput(resumeData?.websiteInput);
+      setSkillsInput(resumeData?.skillsInput);
+      setHobbiesInput(resumeData?.hobbiesInput);
+      setLanguagesInput(resumeData?.languagesInput);
+      setCoursesInput(resumeData?.coursesInput);
+      setExtraCurricularInput(resumeData?.extraCurricularInput);
+      setInternshipInput(resumeData?.internshipInput);
+      setReferencesInput(resumeData?.referencesInput);
     }
-    if (resumeData?.educationInputList?.length >= 1) {
-      setEducationInputList(resumeData?.educationInputList);
-    }
-    if (resumeData?.websiteInputList?.length >= 1) {
-      setWebsiteInputList(resumeData?.websiteInputList);
-    }
-    if (resumeData?.skillsInputList?.length >= 1) {
-      setSkillsInputList(resumeData?.skillsInputList);
-    }
-    setIsNotShowExpertLevel(resumeData?.isNotShowExpertLevel);
-    setHobbies(resumeData?.hobbies);
-    if (resumeData?.languagesInputList?.length >= 1) {
-      setLanguagesInputList(resumeData?.languagesInputList);
-    }
-    if (resumeData?.coursesInputList?.length >= 1) {
-      setCoursesInputList(resumeData?.coursesInputList);
-    }
-    if (resumeData?.extraCurricularInputList?.length >= 1) {
-      setExtraCurricularInputList(resumeData?.extraCurricularInputList);
-    }
-    if (resumeData?.internshipInputList?.length >= 1) {
-      setInternshipInputList(resumeData?.internshipInputList);
-    }
-    if (resumeData?.referencesInputList?.length >= 1) {
-      setReferencesInputList(resumeData?.referencesInputList);
-    }
-    setIsNotShowIdLikeToHide(resumeData?.disabledPreferences);
-    setPersonalDetailInput(resumeData?.personalDetailInput);
-    setSummaryInput(resumeData?.summaryInput);
-    setEmploymentInput(resumeData?.employmentInput);
-    setEducationInput(resumeData?.educationInput);
-    setWebsiteInput(resumeData?.websiteInput);
-    setSkillsInput(resumeData?.skillsInput);
-    setHobbiesInput(resumeData?.hobbiesInput);
-    setLanguagesInput(resumeData?.languagesInput);
-    setCoursesInput(resumeData?.coursesInput);
-    setExtraCurricularInput(resumeData?.extraCurricularInput);
-    setInternshipInput(resumeData?.internshipInput);
-    setReferencesInput(resumeData?.referencesInput);
   }, [resumeTemplateGetData]);
 
   useEffect(() => {
-    const data = resumeTemplateGetData?.data;
+    const getData = resumeTemplateGetData?.data
+      ? resumeTemplateGetData?.data
+      : "empty";
 
+    console.log(
+      {
+        firstName: firstName
+          ? "mai chala hun firstname"
+          : !getData
+          ? "mai chala hun getdata"
+          : "false chala he ",
+      },
+      "eeee"
+    );
+    console.log(
+      {
+        firstName: firstName || getData?.firstName,
+      },
+      "ffff"
+    );
     let resumeData = {
-      profileImage: profileImage
-        ? profileImage
-        : "" || data?.profileImage
-        ? data?.profileImage
-        : "" || isEmpty(data?.profileImage)
-        ? ""
-        : data?.profileImage || isEmpty(profileImage)
-        ? ""
-        : profileImage || profileImage !== ""
-        ? profileImage
-        : "" || data?.profileImage !== ""
-        ? data?.profileImage
-        : "",
+      profileImage,
       wantedJobTitle: wantedJobTitle
         ? wantedJobTitle
-        : "" || data?.wantedJobTitle
-        ? data?.wantedJobTitle
-        : "" || isEmpty(data?.wantedJobTitle)
+        : getData === "empty"
         ? ""
-        : data?.wantedJobTitle || isEmpty(wantedJobTitle)
-        ? ""
-        : wantedJobTitle || wantedJobTitle !== ""
-        ? wantedJobTitle
-        : "" || data?.wantedJobTitle !== ""
-        ? data?.wantedJobTitle
-        : "",
+        : getData?.wantedJobTitle,
       firstName: firstName
         ? firstName
-        : "" || data?.firstName
-        ? data?.firstName
-        : "" || isEmpty(data?.firstName)
+        : getData === "empty"
         ? ""
-        : data?.firstName || isEmpty(firstName)
-        ? ""
-        : firstName || firstName !== ""
-        ? firstName
-        : "" || data?.firstName !== ""
-        ? data?.firstName
-        : "",
-      lastName: lastName
-        ? lastName
-        : "" || data?.lastName
-        ? data?.lastName
-        : "" || isEmpty(data?.lastName)
-        ? ""
-        : data?.lastName || isEmpty(lastName)
-        ? ""
-        : lastName || lastName !== ""
-        ? lastName
-        : "" || data?.lastName !== ""
-        ? data?.lastName
-        : "",
-      email: email ? email : "",
-      phone: country ? country : "",
-      country: country ? country : "",
-      city: city ? city : "",
-      address: address ? address : "",
-      postalCode: postalCode ? postalCode : "",
-      drivingLicense: drivingLicense ? drivingLicense : "",
-      nationality: nationality ? nationality : "",
-      placeOfBirth: placeOfBirth ? placeOfBirth : "",
-      dateOfBirth: dateOfBirth ? dateOfBirth : "",
-      professionalSummary: professionalSummary ? professionalSummary : "",
-      employmentInputList: employmentInputList ? employmentInputList : "",
-      educationInputList: educationInputList ? educationInputList : [],
-      websiteInputList: websiteInputList ? websiteInputList : [],
-      skillsInputList: skillsInputList ? skillsInputList : [],
-      isNotShowExpertLevel: isNotShowExpertLevel ? isNotShowExpertLevel : "",
-      hobbies: hobbies ? hobbies : "",
-      languagesInputList: languagesInputList ? languagesInputList : [],
-      coursesInputList: coursesInputList ? coursesInputList : [],
-      internshipInputList: internshipInputList ? internshipInputList : [],
-      extraCurricularInputList: extraCurricularInputList
-        ? extraCurricularInputList
-        : [],
-      referencesInputList: referencesInputList ? referencesInputList : [],
-      summaryInput: referencesInputList ? referencesInputList : "",
-      employmentInput: employmentInput ? employmentInput : "",
-      educationInput: educationInput ? educationInput : "",
-      coursesInput: coursesInput ? coursesInput : "",
-      extraCurricularInput: extraCurricularInput ? extraCurricularInput : "",
-      internshipInput: internshipInput ? internshipInput : "",
-      referencesInput: referencesInput ? referencesInput : "",
-      personalDetailInput: personalDetailInput ? personalDetailInput : "",
-      skillsInput: skillsInput ? skillsInput : "",
-      hobbiesInput: hobbiesInput ? hobbiesInput : "",
-      languagesInput: languagesInput ? languagesInput : "",
-      websiteInput: websiteInput ? websiteInput : "",
-      disabledPreferences: isNotShowIdLikeToHide ? isNotShowIdLikeToHide : "",
+        : getData?.firstName,
+      lastName,
+      email,
+      phone,
+      country,
+      city,
+      address,
+      postalCode,
+      drivingLicense,
+      nationality,
+      placeOfBirth,
+      dateOfBirth,
+      professionalSummary,
+      employmentInputList,
+      educationInputList,
+      websiteInputList,
+      skillsInputList,
+      isNotShowExpertLevel,
+      hobbies,
+      languagesInputList,
+      coursesInputList,
+      internshipInputList,
+      extraCurricularInputList,
+      referencesInputList,
+      summaryInput,
+      employmentInput,
+      educationInput,
+      coursesInput,
+      extraCurricularInput,
+      internshipInput,
+      referencesInput,
+      personalDetailInput,
+      skillsInput,
+      hobbiesInput,
+      languagesInput,
+      websiteInput,
+      disabledPreferences: isNotShowIdLikeToHide,
     };
 
     const dataOfCoverLetter = {
