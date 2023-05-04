@@ -728,6 +728,15 @@ const EditResume = (props) => {
     );
   }
 
+  const isObjectEmpty = (objectName) => {
+    for (let prop in objectName) {
+      if (objectName?.hasOwnProperty(prop)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -812,75 +821,7 @@ const EditResume = (props) => {
   }, [resumeTemplateGetData]);
 
   useEffect(() => {
-    const getData = resumeTemplateGetData?.data
-      ? resumeTemplateGetData?.data
-      : "empty";
-
-    console.log(
-      {
-        firstName: firstName
-          ? "mai chala hun firstname"
-          : !getData
-          ? "mai chala hun getdata"
-          : "false chala he ",
-      },
-      "eeee"
-    );
-    console.log(
-      {
-        firstName: firstName || getData?.firstName,
-      },
-      "ffff"
-    );
-    let resumeData = {
-      profileImage,
-      wantedJobTitle: wantedJobTitle
-        ? wantedJobTitle
-        : getData === "empty"
-        ? ""
-        : getData?.wantedJobTitle,
-      firstName: firstName
-        ? firstName
-        : getData === "empty"
-        ? ""
-        : getData?.firstName,
-      lastName,
-      email,
-      phone,
-      country,
-      city,
-      address,
-      postalCode,
-      drivingLicense,
-      nationality,
-      placeOfBirth,
-      dateOfBirth,
-      professionalSummary,
-      employmentInputList,
-      educationInputList,
-      websiteInputList,
-      skillsInputList,
-      isNotShowExpertLevel,
-      hobbies,
-      languagesInputList,
-      coursesInputList,
-      internshipInputList,
-      extraCurricularInputList,
-      referencesInputList,
-      summaryInput,
-      employmentInput,
-      educationInput,
-      coursesInput,
-      extraCurricularInput,
-      internshipInput,
-      referencesInput,
-      personalDetailInput,
-      skillsInput,
-      hobbiesInput,
-      languagesInput,
-      websiteInput,
-      disabledPreferences: isNotShowIdLikeToHide,
-    };
+    saveData();
 
     const dataOfCoverLetter = {
       fullName,
@@ -892,9 +833,6 @@ const EditResume = (props) => {
       hiringManagerName,
       letterDetails,
     };
-
-    dispatch(resumeDataSave(user, resumeData));
-
     dispatch(coverLetterDataSave(dataOfCoverLetter));
   }, [
     dispatch,
@@ -949,6 +887,88 @@ const EditResume = (props) => {
     resumeTemplateGetData,
     success,
   ]);
+
+  const saveData = async () => {
+    const getData = (await resumeTemplateGetData?.data) || {};
+
+    console.log(await isObjectEmpty(getData), "eeee");
+    console.log(getData, "ffff");
+    let resumeData = {
+      profileImage: profileImage
+        ? profileImage
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.profileImage,
+      wantedJobTitle: wantedJobTitle
+        ? wantedJobTitle
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.wantedJobTitle,
+      firstName: firstName
+        ? firstName
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.firstName,
+      lastName: lastName
+        ? lastName
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.lastName,
+      email: email
+        ? email
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.email,
+      phone: phone
+        ? phone
+        : isObjectEmpty(getData) === true
+        ? ""
+        : getData?.phone,
+      country: country
+        ? country
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.country,
+      city: city ? city : isObjectEmpty(getData) ? "" : getData?.city,
+      address: address
+        ? address
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.address,
+      postalCode,
+      drivingLicense,
+      nationality,
+      placeOfBirth,
+      dateOfBirth,
+      professionalSummary,
+      employmentInputList,
+      educationInputList,
+      websiteInputList,
+      skillsInputList,
+      isNotShowExpertLevel,
+      hobbies,
+      languagesInputList,
+      coursesInputList,
+      internshipInputList,
+      extraCurricularInputList,
+      referencesInputList,
+      summaryInput,
+      employmentInput,
+      educationInput,
+      coursesInput,
+      extraCurricularInput,
+      internshipInput,
+      referencesInput,
+      personalDetailInput,
+      skillsInput,
+      hobbiesInput,
+      languagesInput,
+      websiteInput,
+      disabledPreferences: isNotShowIdLikeToHide,
+    };
+
+    dispatch(resumeDataSave(user, resumeData));
+  };
 
   return (
     <EditResumeMarkup

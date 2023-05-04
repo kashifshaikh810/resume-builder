@@ -31,8 +31,8 @@ export const getResumeData = (user) => (dispatch) => {
   try {
     dispatch({ type: GET_RESUME_DATA_REQUEST });
     const tempRef = ref(database, "userResumeTemplateData/" + user?.userId);
-    onValue(tempRef, (snapshot) => {
-      const data = snapshot ? snapshot.val() : {};
+    onValue(tempRef, async (snapshot) => {
+      const data = await snapshot.val();
       dispatch({ type: GET_RESUME_DATA_SUCCESS, payload: data });
     });
   } catch (error) {
@@ -50,10 +50,9 @@ export const resumeDataSave = (user, data) => (dispatch) => {
       userId: user?.userId,
     };
 
-    // console.log(resumeData, "resumeData");
     set(ref(database, "userResumeTemplateData/" + user?.userId), resumeData)
-      .then(() => {
-        dispatch({ type: RESUME_DATA_SUCCESS, payload: resumeData });
+      .then(async () => {
+        await dispatch({ type: RESUME_DATA_SUCCESS, payload: resumeData });
       })
       .catch((error) => {
         console.log(error, `err 1`);
