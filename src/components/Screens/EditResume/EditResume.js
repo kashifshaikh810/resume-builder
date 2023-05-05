@@ -891,7 +891,12 @@ const EditResume = (props) => {
   const saveData = async () => {
     const getData = (await resumeTemplateGetData?.data) || {};
 
-    console.log(await isObjectEmpty(getData), "eeee");
+    const storeData = await localStorage.setItem(
+      "resumeTemplateData",
+      JSON.stringify(getData)
+    );
+
+    console.log(storeData, "eeee");
     console.log(getData, "ffff");
     let resumeData = {
       profileImage: profileImage
