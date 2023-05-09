@@ -821,7 +821,9 @@ const EditResume = (props) => {
   }, [resumeTemplateGetData]);
 
   useEffect(() => {
-    saveData();
+    const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
+
+    saveData(storeGetData);
 
     const dataOfCoverLetter = {
       fullName,
@@ -888,47 +890,30 @@ const EditResume = (props) => {
     success,
   ]);
 
-  const saveData = async () => {
-    const getData = (await resumeTemplateGetData?.data) || {};
-
-    const storeData = await localStorage.setItem(
-      "resumeTemplateData",
-      JSON.stringify(getData)
-    );
-
-    console.log(storeData, "eeee");
-    console.log(getData, "ffff");
+  const saveData = async (getData) => {
     let resumeData = {
       profileImage: profileImage
         ? profileImage
-        : isObjectEmpty(getData) === true
+        : isObjectEmpty(getData)
         ? ""
         : getData?.profileImage,
       wantedJobTitle: wantedJobTitle
         ? wantedJobTitle
-        : isObjectEmpty(getData) === true
+        : isObjectEmpty(getData)
         ? ""
         : getData?.wantedJobTitle,
       firstName: firstName
         ? firstName
-        : isObjectEmpty(getData) === true
+        : isObjectEmpty(getData)
         ? ""
         : getData?.firstName,
       lastName: lastName
         ? lastName
-        : isObjectEmpty(getData) === true
+        : isObjectEmpty(getData)
         ? ""
         : getData?.lastName,
-      email: email
-        ? email
-        : isObjectEmpty(getData) === true
-        ? ""
-        : getData?.email,
-      phone: phone
-        ? phone
-        : isObjectEmpty(getData) === true
-        ? ""
-        : getData?.phone,
+      email: email ? email : isObjectEmpty(getData) ? "" : getData?.email,
+      phone: phone ? phone : isObjectEmpty(getData) ? "" : getData?.phone,
       country: country
         ? country
         : isObjectEmpty(getData)
@@ -971,6 +956,11 @@ const EditResume = (props) => {
       websiteInput,
       disabledPreferences: isNotShowIdLikeToHide,
     };
+
+    const storeData = localStorage.setItem(
+      "resumeTemplateData",
+      JSON.stringify(resumeData)
+    );
 
     dispatch(resumeDataSave(user, resumeData));
   };
@@ -1230,7 +1220,7 @@ const EditResume = (props) => {
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
-      loading={resumeTemplateGetDataLoading}
+      loading={isObjectEmpty(resumeTemplateGetData)}
       saveLoading={loading}
       deleteProfileImageHandler={deleteProfileImageHandler}
     />
