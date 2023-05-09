@@ -925,36 +925,156 @@ const EditResume = (props) => {
         : isObjectEmpty(getData)
         ? ""
         : getData?.address,
-      postalCode,
-      drivingLicense,
-      nationality,
-      placeOfBirth,
-      dateOfBirth,
-      professionalSummary,
-      employmentInputList,
-      educationInputList,
-      websiteInputList,
-      skillsInputList,
-      isNotShowExpertLevel,
-      hobbies,
-      languagesInputList,
-      coursesInputList,
-      internshipInputList,
-      extraCurricularInputList,
-      referencesInputList,
-      summaryInput,
-      employmentInput,
-      educationInput,
-      coursesInput,
-      extraCurricularInput,
-      internshipInput,
-      referencesInput,
-      personalDetailInput,
-      skillsInput,
-      hobbiesInput,
-      languagesInput,
-      websiteInput,
-      disabledPreferences: isNotShowIdLikeToHide,
+      postalCode: postalCode
+        ? postalCode
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.postalCode,
+      drivingLicense: drivingLicense
+        ? drivingLicense
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.drivingLicense,
+      nationality: nationality
+        ? nationality
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.nationality,
+      placeOfBirth: placeOfBirth
+        ? placeOfBirth
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.placeOfBirth,
+      dateOfBirth: dateOfBirth
+        ? dateOfBirth
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.dateOfBirth,
+      professionalSummary: professionalSummary
+        ? professionalSummary
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.professionalSummary,
+      employmentInputList: employmentInputList
+        ? employmentInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.employmentInputList,
+      educationInputList: educationInputList
+        ? educationInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.educationInputList,
+      websiteInputList: websiteInputList
+        ? websiteInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.websiteInputList,
+      skillsInputList: skillsInputList
+        ? skillsInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.skillsInputList,
+      isNotShowExpertLevel: isNotShowExpertLevel
+        ? isNotShowExpertLevel
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.isNotShowExpertLevel,
+      hobbies: hobbies
+        ? hobbies
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.hobbies,
+      languagesInputList: languagesInputList
+        ? languagesInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.languagesInputList,
+      coursesInputList: coursesInputList
+        ? coursesInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.coursesInputList,
+      internshipInputList: internshipInputList
+        ? internshipInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.internshipInputList,
+      extraCurricularInputList: extraCurricularInputList
+        ? extraCurricularInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.extraCurricularInputList,
+      referencesInputList: referencesInputList
+        ? referencesInputList
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.referencesInputList,
+      summaryInput: summaryInput
+        ? summaryInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.summaryInput,
+      employmentInput: employmentInput
+        ? employmentInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.employmentInput,
+      educationInput: educationInput
+        ? educationInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.educationInput,
+      coursesInput: coursesInput
+        ? coursesInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.coursesInput,
+      extraCurricularInput: extraCurricularInput
+        ? extraCurricularInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.extraCurricularInput,
+      internshipInput: internshipInput
+        ? internshipInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.internshipInput,
+      referencesInput: referencesInput
+        ? referencesInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.referencesInput,
+      personalDetailInput: personalDetailInput
+        ? personalDetailInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.personalDetailInput,
+      skillsInput: skillsInput
+        ? skillsInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.skillsInput,
+      hobbiesInput: hobbiesInput
+        ? hobbiesInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.hobbiesInput,
+      languagesInput: languagesInput
+        ? languagesInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.languagesInput,
+      websiteInput: websiteInput
+        ? websiteInput
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.websiteInput,
+      disabledPreferences: isNotShowIdLikeToHide
+        ? isNotShowIdLikeToHide
+        : isObjectEmpty(getData)
+        ? ""
+        : getData?.disabledPreferences,
     };
 
     const storeData = localStorage.setItem(
