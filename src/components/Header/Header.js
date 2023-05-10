@@ -17,6 +17,8 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.currentUser);
   const { success, error } = useSelector((state) => state.logOut);
+  const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
+  const resumeData = storeGetData?.data;
 
   useEffect(() => {
     if (error) {
@@ -97,12 +99,21 @@ const Header = (props) => {
             </div>
           ) : null}
           <div className="flex flex-1 justify-end p-2">
-            <div
-              className="flex justify-center items-center w-10 h-10 bg-gray-100 rounded-full user-icon"
-              onClick={() => props.setIsMenuShown(!props?.isMenuShown)}
-            >
-              <TfiUser size={20} className="text-gray-400" />
-            </div>
+            {resumeData?.profileImage ? (
+              <img
+                className="w-9 h-9 rounded-full user-icon"
+                onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
+                src={resumeData?.profileImage}
+                alt="prof"
+              />
+            ) : (
+              <div
+                className="flex justify-center items-center w-10 h-10 bg-gray-100 rounded-full user-icon"
+                onClick={() => props.setIsMenuShown(!props?.isMenuShown)}
+              >
+                <TfiUser size={20} className="text-gray-400" />
+              </div>
+            )}
           </div>
         </div>
       ) : (
