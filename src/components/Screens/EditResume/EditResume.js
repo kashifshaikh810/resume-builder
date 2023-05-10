@@ -722,12 +722,6 @@ const EditResume = (props) => {
     };
   }
 
-  function isEmpty(value) {
-    return (
-      value == null || (typeof value === "string" && value.trim().length === 0)
-    );
-  }
-
   const isObjectEmpty = (objectName) => {
     for (let prop in objectName) {
       if (objectName?.hasOwnProperty(prop)) {
