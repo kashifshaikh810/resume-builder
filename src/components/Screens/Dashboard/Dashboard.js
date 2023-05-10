@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
+  getResumeData,
   getSelectResumeTemplateAction,
 } from "../../../redux/actions/resumeAction";
 
@@ -25,6 +26,10 @@ const Dashboard = (props) => {
     if (error) {
       alert(error);
       dispatch(clearErrors());
+    }
+
+    if (user) {
+      dispatch(getResumeData(user));
     }
   }, [dispatch, user, error]);
 

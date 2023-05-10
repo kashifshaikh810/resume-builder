@@ -753,72 +753,77 @@ const EditResume = (props) => {
   // set states from database
   useEffect(() => {
     const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
+    const resumeData = storeGetData?.data;
 
-    if (storeGetData) {
-      setWantedJobTitle(storeGetData?.wantedJobTitle);
-      setProfileImage(storeGetData?.profileImage);
-      setFirstName(storeGetData?.firstName);
-      setLastName(storeGetData?.lastName);
-      setEmail(storeGetData?.email);
-      setPhone(storeGetData?.phone);
-      setCountry(storeGetData?.country);
-      setCity(storeGetData?.city);
-      setAddress(storeGetData?.address);
-      setPostalCode(storeGetData?.postalCode);
-      setDrivingLicense(storeGetData?.drivingLicense);
-      setNationality(storeGetData?.nationality);
-      setDateOfBirth(storeGetData?.dateOfBirth);
-      setPlaceOfBirth(storeGetData?.placeOfBirth);
-      setProfessionalSummary(storeGetData?.professionalSummary);
-      if (storeGetData?.employmentInputList?.length >= 1) {
-        setEmploymentInputList(storeGetData?.employmentInputList);
+    if (resumeData) {
+      setWantedJobTitle(resumeData?.wantedJobTitle);
+      setProfileImage(resumeData?.profileImage);
+      setFirstName(resumeData?.firstName);
+      setLastName(resumeData?.lastName);
+      setEmail(resumeData?.email);
+      setPhone(resumeData?.phone);
+      setCountry(resumeData?.country);
+      setCity(resumeData?.city);
+      setAddress(resumeData?.address);
+      setPostalCode(resumeData?.postalCode);
+      setDrivingLicense(resumeData?.drivingLicense);
+      setNationality(resumeData?.nationality);
+      setDateOfBirth(resumeData?.dateOfBirth);
+      setPlaceOfBirth(resumeData?.placeOfBirth);
+      setProfessionalSummary(resumeData?.professionalSummary);
+      if (
+        resumeData?.employmentInputList?.length >= 1 &&
+        employmentInputList?.length === 0
+      ) {
+        setEmploymentInputList(resumeData?.employmentInputList);
       }
-      if (storeGetData?.educationInputList?.length >= 1) {
-        setEducationInputList(storeGetData?.educationInputList);
+      if (resumeData?.educationInputList?.length >= 1) {
+        setEducationInputList(resumeData?.educationInputList);
       }
-      if (storeGetData?.websiteInputList?.length >= 1) {
-        setWebsiteInputList(storeGetData?.websiteInputList);
+      if (resumeData?.websiteInputList?.length >= 1) {
+        setWebsiteInputList(resumeData?.websiteInputList);
       }
-      if (storeGetData?.skillsInputList?.length >= 1) {
-        setSkillsInputList(storeGetData?.skillsInputList);
+      if (resumeData?.skillsInputList?.length >= 1) {
+        setSkillsInputList(resumeData?.skillsInputList);
       }
-      setIsNotShowExpertLevel(storeGetData?.isNotShowExpertLevel);
-      setHobbies(storeGetData?.hobbies);
-      if (storeGetData?.languagesInputList?.length >= 1) {
-        setLanguagesInputList(storeGetData?.languagesInputList);
+      setIsNotShowExpertLevel(resumeData?.isNotShowExpertLevel);
+      setHobbies(resumeData?.hobbies);
+      if (resumeData?.languagesInputList?.length >= 1) {
+        setLanguagesInputList(resumeData?.languagesInputList);
       }
-      if (storeGetData?.coursesInputList?.length >= 1) {
-        setCoursesInputList(storeGetData?.coursesInputList);
+      if (resumeData?.coursesInputList?.length >= 1) {
+        setCoursesInputList(resumeData?.coursesInputList);
       }
-      if (storeGetData?.extraCurricularInputList?.length >= 1) {
-        setExtraCurricularInputList(storeGetData?.extraCurricularInputList);
+      if (resumeData?.extraCurricularInputList?.length >= 1) {
+        setExtraCurricularInputList(resumeData?.extraCurricularInputList);
       }
-      if (storeGetData?.internshipInputList?.length >= 1) {
-        setInternshipInputList(storeGetData?.internshipInputList);
+      if (resumeData?.internshipInputList?.length >= 1) {
+        setInternshipInputList(resumeData?.internshipInputList);
       }
-      if (storeGetData?.referencesInputList?.length >= 1) {
-        setReferencesInputList(storeGetData?.referencesInputList);
+      if (resumeData?.referencesInputList?.length >= 1) {
+        setReferencesInputList(resumeData?.referencesInputList);
       }
-      setIsNotShowIdLikeToHide(storeGetData?.disabledPreferences);
-      setPersonalDetailInput(storeGetData?.personalDetailInput);
-      setSummaryInput(storeGetData?.summaryInput);
-      setEmploymentInput(storeGetData?.employmentInput);
-      setEducationInput(storeGetData?.educationInput);
-      setWebsiteInput(storeGetData?.websiteInput);
-      setSkillsInput(storeGetData?.skillsInput);
-      setHobbiesInput(storeGetData?.hobbiesInput);
-      setLanguagesInput(storeGetData?.languagesInput);
-      setCoursesInput(storeGetData?.coursesInput);
-      setExtraCurricularInput(storeGetData?.extraCurricularInput);
-      setInternshipInput(storeGetData?.internshipInput);
-      setReferencesInput(storeGetData?.referencesInput);
+      setIsNotShowIdLikeToHide(resumeData?.disabledPreferences);
+      setPersonalDetailInput(resumeData?.personalDetailInput);
+      setSummaryInput(resumeData?.summaryInput);
+      setEmploymentInput(resumeData?.employmentInput);
+      setEducationInput(resumeData?.educationInput);
+      setWebsiteInput(resumeData?.websiteInput);
+      setSkillsInput(resumeData?.skillsInput);
+      setHobbiesInput(resumeData?.hobbiesInput);
+      setLanguagesInput(resumeData?.languagesInput);
+      setCoursesInput(resumeData?.coursesInput);
+      setExtraCurricularInput(resumeData?.extraCurricularInput);
+      setInternshipInput(resumeData?.internshipInput);
+      setReferencesInput(resumeData?.referencesInput);
     }
-  }, [resumeTemplateGetData]);
+  }, []);
 
   useEffect(() => {
     const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
+    const resumeData = storeGetData?.data;
 
-    saveData(storeGetData);
+    saveData(resumeData);
 
     const dataOfCoverLetter = {
       fullName,
@@ -1071,8 +1076,6 @@ const EditResume = (props) => {
         ? ""
         : getData?.disabledPreferences,
     };
-
-    localStorage.setItem("resumeTemplateData", JSON.stringify(resumeData));
 
     dispatch(resumeDataSave(user, resumeData));
   };

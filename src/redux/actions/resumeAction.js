@@ -33,10 +33,13 @@ export const getResumeData = (user) => (dispatch) => {
     const tempRef = ref(database, "userResumeTemplateData/" + user?.userId);
     onValue(tempRef, async (snapshot) => {
       const data = await snapshot.val();
+      const storeData = localStorage.setItem(
+        "resumeTemplateData",
+        JSON.stringify(data)
+      );
       dispatch({ type: GET_RESUME_DATA_SUCCESS, payload: data });
     });
   } catch (error) {
-    console.log(error, `err 1`);
     dispatch({ type: GET_RESUME_DATA_FAIL, payload: error?.code });
   }
 };
@@ -55,14 +58,12 @@ export const resumeDataSave = (user, data) => (dispatch) => {
         await dispatch({ type: RESUME_DATA_SUCCESS, payload: resumeData });
       })
       .catch((error) => {
-        console.log(error, `err 1`);
         dispatch({
           type: RESUME_DATA_FAIL,
           payload: error?.code,
         });
       });
   } catch (error) {
-    console.log(error, `err 2`);
     dispatch({ type: RESUME_DATA_FAIL, payload: error?.code });
   }
 };

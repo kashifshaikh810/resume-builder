@@ -12,6 +12,7 @@ const DropDownMenu = (props) => {
 
   const logOutOnClickHandler = () => {
     dispatch(logOutAction());
+    localStorage.clear("resumeTemplateData");
   };
 
   return (
