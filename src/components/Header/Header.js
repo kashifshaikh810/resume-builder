@@ -27,7 +27,6 @@ const Header = (props) => {
     }
 
     if (success) {
-      props.setIsMenuShown(!props?.isMenuShown);
       navigate("/");
       alert("Log Out Successfully");
       dispatch({ type: LOGOUT_RESET });
