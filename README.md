@@ -1,4 +1,4 @@
-# This app link: kashifs-resume-builder.surge.sh
+# This app link: https://kashif-site.surge.sh/
 
 # Getting Started with Create React App
 
