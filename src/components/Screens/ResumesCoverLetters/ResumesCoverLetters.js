@@ -43,6 +43,13 @@ const ResumesCoverLetters = (props) => {
   ).getDate();
   const month = new Date(titleData?.resumeTitleUpdated).getMonth();
 
+  const updateCoverLetterTitleDate = new Date(
+    coverLetterTitleData?.coverLetterTitleUpdated
+  ).getDate();
+  const coverLetterTitleMonth = new Date(
+    coverLetterTitleData?.coverLetterTitleUpdated
+  ).getMonth();
+
   let monthNames = [
     "January",
     "February",
@@ -66,6 +73,17 @@ const ResumesCoverLetters = (props) => {
     new Date(titleData?.resumeTitleUpdated).getHours() +
     ":" +
     new Date(titleData?.resumeTitleUpdated).getMinutes();
+
+  const updateCoverLetterTitleMonthName = new Date(
+    titleData?.resumeTitleUpdated
+  )
+    ? monthNames[month]
+    : "";
+
+  const updateCoverLetterTitleTime =
+    new Date(coverLetterTitleData?.coverLetterTitleUpdated).getHours() +
+    ":" +
+    new Date(coverLetterTitleData?.coverLetterTitleUpdated).getMinutes();
 
   const resumeTempId = 29364313;
   const coverTempId = 54274626;
@@ -175,6 +193,10 @@ const ResumesCoverLetters = (props) => {
       loading={resumeDataLoading}
       coverLetterTitleOnClickHandler={coverLetterTitleOnClickHandler}
       coverLetterTitleData={coverLetterTitleData}
+      updateCoverLetterTitleDate={updateCoverLetterTitleDate}
+      coverLetterTitleMonth={coverLetterTitleMonth}
+      updateCoverLetterTitleTime={updateCoverLetterTitleTime}
+      updateCoverLetterTitleMonthName={updateCoverLetterTitleMonthName}
     />
   );
 };

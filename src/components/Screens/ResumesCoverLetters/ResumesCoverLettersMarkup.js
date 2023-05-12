@@ -32,6 +32,9 @@ const ResumesCoverLettersMarkup = (props) => {
     updateResumeTitleMonth,
     updateResumeTitleTime,
     loading,
+    updateCoverLetterTitleDate,
+    updateCoverLetterTitleMonthName,
+    updateCoverLetterTitleTime,
   } = props;
 
   const renderTemplate = () => {
@@ -268,9 +271,15 @@ const ResumesCoverLettersMarkup = (props) => {
                     />
                   )}
                 </div>
-                <p className="text-xs text-gray-400">
-                  Updated 31 November, 20:24
-                </p>
+                {updateCoverLetterTitleDate &&
+                updateCoverLetterTitleMonthName &&
+                updateCoverLetterTitleTime ? (
+                  <p className="text-xs text-gray-400">
+                    {`Updated ${updateCoverLetterTitleDate} ${updateCoverLetterTitleMonthName}, ${updateCoverLetterTitleTime}`}
+                  </p>
+                ) : (
+                  <></>
+                )}
               </div>
               <div
                 className="flex flex-row items-center pt-2"
