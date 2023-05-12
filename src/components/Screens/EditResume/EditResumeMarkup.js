@@ -472,8 +472,12 @@ const EditResumeMarkup = (props) => {
                       props.setIsShowTitleInput(!props?.isShowTitleInput);
                     }}
                   >
-                    {titleData?.resumeTitle
+                    {props?.tabName === "resumes"
                       ? titleData?.resumeTitle
+                        ? titleData?.resumeTitle
+                        : "Untitled"
+                      : props?.coverLetterTitleData?.coverLetterTitle
+                      ? props?.coverLetterTitleData?.coverLetterTitle
                       : "Untitled"}
                   </p>
                 )}

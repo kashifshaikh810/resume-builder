@@ -31,6 +31,9 @@ const EditResume = (props) => {
     success,
     error,
   } = useSelector((state) => state.removeProfileImage);
+  const { coverLetterTitleData } = useSelector(
+    (state) => state.coverLetterTitle
+  );
 
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
@@ -1345,6 +1348,7 @@ const EditResume = (props) => {
       loading={isObjectEmpty(resumeTemplateGetData)}
       saveLoading={loading}
       deleteProfileImageHandler={deleteProfileImageHandler}
+      coverLetterTitleData={coverLetterTitleData}
     />
   );
 };
