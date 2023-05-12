@@ -21,7 +21,10 @@ import {
   signUpReducer,
 } from "./reducers/authReducer";
 import { deleteUserReducer, profileReducer } from "./reducers/profileReducer";
-import { coverLetterTitleReducer } from "./reducers/coverLetterReducer";
+import {
+  coverLetterTitleReducer,
+  selectCoverLetterTemplateReducer,
+} from "./reducers/coverLetterReducer";
 
 const reducer = combineReducers({
   resumeData: resumeDataReducer,
@@ -36,6 +39,7 @@ const reducer = combineReducers({
   getResumeData: getResumeDataReducer,
   removeProfileImage: removeProfileImageReducer,
   coverLetterTitle: coverLetterTitleReducer,
+  selectCoverLetterTemplate: selectCoverLetterTemplateReducer,
 });
 
 let initialState = {};
