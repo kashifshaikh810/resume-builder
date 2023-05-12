@@ -382,29 +382,6 @@ const AllTemplatesMarkup = (props) => {
 
         {/* template results & resumes && templates */}
         {props?.tabName === "resumes" ? renderResumesTemplate() : ""}
-        {/* {(props.tabName === "resumes" &&
-          isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
-        templateData?.selectedTemplate === "Toronto" ? (
-          <TorontoTemplate {...props} />
-        ) : null}
-
-        {(props.tabName === "resumes" &&
-          isSelectedTemplate.nameOfSelectedVal === "Stockholm") ||
-        templateData?.selectedTemplate === "Stockholm" ? (
-          <StockholmTemplate {...props} />
-        ) : null}
-
-        {(props.tabName === "resumes" &&
-          isSelectedTemplate.nameOfSelectedVal === "New York") ||
-        templateData?.selectedTemplate === "New York" ? (
-          <NewYorkTemplate {...props} />
-        ) : null}
-
-        {(props.tabName === "resumes" &&
-          isSelectedTemplate.nameOfSelectedVal === "Vienna") ||
-        templateData?.selectedTemplate === "Vienna" ? (
-          <ViennaTemplate {...props} />
-        ) : null} */}
 
         {/* template results & cover letter tab templates */}
         {props?.tabName === "cover-letters" &&
