@@ -256,19 +256,15 @@ const ResumesCoverLettersMarkup = (props) => {
                     />
                   ) : (
                     <p className="font-bold text-lg hover:cursor-default untitled-text">
-                      {props?.coverLetterUntitledInput
-                        ? props?.coverLetterUntitledInput
+                      {props?.coverLetterTitleData?.coverLetterTitle
+                        ? props?.coverLetterTitleData?.coverLetterTitle
                         : "Untitled"}
                     </p>
                   )}
                   {props?.isShowCoverLetterUntitledIcon && (
                     <TiPencil
                       className="ml-3 hover:cursor-pointer text-gray-400 hover:text-blue-400 text-lg pencil-icon"
-                      onClick={() =>
-                        props.setIsShowCoverLetterUntitledInput(
-                          !props?.isShowCoverLetterUntitledInput
-                        )
-                      }
+                      onClick={() => props?.coverLetterTitleOnClickHandler()}
                     />
                   )}
                 </div>

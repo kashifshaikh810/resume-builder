@@ -1,3 +1,5 @@
+import { ref, set } from "firebase/database";
+import { database } from "../../Firebase/FirebaseConfig";
 import {
   COVER_LETTER_TITLE_FAIL,
   COVER_LETTER_TITLE_REQUEST,
@@ -23,7 +25,7 @@ export const coverLetterTitleAction = (user, data) => (dispatch) => {
   }
 };
 
-export const clearErrors = () => (dispatch) => {
+export const clearErrorsFromCoverLetter = () => (dispatch) => {
   dispatch({
     type: CLEAR_ERRORS,
   });

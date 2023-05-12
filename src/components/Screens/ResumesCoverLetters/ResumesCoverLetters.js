@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import { useDispatch, useSelector } from "react-redux";
+
 import { logOutAction } from "../../../redux/actions/authAction";
+import {
+  clearErrorsFromCoverLetter,
+  coverLetterTitleAction,
+} from "../../../redux/actions/coverLetterAction";
+import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import {
   clearErrors,
   getResumeData,
@@ -22,6 +27,11 @@ const ResumesCoverLetters = (props) => {
   const { loading, titleData, error } = useSelector(
     (state) => state.resumeTitle
   );
+  const {
+    loading: coverLetterTitleLoading,
+    coverLetterTitleData,
+    error: coverLetterTitleError,
+  } = useSelector((state) => state.coverLetterTitle);
   const { user } = useSelector((state) => state.currentUser);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -91,6 +101,18 @@ const ResumesCoverLetters = (props) => {
     }
   };
 
+  const coverLetterTitleOnClickHandler = () => {
+    const data = {
+      coverLetterTitle: coverLetterUntitledInput,
+      coverLetterTitleUpdated: Date.now(),
+    };
+    setIsShowCoverLetterUntitledInput(!isShowCoverLetterUntitledInput);
+
+    if (isShowCoverLetterUntitledInput) {
+      dispatch(coverLetterTitleAction(user, data));
+    }
+  };
+
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
     dispatch(getResumeTitleAction(user));
@@ -100,13 +122,24 @@ const ResumesCoverLetters = (props) => {
       alert(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, user, error]);
+
+    if (coverLetterTitleError) {
+      alert(coverLetterTitleError);
+      dispatch(clearErrorsFromCoverLetter());
+    }
+  }, [dispatch, user, error, coverLetterTitleError]);
 
   useEffect(() => {
     if (titleData) {
       setUntitledInput(titleData?.resumeTitle);
     }
   }, [titleData]);
+
+  // useEffect(() => {
+  //   if (titleData) {
+  //     coverLetterUntitledInput(titleData?.resumeTitle);
+  //   }
+  // }, [titleData]);
 
   return (
     <ResumesCoverLettersMarkup
@@ -140,6 +173,8 @@ const ResumesCoverLetters = (props) => {
       updateResumeTitleMonth={updateResumeTitleMonth}
       updateResumeTitleTime={updateResumeTitleTime}
       loading={resumeDataLoading}
+      coverLetterTitleOnClickHandler={coverLetterTitleOnClickHandler}
+      coverLetterTitleData={coverLetterTitleData}
     />
   );
 };
