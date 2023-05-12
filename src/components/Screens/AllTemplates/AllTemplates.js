@@ -41,45 +41,71 @@ const AllTemplates = (props) => {
   const [totalPage, setTotalPage] = useState(1);
 
   const selectTemplateHandler = (item) => {
-    setIsSelectedTemplate({
-      nameOfSelectedVal: item.name,
-      numOfSelectedVal: item.id,
-      isChanged: true,
-    });
-    dispatch(
-      selectResumeTemplateAction(user, item.name, {
+    if (tabName === "resumes") {
+      setIsSelectedTemplate({
         nameOfSelectedVal: item.name,
         numOfSelectedVal: item.id,
         isChanged: true,
-      })
-    );
+      });
+      dispatch(
+        selectResumeTemplateAction(user, item.name, {
+          nameOfSelectedVal: item.name,
+          numOfSelectedVal: item.id,
+          isChanged: true,
+        })
+      );
+    } else {
+      setIsSelectedTemplate({
+        nameOfSelectedVal: item.name,
+        numOfSelectedVal: item.id,
+        isChanged: true,
+      });
+    }
   };
 
   const selectTemplateTwoHandler = (item) => {
-    setIsSelectedTemplate({
-      nameOfSelectedVal: item.name,
-      numOfSelectedVal: item.id,
-    });
-    dispatch(
-      selectResumeTemplateAction(user, item.name, {
+    if (tabName === "resumes") {
+      setIsSelectedTemplate({
         nameOfSelectedVal: item.name,
         numOfSelectedVal: item.id,
-      })
-    );
+      });
+      dispatch(
+        selectResumeTemplateAction(user, item.name, {
+          nameOfSelectedVal: item.name,
+          numOfSelectedVal: item.id,
+        })
+      );
+    } else {
+      setIsSelectedTemplate({
+        nameOfSelectedVal: item.name,
+        numOfSelectedVal: item.id,
+      });
+    }
   };
 
   const selectTempColorObj = (item, index) => {
-    if (
-      templateData?.isSelectedTemplate?.numOfSelectedVal === item.id &&
-      templateData?.isSelectedTemplate?.nameOfSelectedVal === item.name
-    ) {
+    if (tabName === "resumes") {
       if (
-        isSelectedTemplate?.isChanged ||
-        templateData?.isSelectedTemplate?.isChanged
+        templateData?.isSelectedTemplate?.numOfSelectedVal === item.id &&
+        templateData?.isSelectedTemplate?.nameOfSelectedVal === item.name
       ) {
-        return "text-white";
-      } else {
-        if (isSelectedTemplate?.nameOfSelectedVal !== "") {
+        if (
+          isSelectedTemplate?.isChanged ||
+          templateData?.isSelectedTemplate?.isChanged
+        ) {
+          return "text-white";
+        } else {
+          return "border-[4px] border-blue-400";
+        }
+      }
+    } else {
+      if (
+        isSelectedTemplate?.numOfSelectedVal === item.id &&
+        isSelectedTemplate?.nameOfSelectedVal === item.name
+      ) {
+        if (isSelectedTemplate?.isChanged || isSelectedTemplate?.isChanged) {
+          return "text-white";
+        } else {
           return "border-[4px] border-blue-400";
         }
       }
