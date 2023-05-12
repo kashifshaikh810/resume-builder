@@ -85,9 +85,11 @@ const AllTemplates = (props) => {
   };
 
   useEffect(() => {
-    dispatch(getSelectResumeTemplateAction(user));
-    dispatch(getResumeData(user));
-  }, [dispatch, user]);
+    if (tabName === "resumes") {
+      dispatch(getSelectResumeTemplateAction(user));
+      dispatch(getResumeData(user));
+    }
+  }, [dispatch, user, tabName]);
 
   return (
     <AllTemplatesMarkup

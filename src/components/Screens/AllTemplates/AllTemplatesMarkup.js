@@ -381,7 +381,7 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         {/* template results & resumes && templates */}
-        {renderResumesTemplate()}
+        {props?.tabName === "resumes" ? renderResumesTemplate() : ""}
         {/* {(props.tabName === "resumes" &&
           isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
         templateData?.selectedTemplate === "Toronto" ? (
