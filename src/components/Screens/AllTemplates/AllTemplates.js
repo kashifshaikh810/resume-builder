@@ -79,7 +79,9 @@ const AllTemplates = (props) => {
       ) {
         return "text-white";
       } else {
-        return "border-[4px] border-blue-400";
+        if (isSelectedTemplate?.nameOfSelectedVal !== "") {
+          return "border-[4px] border-blue-400";
+        }
       }
     }
   };
