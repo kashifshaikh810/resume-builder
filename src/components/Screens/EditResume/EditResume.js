@@ -745,17 +745,19 @@ const EditResume = (props) => {
   }, []);
 
   useEffect(() => {
-    dispatch(getResumeData(user));
-    dispatch(getSelectResumeTemplateAction(user));
-    dispatch(getResumeTitleAction(user));
-  }, [dispatch, user]);
+    if (tabName === "resumes") {
+      dispatch(getResumeData(user));
+      dispatch(getSelectResumeTemplateAction(user));
+      dispatch(getResumeTitleAction(user));
+    }
+  }, [dispatch, user, tabName]);
 
   // set states from database
   useEffect(() => {
     const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
     const resumeData = storeGetData?.data;
 
-    if (resumeData) {
+    if (resumeData && tabName === "resumes") {
       setWantedJobTitle(resumeData?.wantedJobTitle);
       setProfileImage(resumeData?.profileImage);
       setFirstName(resumeData?.firstName);
@@ -817,13 +819,15 @@ const EditResume = (props) => {
       setInternshipInput(resumeData?.internshipInput);
       setReferencesInput(resumeData?.referencesInput);
     }
-  }, []);
+  }, [tabName]);
 
   useEffect(() => {
     const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
     const resumeData = storeGetData?.data;
 
-    saveData(resumeData);
+    if (tabName === "resumes") {
+      saveData(resumeData);
+    }
 
     const dataOfCoverLetter = {
       fullName,
@@ -835,7 +839,9 @@ const EditResume = (props) => {
       hiringManagerName,
       letterDetails,
     };
-    dispatch(coverLetterDataSave(dataOfCoverLetter));
+    if (tabName === "cover-letters") {
+      dispatch(coverLetterDataSave(dataOfCoverLetter));
+    }
   }, [
     dispatch,
     profileImage,
@@ -888,6 +894,7 @@ const EditResume = (props) => {
     user,
     resumeTemplateGetData,
     success,
+    tabName,
   ]);
 
   const saveData = async (getData) => {
