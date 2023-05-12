@@ -5,6 +5,7 @@ import { logOutAction } from "../../../redux/actions/authAction";
 import {
   clearErrorsFromCoverLetter,
   coverLetterTitleAction,
+  getCoverLetterTitleAction,
 } from "../../../redux/actions/coverLetterAction";
 import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import {
@@ -96,8 +97,11 @@ const ResumesCoverLetters = (props) => {
   const [isShowUntitledInput, setIsShowUntitledInput] = useState(false);
 
   // cover letters input
-  const [coverLetterUntitledInput, setCoverLetterUntitledInput] =
-    useState("Untitled");
+  const [coverLetterUntitledInput, setCoverLetterUntitledInput] = useState(
+    coverLetterTitleData?.coverLetterTitle
+      ? coverLetterTitleData?.coverLetterTitle
+      : "Untitled"
+  );
   const [isShowCoverLetterUntitledIcon, setIsShowCoverLetterUntitledIcon] =
     useState(false);
   const [isShowCoverLetterUntitledInput, setIsShowCoverLetterUntitledInput] =
@@ -135,6 +139,7 @@ const ResumesCoverLetters = (props) => {
     dispatch(getSelectResumeTemplateAction(user));
     dispatch(getResumeTitleAction(user));
     dispatch(getResumeData(user));
+    dispatch(getCoverLetterTitleAction(user));
 
     if (error) {
       alert(error);
@@ -153,11 +158,11 @@ const ResumesCoverLetters = (props) => {
     }
   }, [titleData]);
 
-  // useEffect(() => {
-  //   if (titleData) {
-  //     coverLetterUntitledInput(titleData?.resumeTitle);
-  //   }
-  // }, [titleData]);
+  useEffect(() => {
+    if (coverLetterTitleData) {
+      setCoverLetterUntitledInput(coverLetterTitleData?.coverLetterTitle);
+    }
+  }, [coverLetterTitleData]);
 
   return (
     <ResumesCoverLettersMarkup
