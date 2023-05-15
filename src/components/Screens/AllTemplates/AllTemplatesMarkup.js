@@ -122,6 +122,42 @@ const AllTemplatesMarkup = (props) => {
     }
   };
 
+  const renderCoverLettersTemplate = () => {
+    if (
+      (props.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "Toronto") ||
+      templateData?.selectedCoverLetterTemplate === "Toronto"
+    ) {
+      return <TorontoCoverLetterTemplate {...props} />;
+    } else if (
+      (props.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "Stockholm") ||
+      templateData?.selectedCoverLetterTemplate === "Stockholm"
+    ) {
+      return <StockholmCoverLetterTemplate {...props} />;
+    } else if (
+      (props.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "New York") ||
+      templateData?.selectedCoverLetterTemplate === "New York"
+    ) {
+      return <NewYorkCoverLetterTemplate {...props} />;
+    } else if (
+      (props.tabName === "cover-letters" &&
+        isSelectedTemplate.nameOfSelectedVal === "Vienna") ||
+      templateData?.selectedCoverLetterTemplate === "Vienna"
+    ) {
+      return <ViennaCoverLetterTemplate {...props} />;
+    } else {
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex flex-col justify-center items-center pt-6 ml-3 pb-7 bg-white w-full overflow-hidden h-[900px] rounded-md"
+          textStyle="text-2xl text-gray-300 animate-bounce font-mono"
+        />
+      );
+    }
+  };
+
   let mapping =
     props?.tabName === "resumes"
       ? resumesTemplatesData
@@ -384,7 +420,9 @@ const AllTemplatesMarkup = (props) => {
         {props?.tabName === "resumes" ? renderResumesTemplate() : ""}
 
         {/* template results & cover letter tab templates */}
-        {props?.tabName === "cover-letters" &&
+        {props?.tabName === "cover-letters" ? renderCoverLettersTemplate() : ""}
+
+        {/* {props?.tabName === "cover-letters" &&
         isSelectedTemplate.nameOfSelectedVal === "Toronto" ? (
           <TorontoCoverLetterTemplate {...props} />
         ) : null}
@@ -413,7 +451,7 @@ const AllTemplatesMarkup = (props) => {
           />
         ) : (
           ""
-        )}
+        )} */}
 
         <div
           className="hidden 

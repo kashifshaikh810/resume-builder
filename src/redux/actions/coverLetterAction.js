@@ -9,8 +9,11 @@ import {
   GET_COVER_LETTER_TITLE_SUCCESS,
   GET_COVER_LETTER_TITLE_REQUEST,
   SELECTED_COVER_LETTER_TEMPLATE_REQUEST,
-  SELECTED_COVER_LETTER_TEMPLATE_REQUEST_SUCCESS,
-  SELECTED_COVER_LETTER_TEMPLATE_REQUEST_FAIL,
+  SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
+  SELECTED_COVER_LETTER_TEMPLATE_FAIL,
+  GET_SELECTED_COVER_LETTER_TEMPLATE_REQUEST,
+  GET_SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
+  GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL,
 } from "../constants/coverLetterConstants";
 
 export const coverLetterTitleAction = (user, data) => (dispatch) => {
@@ -62,23 +65,45 @@ export const selectCoverLetterTemplateAction =
       )
         .then(() => {
           dispatch({
-            type: SELECTED_COVER_LETTER_TEMPLATE_REQUEST_SUCCESS,
+            type: SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
             payload: data,
           });
         })
         .catch((error) => {
           dispatch({
-            type: SELECTED_COVER_LETTER_TEMPLATE_REQUEST_FAIL,
+            type: SELECTED_COVER_LETTER_TEMPLATE_FAIL,
             payload: error?.code,
           });
         });
     } catch (error) {
       dispatch({
-        type: SELECTED_COVER_LETTER_TEMPLATE_REQUEST_FAIL,
+        type: SELECTED_COVER_LETTER_TEMPLATE_FAIL,
         payload: error?.code,
       });
     }
   };
+
+export const getSelectCoverLetterTemplateAction = (user) => (dispatch) => {
+  try {
+    dispatch({ type: GET_SELECTED_COVER_LETTER_TEMPLATE_REQUEST });
+    const tempRef = ref(
+      database,
+      "usersSelectedCoverLetterTemplate/" + user?.userId
+    );
+    onValue(tempRef, (snapshot) => {
+      const data = snapshot ? snapshot.val() : {};
+      dispatch({
+        type: GET_SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
+        payload: data,
+      });
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL,
+      payload: error?.code,
+    });
+  }
+};
 
 export const clearErrorsFromCoverLetter = () => (dispatch) => {
   dispatch({

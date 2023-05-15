@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectCoverLetterTemplateAction } from "../../../redux/actions/coverLetterAction";
+import {
+  getSelectCoverLetterTemplateAction,
+  selectCoverLetterTemplateAction,
+} from "../../../redux/actions/coverLetterAction";
 
 import {
   getResumeData,
@@ -119,14 +122,15 @@ const AllTemplates = (props) => {
       }
     } else {
       if (
-        coverLetterSelectedTemplateData?.isSelectedTemplate
+        coverLetterSelectedTemplateData?.isSelectedCoverLetterTemplate
           ?.numOfSelectedVal === item.id &&
-        coverLetterSelectedTemplateData?.isSelectedTemplate
+        coverLetterSelectedTemplateData?.isSelectedCoverLetterTemplate
           ?.nameOfSelectedVal === item.name
       ) {
         if (
           isSelectedTemplate?.isChanged ||
-          coverLetterSelectedTemplateData?.isSelectedTemplate?.isChanged
+          coverLetterSelectedTemplateData?.isSelectedCoverLetterTemplate
+            ?.isChanged
         ) {
           return "text-white";
         } else {
@@ -140,6 +144,8 @@ const AllTemplates = (props) => {
     if (tabName === "resumes") {
       dispatch(getSelectResumeTemplateAction(user));
       dispatch(getResumeData(user));
+    } else {
+      dispatch(getSelectCoverLetterTemplateAction(user));
     }
   }, [dispatch, user, tabName]);
 
@@ -167,7 +173,9 @@ const AllTemplates = (props) => {
       selectTemplateHandler={selectTemplateHandler}
       selectTempColorObj={selectTempColorObj}
       selectTemplateTwoHandler={selectTemplateTwoHandler}
-      templateData={templateData}
+      templateData={
+        tabName === "resumes" ? templateData : coverLetterSelectedTemplateData
+      }
       loading={
         tabName === "resumes" ? loading : coverLetterSelectedTemplateLoading
       }
