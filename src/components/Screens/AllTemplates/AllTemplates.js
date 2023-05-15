@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { selectCoverLetterTemplateAction } from "../../../redux/actions/coverLetterAction";
 
 import {
   getResumeData,
@@ -35,6 +36,11 @@ const AllTemplates = (props) => {
     (state) => state.selectTemplate
   );
 
+  const {
+    loading: coverLetterSelectedTemplateLoading,
+    coverLetterSelectedTemplateData,
+  } = useSelector((state) => state.selectCoverLetterTemplate);
+
   const [isShowTemplateCard, setIsShowTemplateCard] = useState(false);
 
   const [page, setPage] = useState(1);
@@ -60,6 +66,13 @@ const AllTemplates = (props) => {
         numOfSelectedVal: item.id,
         isChanged: true,
       });
+      dispatch(
+        selectCoverLetterTemplateAction(user, item?.name, {
+          nameOfSelectedVal: item.name,
+          numOfSelectedVal: item.id,
+          isChanged: true,
+        })
+      );
     }
   };
 
@@ -80,6 +93,12 @@ const AllTemplates = (props) => {
         nameOfSelectedVal: item.name,
         numOfSelectedVal: item.id,
       });
+      dispatch(
+        selectCoverLetterTemplateAction(user, item?.name, {
+          nameOfSelectedVal: item.name,
+          numOfSelectedVal: item.id,
+        })
+      );
     }
   };
 
@@ -100,10 +119,15 @@ const AllTemplates = (props) => {
       }
     } else {
       if (
-        isSelectedTemplate?.numOfSelectedVal === item.id &&
-        isSelectedTemplate?.nameOfSelectedVal === item.name
+        coverLetterSelectedTemplateData?.isSelectedTemplate
+          ?.numOfSelectedVal === item.id &&
+        coverLetterSelectedTemplateData?.isSelectedTemplate
+          ?.nameOfSelectedVal === item.name
       ) {
-        if (isSelectedTemplate?.isChanged || isSelectedTemplate?.isChanged) {
+        if (
+          isSelectedTemplate?.isChanged ||
+          coverLetterSelectedTemplateData?.isSelectedTemplate?.isChanged
+        ) {
           return "text-white";
         } else {
           return "border-[4px] border-blue-400";
@@ -144,7 +168,9 @@ const AllTemplates = (props) => {
       selectTempColorObj={selectTempColorObj}
       selectTemplateTwoHandler={selectTemplateTwoHandler}
       templateData={templateData}
-      loading={loading}
+      loading={
+        tabName === "resumes" ? loading : coverLetterSelectedTemplateLoading
+      }
     />
   );
 };
