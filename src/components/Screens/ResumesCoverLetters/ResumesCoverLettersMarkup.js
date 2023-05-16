@@ -35,6 +35,8 @@ const ResumesCoverLettersMarkup = (props) => {
     updateCoverLetterTitleDate,
     updateCoverLetterTitleMonthName,
     updateCoverLetterTitleTime,
+    coverLetterSelectedTemplateLoading,
+    coverLetterSelectedTemplateData,
   } = props;
 
   const renderTemplate = () => {
@@ -46,6 +48,36 @@ const ResumesCoverLettersMarkup = (props) => {
       return <NewYorkTemplate {...props} />;
     } else if (templateData?.selectedTemplate === "Vienna") {
       return <ViennaTemplate {...props} />;
+    } else {
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+          textStyle="text-xs text-gray-300 animate-bounce font-mono"
+        />
+      );
+    }
+  };
+
+  const renderCoverLetterTemplate = () => {
+    if (
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate ===
+      "Stockholm"
+    ) {
+      return <CoverLetterStockholmTemplate {...props} />;
+    } else if (
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate === "Toronto"
+    ) {
+      return <CoverLetterTorontoTemplate {...props} />;
+    } else if (
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate ===
+      "New York"
+    ) {
+      return <CoverLetterNewYorkTemplate {...props} />;
+    } else if (
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate === "Vienna"
+    ) {
+      return <CoverLetterViennaTemplate {...props} />;
     } else {
       return (
         <SelectTemplate
@@ -222,6 +254,12 @@ const ResumesCoverLettersMarkup = (props) => {
         <div className="pt-14 pb-10">
           <div className="flex flex-row w-full justify-between mr-5">
             <div className="border-2 max-w-sm border-gray-100 w-2/12 h-72 rounded-lg cursor-pointer cv-box unselectable">
+              {coverLetterSelectedTemplateLoading ? (
+                <TemplateLoader />
+              ) : (
+                renderCoverLetterTemplate()
+              )}
+
               {/* <CoverLetterTorontoTemplate {...props} /> */}
 
               {/* <CoverLetterStockholmTemplate {...props} /> */}
@@ -230,11 +268,11 @@ const ResumesCoverLettersMarkup = (props) => {
 
               {/* <CoverLetterViennaTemplate {...props} /> */}
 
-              <SelectTemplate
+              {/* <SelectTemplate
                 {...props}
                 containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
                 textStyle="text-xs text-gray-300 animate-bounce font-mono"
-              />
+              /> */}
             </div>
 
             <div className="pl-10 w-11/12">

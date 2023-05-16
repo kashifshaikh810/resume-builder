@@ -6,6 +6,7 @@ import {
   clearErrorsFromCoverLetter,
   coverLetterTitleAction,
   getCoverLetterTitleAction,
+  getSelectCoverLetterTemplateAction,
 } from "../../../redux/actions/coverLetterAction";
 import ResumesCoverLettersMarkup from "./ResumesCoverLettersMarkup";
 import {
@@ -33,6 +34,11 @@ const ResumesCoverLetters = (props) => {
     coverLetterTitleData,
     error: coverLetterTitleError,
   } = useSelector((state) => state.coverLetterTitle);
+  const {
+    loading: coverLetterSelectedTemplateLoading,
+    coverLetterSelectedTemplateData,
+  } = useSelector((state) => state.selectCoverLetterTemplate);
+
   const { user } = useSelector((state) => state.currentUser);
 
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -140,6 +146,7 @@ const ResumesCoverLetters = (props) => {
     dispatch(getResumeTitleAction(user));
     dispatch(getResumeData(user));
     dispatch(getCoverLetterTitleAction(user));
+    dispatch(getSelectCoverLetterTemplateAction(user));
 
     if (error) {
       alert(error);
@@ -202,6 +209,8 @@ const ResumesCoverLetters = (props) => {
       coverLetterTitleMonth={coverLetterTitleMonth}
       updateCoverLetterTitleTime={updateCoverLetterTitleTime}
       updateCoverLetterTitleMonthName={updateCoverLetterTitleMonthName}
+      coverLetterLoading={coverLetterSelectedTemplateLoading}
+      coverLetterSelectedTemplateData={coverLetterSelectedTemplateData}
     />
   );
 };
