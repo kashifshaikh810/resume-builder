@@ -1,16 +1,7 @@
 import React from "react";
 
 const CoverLetterNewYorkTemplate = (props) => {
-  const {
-    fullName,
-    jobTitle,
-    address,
-    email,
-    phone,
-    companyName,
-    hiringManagerName,
-    letterDetails,
-  } = props?.coverLetterData;
+  const { coverLetterData } = props;
 
   return (
     <div className="m-6 w-full">
@@ -18,32 +9,45 @@ const CoverLetterNewYorkTemplate = (props) => {
         <div className="w-7/12">
           <div className="flex flex-col items-end">
             <p className="text-[10px] font-semibold text-end uppercase">
-              {fullName}
+              {coverLetterData?.fullName}
             </p>
-            <p className="text-[5px] uppercase mt-1">{jobTitle}</p>
+            <p className="text-[5px] uppercase mt-1">
+              {coverLetterData?.jobTitle}
+            </p>
           </div>
 
           <div className="flex flex-col items-end mt-6">
             <p className="text-[5px] text-black font-bold">
-              {hiringManagerName || companyName ? `To` : ``}
+              {coverLetterData?.hiringManagerName ||
+              coverLetterData?.companyName
+                ? `To`
+                : ``}
             </p>
-            <p className="text-[5px]">{hiringManagerName}</p>
-            <p className="text-[5px]">{companyName}</p>
+            <p className="text-[5px]">{coverLetterData?.hiringManagerName}</p>
+            <p className="text-[5px]">{coverLetterData?.companyName}</p>
           </div>
 
           <div className="flex flex-col items-end mt-6">
             <p className="text-[5px] text-black font-bold">
-              {fullName || jobTitle || address || email || phone ? `From` : ``}
+              {coverLetterData?.fullName ||
+              coverLetterData?.jobTitle ||
+              coverLetterData?.address ||
+              coverLetterData?.email ||
+              coverLetterData?.phone
+                ? `From`
+                : ``}
             </p>
-            <p className="text-[5px]">{fullName}</p>
-            <p className="text-[5px]">{jobTitle}</p>
-            <p className="text-[5px]">{address}</p>
-            <p className="text-[5px]">{phone}</p>
-            <p className="text-[5px] underline">{email}</p>
+            <p className="text-[5px]">{coverLetterData?.fullName}</p>
+            <p className="text-[5px]">{coverLetterData?.jobTitle}</p>
+            <p className="text-[5px]">{coverLetterData?.address}</p>
+            <p className="text-[5px]">{coverLetterData?.phone}</p>
+            <p className="text-[5px] underline">{coverLetterData?.email}</p>
           </div>
         </div>
         <div className="w-full h-[28rem] border-l border-black pl-3.5 pt-[2.1rem]">
-          <p className="text-[5px] leading-4">{letterDetails}</p>
+          <p className="text-[5px] leading-4">
+            {coverLetterData?.letterDetails}
+          </p>
         </div>
       </div>
     </div>
