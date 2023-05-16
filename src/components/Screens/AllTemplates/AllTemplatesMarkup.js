@@ -422,37 +422,6 @@ const AllTemplatesMarkup = (props) => {
         {/* template results & cover letter tab templates */}
         {props?.tabName === "cover-letters" ? renderCoverLettersTemplate() : ""}
 
-        {/* {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "Toronto" ? (
-          <TorontoCoverLetterTemplate {...props} />
-        ) : null}
-
-        {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "Stockholm" ? (
-          <StockholmCoverLetterTemplate {...props} />
-        ) : null}
-
-        {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "New York" ? (
-          <NewYorkCoverLetterTemplate {...props} />
-        ) : null}
-
-        {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "Vienna" ? (
-          <ViennaCoverLetterTemplate {...props} />
-        ) : null}
-
-        {props?.tabName === "cover-letters" &&
-        isSelectedTemplate.nameOfSelectedVal === "" ? (
-          <SelectTemplate
-            {...props}
-            containerStyle="flex flex-col justify-center items-center pt-6 ml-3 pb-7 bg-white w-full overflow-hidden h-[900px] rounded-md"
-            textStyle="text-2xl text-gray-300 animate-bounce font-mono"
-          />
-        ) : (
-          ""
-        )} */}
-
         <div
           className="hidden 
       max-[768px]:flex flex-1 justify-center
