@@ -254,26 +254,26 @@ const EditResumeMarkup = (props) => {
             onMouseLeave={() => props.setIsHovered(false)}
           >
             {/* resume tab templates */}
-            {loading ? (
-              <TemplateLoader />
+            {tabName === "resumes" ? (
+              loading ? (
+                <TemplateLoader />
+              ) : (
+                resumesTemplates()
+              )
             ) : (
-              tabName === "resumes" && resumesTemplates()
+              ""
             )}
 
             {/* cover letter tab templates */}
-            {coverLetterSelectedTemplateLoading ? (
-              <TemplateLoader />
+            {tabName === "cover-letters" ? (
+              coverLetterSelectedTemplateLoading ? (
+                <TemplateLoader />
+              ) : (
+                coverLettersTemplates()
+              )
             ) : (
-              tabName === "cover-letters" && coverLettersTemplates()
+              ""
             )}
-
-            {/* <CoverLetterTorontoTemplate {...props} /> */}
-
-            {/* <CoverLetterStockholmTemplate {...props} /> */}
-
-            {/* <CoverLetterNewYorkTemplate {...props} /> */}
-
-            {/* <CoverLetterViennaTemplate {...props} /> */}
 
             {props?.isHovered ? (
               <div className="flex flex-1 justify-center items-center absolute top-64 left-72">

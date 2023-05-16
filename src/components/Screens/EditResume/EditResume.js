@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import {
+  getCoverLetterTitleAction,
+  getSelectCoverLetterTemplateAction,
+} from "../../../redux/actions/coverLetterAction";
 
 import {
   clearErrors,
@@ -16,6 +20,9 @@ import { REMOVE_PROFILE_IMAGE_RESET } from "../../../redux/constants/resumeConst
 import EditResumeMarkup from "./EditResumeMarkup";
 
 const EditResume = (props) => {
+  // localStorageGetItem
+  const tabName = JSON.parse(localStorage.getItem("tabName"));
+
   // redux
   const dispatch = useDispatch();
   const { loading, resumeTemplateData, coverLetterData } = useSelector(
@@ -46,7 +53,7 @@ const EditResume = (props) => {
   const coverTempId = 54274626;
 
   // cover letters states
-  const tabName = useParams()?.tabName;
+  // const tabName = useParams()?.tabName;
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -756,6 +763,9 @@ const EditResume = (props) => {
       dispatch(getResumeData(user));
       dispatch(getSelectResumeTemplateAction(user));
       dispatch(getResumeTitleAction(user));
+    } else {
+      dispatch(getSelectCoverLetterTemplateAction(user));
+      dispatch(getCoverLetterTitleAction(user));
     }
   }, [dispatch, user, tabName]);
 
@@ -1094,6 +1104,7 @@ const EditResume = (props) => {
     dispatch(resumeDataSave(user, resumeData));
   };
 
+  console.log(coverLetterSelectedTemplateLoading, loading);
   return (
     <EditResumeMarkup
       {...props}
@@ -1349,7 +1360,7 @@ const EditResume = (props) => {
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
-      loading={isObjectEmpty(resumeTemplateGetData)}
+      loading={resumeTemplateGetDataLoading}
       saveLoading={loading}
       deleteProfileImageHandler={deleteProfileImageHandler}
       coverLetterTitleData={coverLetterTitleData}
