@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { FaRegAddressCard } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -17,8 +16,6 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.currentUser);
   const { success, error } = useSelector((state) => state.logOut);
-  const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
-  const resumeData = storeGetData?.data;
 
   useEffect(() => {
     if (error) {
@@ -98,11 +95,11 @@ const Header = (props) => {
             </div>
           ) : null}
           <div className="flex flex-1 justify-end p-2">
-            {resumeData?.profileImage ? (
+            {props?.resumeData?.profileImage ? (
               <img
                 className="w-9 h-9 rounded-full user-icon"
                 onClick={() => props?.setIsMenuShown(!props?.isMenuShown)}
-                src={resumeData?.profileImage}
+                src={props?.resumeData?.profileImage}
                 alt="prof"
               />
             ) : (
