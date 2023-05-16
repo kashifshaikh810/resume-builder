@@ -143,11 +143,15 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
               <div
                 className="flex flex-row items-center pt-2"
-                onClick={() =>
+                onClick={() => {
                   props.navigate(
                     `/app/${props?.isShowLine}/${resumeTempId}/edit`
-                  )
-                }
+                  );
+                  localStorage.setItem(
+                    "tabName",
+                    JSON.stringify(props?.isShowLine)
+                  );
+                }}
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Edit</p>
@@ -321,11 +325,15 @@ const ResumesCoverLettersMarkup = (props) => {
               </div>
               <div
                 className="flex flex-row items-center pt-2"
-                onClick={() =>
+                onClick={() => {
                   props.navigate(
                     `/app/${props?.isShowLine}/${coverTempId}/edit`
-                  )
-                }
+                  );
+                  localStorage.setItem(
+                    "tabName",
+                    JSON.stringify(props?.isShowLine)
+                  );
+                }}
               >
                 <TiPencil size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Edit</p>
