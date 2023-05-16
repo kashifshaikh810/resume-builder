@@ -98,6 +98,8 @@ const EditResumeMarkup = (props) => {
     loading,
     saveLoading,
     resumeData,
+    coverLetterSelectedTemplateLoading,
+    coverLetterSelectedTemplateData,
   } = props;
 
   const descIcons = [
@@ -128,6 +130,40 @@ const EditResumeMarkup = (props) => {
       templateData?.selectedTemplate === "Vienna"
     ) {
       return <ViennaTemplate {...props} />;
+    } else {
+      return (
+        <SelectTemplate
+          {...props}
+          containerStyle="flex w-full h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
+          textStyle="text-xs text-gray-300 animate-bounce font-mono"
+        />
+      );
+    }
+  };
+
+  const coverLettersTemplates = () => {
+    if (
+      tabName === "cover-letters" &&
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate === "Toronto"
+    ) {
+      return <CoverLetterTorontoTemplate {...props} />;
+    } else if (
+      tabName === "cover-letters" &&
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate ===
+        "Stockholm"
+    ) {
+      return <CoverLetterStockholmTemplate {...props} />;
+    } else if (
+      tabName === "cover-letters" &&
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate ===
+        "New York"
+    ) {
+      return <CoverLetterNewYorkTemplate {...props} />;
+    } else if (
+      tabName === "cover-letters" &&
+      coverLetterSelectedTemplateData?.selectedCoverLetterTemplate === "Vienna"
+    ) {
+      return <CoverLetterViennaTemplate {...props} />;
     } else {
       return (
         <SelectTemplate
@@ -221,6 +257,12 @@ const EditResumeMarkup = (props) => {
             {loading ? <TemplateLoader /> : resumesTemplates()}
 
             {/* cover letter tab templates */}
+            {coverLetterSelectedTemplateLoading ? (
+              <TemplateLoader />
+            ) : (
+              coverLettersTemplates()
+            )}
+
             {/* <CoverLetterTorontoTemplate {...props} /> */}
 
             {/* <CoverLetterStockholmTemplate {...props} /> */}

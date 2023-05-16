@@ -34,6 +34,10 @@ const EditResume = (props) => {
   const { coverLetterTitleData } = useSelector(
     (state) => state.coverLetterTitle
   );
+  const {
+    loading: coverLetterSelectedTemplateLoading,
+    coverLetterSelectedTemplateData,
+  } = useSelector((state) => state.selectCoverLetterTemplate);
 
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
@@ -1349,6 +1353,8 @@ const EditResume = (props) => {
       saveLoading={loading}
       deleteProfileImageHandler={deleteProfileImageHandler}
       coverLetterTitleData={coverLetterTitleData}
+      coverLetterSelectedTemplateLoading={coverLetterSelectedTemplateLoading}
+      coverLetterSelectedTemplateData={coverLetterSelectedTemplateData}
     />
   );
 };
