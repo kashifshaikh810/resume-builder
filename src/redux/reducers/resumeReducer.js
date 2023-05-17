@@ -24,6 +24,7 @@ import {
   REMOVE_PROFILE_IMAGE_SUCCESS,
   REMOVE_PROFILE_IMAGE_FAIL,
   REMOVE_PROFILE_IMAGE_RESET,
+  GET_ALL_RESUMES_DATA,
 } from "../constants/resumeConstants";
 
 export const resumeDataReducer = (
@@ -199,6 +200,18 @@ export const removeProfileImageReducer = (state = {}, action) => {
       return {
         ...state,
         error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const getAllResumesDataReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_ALL_RESUMES_DATA:
+      return {
+        ...state,
+        allResumes: action.payload,
       };
     default:
       return state;

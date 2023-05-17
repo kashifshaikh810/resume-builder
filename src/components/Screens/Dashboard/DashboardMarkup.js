@@ -39,7 +39,9 @@ const DashboardMarkup = (props) => {
 
         <div className="flex flex-1 flex-row justify-center items-center">
           <div className="bg-green-600 w-1.5 h-1.5 rounded-full animation-pulse mt-4 mr-2" />
-          <p className="text-sm pt-4">0 resumes created today</p>
+          <p className="text-sm pt-4">
+            {props?.allResumes && props?.allResumes} resumes created today
+          </p>
         </div>
       </div>
       <div className="flex flex-1 justify-center pt-4">

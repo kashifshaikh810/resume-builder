@@ -8,6 +8,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 // reducers
 import {
+  getAllResumesDataReducer,
   getResumeDataReducer,
   removeProfileImageReducer,
   resumeDataReducer,
@@ -44,6 +45,7 @@ const reducer = combineReducers({
   selectCoverLetterTemplate: selectCoverLetterTemplateReducer,
   coverLetterData: coverLetterDataReducer,
   getCoverLetterData: getCoverLetterDataReducer,
+  getAllResumesData: getAllResumesDataReducer,
 });
 
 let initialState = {};

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
+  getAllResumesDataAction,
   getResumeData,
   getSelectResumeTemplateAction,
 } from "../../../redux/actions/resumeAction";
@@ -14,13 +15,15 @@ const Dashboard = (props) => {
 
   const dispatch = useDispatch();
   const { loading, user } = useSelector((state) => state.currentUser);
-  const { templateData, error } = useSelector((state) => state.selectTemplate);
+  const { error } = useSelector((state) => state.selectTemplate);
+  const { allResumes } = useSelector((state) => state.getAllResumesData);
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
 
   useEffect(() => {
+    dispatch(getAllResumesDataAction());
     dispatch(getSelectResumeTemplateAction(user));
 
     if (error) {
@@ -41,6 +44,7 @@ const Dashboard = (props) => {
       navigate={navigate}
       loading={loading}
       user={user}
+      allResumes={allResumes}
     />
   );
 };

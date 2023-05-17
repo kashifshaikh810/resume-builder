@@ -25,6 +25,7 @@ import {
   REMOVE_PROFILE_IMAGE_REQUEST,
   REMOVE_PROFILE_IMAGE_SUCCESS,
   REMOVE_PROFILE_IMAGE_FAIL,
+  GET_ALL_RESUMES_DATA,
 } from "../constants/resumeConstants";
 
 export const getResumeData = (user) => (dispatch) => {
@@ -168,6 +169,14 @@ export const removeProfileImageFromDB = (user, data) => (dispatch) => {
   } catch (error) {
     dispatch({ type: REMOVE_PROFILE_IMAGE_FAIL, payload: error?.code });
   }
+};
+
+export const getAllResumesDataAction = () => (dispatch) => {
+  const tempRef = ref(database, "userResumeTemplateData/");
+  onValue(tempRef, async (snapshot) => {
+    const data = snapshot ? Object.keys(snapshot.val())?.length : 0;
+    dispatch({ type: GET_ALL_RESUMES_DATA, payload: data });
+  });
 };
 
 export const clearErrors = () => (dispatch) => {
