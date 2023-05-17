@@ -763,6 +763,7 @@ const EditResume = (props) => {
     documentTitle: `${user?.firstName}'s Resume`,
     onAfterPrint: () => alert("Downloaded Successfully"),
     onPrintError: () => alert("You have cancel the PDF"),
+    pageStyle: () => `bg-blue`,
   });
 
   useEffect(() => {
