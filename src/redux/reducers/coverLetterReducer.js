@@ -12,6 +12,9 @@ import {
   GET_SELECTED_COVER_LETTER_TEMPLATE_REQUEST,
   GET_SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
   GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL,
+  COVER_LETTER_DATA_REQUEST,
+  COVER_LETTER_DATA_SUCCESS,
+  COVER_LETTER_DATA_FAIL,
 } from "../constants/coverLetterConstants";
 
 export const coverLetterTitleReducer = (state = {}, action) => {
@@ -63,6 +66,38 @@ export const selectCoverLetterTemplateReducer = (state = {}, action) => {
       };
     case GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL:
     case SELECTED_COVER_LETTER_TEMPLATE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+export const coverLetterDataReducer = (
+  state = { coverLetterTemplateData: {} },
+  action
+) => {
+  switch (action.type) {
+    case COVER_LETTER_DATA_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case COVER_LETTER_DATA_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        coverLetterTemplateData: action.payload,
+      };
+    case COVER_LETTER_DATA_FAIL:
       return {
         ...state,
         loading: false,

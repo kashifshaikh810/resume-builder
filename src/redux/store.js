@@ -22,6 +22,7 @@ import {
 } from "./reducers/authReducer";
 import { deleteUserReducer, profileReducer } from "./reducers/profileReducer";
 import {
+  coverLetterDataReducer,
   coverLetterTitleReducer,
   selectCoverLetterTemplateReducer,
 } from "./reducers/coverLetterReducer";
@@ -40,6 +41,7 @@ const reducer = combineReducers({
   removeProfileImage: removeProfileImageReducer,
   coverLetterTitle: coverLetterTitleReducer,
   selectCoverLetterTemplate: selectCoverLetterTemplateReducer,
+  coverLetterData: coverLetterDataReducer,
 });
 
 let initialState = {};

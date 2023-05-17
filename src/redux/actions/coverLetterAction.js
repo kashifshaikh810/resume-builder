@@ -14,6 +14,9 @@ import {
   GET_SELECTED_COVER_LETTER_TEMPLATE_REQUEST,
   GET_SELECTED_COVER_LETTER_TEMPLATE_SUCCESS,
   GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL,
+  COVER_LETTER_DATA_REQUEST,
+  COVER_LETTER_DATA_SUCCESS,
+  COVER_LETTER_DATA_FAIL,
 } from "../constants/coverLetterConstants";
 
 export const coverLetterTitleAction = (user, data) => (dispatch) => {
@@ -102,6 +105,36 @@ export const getSelectCoverLetterTemplateAction = (user) => (dispatch) => {
       type: GET_SELECTED_COVER_LETTER_TEMPLATE_FAIL,
       payload: error?.code,
     });
+  }
+};
+
+export const coverLetterDataSaveAction = (user, data) => (dispatch) => {
+  try {
+    dispatch({ type: COVER_LETTER_DATA_REQUEST });
+    const coverLetterData = {
+      data,
+      username: `${user?.firstName} ${user?.lastName}`,
+      userId: user?.userId,
+    };
+
+    set(
+      ref(database, "userCoverLetterTemplateData/" + user?.userId),
+      coverLetterData
+    )
+      .then(async () => {
+        await dispatch({
+          type: COVER_LETTER_DATA_SUCCESS,
+          payload: coverLetterData,
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: COVER_LETTER_DATA_FAIL,
+          payload: error?.code,
+        });
+      });
+  } catch (error) {
+    dispatch({ type: COVER_LETTER_DATA_FAIL, payload: error?.code });
   }
 };
 

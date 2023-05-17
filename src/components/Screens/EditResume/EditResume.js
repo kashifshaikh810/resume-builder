@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
+  coverLetterDataSaveAction,
   getCoverLetterTitleAction,
   getSelectCoverLetterTemplateAction,
 } from "../../../redux/actions/coverLetterAction";
@@ -25,8 +26,11 @@ const EditResume = (props) => {
 
   // redux
   const dispatch = useDispatch();
-  const { loading, resumeTemplateData, coverLetterData } = useSelector(
+  const { loading, resumeTemplateData } = useSelector(
     (state) => state.resumeData
+  );
+  const { loading: coverLetterLoading, coverLetterTemplateData } = useSelector(
+    (state) => state.coverLetterData
   );
   const { loading: resumeTemplateGetDataLoading, resumeTemplateGetData } =
     useSelector((state) => state.getResumeData);
@@ -857,7 +861,7 @@ const EditResume = (props) => {
       letterDetails,
     };
     if (tabName === "cover-letters") {
-      dispatch(coverLetterDataSave(dataOfCoverLetter));
+      dispatch(coverLetterDataSaveAction(user, dataOfCoverLetter));
     }
   }, [
     dispatch,
@@ -1354,14 +1358,14 @@ const EditResume = (props) => {
       setHiringManagerName={setHiringManagerName}
       letterDetails={letterDetails}
       setLetterDetails={setLetterDetails}
-      coverLetterData={coverLetterData}
+      coverLetterData={coverLetterTemplateData?.data}
       templateData={templateData}
       resumeTempId={resumeTempId}
       coverTempId={coverTempId}
       editResumeTitleOnPressHandler={editResumeTitleOnPressHandler}
       titleData={titleData}
       loading={resumeTemplateGetDataLoading}
-      saveLoading={loading}
+      saveLoading={tabName === "resumes" ? loading : coverLetterLoading}
       deleteProfileImageHandler={deleteProfileImageHandler}
       coverLetterTitleData={coverLetterTitleData}
       coverLetterSelectedTemplateLoading={coverLetterSelectedTemplateLoading}
