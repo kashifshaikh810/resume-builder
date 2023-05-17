@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useReactToPrint } from "react-to-print";
 import {
   coverLetterDataSaveAction,
   getCoverLetterDataAction,
@@ -22,6 +23,8 @@ import EditResumeMarkup from "./EditResumeMarkup";
 const EditResume = (props) => {
   // localStorageGetItem
   const tabName = JSON.parse(localStorage.getItem("tabName"));
+
+  const componentPDF = useRef();
 
   // redux
   const dispatch = useDispatch();
@@ -755,6 +758,13 @@ const EditResume = (props) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const downloadPDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: `${user?.firstName}'s Resume`,
+    onAfterPrint: () => alert("Downloaded Successfully"),
+    onPrintError: () => alert("You have cancel the PDF"),
+  });
+
   useEffect(() => {
     if (tabName === "resumes") {
       dispatch(getResumeData(user));
@@ -1418,6 +1428,8 @@ const EditResume = (props) => {
       coverLetterTitleData={coverLetterTitleData}
       coverLetterSelectedTemplateLoading={coverLetterSelectedTemplateLoading}
       coverLetterSelectedTemplateData={coverLetterSelectedTemplateData}
+      downloadPDF={downloadPDF}
+      componentPDF={componentPDF}
     />
   );
 };

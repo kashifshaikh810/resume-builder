@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, ComponentRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -16,6 +16,7 @@ import {
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
 const AllTemplates = (props) => {
+  const componentRef = useRef(null);
   const navigate = props.navigate();
   const [isSelectedTemplate, setIsSelectedTemplate] = useState({
     nameOfSelectedVal: "",
@@ -179,6 +180,7 @@ const AllTemplates = (props) => {
         tabName === "resumes" ? templateData : coverLetterSelectedTemplateData
       }
       loading={tabName === "resumes" ? loading : coverLetterLoading}
+      componentRef={componentRef}
     />
   );
 };

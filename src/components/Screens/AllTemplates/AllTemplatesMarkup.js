@@ -275,7 +275,7 @@ const AllTemplatesMarkup = (props) => {
           <AppButton
             {...props}
             title="Download PDF"
-            className={`bg-blue-500 p-2 pl-6 pr-6 rounded-md ${
+            className={`bg-blue-500 p-2 pl-6 pr-6 rounded-md btn btn-primary ${
               isShowTemplateCard
                 ? `cursor-default`
                 : `hover:bg-blue-600 hover:cursor-pointer`

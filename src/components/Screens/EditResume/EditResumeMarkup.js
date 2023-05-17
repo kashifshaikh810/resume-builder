@@ -100,6 +100,7 @@ const EditResumeMarkup = (props) => {
     resumeData,
     coverLetterSelectedTemplateLoading,
     coverLetterSelectedTemplateData,
+    componentPDF,
   } = props;
 
   const descIcons = [
@@ -247,6 +248,7 @@ const EditResumeMarkup = (props) => {
           </div>
 
           <div
+            ref={componentPDF}
             className="bg-white w-7/12 overflow-hidden flex flex-1 self-center rounded-md hover:cursor-pointer"
             onMouseEnter={() => {
               props.setIsHovered(true);
@@ -310,7 +312,7 @@ const EditResumeMarkup = (props) => {
                 title="Download PDF"
                 className="bg-blue-500 p-3 pl-6 pr-6 rounded-md hover:bg-blue-600 hover:cursor-pointer"
                 textStyle="text-white font-bold"
-                onPress={() => {}}
+                onPress={() => props?.downloadPDF()}
                 loading={false}
               />
               <AppButton
@@ -434,6 +436,7 @@ const EditResumeMarkup = (props) => {
         <DropDownMenu name="app" {...props} />
       )}
       {props.showModal && <FileModal {...props} />}
+      <div />
       <div
         className={`${
           props?.screenWidth <= 1029 ? `m-auto main` : `container`
