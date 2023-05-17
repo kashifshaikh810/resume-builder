@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import {
   coverLetterDataSaveAction,
+  getCoverLetterDataAction,
   getCoverLetterTitleAction,
   getSelectCoverLetterTemplateAction,
 } from "../../../redux/actions/coverLetterAction";
 
 import {
   clearErrors,
-  coverLetterDataSave,
   getResumeData,
   getResumeTitleAction,
   getSelectResumeTemplateAction,
@@ -26,9 +25,7 @@ const EditResume = (props) => {
 
   // redux
   const dispatch = useDispatch();
-  const { loading, resumeTemplateData } = useSelector(
-    (state) => state.resumeData
-  );
+  const { loading } = useSelector((state) => state.resumeData);
   const { loading: coverLetterLoading, coverLetterTemplateData } = useSelector(
     (state) => state.coverLetterData
   );
@@ -37,11 +34,7 @@ const EditResume = (props) => {
   const { templateData } = useSelector((state) => state.selectTemplate);
   const { user } = useSelector((state) => state.currentUser);
   const { titleData } = useSelector((state) => state.resumeTitle);
-  const {
-    loading: deleteLoading,
-    success,
-    error,
-  } = useSelector((state) => state.removeProfileImage);
+  const { success, error } = useSelector((state) => state.removeProfileImage);
   const { coverLetterTitleData } = useSelector(
     (state) => state.coverLetterTitle
   );
@@ -768,10 +761,29 @@ const EditResume = (props) => {
       dispatch(getSelectResumeTemplateAction(user));
       dispatch(getResumeTitleAction(user));
     } else {
+      dispatch(getCoverLetterDataAction(user));
       dispatch(getSelectCoverLetterTemplateAction(user));
       dispatch(getCoverLetterTitleAction(user));
     }
   }, [dispatch, user, tabName]);
+
+  useEffect(() => {
+    const coverLetterStoreGetData = JSON.parse(
+      localStorage.getItem("coverLetterTemplateData")
+    );
+    const coverLetterData = coverLetterStoreGetData?.data;
+
+    if (coverLetterData && tabName === "cover-letters") {
+      setFullName(coverLetterData?.fullName);
+      setJobTitle(coverLetterData?.jobTitle);
+      setAddress(coverLetterData?.address);
+      setEmail(coverLetterData?.email);
+      setPhone(coverLetterData?.phone);
+      setCompanyName(coverLetterData?.companyName);
+      setHiringManagerName(coverLetterData?.hiringManagerName);
+      setLetterDetails(coverLetterData?.letterDetails);
+    }
+  }, [tabName]);
 
   // set states from database
   useEffect(() => {
@@ -850,15 +862,52 @@ const EditResume = (props) => {
       saveData(resumeData);
     }
 
+    const coverLetterStoreGetData = JSON.parse(
+      localStorage.getItem("coverLetterTemplateData")
+    );
+    const coverLetterData = coverLetterStoreGetData?.data;
+
     const dataOfCoverLetter = {
-      fullName,
-      jobTitle,
-      address,
-      email,
-      phone,
-      companyName,
-      hiringManagerName,
-      letterDetails,
+      fullName: fullName
+        ? fullName
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.fullName,
+      jobTitle: jobTitle
+        ? jobTitle
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.jobTitle,
+      address: address
+        ? address
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.address,
+      email: email
+        ? email
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.email,
+      phone: phone
+        ? phone
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.phone,
+      companyName: companyName
+        ? companyName
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.companyName,
+      hiringManagerName: hiringManagerName
+        ? hiringManagerName
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.hiringManagerName,
+      letterDetails: letterDetails
+        ? letterDetails
+        : isObjectEmpty(coverLetterData)
+        ? ""
+        : coverLetterData?.letterDetails,
     };
     if (tabName === "cover-letters") {
       dispatch(coverLetterDataSaveAction(user, dataOfCoverLetter));
@@ -1108,7 +1157,6 @@ const EditResume = (props) => {
     dispatch(resumeDataSave(user, resumeData));
   };
 
-  console.log(coverLetterSelectedTemplateLoading, loading);
   return (
     <EditResumeMarkup
       {...props}
