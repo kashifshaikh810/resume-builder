@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
+  getCoverLetterDataAction,
   getSelectCoverLetterTemplateAction,
   selectCoverLetterTemplateAction,
 } from "../../../redux/actions/coverLetterAction";
@@ -29,9 +30,9 @@ const AllTemplates = (props) => {
 
   const dispatch = useDispatch();
 
-  const { resumeTemplateData, coverLetterData } = useSelector(
-    (state) => state.resumeData
-  );
+  const { resumeTemplateData } = useSelector((state) => state.resumeData);
+  const { loading: coverLetterLoading, getCoverLetterTemplateData } =
+    useSelector((state) => state.getCoverLetterData);
   const { resumeTemplateGetData } = useSelector((state) => state.getResumeData);
 
   const { user } = useSelector((state) => state.currentUser);
@@ -146,6 +147,7 @@ const AllTemplates = (props) => {
       dispatch(getResumeData(user));
     } else {
       dispatch(getSelectCoverLetterTemplateAction(user));
+      dispatch(getCoverLetterDataAction(user));
     }
   }, [dispatch, user, tabName]);
 
@@ -162,7 +164,7 @@ const AllTemplates = (props) => {
       totalPage={totalPage}
       setTotalPage={setTotalPage}
       tabName={tabName}
-      coverLetterData={coverLetterData}
+      coverLetterData={getCoverLetterTemplateData?.data}
       resumeData={
         resumeTemplateData?.data
           ? resumeTemplateData?.data
@@ -176,9 +178,7 @@ const AllTemplates = (props) => {
       templateData={
         tabName === "resumes" ? templateData : coverLetterSelectedTemplateData
       }
-      loading={
-        tabName === "resumes" ? loading : coverLetterSelectedTemplateLoading
-      }
+      loading={tabName === "resumes" ? loading : coverLetterLoading}
     />
   );
 };
