@@ -24,6 +24,7 @@ import { deleteUserReducer, profileReducer } from "./reducers/profileReducer";
 import {
   coverLetterDataReducer,
   coverLetterTitleReducer,
+  getCoverLetterDataReducer,
   selectCoverLetterTemplateReducer,
 } from "./reducers/coverLetterReducer";
 
@@ -42,6 +43,7 @@ const reducer = combineReducers({
   coverLetterTitle: coverLetterTitleReducer,
   selectCoverLetterTemplate: selectCoverLetterTemplateReducer,
   coverLetterData: coverLetterDataReducer,
+  getCoverLetterData: getCoverLetterDataReducer,
 });
 
 let initialState = {};
