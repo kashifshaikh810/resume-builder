@@ -5,6 +5,7 @@ import { logOutAction } from "../../../redux/actions/authAction";
 import {
   clearErrorsFromCoverLetter,
   coverLetterTitleAction,
+  getCoverLetterDataAction,
   getCoverLetterTitleAction,
   getSelectCoverLetterTemplateAction,
 } from "../../../redux/actions/coverLetterAction";
@@ -19,7 +20,8 @@ import {
 
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
-  const { coverLetterData } = useSelector((state) => state.resumeData);
+  const { loading: coverLetterLoading, getCoverLetterTemplateData } =
+    useSelector((state) => state.getCoverLetterData);
   const {
     loading: resumeDataLoading,
     resumeTemplateGetData,
@@ -145,6 +147,8 @@ const ResumesCoverLetters = (props) => {
     dispatch(getSelectResumeTemplateAction(user));
     dispatch(getResumeTitleAction(user));
     dispatch(getResumeData(user));
+
+    dispatch(getCoverLetterDataAction(user));
     dispatch(getCoverLetterTitleAction(user));
     dispatch(getSelectCoverLetterTemplateAction(user));
 
@@ -192,7 +196,7 @@ const ResumesCoverLetters = (props) => {
       setIsShowCoverLetterUntitledIcon={setIsShowCoverLetterUntitledIcon}
       isShowCoverLetterUntitledInput={isShowCoverLetterUntitledInput}
       setIsShowCoverLetterUntitledInput={setIsShowCoverLetterUntitledInput}
-      coverLetterData={coverLetterData}
+      coverLetterData={getCoverLetterTemplateData?.data}
       logOutOnClickHandler={logOutOnClickHandler}
       templateData={templateData}
       resumeTempId={resumeTempId}
@@ -202,7 +206,9 @@ const ResumesCoverLetters = (props) => {
       updateResumeTitleDate={updateResumeTitleDate}
       updateResumeTitleMonth={updateResumeTitleMonth}
       updateResumeTitleTime={updateResumeTitleTime}
-      loading={resumeDataLoading}
+      loading={
+        isShowLine === "resumes" ? resumeDataLoading : coverLetterLoading
+      }
       coverLetterTitleOnClickHandler={coverLetterTitleOnClickHandler}
       coverLetterTitleData={coverLetterTitleData}
       updateCoverLetterTitleDate={updateCoverLetterTitleDate}
