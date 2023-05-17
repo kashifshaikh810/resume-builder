@@ -6,7 +6,6 @@ import Navigation from "./components/Navigation/Navigation";
 import { getCurrentUser } from "./redux/actions/authAction";
 import store from "./redux/store";
 import { Auth } from "./Firebase/FirebaseConfig";
-import PdfComponent from "./main/indexTwo";
 
 const App = () => {
   const [user, loading, error] = useAuthState(Auth);
@@ -23,7 +22,6 @@ const App = () => {
   return (
     <Provider store={store}>
       <Navigation />
-      {/* <PdfComponent /> */}
     </Provider>
   );
 };
