@@ -43,6 +43,7 @@ export const signUpAction =
                 firstName: firstName,
                 lastName: lastName,
                 email: user?.email,
+                authProviderType: "email-password",
               });
             })
             .catch((error) => {
@@ -171,6 +172,7 @@ export const signUpWithGoogle = () => (dispatch) => {
                 user?.displayName?.indexOf(" ") + 1
               ),
               email: user?.email,
+              authProviderType: "google",
             });
           })
           .catch((error) => {
@@ -251,6 +253,7 @@ export const signUpWithFacebook = () => (dispatch) => {
                 user?.displayName?.indexOf(" ") + 1
               ),
               email: user?.email,
+              authProviderType: "facebook",
             });
           })
           .catch((error) => {
