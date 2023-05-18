@@ -1063,11 +1063,7 @@ const EditResume = (props) => {
         : isObjectEmpty(getData)
         ? ""
         : getData?.skillsInputList,
-      isNotShowExpertLevel: isNotShowExpertLevel
-        ? isNotShowExpertLevel
-        : isObjectEmpty(getData)
-        ? ""
-        : getData?.isNotShowExpertLevel,
+      isNotShowExpertLevel: isNotShowExpertLevel,
       hobbies: hobbies
         ? hobbies
         : isObjectEmpty(getData)
@@ -1158,12 +1154,10 @@ const EditResume = (props) => {
         : isObjectEmpty(getData)
         ? ""
         : getData?.websiteInput,
-      disabledPreferences: isNotShowIdLikeToHide
-        ? isNotShowIdLikeToHide
-        : isObjectEmpty(getData)
-        ? ""
-        : getData?.disabledPreferences,
+      disabledPreferences: isNotShowIdLikeToHide,
     };
+
+    console.log(resumeData.disabledPreferences, isNotShowIdLikeToHide);
 
     dispatch(resumeDataSave(user, resumeData));
   };
