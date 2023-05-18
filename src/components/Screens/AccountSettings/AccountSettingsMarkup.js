@@ -26,6 +26,7 @@ const AccountSettingsMarkup = (props) => {
     isDone,
     deleteAccountOnClickHandler,
     deletedLoading,
+    reduxUser,
   } = props;
 
   return (
@@ -164,12 +165,24 @@ const AccountSettingsMarkup = (props) => {
                 <div className="flex flex-row items-center pl-5">
                   <GrFacebookOption color="rgb(59, 89, 152)" />
                   <p className="pl-2 text-base">Facebook</p>
+                  {reduxUser?.authProviderType === "facebook" && (
+                    <div className="bg-gray-900 w-[4px] h-[4px] rounded-full ml-1.5 mt-0.5" />
+                  )}
+                  <p className="ml-1.5">
+                    {reduxUser?.authProviderType === "facebook"
+                      ? reduxUser?.email
+                      : ""}
+                  </p>
                 </div>
 
                 <div className="flex flex-1 justify-end">
                   <AppButton
                     {...props}
-                    title="Connect"
+                    title={
+                      reduxUser?.authProviderType === "facebook"
+                        ? "Disconnect"
+                        : "Connect"
+                    }
                     className="bg-white mr-6"
                     textStyle="text-blue-400 button-text"
                     onPress={(e) => {}}
@@ -206,12 +219,24 @@ const AccountSettingsMarkup = (props) => {
                 <div className="flex flex-row items-center pl-5">
                   <FcGoogle />
                   <p className="pl-2 text-base">Google</p>
+                  {reduxUser?.authProviderType === "google" && (
+                    <div className="bg-gray-900 w-[4px] h-[4px] rounded-full ml-1.5 mt-0.5" />
+                  )}
+                  <p className="ml-1.5">
+                    {reduxUser?.authProviderType === "google"
+                      ? reduxUser?.email
+                      : ""}
+                  </p>
                 </div>
 
                 <div className="flex flex-1 justify-end">
                   <AppButton
                     {...props}
-                    title="Connect"
+                    title={
+                      reduxUser?.authProviderType === "google"
+                        ? "Disconnect"
+                        : "Connect"
+                    }
                     className="bg-white mr-6"
                     textStyle="text-blue-400 button-text"
                     onPress={(e) => {}}

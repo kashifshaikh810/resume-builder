@@ -20,6 +20,8 @@ const AccountSettings = (props) => {
   const [isViews, setIsViews] = useState(false);
   const [isUseful, setIsUseful] = useState(false);
   const [isDone, setIsDone] = useState(false);
+  const storeGetData = JSON.parse(localStorage.getItem("resumeTemplateData"));
+  const resumeData = storeGetData?.data;
 
   // inputs states
   const [firstName, setFirstName] = useState("");
@@ -126,6 +128,8 @@ const AccountSettings = (props) => {
       isDone={isDone}
       deleteAccountOnClickHandler={deleteAccountOnClickHandler}
       deletedLoading={deletedLoading}
+      reduxUser={reduxUser}
+      resumeData={resumeData}
     />
   );
 };
