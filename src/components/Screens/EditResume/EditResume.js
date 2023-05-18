@@ -761,9 +761,8 @@ const EditResume = (props) => {
   const downloadPDF = useReactToPrint({
     content: () => componentPDF.current,
     documentTitle: `${user?.firstName}'s Resume`,
-    onAfterPrint: () => alert("Downloaded Successfully"),
-    onPrintError: () => alert("You have cancel the PDF"),
-    pageStyle: () => `bg-blue`,
+    // onAfterPrint: () => alert("Downloaded Successfully"),
+    onPrintError: () => alert("Something went wrong..."),
   });
 
   useEffect(() => {

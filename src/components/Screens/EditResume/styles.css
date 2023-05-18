@@ -36,7 +36,6 @@ input[type="month"]::-webkit-calendar-picker-indicator:hover {
 @media all {
   .page-break {
     display: none;
-    width: 100%;
   }
 }
 
@@ -58,6 +57,6 @@ input[type="month"]::-webkit-calendar-picker-indicator:hover {
 }
 
 @page {
-  size: auto;
+  size: 210mm 180mm;
   margin: 20mm;
 }
