@@ -30,6 +30,8 @@ const AllTemplatesMarkup = (props) => {
     selectTemplateTwoHandler,
     templateData,
     loading,
+    downloadPDF,
+    componentPDF,
   } = props;
 
   const resumesTemplatesData = [
@@ -281,7 +283,7 @@ const AllTemplatesMarkup = (props) => {
                 : `hover:bg-blue-600 hover:cursor-pointer`
             }`}
             textStyle="text-white font-bold text-center"
-            onPress={() => {}}
+            onPress={() => downloadPDF()}
             loading={false}
           />
           <AppButton
@@ -417,10 +419,18 @@ const AllTemplatesMarkup = (props) => {
         </div>
 
         {/* template results & resumes && templates */}
-        {props?.tabName === "resumes" ? renderResumesTemplate() : ""}
+        {props?.tabName === "resumes" ? (
+          <div ref={componentPDF}>{renderResumesTemplate()}</div>
+        ) : (
+          ""
+        )}
 
         {/* template results & cover letter tab templates */}
-        {props?.tabName === "cover-letters" ? renderCoverLettersTemplate() : ""}
+        {props?.tabName === "cover-letters" ? (
+          <div ref={componentPDF}>{renderCoverLettersTemplate()}</div>
+        ) : (
+          ""
+        )}
 
         <div
           className="hidden 

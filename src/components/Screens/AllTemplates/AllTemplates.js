@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, ComponentRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 import {
   getCoverLetterDataAction,
   getSelectCoverLetterTemplateAction,
@@ -16,7 +17,7 @@ import {
 import AllTemplatesMarkup from "./AllTemplatesMarkup";
 
 const AllTemplates = (props) => {
-  const componentRef = useRef(null);
+  const componentPDF = useRef();
   const navigate = props.navigate();
   const [isSelectedTemplate, setIsSelectedTemplate] = useState({
     nameOfSelectedVal: "",
@@ -142,6 +143,13 @@ const AllTemplates = (props) => {
     }
   };
 
+  const downloadPDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: `${user?.firstName}'s Resume`,
+    onAfterPrint: () => alert("Downloaded Successfully"),
+    onPrintError: () => alert("Something went wrong..."),
+  });
+
   useEffect(() => {
     if (tabName === "resumes") {
       dispatch(getSelectResumeTemplateAction(user));
@@ -180,7 +188,8 @@ const AllTemplates = (props) => {
         tabName === "resumes" ? templateData : coverLetterSelectedTemplateData
       }
       loading={tabName === "resumes" ? loading : coverLetterLoading}
-      componentRef={componentRef}
+      downloadPDF={downloadPDF}
+      componentPDF={componentPDF}
     />
   );
 };
