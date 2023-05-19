@@ -37,6 +37,8 @@ const ResumesCoverLettersMarkup = (props) => {
     updateCoverLetterTitleTime,
     coverLetterSelectedTemplateLoading,
     coverLetterSelectedTemplateData,
+    downloadPDF,
+    componentPDF,
   } = props;
 
   const renderTemplate = () => {
@@ -99,7 +101,11 @@ const ResumesCoverLettersMarkup = (props) => {
                 loading ? `w-4/12` : `w-2/12`
               } h-72 rounded-lg cursor-pointer cv-box unselectable`}
             >
-              {loading ? <TemplateLoader /> : renderTemplate()}
+              {loading ? (
+                <TemplateLoader />
+              ) : (
+                <div ref={componentPDF}>{renderTemplate()} </div>
+              )}
             </div>
 
             <div className="pl-10 w-10/12">
@@ -160,7 +166,10 @@ const ResumesCoverLettersMarkup = (props) => {
                 <FiShare size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Share a link</p>
               </div>
-              <div className="flex flex-row items-center pt-2">
+              <div
+                className="flex flex-row items-center pt-2"
+                onClick={() => downloadPDF()}
+              >
                 <BiDownvote size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Download PDF</p>
               </div>
@@ -261,22 +270,8 @@ const ResumesCoverLettersMarkup = (props) => {
               {coverLetterSelectedTemplateLoading ? (
                 <TemplateLoader />
               ) : (
-                renderCoverLetterTemplate()
+                <div ref={componentPDF}>{renderCoverLetterTemplate()}</div>
               )}
-
-              {/* <CoverLetterTorontoTemplate {...props} /> */}
-
-              {/* <CoverLetterStockholmTemplate {...props} /> */}
-
-              {/* <CoverLetterNewYorkTemplate {...props} /> */}
-
-              {/* <CoverLetterViennaTemplate {...props} /> */}
-
-              {/* <SelectTemplate
-                {...props}
-                containerStyle="flex w-[12rem] h-full flex-col justify-center items-center pt-6 ml-3 pb-7 overflow-hidden"
-                textStyle="text-xs text-gray-300 animate-bounce font-mono"
-              /> */}
             </div>
 
             <div className="pl-10 w-11/12">
@@ -342,7 +337,10 @@ const ResumesCoverLettersMarkup = (props) => {
                 <FiShare size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Share a link</p>
               </div>
-              <div className="flex flex-row items-center pt-2">
+              <div
+                className="flex flex-row items-center pt-2"
+                onClick={() => downloadPDF()}
+              >
                 <BiDownvote size={20} color="rgb(26, 145, 240)" />
                 <p className="pl-3 edit-text">Download PDF</p>
               </div>

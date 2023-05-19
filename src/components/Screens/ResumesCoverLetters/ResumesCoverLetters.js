@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logOutAction } from "../../../redux/actions/authAction";
@@ -17,9 +17,12 @@ import {
   getSelectResumeTemplateAction,
   resumeTitleAction,
 } from "../../../redux/actions/resumeAction";
+import { useReactToPrint } from "react-to-print";
 
 const ResumesCoverLetters = (props) => {
   const dispatch = useDispatch();
+  const componentPDF = useRef();
+
   const { loading: coverLetterLoading, getCoverLetterTemplateData } =
     useSelector((state) => state.getCoverLetterData);
   const {
@@ -143,6 +146,13 @@ const ResumesCoverLetters = (props) => {
     }
   };
 
+  const downloadPDF = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle: `${user?.firstName}'s Resume`,
+    onAfterPrint: () => alert("Downloaded Successfully"),
+    onPrintError: () => alert("Something went wrong..."),
+  });
+
   useEffect(() => {
     dispatch(getSelectResumeTemplateAction(user));
     dispatch(getResumeTitleAction(user));
@@ -217,6 +227,8 @@ const ResumesCoverLetters = (props) => {
       updateCoverLetterTitleMonthName={updateCoverLetterTitleMonthName}
       coverLetterLoading={coverLetterSelectedTemplateLoading}
       coverLetterSelectedTemplateData={coverLetterSelectedTemplateData}
+      downloadPDF={downloadPDF}
+      componentPDF={componentPDF}
     />
   );
 };
