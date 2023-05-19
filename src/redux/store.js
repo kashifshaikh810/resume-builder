@@ -21,7 +21,11 @@ import {
   signInReducer,
   signUpReducer,
 } from "./reducers/authReducer";
-import { deleteUserReducer, profileReducer } from "./reducers/profileReducer";
+import {
+  deleteUserReducer,
+  getAllUsersReducer,
+  profileReducer,
+} from "./reducers/profileReducer";
 import {
   coverLetterDataReducer,
   coverLetterTitleReducer,
@@ -46,6 +50,7 @@ const reducer = combineReducers({
   coverLetterData: coverLetterDataReducer,
   getCoverLetterData: getCoverLetterDataReducer,
   getAllResumesData: getAllResumesDataReducer,
+  getAllUsers: getAllUsersReducer,
 });
 
 let initialState = {};

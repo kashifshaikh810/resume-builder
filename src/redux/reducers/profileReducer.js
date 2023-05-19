@@ -8,6 +8,7 @@ import {
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
   DELETE_USER_RESET,
+  GET_ALL_USERS,
 } from "../constants/profileConstants";
 
 export const profileReducer = (state = {}, action) => {
@@ -79,6 +80,18 @@ export const deleteUserReducer = (state = {}, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const getAllUsersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
+      };
     default:
       return state;
   }

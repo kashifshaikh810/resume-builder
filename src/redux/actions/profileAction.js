@@ -1,5 +1,6 @@
 import { deleteUser, updateEmail } from "firebase/auth";
-import { getDatabase, ref, remove, set } from "firebase/database";
+import { getDatabase, onValue, ref, remove, set } from "firebase/database";
+import { database } from "../../Firebase/FirebaseConfig";
 
 import {
   UPDATE_PROFILE_REQUEST,
@@ -9,6 +10,7 @@ import {
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
   DELETE_USER_FAIL,
+  GET_ALL_USERS,
 } from "../constants/profileConstants";
 
 export const updateProfileAction =
@@ -132,6 +134,14 @@ export const deleteUserAction = (user) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
   }
+};
+
+export const getAllUsersAction = () => (dispatch) => {
+  const tempRef = ref(database, "users/");
+  onValue(tempRef, (snapshot) => {
+    const data = snapshot ? Object.keys(snapshot.val()) : 0;
+    dispatch({ type: GET_ALL_USERS, payload: data?.length });
+  });
 };
 
 export const clearErrors = () => (dispatch) => {

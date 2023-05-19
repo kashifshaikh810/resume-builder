@@ -55,13 +55,13 @@ const DashboardMarkup = (props) => {
       </div>
       <div className="w-full h-80">
         <div className="mt-10 flex flex-1 justify-center items-center flex-col">
-          <p className="text-6xl w-6/12 text-center font-bold text-[#1a91f0] leading-tight m-auto">
+          <p className="text-6xl max-w-[680px] text-center font-bold text-[#1a91f0] leading-tight m-auto">
             Join over{" "}
             <mark
               style={{ background: 0, color: "inherit" }}
               className="border-b-[6px] border-[#f9ba44]"
             >
-              26,184,000
+              {props?.users}
             </mark>{" "}
             users worldwide
           </p>

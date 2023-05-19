@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getAllUsersAction } from "../../../redux/actions/profileAction";
 import {
   clearErrors,
   getAllResumesDataAction,
@@ -17,12 +18,14 @@ const Dashboard = (props) => {
   const { loading, user } = useSelector((state) => state.currentUser);
   const { error } = useSelector((state) => state.selectTemplate);
   const { allResumes } = useSelector((state) => state.getAllResumesData);
+  const { users } = useSelector((state) => state.getAllUsers);
 
   const openDrawer = () => {
     setToggleDrawer(!toggleDrawer);
   };
 
   useEffect(() => {
+    dispatch(getAllUsersAction());
     dispatch(getAllResumesDataAction());
     dispatch(getSelectResumeTemplateAction(user));
 
@@ -45,6 +48,7 @@ const Dashboard = (props) => {
       loading={loading}
       user={user}
       allResumes={allResumes}
+      users={users}
     />
   );
 };
