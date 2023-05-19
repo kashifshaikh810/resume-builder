@@ -49,10 +49,76 @@ export const deleteUserAction = (user) => async (dispatch) => {
     deleteUser(user)
       .then(() => {
         const db = getDatabase();
-        const dbRef = ref(db, "users/" + user?.uid);
-        remove(dbRef)
+        const userDBRef = ref(db, "users/" + user?.uid);
+        const coverLetterTempDBRef = ref(
+          db,
+          "userCoverLetterTemplateData/" + user?.uid
+        );
+        const coverLetterTitleDBRef = ref(
+          db,
+          "userCoverLetterTitle/" + user?.uid
+        );
+        const resumeTempDBRef = ref(db, "userResumeTemplateData/" + user?.uid);
+        const resumeTitleDBRef = ref(db, "userResumesTitle/" + user?.uid);
+        const selectedCoverLetterTemplateDBRef = ref(
+          db,
+          "usersSelectedCoverLetterTemplate/" + user?.uid
+        );
+        const SelectedTemplateDBRef = ref(
+          db,
+          "usersSelectedTemplate/" + user?.uid
+        );
+        remove(userDBRef)
           .then(() => {
-            dispatch({ type: DELETE_USER_SUCCESS });
+            remove(coverLetterTempDBRef)
+              .then(() => {
+                remove(coverLetterTitleDBRef)
+                  .then(() => {
+                    remove(resumeTempDBRef)
+                      .then(() => {
+                        remove(resumeTitleDBRef)
+                          .then(() => {
+                            remove(selectedCoverLetterTemplateDBRef)
+                              .then(() => {
+                                remove(SelectedTemplateDBRef)
+                                  .then(() => {
+                                    dispatch({ type: DELETE_USER_SUCCESS });
+                                  })
+                                  .catch((error) => {
+                                    dispatch({
+                                      type: DELETE_USER_FAIL,
+                                      payload: error?.code,
+                                    });
+                                  });
+                              })
+                              .catch((error) => {
+                                dispatch({
+                                  type: DELETE_USER_FAIL,
+                                  payload: error?.code,
+                                });
+                              });
+                          })
+                          .catch((error) => {
+                            dispatch({
+                              type: DELETE_USER_FAIL,
+                              payload: error?.code,
+                            });
+                          });
+                      })
+                      .catch((error) => {
+                        dispatch({
+                          type: DELETE_USER_FAIL,
+                          payload: error?.code,
+                        });
+                      });
+                  })
+                  .catch((error) => {
+                    dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
+                  });
+              })
+              .catch((error) => {
+                dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
+              });
           })
           .catch((error) => {
             dispatch({ type: DELETE_USER_FAIL, payload: error?.code });
