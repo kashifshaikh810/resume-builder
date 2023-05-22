@@ -38,7 +38,7 @@ const AllTemplates = (props) => {
   const { resumeTemplateGetData } = useSelector((state) => state.getResumeData);
 
   const { user } = useSelector((state) => state.currentUser);
-  const { loading, templateData } = useSelector(
+  const { loading, templateData, error } = useSelector(
     (state) => state.selectTemplate
   );
 
@@ -187,7 +187,7 @@ const AllTemplates = (props) => {
       templateData={
         tabName === "resumes" ? templateData : coverLetterSelectedTemplateData
       }
-      loading={tabName === "resumes" ? loading : coverLetterLoading}
+      loading={loading ? loading : coverLetterLoading}
       downloadPDF={downloadPDF}
       componentPDF={componentPDF}
     />

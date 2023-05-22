@@ -167,7 +167,7 @@ const AllTemplatesMarkup = (props) => {
 
   return (
     <div
-      className={`flex w-full h-[1050px] 
+      className={`flex w-full h-[1400px] 
       max-[768px]:h-[1074px]
     flex-col bg-gray-700
     ${isSelectedTemplate ? `overscroll-y-none` : `overscroll-y-auto`}
