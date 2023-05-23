@@ -61,7 +61,7 @@ const TorontoTemplate = (props) => {
   return (
     <div
       className="flex flex-col w-full h-[1250px] 
-      border-l border-gray-600 ml-5
+      ml-5
       max-[1029px]:pl-1 pl-10 pb-10 
       unselectable
       max-[768px]:border-none

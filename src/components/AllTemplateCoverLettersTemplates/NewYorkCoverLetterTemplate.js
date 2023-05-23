@@ -15,7 +15,7 @@ const NewYorkCoverLetterTemplate = (props) => {
   return (
     <div
       className="flex flex-col w-full h-[930px] 
-      border-l border-gray-600 ml-5
+      ml-5
       pl-10 pb-10 
       unselectable
       max-[768px]:border-none
