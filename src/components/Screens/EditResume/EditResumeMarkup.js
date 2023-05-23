@@ -199,31 +199,12 @@ const EditResumeMarkup = (props) => {
             <div className="flex flex-row items-center w-8/12 justify-end">
               <RiArrowLeftSLine
                 size={22}
-                className={`rounded-full  ${
-                  props.page > 1
-                    ? `text-white hover:cursor-pointer hover:bg-gray-400`
-                    : `text-gray-400`
-                }`}
-                onClick={() =>
-                  props.page > 1 ? props.setPage(props.page - 1) : null
-                }
+                className={`rounded-full  hover:cursor-pointer text-gray-400`}
               />
-              <p className="text-white ml-23 mr-3 ml-3">
-                {props.page ? props.page : 1} /
-                {props.totalPage ? props.totalPage : 1}
-              </p>
+              <p className="text-white ml-23 mr-3 ml-3">1/1</p>
               <RiArrowRightSLine
                 size={22}
-                className={`rounded-full ${
-                  props.page !== props.totalPage
-                    ? `text-white hover:cursor-pointer hover:bg-gray-400`
-                    : `text-gray-400`
-                }`}
-                onClick={() =>
-                  props.page !== props.totalPage
-                    ? props.setPage(props.page + 1)
-                    : null
-                }
+                className={`rounded-full hover:cursor-pointer text-gray-400`}
               />
             </div>
             {resumeData?.profileImage ? (
