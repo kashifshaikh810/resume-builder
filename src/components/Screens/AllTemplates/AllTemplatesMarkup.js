@@ -439,33 +439,12 @@ const AllTemplatesMarkup = (props) => {
         >
           <RiArrowLeftSLine
             size={22}
-            className={`rounded-full  ${
-              props.page > 1
-                ? `text-white hover:cursor-pointer hover:bg-gray-600`
-                : `text-gray-600`
-            }`}
-            onClick={() =>
-              props.tabName === "resumes" && props.page > 1
-                ? props.setPage(props.page - 1)
-                : null
-            }
+            className={`rounded-full  ${`text-white hover:cursor-pointer hover:bg-gray-600`}`}
           />
-          <p className="text-white ml-2 mr-2">
-            {props.tabName === "resumes" ? props.page : 1} /{" "}
-            {props.tabName === "resumes" ? props.totalPage : 1}
-          </p>
+          <p className="text-white ml-2 mr-2">1/1</p>
           <RiArrowRightSLine
             size={22}
-            className={`rounded-full ${
-              props.page !== props.totalPage
-                ? `text-white hover:cursor-pointer hover:bg-gray-600`
-                : `text-gray-600`
-            }`}
-            onClick={() =>
-              props.tabName === "resumes" && props.page !== props.totalPage
-                ? props.setPage(props.page + 1)
-                : null
-            }
+            className={`rounded-full ${`text-white hover:cursor-pointer hover:bg-gray-600`}`}
           />
         </div>
       </div>
