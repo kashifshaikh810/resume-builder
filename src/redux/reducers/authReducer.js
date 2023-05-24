@@ -98,20 +98,20 @@ export const currentUserReducer = (state = {}, action) => {
     case CURRENT_USER_REQUEST:
       return {
         ...state,
-        loading: action.payload?.loading,
+        loading: true,
         isAuthenticated: false,
       };
     case CURRENT_USER_SUCCESS:
       return {
         ...state,
-        loading: action.payload?.loading,
+        loading: false,
         isAuthenticated: true,
-        user: action.payload?.dbUser,
+        user: action.payload,
       };
     case CURRENT_USER_FAIL:
       return {
         ...state,
-        loading: action.payload?.loading,
+        loading: false,
         isAuthenticated: false,
         error: action.payload,
       };

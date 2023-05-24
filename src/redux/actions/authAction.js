@@ -1,7 +1,9 @@
 import {
   createUserWithEmailAndPassword,
   FacebookAuthProvider,
+  getAuth,
   GoogleAuthProvider,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -95,34 +97,27 @@ export const signInAction = (email) => async (dispatch) => {
   }
 };
 
-export const getCurrentUser = (data) => (dispatch) => {
-  const { loading, user, error } = data;
+export const getCurrentUser = () => (dispatch) => {
   try {
     dispatch({
       type: CURRENT_USER_REQUEST,
-      payload: loading,
     });
-    const db = getDatabase();
-    const dbRef = ref(db, "users/" + user?.uid);
-    onValue(dbRef, (snapshot) => {
-      const dbUser = snapshot.val();
-      const userData = {
-        dbUser,
-        loading,
-      };
-      dispatch({
-        type: CURRENT_USER_SUCCESS,
-        payload: userData,
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      const db = getDatabase();
+      const dbRef = ref(db, "users/" + user?.uid);
+      onValue(dbRef, async (snapshot) => {
+        const dbUser = await snapshot.val();
+        dispatch({
+          type: CURRENT_USER_SUCCESS,
+          payload: dbUser,
+        });
       });
     });
   } catch (err) {
-    const errorData = {
-      error: err.code || error.code,
-      loading,
-    };
     dispatch({
       type: CURRENT_USER_FAIL,
-      payload: errorData,
+      payload: err?.code,
     });
   }
 };

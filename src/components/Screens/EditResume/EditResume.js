@@ -1199,10 +1199,6 @@ const EditResume = (props) => {
     saveData,
   ]);
 
-  // const saveData = async (getData) => {
-
-  // };
-
   return (
     <EditResumeMarkup
       {...props}

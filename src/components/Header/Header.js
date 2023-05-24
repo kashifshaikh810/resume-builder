@@ -118,7 +118,7 @@ const Header = (props) => {
             className="flex flex-row items-center mainContainer cursor-pointer"
             onClick={() => navigate("/")}
           >
-            {props?.shown ? (
+            {props?.shown && user ? (
               <p>
                 {user && `Hi,`} {user?.firstName} {user?.lastName} &#127801;
               </p>
